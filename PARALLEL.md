@@ -42,7 +42,7 @@ The stubs matter: they mean no agent ever creates a file another agent also crea
 | **A2 · registry** | `lib/providers/wikidata.ts`, `gleif.ts`, `edgar.ts`, `tests/providers.registry.test.ts` | types, fixtures |
 | **A3 · keyed APIs** | `lib/providers/abstract.ts`, `hunter.ts`, `lib/keys.ts`, `tests/providers.api.test.ts`, `tests/guardrails.email.test.ts` | types, fixtures |
 | **A4 · website** | `lib/providers/website.ts`, `llm.ts`, `tests/providers.website.test.ts` | types, fixtures |
-| **A5 · report UI** | `app/page.tsx`, `app/globals.css`, `app/components/FieldRow.tsx`, `PersonCard.tsx`, `CaseFile.tsx`, `InvestigationLog.tsx`, `SearchBar.tsx` | types, fixtures |
+| **A5 · report UI** | `app/page.tsx`, `app/layout.tsx`, `app/globals.css`, `app/components/FieldRow.tsx`, `PersonCard.tsx`, `CaseFile.tsx`, `InvestigationLog.tsx`, `SearchBar.tsx` | types, fixtures |
 
 A5 renders **from fixtures only** — no provider, no route. That is what lets it run at the same
 time as everyone else.
@@ -63,8 +63,14 @@ Merge the five branches. Files are disjoint, so the merge is mechanical.
 
 ## Wave 3 — integration (ONE agent, plus you)
 
-Wiring, `KeysModal`, `AbortController` in the page, theme pass, CI, deploy, docs.
+Wiring, `KeysModal`, `AbortController` in the page, CI, deploy, docs.
 Sequential on purpose: this is where everything touches everything.
+
+**The theme pass (T19) was pulled forward into the UI lane**, out of wave order. It touches only
+files that lane already owns, so nothing can collide — and the alternative was leaving the lane
+idle while T11 waits on T10. The cost is accepted knowingly: T16 and T18 add states that do not
+exist yet (a live log, an error section, a `simulated` banner), and those will need theming when
+they arrive. They inherit the tokens rather than inventing their own, which is most of the work.
 
 ---
 
