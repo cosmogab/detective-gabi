@@ -70,6 +70,26 @@ simulated state is labelled `simulated` on screen.
 **Consequence.** One mechanism serving tests, demos and the walkthrough — and no staged failure
 passed off as a real one.
 
+## D10 — Tailwind v4, configured in CSS
+**Context.** `SPEC.md` and `PLAN.md` say "Tailwind" without pinning a major, and v4 moved
+configuration out of `tailwind.config.js` and into the stylesheet.
+**Options.** Tailwind v4 with `@import "tailwindcss"` and an `@theme` block · Tailwind v3 with a
+JS config file.
+**Choice.** v4.3. No `tailwind.config.js`; the theme lives in `app/globals.css`.
+**Consequence.** The T19 theme pass edits CSS rather than a JS config. Most Tailwind material
+online is still v3, so borrowed snippets need translating.
+
+## D11 — Next.js owns a block of `AGENTS.md`
+**Context.** `next dev` appends a "This is NOT the Next.js you know" block to `AGENTS.md` on every
+run, pointing at the docs bundled in `node_modules/next/dist/docs/`. Next 16 does differ from what
+a model is likely to have been trained on.
+**Options.** Commit the block · suppress it with `agentRules: false` · restate the warning in my
+own words and suppress the generated one.
+**Choice.** Commit it. It is accurate, it updates itself when Next does, and it reaches every
+agent working in a lane.
+**Consequence.** Ten lines of `AGENTS.md` are not mine and will change without my asking. In
+exchange the working tree stays clean and nobody writes Next 15 code from memory.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
