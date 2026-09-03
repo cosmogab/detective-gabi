@@ -18,7 +18,11 @@ lib/
   types.ts                     Field<T>, Confidence, Source, CompanyFields, Person,
                                Report, LogEvent, Candidate, Resolution
   merge.ts                     merge by source priority, conflicts, confidence
+  resolve.ts                   is one candidate a clear winner? (pure; the route fetches)
+  orchestrate.ts               run the provider groups in parallel, assemble the Report
   cache.ts                     TTL cache, key = domain
+  ratelimit.ts                 per-IP; past the limit only keyless providers run
+  demo.ts                      ?demo= failure injection, reusing the fakes
   keys.ts                      resolve which key to use (user > default > none)
   providers/
     types.ts                   the Provider interface — THE FROZEN SEAM
