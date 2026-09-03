@@ -1,0 +1,2864 @@
+{
+ "entities": {
+  "Q7624104": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stripe, LLC"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Irish-American payment technology company"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "326e3d41d1e9c34715e880be6e1c6a1e822e4317",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4830453,
+         "id": "Q4830453"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7624104$372BFFDA-6380-4F2A-9AB8-2C7F435DACAA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1c2427070130c6781d50b40dbf2af1764134e028",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "2007dabc728388207f5c1792dd54050313536b99",
+           "datavalue": {
+            "value": "https://stripe.com/about",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "9e1c2b938c23ebc258a69173f2c60ebeac68ac5e",
+           "datavalue": {
+            "value": {
+             "time": "+2026-03-28T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "02c13925b68e9f8c8cc7b0b0056e969f14207df0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 12738586,
+         "id": "Q12738586"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7624104$19275f50-46d5-3e1a-74b0-3508004e0d6d",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "2347fa9ba21f53ac27832cb98195340519006d06",
+       "datavalue": {
+        "value": "https://stripe.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q7624104$A361791F-B834-4171-BA52-92050D8B6552",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P5531": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P5531",
+       "hash": "da979938f3302d9c2a2bde84b76c4b2c0bcb56ac",
+       "datavalue": {
+        "value": "0001691342",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q7624104$74838194-4ec3-d4ad-e0ff-f18536d897fb",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7624104$20ED7283-CDEF-44F5-845A-96DABD088508",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "29aaaa2fe0d0125bb5da9e287b7337ef30e90ff8",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "bd62a5c6aea562b67297f41c7b2f1ed6289b0ac3",
+           "datavalue": {
+            "value": "https://www.forbes.com/fintech/2019/#107b01742b4c",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "e4317cbffc5c05dae6609041f571db9ebb272ee9",
+           "datavalue": {
+            "value": {
+             "text": "The Most Innovative Fintech Companies In 2019",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P123": [
+          {
+           "snaktype": "value",
+           "property": "P123",
+           "hash": "5c05e3486dd6f6ac52e3d8c0e35ce30c701f50aa",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 25161472,
+             "id": "Q25161472"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "9eca3554445ac5a647bed248bfccac8572fc8023",
+           "datavalue": {
+            "value": {
+             "time": "+2019-02-04T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P123",
+         "P577"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f4ccb05f7faebc2073ed81093902b84d250e6695",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 27,
+         "id": "Q27"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7624104$4F64AEEB-0290-480E-A5C2-826BB29EC3D4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1dcacdba2a5a6941c88d7b25701cb6af58e368b8",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "2c320a80d7918ce595ad40f27081414f5486eb96",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/stripe-inc?rid=389356530261-76",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1278": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1278",
+       "hash": "f3460e6bc3f20e08ab56e9cd96b41d0bf772f727",
+       "datavalue": {
+        "value": "549300CLHGIPTCYHQ143",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P1810": [
+        {
+         "snaktype": "value",
+         "property": "P1810",
+         "hash": "9908c2f1394b061aec0766b833607380f845a12f",
+         "datavalue": {
+          "value": "STRIPE, LLC",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P1810"
+      ],
+      "id": "Q7624104$a4e81426-40db-c3cf-c565-4b0ea296add4",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3421342": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "long, narrow band of color, often in alternating sets"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "bae8d6b590437abdc3ba5ef05a4e07ebee86a357",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 45057822,
+         "id": "Q45057822"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3421342$2DBC01BA-9A77-4ED0-B9A9-FF4DA5D67B54",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b28093388dda40fb0edd6062e1a9b3006a3b4f45",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "578482aa6aad544068482da29b1f8aae731fbc5d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 611299,
+             "id": "Q611299"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P1014": [
+          {
+           "snaktype": "value",
+           "property": "P1014",
+           "hash": "b749743b232a87f2ec4641a8ff4eb011f79a12fb",
+           "datavalue": {
+            "value": "300010230",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P1014"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "06471f7cae2672718b51a48e4e941c81cc04cd85",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 207961,
+         "id": "Q207961"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3421342$9452f9f6-4b6b-0774-112d-e7580fe9b6ca",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fd421215eacd950d2089ff32d351e78c2fa7101e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 61809711,
+         "id": "Q61809711"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3421342$d4015414-43bb-22b8-ff77-80618987da1f",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q127900502": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character in the Gremlins franchise"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "70710a61129e9dad0fd9bcf8fc63e4c4c30d4bc3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3825492,
+         "id": "Q3825492"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q127900502$f5034546-4415-1aeb-c754-767f9af18af1",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3f88e61c14fb6cb246e81f6a89d192d622a85c5b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15773347,
+         "id": "Q15773347"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q127900502$B0E83C8F-01D5-405E-ACCE-F634C92C120E",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q117454382": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "South African progamer"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q117454382$3A1639E9-4E9D-47BA-96F1-052B7137BC39",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q297115": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Meloidae"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Meloidae"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family of beetles"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q297115$2B8CB8BB-E1A6-4671-833F-47C1DF3934A2",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q469754": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Perca flavescens"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Perca flavescens"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q469754$9853A5A7-3602-42FD-AAD0-D64554CB7918",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q842647": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped bass"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Morone saxatilis"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q842647$6315972F-737F-4BED-BF63-FB18D1A8B5E2",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q368495": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped skunk"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Mephitis mephitis"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q368495$37B3F993-BCAF-4862-8C8C-1681F1A84EC6",
+      "rank": "normal"
+     }
+    ],
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c6343c736e4b15ed2d14c7757647e3a5562ae5ed",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7377,
+         "id": "Q7377"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q368495$bc222bc2-49de-95f8-8ebc-0bd5e94802fa",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q215332": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stenella coeruleoalba"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stenella coeruleoalba"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q215332$D8B1591F-C0AA-4D6D-A6B5-2A21320B8B32",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q631822": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped field mouse"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apodemus agrarius"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q631822$497DFD32-C38F-4D06-BF9D-72635118A737",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q37535583": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3a01d0950849b76433d9aeec3107b57e86bb6378",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 101352,
+         "id": "Q101352"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q37535583$2AC4F9ED-8E0A-49C8-BD6E-9F08CE7DEDE0",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8c376f30a6c29ed08110a46e989a72b2b9c967a6",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ca6dda9dbd16cf0adc91f7ee0ba2810cd79dea6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 523716,
+             "id": "Q523716"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "14bbd3989e616652210ba16280e1dea0166635f9",
+           "datavalue": {
+            "value": "https://www2.census.gov/topics/genealogy/2010surnames/names.zip",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P854"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q1058149": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Oplegnathus fasciatus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Oplegnathus fasciatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1058149$12A44493-C4F0-47B4-8ADB-375C866722F2",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q106318699": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Carbo Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "tanker launched in 1974"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "27e7aeb990efee6bcc75dd71d0e8725acc834930",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 14970,
+         "id": "Q14970"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q106318699$3ef5800e-4125-cb6b-8973-630f9b44d8cd",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q21169417": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "narrow white stripe down a horse's face"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1587b550bfe6bc390530cf021ec848012a65b7dd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21169422,
+         "id": "Q21169422"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q21169417$19EBB58D-9902-4E7E-B4B3-70567E29F40A",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q686439": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Channa striata"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Channa striata"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q686439$924AB519-951A-4EB1-B402-DA624A1C63FF",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q111226046": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe Press"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stripe Press"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "American publishing company"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "bd78895b289899dec7e4d131afc9f6d4e434599c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2085381,
+         "id": "Q2085381"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q111226046$1a9e3ef4-4dc5-d5f1-7272-73fbc0268a00",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "f8a301b9ed94f88ec7bef44a45b4f576332ff70f",
+       "datavalue": {
+        "value": "https://press.stripe.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q111226046$2e9db2ea-4954-d0a9-ff04-86ba37f23684",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q14925277": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripenia"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Stripenia"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of insects"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q14925277$29B48821-30B7-43E1-975D-2DABF57D6CDB",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q188657": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped hyena"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Hyaena hyaena"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of hyena"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q188657$22A0527C-7A2C-41B3-8120-1424AF2E9852",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q133334": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe-faced Dunnart"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Sminthopsis macroura"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q133334$1633A228-D22A-4EFA-B65D-FCAB1779A2CD",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q421516": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Chilo suppressalis"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Chilo suppressalis"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of insect"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q421516$C7B973DD-F418-4D47-933D-D3FDA0FDD4EE",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2016506": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped Seabream"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Lithognathus mormyrus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2016506$8EC37446-177D-4CC3-85A0-CEF578F0D196",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q767055": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Plotosus lineatus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Plotosus lineatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q767055$A3E4EF42-E865-4573-9680-72FD9432DDBA",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q226735": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped polecat"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Ictonyx striatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q226735$ACAD0C60-01C7-4505-816F-FDD972A8EA1B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3023831": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped bark scorpion"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Centruroides vittatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of arachnid"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3023831$5F7C0AF8-F1A7-4D3E-B91D-B8198E86E423",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2319750": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "spiny-tailed geckos"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Strophurus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of reptiles"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2319750$AD5090F1-5931-4B1C-AB42-CA23731780D5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1313355": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Phyllotreta striolata"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Phyllotreta striolata"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of insect"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1313355$9EDC393F-3C24-4A44-8FF0-AC9DBE19600B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q972004": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Xerus erythropus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Xerus erythropus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q972004$93527CC4-037E-4766-B8FD-7ADB4660F793",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q875897": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped grass mouse"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Lemniscomys"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of mammals"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q875897$EE558406-E4FC-4513-9E5B-592A62208D43",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q780824": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Arawacus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Arawacus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of insects"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "0876299d68e39b7647ff5f67eecbde21d6d8be1d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 310890,
+         "id": "Q310890"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q780824$ECA299B7-9F0E-41D6-8E4D-E0C884E8E80D",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1210054": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped marlin"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Kajikia audax"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1210054$909D1308-0732-4B80-91F9-75501461564A",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1190312": {
+   "labels": {
+    "mul": {
+     "language": "mul",
+     "value": "Acer pensylvanicum"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of plant"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1190312$C4CF5CFC-DC9F-4DD4-A614-C9086A275D10",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1942364": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Euploea mulciber"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Euploea mulciber"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of insect"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1942364$4DCCA97D-771A-4FE2-A8F3-A1C5FF47F26B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q591562": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped mud turtle"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Kinosternon baurii"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of reptile"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q591562$69E4504B-64E4-404C-9328-E9E8475EF22E",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q210088": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped possum"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Dactylopsila trivirgata"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q210088$F40111A2-5F11-4D77-8F8B-5B1AD5B9C900",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q107383381": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Python library"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "50e40002c553d94e439de41b5d7704574745d5fa",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 29642950,
+         "id": "Q29642950"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q107383381$BC45C214-540D-4E09-A75D-0AFA06D79D95",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "0e6636146359966a349c759f8dc13a9537dc35a6",
+       "datavalue": {
+        "value": "https://stripe.com/de",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 188,
+           "id": "Q188"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q107383381$88bc43d2-a92e-432d-bcef-47a4035d17ca",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b28504e063e7b84e9cc7572248c930ef65e51778",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5c418a078cb1d6faedc6ac04a5cb89bdc63aeecb",
+           "datavalue": {
+            "value": "https://api.github.com/repos/stripe/stripe-python",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "7204a1d4d99cb80759f3814103bb3d409e110f74",
+           "datavalue": {
+            "value": {
+             "time": "+2022-10-26T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q104335364": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "townland in Sonnagh, County Mayo, Ireland"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a8e5f9812373093cec8d032da15e815eb014a45c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2151232,
+         "id": "Q2151232"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104335364$524F0388-9F97-4D06-8249-12542AC74A4A",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f4ccb05f7faebc2073ed81093902b84d250e6695",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 27,
+         "id": "Q27"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104335364$5989F092-B668-4BE0-A35E-92BCF41AB884",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q104330281": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "townland in Tuam Rural, County Galway, Ireland"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a8e5f9812373093cec8d032da15e815eb014a45c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2151232,
+         "id": "Q2151232"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104330281$A9E7D365-CA91-40B5-8D5A-980D69B811B3",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f4ccb05f7faebc2073ed81093902b84d250e6695",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 27,
+         "id": "Q27"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104330281$F702F0BE-16C5-4D4B-870E-652E796CFF0E",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q104323787": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "townland in Na Forbacha, County Galway, Ireland"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a8e5f9812373093cec8d032da15e815eb014a45c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2151232,
+         "id": "Q2151232"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104323787$8B2C50F0-E8FF-4E45-89E0-A6EC628A0DB0",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f4ccb05f7faebc2073ed81093902b84d250e6695",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 27,
+         "id": "Q27"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104323787$5A412843-0A78-4083-AD96-9E3C11EBCB23",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q104326624": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "townland in Cummer, County Galway, Ireland"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a8e5f9812373093cec8d032da15e815eb014a45c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2151232,
+         "id": "Q2151232"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104326624$1989E342-9C50-440D-BB7C-D2BAE4D7642F",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f4ccb05f7faebc2073ed81093902b84d250e6695",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 27,
+         "id": "Q27"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104326624$41F6F031-9C69-4B99-8470-647E36C6D602",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q29721014": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "sr"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "protein-coding gene in the species Drosophila melanogaster"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f7b5dc954c1e8de67376278f5a41649cdb274834",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7187,
+         "id": "Q7187"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q29721014$CFEAFF5A-9380-444A-B301-E3CDF2469BF3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b688efef2848998c258b805040f8dfbeb76820e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "2b254bfba89031cf2b5cbaf5c9a60025331fd36f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 110249889,
+             "id": "Q110249889"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P594": [
+          {
+           "snaktype": "value",
+           "property": "P594",
+           "hash": "7488e76cf2d741315df5faae730d6c8f45c1fdd5",
+           "datavalue": {
+            "value": "FBgn0003499",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P594"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q19558351": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "street in Terhorne, the Netherlands"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fbc4854fbefdca0a0775a5e9f7e2610264ca0884",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 79007,
+         "id": "Q79007"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q19558351$5069E413-C8FE-4D09-B9BF-C0667CDCD3D1",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "dac5a1fd153c973b76efb878e5bdd5c6ec32de2e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "b89b7a433be3dea27e624d836722249fd1bfde10",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 18916547,
+             "id": "Q18916547"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "3255495294545a1c2713e0724b0d3ba98a5f16db",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55,
+         "id": "Q55"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q19558351$E15362B7-20C7-4BE5-9DD0-8A0ED5F9F35A",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q104367379": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "townland in Fermanagh, Northern Ireland"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a8e5f9812373093cec8d032da15e815eb014a45c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2151232,
+         "id": "Q2151232"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104367379$EA0E6458-8059-428B-B379-0A9C10F7780C",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "a44880420787fb348836dc51d3babc5227c4ef7e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 145,
+         "id": "Q145"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q104367379$1C8C86AD-2FED-44F6-AA12-EDB1340360AD",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q19558352": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripe"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "street in Wijnjewoude, the Netherlands"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fbc4854fbefdca0a0775a5e9f7e2610264ca0884",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 79007,
+         "id": "Q79007"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q19558352$21258109-3338-4444-AF91-2D9E65D4C85D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "dac5a1fd153c973b76efb878e5bdd5c6ec32de2e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "b89b7a433be3dea27e624d836722249fd1bfde10",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 18916547,
+             "id": "Q18916547"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "3255495294545a1c2713e0724b0d3ba98a5f16db",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55,
+         "id": "Q55"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q19558352$9A080487-DF16-4D10-8428-629DBB2CC4F1",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q688635": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Conepatus semistriatus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Conepatus semistriatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of mammal"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q688635$1752DF41-C19B-4190-AF80-6DB563D8BA75",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q87069481": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "multicolored hair"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "dyed hair colours"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c66ae00c24d68eda61d780bd43a2601e01788741",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 86724488,
+         "id": "Q86724488"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q87069481$5f3a36d8-4117-4aa1-e56b-fe61c20970d9",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "563ec38bdf6019bab2803c9afdd5636ef1f59a08",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1048314,
+         "id": "Q1048314"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q87069481$d43ed415-497c-0aba-ae02-014631b44075",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q538161": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "striped marsh frog"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Limnodynastes peronii"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of amphibian"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q538161$EE17B82D-3286-4C7B-9C2B-5E44BA04B02C",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3335431": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Diplocyclos palmatus"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Diplocyclos palmatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of flowering plant"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3335431$FBCBB737-37A6-4377-B4B3-708ACCB1C2A7",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q174153": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Stripes"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "1981 film by Ivan Reitman"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fa41184cb03f49f0edfbf2fc4f9d33e35afecaea",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11424,
+         "id": "Q11424"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q174153$1E46207E-AB00-488A-B34A-5A26360F5A39",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q3644142": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped bonito"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Sarda orientalis"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3644142$5EA97941-E261-45AD-8EEC-D33D4455801F",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1574876": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Striped panchax"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Aplocheilus lineatus"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of fish"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1574876$45BDA7DA-9FC3-4B2A-A15F-66E016EA2786",
+      "rank": "normal"
+     }
+    ]
+   }
+  }
+ }
+}

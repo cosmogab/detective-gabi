@@ -1,0 +1,4161 @@
+{
+ "entities": {
+  "Q12308941": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "male given name"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "given name usually meant for boys and men"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f48bb1cb2f51dbe01d7ca2c41c119e398b1d7f2a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 202444,
+         "id": "Q202444"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q12308941$a7c2c8a4-485d-56ca-74a2-096eca2435ab",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "b574e2503b4828d4adcc2b365417d2b8276be112",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 130443750,
+         "id": "Q130443750"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q12308941$c7ad851d-4f2b-bddf-1d28-cae224de8b1e",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ab09c9b9f8352e0daef778e0f204afcb83542443",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 134599141,
+         "id": "Q134599141"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q12308941$0e7221eb-48ba-f60a-02ce-a8a276eaf186",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q22989102": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Greek deity"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "type or kind of deity belonging to the Greek mythological universe"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "69ce836203453c5308e0d970c02ef0fcf76033ba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 178885,
+         "id": "Q178885"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22989102$7d115051-46ed-347a-61e6-5cda5390a860",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "fde655a1f50982a85242b0b9dea68cf8336cd954",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22988604,
+         "id": "Q22988604"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22989102$768cef11-4ad1-51eb-d8bc-02068728b701",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q511056": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "solar deity"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "sky deity who represents the Sun"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "69ce836203453c5308e0d970c02ef0fcf76033ba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 178885,
+         "id": "Q178885"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q511056$ccadbe3d-4e7b-9d7a-cbf1-bee962bda798",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "db0eb116d62c9e29d828a7b1a2b7d3e6d04f3850",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 207174,
+         "id": "Q207174"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P1268": [
+        {
+         "snaktype": "value",
+         "property": "P1268",
+         "hash": "17fef806d664a3bbeeaab1107c693b8bc6dafd52",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 525,
+           "id": "Q525"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P1268"
+      ],
+      "id": "Q511056$42100767-4605-90df-0b35-c321efd7a374",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q113103481": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Olympian god"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Greek deity residing on Mount Olympus"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c050dbd43dcc8402edc5b4f4ca958de79dba225e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22989102,
+         "id": "Q22989102"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q113103481$c8f3edaf-4149-74e0-f255-c00e6aa808f3",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q11688446": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Roman deity"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "gods and goddesses of ancient Roman religion"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "69ce836203453c5308e0d970c02ef0fcf76033ba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 178885,
+         "id": "Q178885"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q11688446$a65d5cd6-4d0d-13b0-95dc-fe3a2f2fee62",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "19a2fa2f2b2705c318b244b4bc0a44a64870c464",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 124940323,
+         "id": "Q124940323"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q11688446$e659cbec-468e-a938-3539-35a5750f839b",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q100349043": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "space instrument"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "instrument deployed in space"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "ce7a2a5abb19b389c62559faaf217bc4f1c8ca6d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3099911,
+         "id": "Q3099911"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q100349043$3267d28f-4828-2343-bf0a-51082322ebda",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "acf56635ab2ddbdef66d1dc36026c910297b268d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21211206,
+         "id": "Q21211206"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q100349043$3f78a4f8-48eb-3f71-62d3-5a9200ab0441",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q25653": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "ferry"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "type of ship travelling over short to medium distances between two places transporting people, cars or trains and acting like a replacement for a bridge"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "83de40da64cc83b8c4b13365aa3ea697df87c617",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11446,
+         "id": "Q11446"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q25653$50BBD69C-CF1B-475F-A488-E47DE3C4787C",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "2b7913b814da6d8930bd61bc4a4c28fa9080b9ff",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 848944,
+         "id": "Q848944"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q25653$6a5830c0-4ce3-68ce-4a57-e4deaec1f085",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "0a5474d9c45059757b94a84aaf90d7808c8400a4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1229765,
+         "id": "Q1229765"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q25653$ffa89d93-4f2a-e235-386e-a0090f23e154",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f5c2ca680c47d37fa48f584089eaba87bc3315db",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2235308,
+         "id": "Q2235308"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q25653$75F1AAE0-CACA-4D2A-A8F0-43037963A9E5",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "7545ccc779beb1e3e32bf4ae5a225a83e014431e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "90588e43b9d3b6049b0b8bc80079cb19acd84b5c",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 20103697,
+             "id": "Q20103697"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "59a7cbcc8e49d21a8f6e190106421e96d9d566be",
+           "datavalue": {
+            "value": {
+             "time": "+2015-06-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q6484651": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "landing ship, infantry"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "type of troopship or post World War II a landing craft"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f5c2ca680c47d37fa48f584089eaba87bc3315db",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2235308,
+         "id": "Q2235308"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q6484651$0ACDF314-A47D-4D2A-AC5A-2E4AEC6EBF81",
+      "rank": "normal"
+     }
+    ],
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f11fd3794d0968a73b7f358af613e1721c7c073b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 841751,
+         "id": "Q841751"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q6484651$a126527b-4a1f-eb64-1dee-1ce9ce1f738c",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "83de40da64cc83b8c4b13365aa3ea697df87c617",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11446,
+         "id": "Q11446"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q6484651$1da619ab-426f-cb6d-8280-188a01a8565b",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q79007": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "street"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public thoroughfare in a built environment like a village or city"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f24d2ba2fb74c57dc60a35e4ea846b80b9422fdd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 376799,
+         "id": "Q376799"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q79007$002acffa-42f0-5455-3915-c14a657adbf8",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "8ff4e7b1c4dc70a3040ada762cc38f39f95dfadd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 811979,
+         "id": "Q811979"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q79007$20cd5823-46d7-a686-8ade-0e5cc3abdc88",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "88ce47653c81f4126adb1f95c0de99b6f1307191",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 34442,
+         "id": "Q34442"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q79007$0dfec64e-4bc4-60ba-ced5-6e4a4e3b7fd1",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q16521": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "taxon"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "group of one or more organism(s), which a taxonomist adjudges to be a unit"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "00c897a47bf7ff183f7d33952c29bff7c4f663f2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21871294,
+         "id": "Q21871294"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q16521$cc853109-4c46-028a-dd45-d52b4a34cb75",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a7e32719e3a70a25fce867c2ad70c306d3521fc3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 24017414,
+         "id": "Q24017414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q16521$e31ceda2-4f12-248e-2299-dc71bae352c5",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "403de0023a77e07a827970a7511276af5aa837a4",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1860,
+             "id": "Q1860"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P407"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "21f83567701f5c4b007d4ed3e02e2d5140fa6339",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 115949945,
+         "id": "Q115949945"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q16521$bc5a94fb-4fc7-2e93-6247-2c289dbcbc40",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q13226541": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "human spaceflight program"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "type of space program"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f899422fa00882718a61f58a1f66c185755edd95",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 60054001,
+         "id": "Q60054001"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q13226541$9d8129f5-4bcc-0870-2b67-469b06161ab4",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q21605492": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "NASA program"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "series of space missions of NASA"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "34aa4698c4855e2f9f7e66de007bc63252095ab7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1707009,
+         "id": "Q1707009"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q21605492$01ac0170-43e9-e8d9-7475-48557290adc6",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q170584": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "project"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "collaborative enterprise, frequently involving research or design, that is carefully planned to achieve a particular aim"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "8d00b942254cd54e505e0132ee06c6dcc84cfdef",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 104637332,
+         "id": "Q104637332"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q170584$84d6ff0c-46cf-0e16-dbef-8a01646d7786",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "7690277e00ce5abcc3d2c400a80f14b3202c813e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 104086571,
+         "id": "Q104086571"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q170584$23446e5f-447d-e86c-8a1b-1fac87207991",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q249083": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "asteroid family"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "population of asteroids that share similar proper orbital elements"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e514be00d2ca75ffb36a762202279900781a07b3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15101896,
+         "id": "Q15101896"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q249083$0D1DEA47-769C-47E9-81AE-4656D0BAF637",
+      "rank": "normal"
+     }
+    ],
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "921b805cbddbb1021ccc85c83b7bb053a21af523",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2332332,
+         "id": "Q2332332"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q249083$DA234C37-1DDC-44CD-B9AD-9F3E8423AD28",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q5": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "human"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "any single member of Homo sapiens, unique extant species of the genus Homo"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c2d19bed7661aa27a23a10890e251ffbb169a422",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2250224,
+         "id": "Q2250224"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5$768dc56e-4291-c3a7-654c-f137d70034ea",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "2bea0e5c7de9db4f3bad3d9dc8dca2f1cb6e34c2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 164509,
+         "id": "Q164509"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5$e5807c96-4857-459d-0c4b-aa192f7cd303",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "958d0bb25a0ec944ba2672df3161e735f87bdb87",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 154954,
+         "id": "Q154954"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5$d68ce771-4858-4666-377f-2fa9b70f18b7",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "595b292c603541fe5c39a2eb39a00cbaae60bf7b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5891007,
+         "id": "Q5891007"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5$8f1dde99-4ab8-69f9-bea6-7eb37c3215c9",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "039ca41f187ee0f849e34958ffb63a69ad6d50e4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55983715,
+         "id": "Q55983715"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5$82b80d5f-4353-c7cb-1a3c-c0c8f4f5f237",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q620615": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "mobile app"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "software application designed to run on mobile devices"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "21f24fd0e82595456c073daac5d622ee1f75baf9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 166142,
+         "id": "Q166142"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q620615$bd7bdf08-458b-c797-ebd0-404373380226",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "166309b5420854107e7bba813b0b7418d04e5875",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21743174,
+         "id": "Q21743174"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q620615$8f99c1be-405b-324f-5f2a-a38b34d0a62e",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c06eea93cbbea9d7b62dfb5a37cba220ca8af15a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 340169,
+         "id": "Q340169"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q620615$b7ad406e-44d5-151e-fe57-ab9406d8f836",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "1987517a3ee01265bab7bcc026413c09267b2f53",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 40056,
+         "id": "Q40056"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q620615$406985e8-4c9d-0b15-a152-7b2c2de4c156",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "738f42a84b2bfc18e692c2c227186f715d4de8e9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17155032,
+         "id": "Q17155032"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q620615$93b806f7-474c-80d6-8fb8-69a3c9fa7121",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3305213": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "painting"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "visual artwork, surface artistically covered with paint"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "90316a7c8c278ee166d626b34fae9fc014306670",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 110304307,
+         "id": "Q110304307"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q3305213$BD1F1507-7F7A-4670-BBF1-A7B3A4845194",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "9c4abd61e19542d3018ccd1c1d12a449adcfb2aa",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 8205328,
+         "id": "Q8205328"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "cbae4cc270287a48939ecce7e697f4cc27b9dac5",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 118134102,
+           "id": "Q118134102"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2241"
+      ],
+      "id": "Q3305213$c02fcce8-41ad-370b-fb53-e5ecb485440a",
+      "rank": "deprecated"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "75c9cb1e0ccbd78cc8e73c66a433be3ebe62c5d0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 838948,
+         "id": "Q838948"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3305213$1c3965ce-481b-d9f6-a76b-13d0f175d07f",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a22b9bc9fc61ff9aca4ebd0bd0802eca4cf94616",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 116474095,
+         "id": "Q116474095"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P136": [
+        {
+         "snaktype": "value",
+         "property": "P136",
+         "hash": "1f58092b807082906c783a1dec8ed24c047fdadd",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 281108,
+           "id": "Q281108"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P136"
+      ],
+      "id": "Q3305213$5eef92af-4129-6762-1b7b-29bca0435479",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "87ca87e707ca8d81b07c0ba1613913a7e6fde766",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "80ca029c88bfb8858b78df991664c5dcdaeaddbc",
+           "datavalue": {
+            "value": "https://www.connaissancedesarts.com/arts-expositions/art-moderne/guerre-en-ukraine-un-incendie-ravage-un-musee-et-detruit-les-oeuvres-de-lartiste-maria-prymachenko-admiree-par-picasso-11170870/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q1002697": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "periodical"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "publication type, serial publication that appears in a new edition on a regular schedule"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "a5f653dbcd646baa1c5f21d95d66626b0796bd6c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2217301,
+         "id": "Q2217301"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1002697$7bb4ecbb-4285-5869-ffd8-8f06802f7105",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c06eea93cbbea9d7b62dfb5a37cba220ca8af15a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 340169,
+         "id": "Q340169"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1002697$946cdfa0-4277-f399-6e7b-624f4aef4366",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b5afd5a5488482e2a77e71d62580b1388cf76ba2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 121132955,
+         "id": "Q121132955"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1002697$7B4FB6FD-B3FB-489C-BA05-03F5DF331C6A",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "7ddf0c9997ace1e7d29f89e6f38c2f878403e8ce",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 39725049,
+         "id": "Q39725049"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1002697$1f62a4f4-459c-8b4d-1e4d-bc232a1e4481",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ea5002babf11f9143454dd8def1fa9bfa23142d6",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 110452794,
+         "id": "Q110452794"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1002697$37eb5d43-4825-be96-10d5-c3a98033ac7a",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q7889": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "video game"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "electronic game with user interface and visual feedback"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "4220d4b568398730e3b76d920be38ae077b72491",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2249149,
+         "id": "Q2249149"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q7889$991C3D2A-DEF4-4AE5-A80E-4FC2DCC69526",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "12a2a9deb7b3e1619774ceb43f27f1bda84f320d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 51938570,
+         "id": "Q51938570"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7889$fe5a8b82-4268-484c-2a76-e180d98db395",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3823dc33a39d9aa806f673477a4fbd20791739d9",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 206855,
+             "id": "Q206855"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "410ef0c4fc4cb1ed2a6aa2d2785a7ba5a5c0335d",
+           "datavalue": {
+            "value": {
+             "time": "+2018-04-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "908acb01f69cfc695484417bb302ee905cb6d8bd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2431196,
+         "id": "Q2431196"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7889$265e5d58-4548-0f61-eca8-b74ad99215fb",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "523f4cfe8d44e23a966c32148f7546c5cecfb299",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 115920686,
+         "id": "Q115920686"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7889$a6a18a19-4fd6-9fb9-08c2-85969a509b93",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a998b4322a2a8247608a38621df30f15999521bf",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 56055944,
+         "id": "Q56055944"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7889$88C8B7E7-545F-4138-9D2B-CAC41DE7025F",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "738f42a84b2bfc18e692c2c227186f715d4de8e9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17155032,
+         "id": "Q17155032"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7889$18b0df36-49ee-14a0-7b01-419cffe24f0a",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q89050960": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "fictional humanoid extraterrestrial"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "humanoid extraterrestrial only appearing in a work of fiction"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c79d159e85bd4d48ef252afb8174f9326c58d243",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28020127,
+         "id": "Q28020127"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q89050960$c5b6fdb9-4bbc-79f9-3c93-0fc20a4a055d",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "0780c16d6e13fb833fe2417a4ea4babccc11f865",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 89050913,
+         "id": "Q89050913"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q89050960$21193163-4bfa-12f3-7612-34cc7ba9c781",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1569167": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "video game character"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character appearing in a video game"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "56e9cd6e418c34ce1de594fc957f7ce948675f15",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 135975958,
+         "id": "Q135975958"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1569167$67987557-4af8-63d7-7e6e-575e5d6e206f",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fe27bb2d8a8e7c60bed5f0c1453a9a86717c058b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 112265308,
+         "id": "Q112265308"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1569167$29d1d605-435c-947d-44c7-977dc9be0d9b",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2175765": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "tram stop"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "place designated for a tram to stop so passengers can board or leave"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "32bab545876b316ef47ae7986971158025af2f63",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 124673697,
+         "id": "Q124673697"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2175765$0119c708-47f1-783b-b879-be23f969e313",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "7f52012a7b2cd645d49676e70e2275783ee9ae0f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 112796050,
+         "id": "Q112796050"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2175765$eed54d56-403c-4a47-12f4-16a1fc95fb56",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "091465d25edf59640a16bd12267f451d82133c37",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 12819564,
+         "id": "Q12819564"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2175765$b556acca-4c11-d9d5-262c-9a4489b46019",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "a25d3be0d156b058289ad0b18c2e4555b8464d75",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 548662,
+         "id": "Q548662"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2175765$E99B6283-5E7B-47BF-8AE2-F79BFE4E5816",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e2b88cb84dc82001d404e161bf0bf9c99ef6b53b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11668217,
+         "id": "Q11668217"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2175765$33467153-4ab5-3a48-524c-c6986c9ea18e",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q11879590": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "female given name"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "given name usually meant for girls and women"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f48bb1cb2f51dbe01d7ca2c41c119e398b1d7f2a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 202444,
+         "id": "Q202444"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q11879590$6db4da47-4d4d-675f-d822-5b0be9dc4d69",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fb3a07dce9f8ed02c390a7036a38e08463841197",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 36578,
+             "id": "Q36578"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P227": [
+          {
+           "snaktype": "value",
+           "property": "P227",
+           "hash": "69f9c88e13be95495cf4ba743dad29f4025887b4",
+           "datavalue": {
+            "value": "4387963-9",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 188,
+             "id": "Q188"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "b8400335ec1cae229de2d9e85f655a0c59506035",
+           "datavalue": {
+            "value": {
+             "time": "+2025-07-14T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P227",
+         "P407",
+         "P813"
+        ]
+       },
+       {
+        "hash": "c9817841a0dc3d5f537ba3229f075b56635a5989",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 19938912,
+             "id": "Q19938912"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P268": [
+          {
+           "snaktype": "value",
+           "property": "P268",
+           "hash": "38ba9c0438916c61f3f7e621a74f009847f6d37b",
+           "datavalue": {
+            "value": "12296342v",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "d197d0a5efa4b4c23a302a829dd3ef43684fe002",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 150,
+             "id": "Q150"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "b8400335ec1cae229de2d9e85f655a0c59506035",
+           "datavalue": {
+            "value": {
+             "time": "+2025-07-14T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P268",
+         "P407",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "24f522fd96153bef799147209090a48d3be816ca",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 130409395,
+         "id": "Q130409395"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q11879590$48295dc5-438e-1d88-848a-ec853c9ec559",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q752783": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "human spaceflight"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "space travel with humans aboard spacecraft"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "6a2fc2b952facd1106d18f13e6c73537d6276f09",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5916,
+         "id": "Q5916"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q752783$020d3c47-49a5-9258-50d9-d20e0b8d924d",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "80554bdb115f9173d0dd5eb3244c0e49a8dcf929",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2133344,
+         "id": "Q2133344"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q752783$164d5cc4-433e-1977-b617-7a2fb81f2689",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q41298": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "magazine"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "publication that is typically distributed at a regular interval"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "7ddf0c9997ace1e7d29f89e6f38c2f878403e8ce",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 39725049,
+         "id": "Q39725049"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$B9929ADA-D4B6-4F92-A7AD-546FA3B06D45",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b5afd5a5488482e2a77e71d62580b1388cf76ba2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 121132955,
+         "id": "Q121132955"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$ECA544B4-F54B-420C-A2FE-F49736B7DB5E",
+      "rank": "normal"
+     }
+    ],
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "d87375a43479b527ee9e4e18bdad6c8974d350f3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1002697,
+         "id": "Q1002697"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q41298$0ca50955-4499-cd33-ab18-710496d8444b",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "e9aeaf37a1b1542be8454901b3a58b0e95f64ce2",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 48183,
+             "id": "Q48183"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "310b274d63e66368136725901cc45223a90c3842",
+           "datavalue": {
+            "value": {
+             "time": "+2021-05-22T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c06eea93cbbea9d7b62dfb5a37cba220ca8af15a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 340169,
+         "id": "Q340169"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$e4312df3-44cd-bccc-85ff-21fab26a4a9e",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "45394a06e5937f0723901eaa5550d70cb80af224",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11033,
+         "id": "Q11033"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$cfaf109b-4902-1633-6d29-dba27d9ed3bb",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "3ebd24279afa697d27121fd012cc2dc8289c383a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 119648442,
+         "id": "Q119648442"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$7f149ebb-4e34-1e69-44d0-d7036b5034ce",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c56a8cc3c8df2b9f22f1ca00544df9a3ccafe57e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1261026,
+         "id": "Q1261026"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "cbae4cc270287a48939ecce7e697f4cc27b9dac5",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 118134102,
+           "id": "Q118134102"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2241"
+      ],
+      "id": "Q41298$c0a2b833-40ab-d60e-6648-047910f65155",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "429440ea507b9444585be0c863e1227f28ef6618",
+        "snaks": {
+         "P3452": [
+          {
+           "snaktype": "value",
+           "property": "P3452",
+           "hash": "89f24d95345ca242bd39234ee3a52de94c3b3ee3",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8935899,
+             "id": "Q8935899"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 48183,
+             "id": "Q48183"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P4656": [
+          {
+           "snaktype": "value",
+           "property": "P4656",
+           "hash": "adca169306891e3bfb93716ca235845b5e1d0463",
+           "datavalue": {
+            "value": "https://de.wikipedia.org/w/index.php?title=Zeitschrift&oldid=206849992",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "310b274d63e66368136725901cc45223a90c3842",
+           "datavalue": {
+            "value": {
+             "time": "+2021-05-22T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P3452",
+         "P143",
+         "P4656",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f83a9d10908b478038a0d6210d3786a80d32042f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 47461344,
+         "id": "Q47461344"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41298$6772c8dc-477c-b0d9-84d7-c6010273048c",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q59423687": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "potentially hazardous asteroid"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "an asteroid or comet that can make close approaches to Earth"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "45dc2567708243faa1e266b528ed3baf93abcbe2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3863,
+         "id": "Q3863"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q59423687$b40803b1-4eb9-f4ca-b884-9da2658db056",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "6c388ce385042d54e9a45c350c5dc209337bbefe",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2014814,
+         "id": "Q2014814"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q59423687$4f92a400-4b48-0469-3478-ad71a9474143",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q265392": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "near-Earth object"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Solar System object whose orbit brings it into proximity with Earth"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "47ff901e05e0d05c9e3499dfb08f283c76a52800",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 193275,
+         "id": "Q193275"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q265392$8941b050-47b7-3189-3ca1-da66529e0ff4",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "b8c3c29d108fa2c3ca11f01e588b24da7c9a4176",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15782913,
+         "id": "Q15782913"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q265392$397cbeaa-4542-1e5b-3d53-4b83fa5e2f25",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q217526": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "near-Earth asteroid"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "object in a near-Earth orbit without the tail or coma of a comet"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "45dc2567708243faa1e266b528ed3baf93abcbe2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3863,
+         "id": "Q3863"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q217526$a287b27c-429e-ea21-2e60-1411f9ad426f",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "f97473706c514f5bee97e7114b2968bb34c0cb03",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 265392,
+         "id": "Q265392"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q217526$33a018c0-430b-2c27-b028-ad55e8fc33f7",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q5418962": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "private equity firm"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "company sponsoring start-ups or operating companies through private-equity investment"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "08b9e17f6eb5e5f8cae009f031a394849e241c1d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 19252952,
+         "id": "Q19252952"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5418962$3952a32b-4b56-140b-34c4-164a805889bd",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "c53ee062b66e6d95d33fb2a8e6d580da26aed0a0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 268592,
+         "id": "Q268592"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5418962$23DA02A5-A5C1-441A-89EA-701B8A4BDAD3",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q18127": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "record label"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "brand and trademark associated with the marketing of music recordings and music videos"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "68577bb8eded6f31535b73af04ab294fa4245693",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1417728,
+         "id": "Q1417728"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P805": [
+        {
+         "snaktype": "value",
+         "property": "P805",
+         "hash": "5e0e6c2e8c34b07509b01d7368422d2d6103f04d",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 2442401,
+           "id": "Q2442401"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P805"
+      ],
+      "id": "q18127$4de35815-40f8-169c-ee0b-d41cd57602e3",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "6e70982d7f12751601dc1a8760cea67bae330f5f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 431289,
+         "id": "Q431289"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18127$2fd0c5c1-473f-e439-00bb-17d895e1dda1",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "bab524e49e94cdb929ad2afd179b7087a27755e6",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 167270,
+         "id": "Q167270"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18127$1f4ac96b-4276-dfbf-6cd4-b995345879c7",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "ef2fb20b8f45b7699b9f3916d42f2f07fe407372",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2608849,
+         "id": "Q2608849"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18127$f3a85c2c-4cf9-5436-225c-c7dfca4db9ec",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "4f0ad47ce5804c9b4245220eee53af7bb8929517",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 70382745,
+         "id": "Q70382745"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P805": [
+        {
+         "snaktype": "value",
+         "property": "P805",
+         "hash": "5e0e6c2e8c34b07509b01d7368422d2d6103f04d",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 2442401,
+           "id": "Q2442401"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P805"
+      ],
+      "id": "Q18127$1d268299-41e1-9191-7a83-e8ab73c87370",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "70336113826d7017d5e5fc2be15e4362ea9445b7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 43229,
+         "id": "Q43229"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18127$098e6bda-46d8-b72a-009b-9dfa9a74bf48",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q777120": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "borough of Pennsylvania"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "type of municipality in the U.S. state of Pennsylvania"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "21a394642fd1644117b3614431a5ceebba965b66",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4946305,
+         "id": "Q4946305"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q777120$d9fac3a8-4b4e-b07d-2c24-71d5c689f1c1",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "3a6ef950d67302f520cf3928ebb4849febc3d95a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 6664406,
+         "id": "Q6664406"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q777120$3aa8bf71-42cc-1821-bd19-540a25de4565",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q777120$e9f86456-430b-ed91-6ef0-012e772f9f9d",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q22808320": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Wikimedia human name disambiguation page"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Wikimedia disambiguation page for humans with the same name"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "5152dc1d5d6c1c6605eaa7ad4c242bb6df31c809",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4167410,
+         "id": "Q4167410"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22808320$9a40a1ca-40a4-8e60-9ecb-922431b285d2",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "062aaee0e3f50b48fd3627529a0aa3ed1430a86a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15623926,
+         "id": "Q15623926"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22808320$3f674392-47bf-cca9-4192-439802f3ccc9",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "3384f35344e389d76e5830632c12b39465cf1289",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 138717185,
+         "id": "Q138717185"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22808320$CD1B4369-19EC-4DB0-A2B4-154CC804F0AC",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "baee8fedfdaa67d1fbe7d7244064a339fb632508",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 141143653,
+         "id": "Q141143653"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q22808320$e07fad0e-4169-3014-461c-7690f7a628d5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q29048319": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "vehicle model series"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "series of substantially similar vehicles"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "de93768994183f22f74fd465280ea1391475918d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 811701,
+         "id": "Q811701"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P518": [
+        {
+         "snaktype": "value",
+         "property": "P518",
+         "hash": "120f74bcdb38ab00c06d60ac471ab57134c05e0b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 29048322,
+           "id": "Q29048322"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P518"
+      ],
+      "id": "Q29048319$91a416d2-4776-8734-9d29-a0d0fc0b1e52",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a610527590042c557199dc4e9ee9bafb7733598a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 140354053,
+         "id": "Q140354053"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q29048319$f8c7ed05-46e3-5c14-342f-d28ee966e319",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q476028": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "association football club"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "sports club devoted to association football (soccer)"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "457a03b4267da02e68e2dc61b8f15815ebca0424",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17270000,
+         "id": "Q17270000"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q476028$31cc9719-4cc3-0107-3836-25ca9d098631",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "21edbdb93868d1d3b74a3a71a5b54634938af1df",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 847017,
+         "id": "Q847017"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q476028$3de66216-44d4-7cd2-1d29-903caa7bad72",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q103229495": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "men's association football team"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "men sports team that plays association football"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "fc68a53b020f04d1e7e7895d2cb28336f8191e09",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15944511,
+         "id": "Q15944511"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q103229495$18a743f4-4b91-0084-18d2-970ee76aed92",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "70bb7eb1acfce112f3096fd88e40705f9fa7597c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22808963,
+         "id": "Q22808963"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q103229495$6da1caed-4f4f-ab86-84c3-df3551008942",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "b4cc5006396e66e1beb8745537c49a485040f5bc",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 476028,
+         "id": "Q476028"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q103229495$d4c43b6a-4eda-13e9-d27b-30ea4a59f6cc",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q7187": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "gene"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "basic physical and functional unit of heredity"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "2393b25e71bfaa4b65f8b6de8396e9e301f0da76",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 863908,
+         "id": "Q863908"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "30237a9b3ff1aa496999c04bb89a6164a76eb47e",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 130214583,
+           "id": "Q130214583"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2241"
+      ],
+      "id": "q7187$a1d65613-41bd-2401-44f8-d64d5937f00b",
+      "rank": "deprecated"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "ce9679ef5d64d4da11c18556ec350d27d0a07be7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 50365914,
+         "id": "Q50365914"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "30237a9b3ff1aa496999c04bb89a6164a76eb47e",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 130214583,
+           "id": "Q130214583"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P2241"
+      ],
+      "id": "Q7187$2822b770-49b0-d937-0b9a-d3caee19a035",
+      "rank": "deprecated"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "69265befc5754e913633732a2a1266adc6074104",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3771876,
+         "id": "Q3771876"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7187$3a9a1534-41ee-1b9f-5ccc-9bd15b73af60",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ce4eb696da437af86cdbbebddd3d68c385683170",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 111972893,
+         "id": "Q111972893"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7187$b5e36246-4060-0b3a-f077-93ab0ec4c65a",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q101352": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "family name"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "part of a naming scheme for individuals, used in many cultures worldwide"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "158ece78706a668eda8f4f639a8cfa79226391bd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4116295,
+         "id": "Q4116295"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q101352$57ee96bc-45da-2119-9c57-7bce76b7cb45",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "6a9c482e03c5fa309b26e86d1360ecdb7dbc8707",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 10856962,
+         "id": "Q10856962"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q101352$a74ee023-4479-7426-c021-bdd4d221f4bb",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "00aa1177d02af0bbcf1c339c95a3f068babb2b39",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 36578,
+             "id": "Q36578"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P227": [
+          {
+           "snaktype": "value",
+           "property": "P227",
+           "hash": "6adca8c311c1533c7f6f3651b3ad7e039e0f4922",
+           "datavalue": {
+            "value": "4016415-9",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 188,
+             "id": "Q188"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "fa67b94652704b1808facecc4e2fb6b25d06810a",
+           "datavalue": {
+            "value": {
+             "time": "+2023-10-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P227",
+         "P407",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "955cafa6950e09fc9f2e893451ab5723bea80721",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 121493639,
+         "id": "Q121493639"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q101352$f31b6a03-4b21-3820-5289-b2d1287a31f2",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q15079786": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "ballet"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "theatrical work that uses ballet dancing (not a genre)"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "fa0bd9e9204aefaee9b8e8be646555fa0d5c0340",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 58483088,
+         "id": "Q58483088"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15079786$bb2b8858-4c06-fc66-cfbb-9d52a33015a0",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "831e88f8fd916dda9b4caa849a62be3f4311229b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 110013395,
+         "id": "Q110013395"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15079786$41f8ceb4-4d9a-374a-8f24-dabbdd3d8749",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e81d177c5a0e469b5965602044a2cee53fca9302",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 110013851,
+         "id": "Q110013851"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15079786$04086aad-4d43-3f51-7b27-5f083bcfff19",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q105543609": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "musical work/composition"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Wikidata metaclass; legal concept of uniquely identifiable piece or work of music, either vocal or instrumental; NOT applicable to recordings, broadcasts, or individual publications of music in printed or digital form or on physical media"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "66e847c0dccf837410c1ad1253f11935ddba3fcd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2188189,
+         "id": "Q2188189"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q105543609$707f1f17-4e6b-be03-e08c-b27e3c88ddff",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1114461": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "comics character"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character in comics"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "afbac6811042cb35f3c996e520a79c3a6c876b8b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3658341,
+         "id": "Q3658341"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1114461$9cf2dc88-43d4-0663-118e-fc1e8fb6158a",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fe27bb2d8a8e7c60bed5f0c1453a9a86717c058b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 112265308,
+         "id": "Q112265308"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1114461$C157C7B2-0FB3-49C6-966A-25A8069D76EB",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q17624054": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "fictional deity"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "deity that is only mentioned in fictional works and is not subject of an actual belief"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "406673f0e769c3715593594660d2ae6a89bb8973",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30061294,
+         "id": "Q30061294"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q17624054$5cddd6ee-429b-49c6-2d45-b74c645dae91",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q30174902": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "fictional shapeshifter"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "shapeshifter appearing in a work of fiction without claim to truth"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "159283af297a63696b98fb54707916347e8ce1e5",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2593744,
+         "id": "Q2593744"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q30174902$9097eddf-4855-b288-b30b-8514ee630748",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q55818": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "impact crater"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "circular depression in a solid astronomical body formed by the impact of a smaller object"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "beca2c6a0cd61d48772aa20c684da94b4f7660c8",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3240715,
+         "id": "Q3240715"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q55818$bdaaa33b-4567-5891-d96e-58855b9f69d0",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b6d0b60e2a342f7340794353340d54a640e1ccd6",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17444909,
+         "id": "Q17444909"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q55818$650f8aaa-4815-0a9f-dd4b-771702c7d636",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q15773317": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "television character"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character who appears in a television series"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "a01375c8f3c58f15af6d8c888014db9e5fd32575",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 95074,
+         "id": "Q95074"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15773317$32be0679-49e1-9687-f977-dc0c584d9897",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fe27bb2d8a8e7c60bed5f0c1453a9a86717c058b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 112265308,
+         "id": "Q112265308"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15773317$612de37b-4bbd-9dd5-9c9a-4437fda36c32",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q15632617": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "fictional human"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "human being that only exists in fictional works"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "8874d67f65ba9e14db6cb287990347eb082b991e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 96789464,
+         "id": "Q96789464"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$3d95ae12-444e-5f26-e1a0-ea28c2fb6065",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "ac37402e15203ee99fcec96f85c1783237e9ed0b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 97498056,
+         "id": "Q97498056"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$e5ae4617-4a2f-33bb-9d31-2199236edad0",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c79d159e85bd4d48ef252afb8174f9326c58d243",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28020127,
+         "id": "Q28020127"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$0990f576-4776-c26b-5f42-8ee016e7c07c",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "3ea9c0d359fbfaaea9c7329787513a782b3c495c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 122192387,
+         "id": "Q122192387"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$0459b758-4163-2c87-39e6-fe96ff5480d7",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "375951eda24bb03909d933757fef55c6da8f0368",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15831596,
+         "id": "Q15831596"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$4172fa76-4e54-a82a-d069-269f27b1090e",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "caf9bf55ddefddf8fd46942d834c49089eae51e9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21192438,
+         "id": "Q21192438"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15632617$00C83A0E-2A31-40C7-91A6-0DB4EFFC5410",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q215380": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "musical group"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "musical ensemble which performs music"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "b49ba06ec6d0b6fb05ef4519305a2f7172a92fd5",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2088357,
+         "id": "Q2088357"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q215380$1738051D-513C-466E-93E1-0A09C0E9379C",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q742421": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "theatre company"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "informal group of actors"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "3ae022c01f27013ce9571489edbdf76e0c2c9b9b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 13473501,
+         "id": "Q13473501"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q742421$783e7bf1-4937-2932-8a28-e73deb1674a1",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "c652fb74ea3e9dbb07eb79e8d8309c592a699094",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 105815710,
+         "id": "Q105815710"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q742421$08918ec1-4d44-5670-fc0c-e4df4e42e65a",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "f547cbc3152a83b6c7878f96483b9bc24ff21ec5",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "365edc108ca6bcd4b37876dddb0fab52ff129b66",
+           "datavalue": {
+            "value": "https://meta.wikimedia.org/wiki/Grants:Project/Fjjulien/Modelling_and_Populating_Performing_Arts_Data_in_Wikidata/Timeline#March",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "132222ca6eac50138def9cd7efb44acb29d58d0a",
+           "datavalue": {
+            "value": {
+             "time": "+2021-03-26T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "claims": {
+  "P297": [
+   {
+    "mainsnak": {
+     "snaktype": "value",
+     "property": "P297",
+     "hash": "f0f9c508968609b01d44fd34dd739cb3221d0dfc",
+     "datavalue": {
+      "value": "SK",
+      "type": "string"
+     },
+     "datatype": "external-id"
+    },
+    "type": "statement",
+    "id": "q214$2EFB5666-D716-4778-9BF5-2186ECAABDC3",
+    "rank": "normal"
+   }
+  ]
+ }
+}

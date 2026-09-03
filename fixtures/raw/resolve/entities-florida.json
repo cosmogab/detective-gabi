@@ -1,0 +1,7523 @@
+{
+ "entities": {
+  "Q812": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "state of the United States of America"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q812$6D882525-9E12-46D4-B0AB-F4287F93F6BD",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8adfdf96101d5c32b6b769c4633401ec06e02307",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "88b1aea91b49e7281dc2608b867987d014c88992",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55259097,
+             "id": "Q55259097"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "e89ed975a583a10e83aa56ce16069435a04494bf",
+           "datavalue": {
+            "value": {
+             "time": "+2024-09-17T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "fb0d2a9b9712f0a04e4b43a8dad9de1d531ed9fa",
+       "datavalue": {
+        "value": "https://www.myflorida.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q812$EFED0943-E381-4EF4-B83F-486D69D0D5B4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "09e673adf0ae862df8d4e06c649d61af5efc2cfb",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 35657,
+         "id": "Q35657"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q812$700DEBAA-642B-464E-B290-9BFDCED61EB6",
+      "rank": "normal"
+     }
+    ],
+    "P1278": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1278",
+       "hash": "4ae7fb2d00048e4a739936954b8a8b2a38c8e04c",
+       "datavalue": {
+        "value": "5493004G5XFOOUT0LQ57",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q812$F485F91B-1163-4C8E-A709-003DDC602ABF",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q842472": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "city in Florida Department, Uruguay"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1d2d976b06b7bb208fadcff54975cc04295b93c0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 515,
+         "id": "Q515"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q842472$b21f9d61-4f30-24fc-9c7d-b63856e180c7",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "3db52bba097152d947850428664bb5a4efd290e4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 77,
+         "id": "Q77"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P459": [
+        {
+         "snaktype": "value",
+         "property": "P459",
+         "hash": "b392d205a21ded3f786dbb4b7791421247ac4077",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 119425993,
+           "id": "Q119425993"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "1a3e5e8f69f70a8a6b056a6cb8cf5fce7fffa373",
+         "datavalue": {
+          "value": {
+           "time": "+2023-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P459",
+       "P585"
+      ],
+      "id": "q842472$26e2c195-48c3-ca46-69f4-70a0c67a57ca",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 206855,
+             "id": "Q206855"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       },
+       {
+        "hash": "739bb4474fbab2d243366bb1086af7fc7257f058",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "84815dfb04d79cd6c6c37a54fbe48c0edd63a10b",
+           "datavalue": {
+            "value": "https://www.gub.uy/instituto-nacional-estadistica/censos2023pvh",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "24e0666db06ff09e4d30241b67b35c01e037f049",
+           "datavalue": {
+            "value": {
+             "text": "Censo 2023",
+             "language": "es"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1321,
+             "id": "Q1321"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "718af99fa1c40226d0b9bebf16f226d0152f520c",
+           "datavalue": {
+            "value": {
+             "time": "+2026-05-02T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P407",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2255913": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "city in the province of Buenos Aires in Argentina"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "d06759986db6ed52e2f976b2051127431e51a8be",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2255913$1D3BC49E-6E34-45F1-A137-03DA9E0F7722",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 10000,
+             "id": "Q10000"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "772f3b37c672a3f7a7abb08e79d608310967365a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 123705,
+         "id": "Q123705"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2255913$370BE99E-CE79-4D15-9562-84E61E3AC1BB",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "809aaacfcbdd07816f335ccc32e513853b768e86",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 56061,
+         "id": "Q56061"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2255913$b141de1e-4fd9-746c-2d42-901ddebf8268",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q501758": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "University of Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "University of Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public research university in Gainesville, Florida, United States"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b936086d3ba325db2743ffd1acccaae93509f356",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 62078547,
+         "id": "Q62078547"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q501758$D4AB9454-9CE4-49CE-B1A0-3D97E0C14BF8",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "00acd277aa845c674d8cb974b1873349cee44aa4",
+        "snaks": {
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "1778acec9d18a7285eefb8ae0c0401f8c773ed02",
+           "datavalue": {
+            "value": {
+             "time": "+2019-03-16T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e92aa517812d04d5d07672de51bed291e65cb7fd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 615150,
+         "id": "Q615150"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q501758$723FD854-0581-4E60-B968-26656BC1D357",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f86cd0813c2de2adf2f7ff53830e2169f779851a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002039,
+         "id": "Q23002039"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q501758$3F5997A7-2CD4-4EB3-886F-E07D6605A067",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "0d45e90f6b416bcd838f28f45a7bc49425e5bbc9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 45400320,
+         "id": "Q45400320"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q501758$B1731843-1E1C-4F56-845B-CF266441A020",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "cfd697a99ce1b4308e5c6bc8c44ce885d5ecf865",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1227538,
+             "id": "Q1227538"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q501758$D3B611D1-78D7-4570-82F2-CE971CB68CDA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       },
+       {
+        "hash": "cfd697a99ce1b4308e5c6bc8c44ce885d5ecf865",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1227538,
+             "id": "Q1227538"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "e8b1aa54f412226e887dc8c5f0d44360eb1890a8",
+       "datavalue": {
+        "value": "https://www.ufl.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q501758$06678E16-8363-4D12-9FEA-FD60CFB9CC91",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1278": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1278",
+       "hash": "6f081582c9799889d2253fec12e56744477405e8",
+       "datavalue": {
+        "value": "5493005A0XI30EPYKX76",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q501758$3E53B955-942E-45D5-B4B4-7A7C657555A5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1093490": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Colombian municipality of the department of Valle del Cauca"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "a8320512b697f7ca13d984a9e107863e3fdba021",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 739,
+         "id": "Q739"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q1093490$D2034470-406C-4109-B653-C9AF12AEF81E",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "5b4079ee7eecd0fee156234a828708d606879bb5",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2555896,
+         "id": "Q2555896"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1093490$7E90A48F-7B50-4267-A38F-9C26052C9A76",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "33834008ca3375b6af44398df63fc52b5b3ceee9",
+       "datavalue": {
+        "value": "http://www.florida-valle.gov.co/index.shtml",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q1093490$45F422F2-9EB6-4251-9ECB-1B097B9FE876",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5a343e7e758a4282a01316d3e959b6e653b767fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11920,
+             "id": "Q11920"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q861548": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida State University"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida State University"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public university in Tallahassee, Florida, United States"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9335f85b89fce82fa8a58155ddb2935c90b33368",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 875538,
+         "id": "Q875538"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q861548$CB737F05-EE84-46F8-8E3F-48F1EC7792EA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f86cd0813c2de2adf2f7ff53830e2169f779851a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002039,
+         "id": "Q23002039"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q861548$D0F9168F-198D-43A4-A018-0098F17DF990",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q861548$EBAEE915-D542-44FB-8E35-51D3551A6AC9",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "6c4b3c38867233acf694fcd478bbcaf17dd9f21c",
+        "snaks": {
+         "P2427": [
+          {
+           "snaktype": "value",
+           "property": "P2427",
+           "hash": "79d03e9fd374e666c0d0a78b2cf64ffeae63df6d",
+           "datavalue": {
+            "value": "grid.255986.5",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "21eba95be2986df08f1a4ad48af29e7fe1fe768f",
+           "datavalue": {
+            "value": {
+             "time": "+2020-06-02T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "6942b27226726c7e0fe190c9f08b510fd297fdc9",
+           "datavalue": {
+            "value": "https://www.grid.ac/institutes/grid.255986.5",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "90ed57226f81c281580343f40e5859831bf9b38e",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 27768150,
+             "id": "Q27768150"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P2427",
+         "P813",
+         "P854",
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "649a92cba4f9ff1dbb81aced902d8843902e1d09",
+       "datavalue": {
+        "value": "https://fsu.edu",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q861548$138869C6-E040-43CC-AAC0-4866D57CDCC5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q20000193": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "female given name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "4e5e70c8edf99377228ff12d0ce25a07ecc907c8",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11879590,
+         "id": "Q11879590"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q20000193$A60DB3DF-6472-49CB-8E9D-D081F1CA0C6B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1065809": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida International University"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public research university in Westchester, Florida, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q1065809$DD619BDC-F4DA-429D-967B-E4412F89D2BA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9335f85b89fce82fa8a58155ddb2935c90b33368",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 875538,
+         "id": "Q875538"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1065809$184417E6-19D0-4BAB-A9C7-CA711D54D6DF",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f86cd0813c2de2adf2f7ff53830e2169f779851a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002039,
+         "id": "Q23002039"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1065809$AA46A061-835C-40B3-A9E9-7938C3474985",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "d351fd7c30237c8e262e6beff9cd7d85aedf4902",
+       "datavalue": {
+        "value": "https://www.fiu.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q1065809$A05E17B9-3F66-490A-95FA-A9252B1ABA35",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q3295272": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "station of the Buenos Aires Metro"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a6cb2f7ac09c34785e8ce0aac8414883ffa149ed",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 928830,
+         "id": "Q928830"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q3295272$d6407ea1-43a2-974e-4d28-faf3e96f95ca",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2b9d00c8d000702ee5c66b46e37b43095ccd3092",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22808403,
+         "id": "Q22808403"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3295272$5F9DA388-59EF-4524-8254-96D0E1BBC4D6",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "d06759986db6ed52e2f976b2051127431e51a8be",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3295272$5DAC768D-3C95-4E1E-A7A5-BC75BA21337D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2392006": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "municipality in Copán Department, Honduras"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "c76c61a04389416d22d2cf7bad43111f87c4fa5c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 783,
+         "id": "Q783"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2392006$C02BB72F-6BF9-47A3-96E9-4923C7FC9882",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "4d575473dd41a6c193d844919dca378ee637b6f4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2602693,
+         "id": "Q2602693"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2392006$c39ee5cc-4282-d883-c512-c4c806d7f318",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q5461160": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "album by DJ Diplo"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "dc16d32b615bf1c6edf1919941065eedccacb8e4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 482994,
+         "id": "Q482994"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q5461160$7B1CB889-D6B2-41A6-8B6D-CDE342CCE809",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q1430048": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida A&M University"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public, historically black university in Tallahassee, Florida (U.S.)"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q1430048$00632AE9-B556-4E74-810C-50CFAB6765DC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "482db304b57e4b3a7a5b3a6e2256db7c639c49b0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3918,
+         "id": "Q3918"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1430048$D9CB66B5-A2F4-46DF-BD51-B80576A893E3",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e92aa517812d04d5d07672de51bed291e65cb7fd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 615150,
+         "id": "Q615150"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1430048$1E0F10F8-FAB3-4496-A6F8-1A43CCFEFAC7",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ce29ffcb5c333150df535203e0ae864ae27b88b5",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1620945,
+         "id": "Q1620945"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1430048$4750015C-261F-4AF5-991A-7CA3A73C22EA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f86cd0813c2de2adf2f7ff53830e2169f779851a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002039,
+         "id": "Q23002039"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1430048$650877DB-F34B-464A-A60B-5DD881025CBA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "205dfcec42f3900a0e7f984be5eb72d3427e0042",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3914,
+         "id": "Q3914"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1430048$7AC7C785-6386-49E1-9EE8-A78CCC89328C",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "ac4653ed249e395b3bd85bb19fd61c56b7f01db7",
+       "datavalue": {
+        "value": "https://www.famu.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q1430048$5FDBD879-9641-4FFE-A93F-963939FC9509",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5842287": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida train station"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "train station of Belgrano Norte Line in Argentina"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "12a4103fbfd98ec75d5d9269014f78fb822e8d00",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55488,
+         "id": "Q55488"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5842287$A784E20D-56D0-42C3-A822-8C8ED1C8B740",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "d06759986db6ed52e2f976b2051127431e51a8be",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5842287$2B943113-7C3D-43C4-ACCF-DCE04EDA5433",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5842289": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida train station"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "train station in Argentina"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "12a4103fbfd98ec75d5d9269014f78fb822e8d00",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55488,
+         "id": "Q55488"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5842289$8F74907E-FC4C-408C-A488-9F7E1FD3CB80",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "bddcbae2ccf4bbefda1c8f55e4f00041851e42b7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55678,
+         "id": "Q55678"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5842289$e8f3dd69-40b9-dbc6-325b-7c295d89aa57",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "d06759986db6ed52e2f976b2051127431e51a8be",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 414,
+         "id": "Q414"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5842289$6DDB82FE-DBD1-4184-8BFA-2F3BAF445ACC",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q16593": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Department"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "department of Uruguay"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "3db52bba097152d947850428664bb5a4efd290e4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 77,
+         "id": "Q77"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q16593$6A00307D-4FFD-4D58-8FED-69607BDE0D63",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1626527bfae80afbf2f1eede8e2b16a2757e09a0",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 36578,
+             "id": "Q36578"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P227": [
+          {
+           "snaktype": "value",
+           "property": "P227",
+           "hash": "b00becbcfcddd60222b4b6fb88b0fcaca8de45ed",
+           "datavalue": {
+            "value": "7540384-5",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "e59a1eb3d80f2433d1aa8c07dc939fdee0586bfc",
+           "datavalue": {
+            "value": {
+             "time": "+2022-12-24T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P227",
+         "P813"
+        ]
+       },
+       {
+        "hash": "739bb4474fbab2d243366bb1086af7fc7257f058",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "84815dfb04d79cd6c6c37a54fbe48c0edd63a10b",
+           "datavalue": {
+            "value": "https://www.gub.uy/instituto-nacional-estadistica/censos2023pvh",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "24e0666db06ff09e4d30241b67b35c01e037f049",
+           "datavalue": {
+            "value": {
+             "text": "Censo 2023",
+             "language": "es"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1321,
+             "id": "Q1321"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "718af99fa1c40226d0b9bebf16f226d0152f520c",
+           "datavalue": {
+            "value": {
+             "time": "+2026-05-02T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P407",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1ed5268fa4dfe0f04fee8cf4986a3f552bd0c68f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 56059,
+         "id": "Q56059"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q16593$823255DC-EAC0-4D50-8A98-69A5F148E1F3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1626527bfae80afbf2f1eede8e2b16a2757e09a0",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 36578,
+             "id": "Q36578"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P227": [
+          {
+           "snaktype": "value",
+           "property": "P227",
+           "hash": "b00becbcfcddd60222b4b6fb88b0fcaca8de45ed",
+           "datavalue": {
+            "value": "7540384-5",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "e59a1eb3d80f2433d1aa8c07dc939fdee0586bfc",
+           "datavalue": {
+            "value": {
+             "time": "+2022-12-24T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P227",
+         "P813"
+        ]
+       },
+       {
+        "hash": "739bb4474fbab2d243366bb1086af7fc7257f058",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "84815dfb04d79cd6c6c37a54fbe48c0edd63a10b",
+           "datavalue": {
+            "value": "https://www.gub.uy/instituto-nacional-estadistica/censos2023pvh",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "24e0666db06ff09e4d30241b67b35c01e037f049",
+           "datavalue": {
+            "value": {
+             "text": "Censo 2023",
+             "language": "es"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P407": [
+          {
+           "snaktype": "value",
+           "property": "P407",
+           "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1321,
+             "id": "Q1321"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "718af99fa1c40226d0b9bebf16f226d0152f520c",
+           "datavalue": {
+            "value": {
+             "time": "+2026-05-02T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P407",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q28519051": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Mexico City colonia"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "10592d8b33c4a4a1c0858b41723f0b359551bf15",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 96,
+         "id": "Q96"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q28519051$4917B784-9E7B-4FA5-867F-BDF81A3C3FDB",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "48f132fafbae917a314fb9aa35537be188180820",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5148433,
+         "id": "Q5148433"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q28519051$845179C9-224B-4072-8232-8110AF0877FE",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q134308316": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "dc16d32b615bf1c6edf1919941065eedccacb8e4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 482994,
+         "id": "Q482994"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q134308316$DB98F2C5-09E6-46C6-ACF9-96F40AD7DA54",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q139758997": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "village in Waspán municipality, Costa Caribe Norte department, Nicaragua"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "8ea48b04095907670d5895b9bb1c0ce17cff260a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5084,
+         "id": "Q5084"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q139758997$98A0E035-643C-45B1-A085-0541AAE2B843",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "9acc6d90ef91ebf1f0daf638762ac30ab98d8c64",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 811,
+         "id": "Q811"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q139758997$8567BF00-1867-44B3-820A-264EB16D2C91",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q15749995": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "The Florida Entomologist"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "scientific journal published by the Florida Entomological Society"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "79be89a40eb5519d22350a1eb211ad5c13106a0b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5633421,
+         "id": "Q5633421"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15749995$C54B87B0-9111-476D-BBCA-B24DE6496DD1",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1643281ef6e577673e4272176fc12a9fcfa37747",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "f6009fd3828dc6dd3aa4404e34225a959e76842a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 15735759,
+             "id": "Q15735759"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "78470ab428bc115376eec5733180a671632abadf",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 773668,
+         "id": "Q773668"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "6d2c2c2d8f1c01f34ee048a972dedb4c5c06342b",
+         "datavalue": {
+          "value": {
+           "time": "+1917-01-01T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        },
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "7dc2821fe3f7d0644f5ada26fb6c7255ccd0c291",
+         "datavalue": {
+          "value": {
+           "time": "+1994-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580"
+      ],
+      "id": "Q15749995$A78AE58B-A0D0-4F54-BB4C-146ED382CDF3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ec74128a6106a9084caae3279fd770b8b73ce12a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c63f0125a0cb2849a2fb0171e756594bdd64fab5",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55822960,
+             "id": "Q55822960"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       },
+       {
+        "hash": "cfd697a99ce1b4308e5c6bc8c44ce885d5ecf865",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1227538,
+             "id": "Q1227538"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "bad9e34a175c7515f36ce63a9be0699b2f722034",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 73364223,
+         "id": "Q73364223"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15749995$5E38E41E-3F41-4A43-9CC5-DB747E0D130C",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ec74128a6106a9084caae3279fd770b8b73ce12a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c63f0125a0cb2849a2fb0171e756594bdd64fab5",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55822960,
+             "id": "Q55822960"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad0289fbb87ce5d56912da118be41982a5ba7375",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 73365221,
+         "id": "Q73365221"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15749995$3868C859-812A-4704-8234-68E03A31EAF2",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ec74128a6106a9084caae3279fd770b8b73ce12a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c63f0125a0cb2849a2fb0171e756594bdd64fab5",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55822960,
+             "id": "Q55822960"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "bdfc838e854c8c3a2aa80b13defea8cbec4fafde",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 737498,
+         "id": "Q737498"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15749995$A0390551-A3BE-45FD-B798-BD8B85C7B267",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "cfd697a99ce1b4308e5c6bc8c44ce885d5ecf865",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1227538,
+             "id": "Q1227538"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "013e11192e6e4d5d2f3a5165b8c4968def069448",
+       "datavalue": {
+        "value": "http://journals.fcla.edu/flaent",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "74bd46d0bbe97d05804856f1f73b6a7480c68cec",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 45403344,
+           "id": "Q45403344"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q15749995$7344f644-4e3a-d2ae-6a94-7f97279dc2aa",
+      "rank": "deprecated"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "7ff9a5232a11ed32aa7d8611b912931577609d90",
+       "datavalue": {
+        "value": "http://www.fcla.edu/FlaEnt/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "74bd46d0bbe97d05804856f1f73b6a7480c68cec",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 45403344,
+           "id": "Q45403344"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q15749995$7B1E3940-E8A6-4A35-942D-CE622A9F35D2",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "ec74128a6106a9084caae3279fd770b8b73ce12a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c63f0125a0cb2849a2fb0171e756594bdd64fab5",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55822960,
+             "id": "Q55822960"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       },
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "7450dab1482deefd8754493eabcfffbf498c4632",
+       "datavalue": {
+        "value": "http://www.bioone.org/bioone/?request=get-journals-list&issn=0015-4040",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "6002709108c42317962554269eec921a91b66d78",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1193907,
+           "id": "Q1193907"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q15749995$9E5F0329-76E8-4214-99A1-0D43609EAF2A",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "720a39e82e7ef555dfe625ccf968873338643ac3",
+       "datavalue": {
+        "value": "http://bibpurl.oclc.org/web/7138",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "74bd46d0bbe97d05804856f1f73b6a7480c68cec",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 45403344,
+           "id": "Q45403344"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q15749995$602745D9-6A49-45F0-8AA4-FF68586BB433",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "c7da0a00e39329cf3a9f7b3bda58822852d79088",
+       "datavalue": {
+        "value": "http://www.jstor.org/journals/00154040.html",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "74bd46d0bbe97d05804856f1f73b6a7480c68cec",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 45403344,
+           "id": "Q45403344"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q15749995$4DF04179-9025-4590-B93C-55519510A8D7",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "68d9a147f57c78bcc3ab19b92c0c6515ca088fde",
+       "datavalue": {
+        "value": "https://journals.flvc.org/flaent",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q15749995$b70a8556-41dc-6c18-a25f-f4d136111da3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "b7f1e6e090a96cc46bcf14d0568b429f21903b4d",
+       "datavalue": {
+        "value": "https://bioone.org/journals/florida-entomologist",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q15749995$E2964EDA-5851-4140-BD97-40D9C5F6DD11",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "555782a8f2560ed1a290a495297e26de4a2755c3",
+       "datavalue": {
+        "value": "https://www.jstor.org/journal/florento",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q15749995$E40F621A-D0DD-4D0A-98EA-46DA5F5BB51A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "6c0f09c9e17b0a5f7d4291502f75fc3490ddcbff",
+       "datavalue": {
+        "value": "https://www.degruyter.com/journal/key/flaent/html",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q15749995$DA3CF912-7648-4501-85B4-DE4B060CD47A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3074c70de4601c7223a236933179b54cb6f398c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "091a199e33f7a92e1d1aba7387cc86a95e54a943",
+           "datavalue": {
+            "value": "1938-5102",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15749995$8C131CEA-4D70-4518-B3DD-7A3DCD89A1BB",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ec74128a6106a9084caae3279fd770b8b73ce12a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c63f0125a0cb2849a2fb0171e756594bdd64fab5",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55822960,
+             "id": "Q55822960"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       },
+       {
+        "hash": "cfd697a99ce1b4308e5c6bc8c44ce885d5ecf865",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1227538,
+             "id": "Q1227538"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q643617": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "municipality and city in Cuba"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "5c3f319755ec630716951dbcaeda22863679adeb",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 241,
+         "id": "Q241"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q643617$154cb0b8-406c-3bbd-6ee4-ff362467146f",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1d2d976b06b7bb208fadcff54975cc04295b93c0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 515,
+         "id": "Q515"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q643617$f09d5b95-4b05-02ea-1ffd-cdc566a6b2be",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "c13b7b9c6d8549746394e227a1b4576e76f84376",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 558330,
+         "id": "Q558330"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q643617$5628f9bc-4217-4b59-6834-a7e7fb2f3fa6",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q612530": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "John and Mable Ringling Museum of Art"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "John and Mable Ringling Museum of Art"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "art museum in Sarasota, Florida"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q612530$49164224-A386-4189-907F-FAA319A169EF",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "18bae8b0e25431039bd27b07ede001bd10606f3e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 207694,
+         "id": "Q207694"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q612530$6141B096-DF9B-4DAE-8ECC-0CEAFBF2971A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "9cdafe5d80646de0f9cd16b07d688f34a90ff4db",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "20c4ea72dcc42b8d63e88d1e0429cba1c9770f60",
+           "datavalue": {
+            "value": "https://www.ringling.org/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "4cb858cccdb4e3c1fbe0aac4e40c2715bed4b17c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 33506,
+         "id": "Q33506"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q612530$00edc37d-476a-e73e-f8a5-7594303bd013",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "ef8e2db4c406049aecadceeef2ad08788145336a",
+       "datavalue": {
+        "value": "https://ringling.org",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q612530$BC0275F5-2E8F-43FD-905A-9317D68314E5",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2271950": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "municipality in Puerto Rico"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2271950$6C4BAA92-9E99-481F-9F02-5E52BC6C6EFA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1b3160fa57fe6af643a5a1a4af21dabd6d92148d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 263639,
+         "id": "Q263639"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2271950$2CE0313F-C88B-41AE-A187-C382803C4B8F",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "789dad4fdd2c2ac08cc0c645b8c26b8c5879f740",
+       "datavalue": {
+        "value": "http://www.gobierno.pr/OCAM/DirectorioMunicipios/Florida.htm",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q2271950$65AF12A3-7E55-4866-B9AC-5A6354BE62EC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5a343e7e758a4282a01316d3e959b6e653b767fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11920,
+             "id": "Q11920"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q555528": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Spanish Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "former Spanish possession in North America (1513–1763, 1783–1821)"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "c5713afdfaba18cb1846fc031193b40809183540",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 80702,
+         "id": "Q80702"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q555528$64CF6C93-1310-4241-92F6-E6327EC8B9E4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "38b1430121ff711771592cb97e676846d5ce2cdd",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17259945,
+         "id": "Q17259945"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q555528$3bc2c802-4b11-06bd-931a-7bf18e813a65",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q5027600": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "town in Montgomery County, New York, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q5027600$C566922E-677B-4150-93BC-78A5384EA2A3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 10000,
+             "id": "Q10000"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3e777d14e9d429339feaf414e8a22780f3686d34",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15127012,
+         "id": "Q15127012"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5027600$5FA2E398-83A8-47DD-A998-62F099D59A0C",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "6c9c182da7468e95b563b8b52501462b741192a5",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 106071004,
+         "id": "Q106071004"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5027600$EE68077F-0C1C-4825-AE34-9020F1E36F9C",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2077862": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Flórida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "municipality of Paraná state, Brazil"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "90114304161d20f1934075ea47b8a33a76e95138",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 155,
+         "id": "Q155"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2077862$176A683B-CD3A-4869-B992-0CEFC58AF7F2",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "64451778649ababeb1433bba2b9dbc5079680041",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3184121,
+         "id": "Q3184121"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2077862$8FECC2E0-F06E-4B24-8F20-7EFE81C0FA22",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1112732": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "town in Massachusetts, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q1112732$b7e850d1-4897-d152-d3ce-192258cd35d7",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "77a583f02c682a74b3a6479f835f3f45003cfd76",
+        "snaks": {
+         "P5573": [
+          {
+           "snaktype": "value",
+           "property": "P5573",
+           "hash": "d9f90d09f42a24ac22e27da5ab024750e36aab94",
+           "datavalue": {
+            "value": "27481",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c619cc6e0e5fe3733a8c4a47939343e5970e0e9d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 265049,
+             "id": "Q265049"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "0c8bd92e73708301fbdef488186bd3197b7c3d1c",
+           "datavalue": {
+            "value": {
+             "time": "+2018-08-06T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P5573",
+         "P248",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3e777d14e9d429339feaf414e8a22780f3686d34",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15127012,
+         "id": "Q15127012"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1112732$F9414D78-259A-4FDE-817F-447DA6418F85",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "c4ca1ca410c2879ac3597a73f9a67828ab49bde2",
+       "datavalue": {
+        "value": "https://www.townofflorida.org/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q1112732$002be56a-4127-fc0f-d34f-eb9e7a8c575f",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q6914963": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Morton Valence"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "UK musical group; London-based rock band"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3c9f9d423bb4b1080c7bbebd83a3f9cce18cb443",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 215380,
+         "id": "Q215380"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q6914963$3A7BC6DE-41E5-4A9F-A3FF-E424E1B848F2",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "30377f5ff75ceeeb3953fb77d35a5d61e6f8fc9c",
+       "datavalue": {
+        "value": "http://mortonvalence.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q6914963$E90A833E-93EA-40E7-9D8D-6EC71FEF626C",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q615791": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Villa Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "city of the Department of Misiones, Paraguay"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "a9686ad4a34706f092c7d2c9cb6cc47e2f6f29e9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 733,
+         "id": "Q733"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q615791$70425EF4-247D-49F0-9E7D-868A319D214D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       },
+       {
+        "hash": "57828a3852e408a154f674adc2203072477f9723",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "7648f66055f57f6227dd1f872bc4ed26c70da7c6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1194038,
+             "id": "Q1194038"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "a372c95b03a3464736c5fd1d7ed86176f0c04973",
+           "datavalue": {
+            "value": {
+             "time": "+2018-06-11T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P2326": [
+          {
+           "snaktype": "value",
+           "property": "P2326",
+           "hash": "c3a1013bcb27639e76018ededde3377387b30dff",
+           "datavalue": {
+            "value": "-913077",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P2326"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2064858abc55086dd0e9abe014d85b7723bc7de9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 917092,
+         "id": "Q917092"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q615791$FACD8E12-7EC1-491C-8041-64764F320A16",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1d2d976b06b7bb208fadcff54975cc04295b93c0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 515,
+         "id": "Q515"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q615791$B89C6F24-505A-44B2-9C56-A6377BA6F988",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "57828a3852e408a154f674adc2203072477f9723",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "7648f66055f57f6227dd1f872bc4ed26c70da7c6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1194038,
+             "id": "Q1194038"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "a372c95b03a3464736c5fd1d7ed86176f0c04973",
+           "datavalue": {
+            "value": {
+             "time": "+2018-06-11T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P2326": [
+          {
+           "snaktype": "value",
+           "property": "P2326",
+           "hash": "c3a1013bcb27639e76018ededde3377387b30dff",
+           "datavalue": {
+            "value": "-913077",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P577",
+         "P2326"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q55700": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Floridablanca"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Floridablanca"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "municipality of the Philippines in the province of Pampanga"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "1da1ec0f02413324771c48bbbab5b72ef6dd3184",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 928,
+         "id": "Q928"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q55700$802E4D6C-C231-4975-9698-AD26C42F9893",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "e0c797469fa1e5a35b2b289bb7eb644c82e6d3f0",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "891e02bcf0ba64c6ff77c70562c346925a023c2e",
+           "datavalue": {
+            "value": "https://psa.gov.ph/classification/psgc/barangays/0305406000",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "284c2d8245a41b36987a7fe15ffeeb4f8006cebb",
+           "datavalue": {
+            "value": {
+             "time": "+2023-12-23T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b9cf73aab7c56e0e2595ab51d4b84bb2e3e3e03d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 24764,
+         "id": "Q24764"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q55700$9387031C-3D87-4646-AC1A-955C1FE3F710",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "e0c797469fa1e5a35b2b289bb7eb644c82e6d3f0",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "891e02bcf0ba64c6ff77c70562c346925a023c2e",
+           "datavalue": {
+            "value": "https://psa.gov.ph/classification/psgc/barangays/0305406000",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "284c2d8245a41b36987a7fe15ffeeb4f8006cebb",
+           "datavalue": {
+            "value": {
+             "time": "+2023-12-23T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fbe9219e16c9f7bfc08dee7aa7f6111df9d333c3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 620509,
+         "id": "Q620509"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q55700$171bf89f-4b02-4463-23e6-55ec342de7dc",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2575793": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "village in Orange County, New York, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2575793$00FBFF38-99F1-4CDE-9114-BA7081096176",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 10000,
+             "id": "Q10000"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "855c30f5b405af87284c66384851fac4f0c21737",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 751708,
+         "id": "Q751708"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2575793$F7AD14D3-8750-42AE-AFD7-B0F1BCD332CC",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "d6ed79f876806bdaaf9d10638c04885a1c43fde4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55237813,
+         "id": "Q55237813"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2575793$CB13B424-2487-4785-905A-4132CF6CE0EB",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "bfc8fbb02bd488f0c68408846c75b329834b10d3",
+       "datavalue": {
+        "value": "http://www.villageoffloridany.org/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q2575793$40224821-BFD3-45F3-8300-A7DCB67F224F",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fc9759ac45d4e8129586b02c3368ae08ffae2c04",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P4656": [
+          {
+           "snaktype": "value",
+           "property": "P4656",
+           "hash": "9c842bd40c3d573541ba2ae31b8330dc55e878f1",
+           "datavalue": {
+            "value": "https://en.wikipedia.org/w/index.php?title=Florida,_Orange_County,_New_York&oldid=854163709",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P4656"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q429863": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Atlantic University"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "public university in Boca Raton, Florida"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q429863$7AE8ADDA-0BC6-4D13-8D65-6A8A5BAE1D95",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "482db304b57e4b3a7a5b3a6e2256db7c639c49b0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3918,
+         "id": "Q3918"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q429863$5a1eaa59-4e71-b83f-e081-1c20b46832ec",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f86cd0813c2de2adf2f7ff53830e2169f779851a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002039,
+         "id": "Q23002039"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q429863$B118C0FD-BA48-46DE-B3E4-163E9C82A422",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "cb6272fe96ff5df0d8893b79520b9c929898e8ba",
+       "datavalue": {
+        "value": "http://www.fau.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P2241": [
+        {
+         "snaktype": "value",
+         "property": "P2241",
+         "hash": "105d2bc25c8e2dffd7699885ce8c4e0ab28500d8",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 92056121,
+           "id": "Q92056121"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407",
+       "P2241"
+      ],
+      "id": "Q429863$B0D8C664-B2E7-4F1D-9559-C58D8B52F4F0",
+      "rank": "deprecated",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "eaa2056f708d6bb24fa1c0d6e6c8adcda3ec5cdf",
+       "datavalue": {
+        "value": "https://www.fau.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q429863$996e75a0-476e-f6f8-56bf-c3c08d46f93c",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q537803": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "village in Monroe County, Missouri, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q537803$4c0e0d89-482a-61bb-e150-6da629a60251",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3aa3ffa3db5a1911552da6ff515b8fbc20407545",
+        "snaks": {
+         "P5573": [
+          {
+           "snaktype": "value",
+           "property": "P5573",
+           "hash": "c4d7d75305a07dc2e0f7932ca38dc0fdd0800593",
+           "datavalue": {
+            "value": "27485",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c619cc6e0e5fe3733a8c4a47939343e5970e0e9d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 265049,
+             "id": "Q265049"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "0c8bd92e73708301fbdef488186bd3197b7c3d1c",
+           "datavalue": {
+            "value": {
+             "time": "+2018-08-06T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P5573",
+         "P248",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "855c30f5b405af87284c66384851fac4f0c21737",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 751708,
+         "id": "Q751708"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q537803$7b900741-4b3f-17be-ff3e-ac5ffd0d9707",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q111449880": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Historical Marker List"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "website of Florida Department of State containing the official list of Florida's Historical Markers"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "d1a354dc2f4b11f2408da25b8a1065de18fecc35",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 35127,
+         "id": "Q35127"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q111449880$8c2a41a9-43eb-2cd4-9af7-5ee68112bdd1",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "3df691b780a98ba34c388b37f91bf036496da1ca",
+       "datavalue": {
+        "value": "http://apps.flheritage.com/markers/?keyword=&city=&county=",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q111449880$f69d734d-4b42-787a-78ed-714015abcd5a",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q111449880$388dd805-4ad1-70cf-aaf4-ebc58ecd1a74",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q13048": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "town in Chile"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "e8ccd0e986dbab687e97e16135182ba3caa49071",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 298,
+         "id": "Q298"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q13048$1E9A84E9-5133-49CD-98DF-8E191653EBB0",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a4f1582e06125fa9d44f92ddfdab4776678b370c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1840161,
+         "id": "Q1840161"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q13048$F3914424-1FB3-43B5-9F7B-84F7FA8AB9A1",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3182606d2784054db8c1692d857493b8a8412500",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3957,
+         "id": "Q3957"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q13048$50488264-43d8-9333-ee37-7d4da40c9b40",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "ced7b73f2611c2987d249e2ea1442bab6a97d087",
+       "datavalue": {
+        "value": "http://www.muniflorida.cl",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q13048$A768F16E-727F-4C34-AA68-AC6E83D298BC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5a343e7e758a4282a01316d3e959b6e653b767fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11920,
+             "id": "Q11920"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q18342844": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "member of the Florida House of Representatives"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "elected Representative of the legislature of the state of Florida"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "df9a2bae415c0a97d835f1c17d0e9664dc96731c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1055894,
+         "id": "Q1055894"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18342844$8ccbdf2e-479a-e289-f6d6-203ff5b27f6f",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "74bffcb831028172f7909d074c7286d096ced6f3",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 486839,
+         "id": "Q486839"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18342844$c7fdd582-431f-9aee-4dee-e33e9646832a",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "22921a3d81e97a69bc1b06726862944caa1a093d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4164871,
+         "id": "Q4164871"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18342844$6EC8E5E9-4DFF-48EB-B2F0-A219050791DA",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18342844$5a3ec1b9-42e8-5a6b-cff5-14d912982969",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q204623": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Panthers"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "National Hockey League team in Sunrise, Florida"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "8164d36b587aa01865ed0f19783aa5fad8c62ba0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4498974,
+         "id": "Q4498974"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q204623$CC5900DB-A625-40DB-B16A-553446377649",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q204623$09E7EAB2-8BD7-4782-9E83-697E2587D449",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "180fcc94ec95a78eb335755d7152536fa17af666",
+       "datavalue": {
+        "value": "http://panthers.nhl.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q204623$83607376-058B-4B67-A446-9573278A4548",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b3fd5e254143d8b52cd96cff43af9af5e3a82358",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "f13c99a16441677ec69fcea23f221d866f1fc98f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 199693,
+             "id": "Q199693"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q4711417": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "place in South Africa"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "10885211025f7eed75a9d05dfa3113acdf746bf2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 258,
+         "id": "Q258"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q4711417$581FFB6E-9572-4815-8941-105EA46C986F",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3182606d2784054db8c1692d857493b8a8412500",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3957,
+         "id": "Q3957"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q4711417$96D1C417-F9AD-4863-8A2C-45EEA161036D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5461394": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Gators football"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "football team of the University of Florida"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "555b554a52e02331c4ccbd986c15aac1f90b5b6d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 18558301,
+         "id": "Q18558301"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461394$ce2f2c6f-4d88-ed6f-fc6f-b142be641150",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f22afca1e224951e88e8e51da3da3e2b58bb8c9b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17156793,
+         "id": "Q17156793"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461394$bc1a5022-430c-3d11-a15e-dd3d5e0712cc",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461394$c9e84a95-466e-d0e6-1f98-41378caeaf9a",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "f51d71ae98a573cb6e6f3a1fcc6279df723b7d65",
+       "datavalue": {
+        "value": "https://floridagators.com/sports/football",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q5461394$E1800F80-D0E4-460C-800A-435B6DB1B9EF",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5461408": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Gators men's basketball"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "men's basketball team of the University of Florida"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "555b554a52e02331c4ccbd986c15aac1f90b5b6d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 18558301,
+         "id": "Q18558301"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461408$c3ac2caa-4ea1-3f2a-5cef-b09de17aee5c",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fee5715aac6a462551a5bee6a66f032a0a83f288",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 13393265,
+         "id": "Q13393265"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461408$bfa5643c-4ac7-ee12-98cf-b538a43c03a7",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b41d7f72a46a47a04e56a23d2e300db2a8707ff6",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "2d3a3dd0b75e979bc5d6e66f46683b3048da1743",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 100311335,
+             "id": "Q100311335"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "4374840bbe6a501a566f63319ab177ed3cb9c2dc",
+           "datavalue": {
+            "value": "https://www.sports-reference.com/cbb/schools/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "a5d683891879a009a37866625fce0a780f196d61",
+           "datavalue": {
+            "value": {
+             "time": "+2020-10-12T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461408$82f95ae3-46ff-1f9c-65c6-8e00e1a028e1",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "ef0e4f7b7273428dfff150f5d9c422d8969df2cd",
+       "datavalue": {
+        "value": "http://floridagators.com/index.aspx?path=basketball-men",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q5461408$bd0105e7-42fb-efa7-e0a7-5a1a16de7b81",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q36859860": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3a01d0950849b76433d9aeec3107b57e86bb6378",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 101352,
+         "id": "Q101352"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q36859860$E2810316-23A8-453B-A898-9BCDBBFA874B",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8c376f30a6c29ed08110a46e989a72b2b9c967a6",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "14bbd3989e616652210ba16280e1dea0166635f9",
+           "datavalue": {
+            "value": "https://www2.census.gov/topics/genealogy/2010surnames/names.zip",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ca6dda9dbd16cf0adc91f7ee0ba2810cd79dea6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 523716,
+             "id": "Q523716"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2548194": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Barcelona Metro station"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a6cb2f7ac09c34785e8ce0aac8414883ffa149ed",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 928830,
+         "id": "Q928830"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2548194$8AE26F83-2300-4B7B-8965-40C1768F6AC6",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2b9d00c8d000702ee5c66b46e37b43095ccd3092",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22808403,
+         "id": "Q22808403"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2548194$EB08C2B7-CAF3-4B18-AFDE-C2D573073222",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "69df494d7fa0613c7bd8f047afc1e87bdc03a0f2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 29,
+         "id": "Q29"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2548194$6D63FE1B-3921-4DA4-AED3-FE4E116C321B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3074270": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Department of Transportation"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "state transportation agency in Florida, United States"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "356a2de706069a0d1ff59cb17992245e4ccc26e1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 97010948,
+         "id": "Q97010948"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3074270$25982B18-4123-42AB-B1D3-F2DCD2B60A46",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "0023f2c02c2c43569b0a39bc9f21276db08a5199",
+       "datavalue": {
+        "value": "http://www.fdot.gov/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q3074270$C1EBAF36-C041-4AF7-8686-7F124A3C439A",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3074270$CB5FE297-9729-4173-B2D0-D65B05EEDB82",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5461162": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "episode of 30 Rock (S7 E10)"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2d3761f68cf1248dc8fbf0b5eaa1f7fff03df987",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21191270,
+         "id": "Q21191270"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461162$5F75663D-6E9F-4E90-A57D-60E9D9924A7D",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q742699": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "village in Henry County, Ohio, United States"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q742699$16E13394-0B32-4DEC-8014-73CD5B416B9B",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 10000,
+             "id": "Q10000"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ce083ac646e79e4a9d36b2954d6a8fb375e9f7c0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 108569739,
+         "id": "Q108569739"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q742699$58D128B0-A0BB-4FAF-B1C1-9AD32F15863A",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3152650": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Institute of Technology"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "private research university in Melbourne, Florida"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q3152650$2422DAE3-CA5E-4425-A9BC-8DB26F5BA9C0",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "f037664c2e8459fc24cee1f3c9de2d0ed0df9d1e",
+       "datavalue": {
+        "value": "https://www.fit.edu/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "92569fc163bb841d6f408130e2ad26cd58ec71e3",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 7976,
+           "id": "Q7976"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q3152650$B5E2F9C8-AE53-4967-82F6-87003397E1E5",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "200aa1205113f3263de9d13939803672a5207c28",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1371037,
+         "id": "Q1371037"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3152650$62cbcf2d-47c6-965c-a8a4-b5d82d23d819",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9cf3db9a4d79871f57b699a133252b6fe84686dc",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 23002054,
+         "id": "Q23002054"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3152650$22B7E674-8B20-4DD2-AB27-E15500D3C765",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3a898e189b5a0c811a5d4ee8eeab4639efe4b6e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "de023d0250f2da0b78b75da8b0d774c678641334",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 6042926,
+             "id": "Q6042926"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1278": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1278",
+       "hash": "69ea4e15727fb02e3bb9bc437f13aeef1bff5ea3",
+       "datavalue": {
+        "value": "549300R9BKERQKQ4NA11",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q3152650$A356B307-2284-4293-A7D7-F96E3EF62A9D",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q3746761": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "barrio in Vieques, Puerto Rico"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3746761$031BE522-BE71-4621-9C95-47A435428B97",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f8637e9b5fcb2e3bf23048ad371c44129c756a71",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3677932,
+         "id": "Q3677932"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3746761$76BB1489-DD7E-4D03-8A85-55ADA35A6036",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q818": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida Province"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "province of Bolivia"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "7a3a9afc3ff3a180dd8ec86254ad7f58fd2475fe",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 750,
+         "id": "Q750"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q818$194C54A2-C7EE-4F24-86EA-782DAA752F83",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8449,
+             "id": "Q8449"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e32a4345bedbdcf59ecb53bc34e049bfa425d816",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1062593,
+         "id": "Q1062593"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q818$CB09A2B6-188C-4811-BA34-19641F003911",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q13636655": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "episode of Law & Order: Special Victims Unit"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2d3761f68cf1248dc8fbf0b5eaa1f7fff03df987",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21191270,
+         "id": "Q21191270"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q13636655$55CDCE96-952C-40F2-A742-99E6F9EE2CC3",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q780702": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "La Florida"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "1993 film by George Mihalka"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fa41184cb03f49f0edfbf2fc4f9d33e35afecaea",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11424,
+         "id": "Q11424"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q780702$F00F81B7-6424-494E-8E1B-9E4BC605420E",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5461626": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Florida State Seminoles football"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "College Football Bowl Subdivision team; member of Atlantic Coast Conference"
+    }
+   },
+   "claims": {
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "4e75d6d09562d9fbae24cc1de24a6643bd047d53",
+       "datavalue": {
+        "value": "https://seminoles.com/sports/football/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q5461626$37B8FC85-08E7-4226-9D4D-C0E1BDA6B2A3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f22afca1e224951e88e8e51da3da3e2b58bb8c9b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17156793,
+         "id": "Q17156793"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461626$5F77EEA9-A1F5-4D3D-90DD-C4937973E7E9",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "555b554a52e02331c4ccbd986c15aac1f90b5b6d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 18558301,
+         "id": "Q18558301"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461626$C092C912-445D-46B9-9B21-7C96C33FC4FF",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5461626$1DB527DB-166B-4451-8C0E-DCEFE228919F",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
