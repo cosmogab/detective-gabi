@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { investigate } from '@/lib/orchestrate'
+import { investigateCached } from '@/lib/cache'
 import { edgar } from '@/lib/providers/edgar'
 import { gleif } from '@/lib/providers/gleif'
 import type { Ctx, Provider } from '@/lib/providers/types'
@@ -24,6 +24,8 @@ const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar]
 const requestSchema = z.object({
   name: z.string().trim().min(1).max(200),
   domain: z.string().trim().max(253).nullable().optional(),
+  /** An explicit gesture: go past whatever is stored and investigate again (SPEC §6.5). */
+  refresh: z.boolean().optional(),
 })
 
 /**
@@ -50,11 +52,13 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: 'a company name is required' }, { status: 400 })
   }
 
+  // One clock for the whole run, read once and used in both shapes: the report stamps itself
+  // with the ISO string, the cache does its arithmetic on the milliseconds.
+  const startedAt = Date.now()
   const ctx: Ctx = {
     key: keysFrom(request.headers),
     signal: request.signal,
-    // One clock for the whole run, so every `fetchedAt` in the report matches.
-    now: new Date().toISOString(),
+    now: new Date(startedAt).toISOString(),
     // The per-IP limit that can switch this off is T18's; nothing keyed runs yet regardless.
     allowKeyedProviders: true,
   }
@@ -75,11 +79,15 @@ export async function POST(request: Request): Promise<Response> {
         }
       }
       try {
-        const report = await investigate(
+        // A cache hit emits nothing: the stored report carries the log of the run that
+        // happened, and sending those lines now would pass another moment's measurements off
+        // as this one's.
+        const report = await investigateCached(
           { name: parsed.data.name, domain: parsed.data.domain ?? null },
           PROVIDERS,
           ctx,
           (event) => send({ type: 'event', event }),
+          { refresh: parsed.data.refresh ?? false, now: startedAt },
         )
         send({ type: 'report', report })
       } catch {
