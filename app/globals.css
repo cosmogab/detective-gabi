@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+/*
+ * Tailwind v4 is configured here rather than in a JS file (decision D10). T19 owns the theme
+ * pass: it changes these values. T7 only fixes the names the components spend.
+ */
+@theme {
+  --color-paper: #faf9f5;
+  --color-ink: #17150f;
+  --color-muted: #5f5b4f;
+  --color-faint: #767061;
+  --color-rule: #e3dfd3;
+  --color-rule-strong: #b3ac98;
+  /* Reserved for a step that actually failed. `empty` is a source answering "nothing here",
+     which is not a failure, so it never uses this. */
+  --color-alert: #8c2b1c;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-case: ui-serif, Georgia, "Times New Roman", serif;
+
+  --text-meta: 0.6875rem;
+  --text-meta--line-height: 1.45;
+  --text-ledger: 0.875rem;
+  --text-ledger--line-height: 1.55;
+
+  --tracking-label: 0.09em;
+
+  /* The ledger scrolls sideways rather than crushing its three columns together. */
+  --spacing-ledger: 44rem;
+  --spacing-case: 60rem;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+}
+
+/*
+ * The two faces carry the report's central distinction, so they are utilities rather than
+ * repeated class strings: `label` is a word of ours — a column header, a field name, a source
+ * name, a status. `datum` is a value exactly as a source recorded it. A reader can tell which
+ * is which without reading either.
+ */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  line-height: 1.45;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@utility datum {
+  font-family: var(--font-mono);
+  font-size: var(--text-ledger);
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+}
