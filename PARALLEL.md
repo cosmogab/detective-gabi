@@ -121,6 +121,9 @@ Do not modify `lib/types.ts` or `lib/providers/types.ts` — they are frozen."*
 > Files: `lib/merge.ts`, `tests/merge.test.ts`, `tests/guardrails.merge.test.ts`. Nothing else.
 
 **A2 · registry**
+> Two conventions merge depends on and cannot check: `Location.formatted` must begin with the
+> city, because that is how two sources are compared, and `asOf` must be a valid ISO 8601 string
+> — an empty one is treated as a date and renders an empty "as of".
 > Implement the three keyless providers against the frozen `Provider` interface: Wikidata
 > (`wbsearchentities`, then P571 / P159 / P1128 with its date qualifier / P169 / P112 / P856),
 > GLEIF (legal name, addresses, status; 60 req/min), SEC EDGAR (`User-Agent` header required;
@@ -156,7 +159,12 @@ Do not modify `lib/types.ts` or `lib/providers/types.ts` — they are frozen."*
 **B1 · orchestration**
 > Implement `lib/orchestrate.ts` and `app/api/investigate/route.ts`: run the registry, API and
 > website groups in parallel, emit a `LogEvent` as each provider completes, stream them to the
-> client, then merge and return the `Report`. No timers, no synthetic pacing — every event is a
+> client, then merge and return the `Report`.
+> **Two things merge cannot do for you.** `mergeField` defaults to strict equality, and two
+> `Location` objects are never `===`, so you must pass `isSameLocation` for the location field —
+> forgetting it is silent and fabricates a conflict per extra source. And `sourcesChecked` is
+> your parameter to fill: intersect each provider's `covers` with the providers that actually
+> ran (decision D15). No timers, no synthetic pacing — every event is a
 > real completion. Files: `lib/orchestrate.ts`, `app/api/investigate/route.ts`.
 
 **B2 · resolve**

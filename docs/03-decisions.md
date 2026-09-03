@@ -130,8 +130,9 @@ derived from a `Partial<CompanyFields>`, where an absent key means both "I looke
 nothing" and "that is not my job".
 **Options.** Every provider reports per run which fields it attempted · each provider declares
 its coverage once, statically.
-**Choice.** A static `covers` array on the `Provider` interface. Merge intersects it with the
-providers that actually ran.
+**Choice.** A static `covers` array on the `Provider` interface. The orchestrator intersects it
+with the providers that actually ran and hands the result to `mergeField` as `sourcesChecked`.
+Corrected after T5: merge never sees the provider list, so the intersection cannot happen there.
 **Consequence.** One more line per provider, and an empty field can say precisely where we looked
 instead of listing every source in the app.
 
@@ -207,6 +208,24 @@ lie about a source that works.
 **Consequence.** Refreshing a fixture means re-recording, not editing. The four companies show
 genuinely uneven coverage — Stripe carries a real registry-versus-Wikidata disagreement, Fly.io
 has three empty fields beside one sourced one — because that is what the sources actually hold.
+
+## D22 — Ranking a source's own answers: dated beats undated, then most recent
+**Context.** D20 says a dated series collapses to its most recent measurement, but not what to do
+when one source gives both a dated and an undated value, or two undated ones.
+**Choice.** Within a source, a dated value beats an undated one, then the later date wins; two
+undated values leave the first in place, there being nothing to rank them by. Dates compare
+lexicographically as ISO 8601 strings, never through `Date.parse` — parsing "2022" into a
+timestamp invents a precision the source never gave.
+**Consequence.** An undated value from a source that also dated one is dropped silently. That is
+the right trade: a report that can say *when* a figure was true beats one that cannot.
+
+## D23 — Conflicts are deduplicated by value, ordered by priority
+**Context.** D20 defines what a conflict is but not what to do when two losing sources report the
+same losing value.
+**Choice.** One entry per distinct value, keeping the highest-priority source that reported it,
+ordered by priority, compared with the same predicate that decides agreement.
+**Consequence.** Two sources echoing one another render as one disagreement rather than two,
+which is what they are. The lower-ranked echo is not shown.
 
 ---
 
