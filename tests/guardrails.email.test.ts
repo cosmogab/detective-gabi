@@ -4,8 +4,12 @@ import { peopleFromHunter } from '@/lib/providers/hunter'
 // Guardrail 2, written before lib/providers/hunter.ts exists. Turns green in T14.
 // Owner: lane A3.
 //
-// The payloads follow Hunter's documented Domain Search v2 shape. T14 develops against
-// `test-api-key` and must confirm the shape there rather than trust it here.
+// The shape was confirmed against `test-api-key` in T14: every field these payloads read
+// exists in the live response under the same name, and a real recording now sits in
+// `fixtures/raw/hunter/`. Two things here the development key cannot produce, and which are
+// therefore constructed rather than recorded: a verification status other than `valid`, and
+// an `emails` entry with no address at all. The second is defensive — Domain Search returns
+// addresses it has seen — and it is the case that says what happens to the `pattern` beside it.
 
 const NOW = '2026-09-03T10:00:00.000Z'
 
