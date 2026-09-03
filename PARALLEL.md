@@ -62,7 +62,8 @@ B3 is unclaimed.
 |---|---|---|
 | **B1 · orchestration** *(→ UI lane)* | `lib/orchestrate.ts`, `app/api/investigate/route.ts`, `tests/orchestrate.test.ts`, plus its own `app/page.tsx` and `InvestigationLog.tsx` | merge + all providers |
 | **B2 · resolve** *(→ core lane)* | `lib/resolve.ts`, `app/api/resolve/route.ts`, `tests/guardrails.resolve.test.ts`, `fixtures/raw/resolve/**`; `CandidateGrid.tsx` waits for T11 | providers, UI |
-| **B3 · resilience** | `lib/cache.ts`, `lib/ratelimit.ts`, `lib/demo.ts`, their tests | types |
+| **B3 · resilience** | `lib/ratelimit.ts`, `lib/demo.ts`, `tests/resilience.test.ts` | types |
+| **B3a · cache** *(→ UI lane)* | `lib/cache.ts`, `tests/cache.test.ts`, plus its own route and page | types, orchestrate |
 
 ---
 
