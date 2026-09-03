@@ -53,10 +53,15 @@ Merge the five branches. Files are disjoint, so the merge is mechanical.
 
 ## Wave 2 — three lanes
 
+Wave 2 runs as two lanes, not three: **B1 was absorbed into the UI lane and B2 into the core
+lane**, because each task straddles files those lanes already own. T16 has to render a live log,
+which is the UI lane's component; T10 is server-side judgement, which is the core lane's ground.
+B3 is unclaimed.
+
 | Agent | Owns | Depends on |
 |---|---|---|
-| **B1 · orchestration** | `lib/orchestrate.ts`, `app/api/investigate/route.ts` | merge + all providers |
-| **B2 · resolve** | `lib/resolve.ts`, `app/api/resolve/route.ts`, `app/components/CandidateGrid.tsx`, `tests/guardrails.resolve.test.ts` | providers, UI |
+| **B1 · orchestration** *(→ UI lane)* | `lib/orchestrate.ts`, `app/api/investigate/route.ts`, `tests/orchestrate.test.ts`, plus its own `app/page.tsx` and `InvestigationLog.tsx` | merge + all providers |
+| **B2 · resolve** *(→ core lane)* | `lib/resolve.ts`, `app/api/resolve/route.ts`, `tests/guardrails.resolve.test.ts`, `fixtures/raw/resolve/**`; `CandidateGrid.tsx` waits for T11 | providers, UI |
 | **B3 · resilience** | `lib/cache.ts`, `lib/ratelimit.ts`, `lib/demo.ts`, their tests | types |
 
 ---
