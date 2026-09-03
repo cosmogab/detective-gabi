@@ -315,6 +315,30 @@ typed and is kept so the field can echo it back.
 **Consequence.** A shared link carrying both reopens the same case file for everyone, whatever the
 query that first reached it.
 
+## D31 — The accent means "there is a record behind this"
+**Context.** A theme pass is where a colour gets spent on whatever looks good, and where an
+interface quietly acquires a second grammar that contradicts its first.
+**Choice.** One accent, an ink blue (`#2c4470`), spent only where something is actually
+retrievable: source links, the wordmark, the field's focus border, the record cards' hover. It is
+deliberately **not** red, so it can never be mistaken for the alert colour — red stays reserved
+for a log step that genuinely failed and for the `simulated` badge. Focus is declared once in
+`@layer base` as `:focus-visible` rather than per call site, so no future control can forget it.
+The magnifier is two hand-written SVG shapes; no icon library was installed for two shapes.
+**Consequence.** The accent sharpens D25 instead of blurring it: accented means there is a record
+to open, and a source that was merely checked stays plain unaccented text. `No evidence found`
+renders in the same neutral as the rest of the meta text, because it is a fact and not an
+incident.
+
+## D32 — A system serif stack is the finish, not a placeholder
+**Context.** T19 asks for a serif title and had time left after the layout work.
+**Options.** `next/font` with a self-hosted webfont · a system serif stack.
+**Choice.** Iowan Old Style, Palatino, Georgia. This is a stop, not an unfinished item: a webfont
+adds a network fetch, a layout-shift risk, and a build-time dependency on Google Fonts that can
+fail on a CI box with no network — for a rendering the stack already gives. `app/layout.tsx` is
+therefore untouched despite belonging to the UI lane.
+**Consequence.** The title renders differently across platforms, which is what a system stack is.
+Adopting a webfont later touches one file and no component.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
