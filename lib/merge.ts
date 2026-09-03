@@ -62,7 +62,10 @@ export function mergeField<T>(
     ...(winner.sourceUrl === undefined ? {} : { sourceUrl: winner.sourceUrl }),
     ...(winner.asOf === undefined ? {} : { asOf: winner.asOf }),
     fetchedAt,
-    confidence: confidenceOf(winner.source, agreeing.length),
+    confidence: confidenceOf(
+      winner.source,
+      agreeing.map((o) => o.source),
+    ),
     conflicts: firstOfEachValue(disagreeing, isSameValue).map(asConflict),
   }
 }
@@ -78,7 +81,7 @@ export function mergeField<T>(
  * Kansas City, Missouri and Kansas City, Kansas — therefore read as one place.
  */
 export function isSameLocation(a: Location, b: Location): boolean {
-  return cityOf(a) === cityOf(b) && !countriesDisagree(a.country, b.country)
+  return cityOf(a) === cityOf(b) && sameCountry(a.country, b.country)
 }
 
 function strictEquality<T>(a: T, b: T): boolean {
@@ -116,10 +119,22 @@ function isMoreRecent<T>(candidate: Observation<T>, held: Observation<T>): boole
   return candidate.asOf > held.asOf
 }
 
-/** D20: `confirmed` for an official registry, or for two independent sources agreeing. */
-function confidenceOf(source: Source, agreeingSources: number): Confidence {
-  if (OFFICIAL_REGISTRIES.includes(source) || agreeingSources >= 1) return 'confirmed'
+/**
+ * D20, as amended after T5: `confirmed` for an official registry, or for agreeing sources of
+ * which at least one is a registry or a structured API. Agreement alone is not enough — two
+ * scraped pages echoing each other would otherwise wear the same badge as an SEC filing, and
+ * the strongest badge has to stay attached to a source that answers for what it publishes.
+ * Weak sources agreeing still rise above a lone one, to `corroborated`.
+ */
+function confidenceOf(source: Source, agreeing: readonly Source[]): Confidence {
+  if (OFFICIAL_REGISTRIES.includes(source)) return 'confirmed'
+
+  const accountable = [source, ...agreeing].some(
+    (s) => OFFICIAL_REGISTRIES.includes(s) || STRUCTURED_APIS.includes(s),
+  )
+  if (agreeing.length >= 1 && accountable) return 'confirmed'
   if (STRUCTURED_APIS.includes(source)) return 'corroborated'
+  if (agreeing.length >= 1) return 'corroborated'
   return 'circumstantial'
 }
 
@@ -155,10 +170,17 @@ function cityOf(location: Location): string {
   return normalise(location.formatted.split(',')[0])
 }
 
-/** A source that only gave a city leaves `country` null. Unknown cannot contradict known. */
-function countriesDisagree(a: string | null, b: string | null): boolean {
+/**
+ * Both countries must be known and equal. A source that gave only a city states nothing, and
+ * treating that silence as agreement let a vague winner absorb sources that genuinely
+ * contradicted each other — "Cambridge" swallowing both GB and Massachusetts, and the report
+ * calling the result confirmed. An unknown country now corroborates nothing, so the
+ * disagreement is shown. The cost is the visible kind: a source that omits its country reads
+ * as a conflict. A false conflict on the page beats a real one hidden from it.
+ */
+function sameCountry(a: string | null, b: string | null): boolean {
   if (a === null || b === null) return false
-  return normalise(a) !== normalise(b)
+  return normalise(a) === normalise(b)
 }
 
 function normalise(text: string): string {

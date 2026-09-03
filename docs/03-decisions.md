@@ -194,6 +194,12 @@ disagreement, so the most recent measurement wins and carries its `asOf` alone.
 **Consequence.** Nvidia's four Wikidata employee figures collapse to 42,000 as of 2026-01-25
 rather than rendering three false conflicts, while Stripe's registry-versus-Wikidata location
 disagreement is shown as one. T5 implements this rule rather than inventing its own.
+**Amended after T5.** Written as "two or more independent sources agreeing", the rule gave a
+scraped page and a web search that echoed each other the same badge as an SEC filing. T5 pinned
+that consequence in a test rather than hiding it, which is how it got noticed. Agreement now
+reaches `confirmed` only when at least one agreeing source is a registry or a structured API;
+weak sources agreeing rise to `corroborated` instead. The top badge stays attached to a source
+that answers for what it publishes.
 
 ## D21 — The fixtures are recordings, not illustrations
 **Context.** The fixtures are displayed as sourced facts on the public demo. Writing plausible
@@ -226,6 +232,22 @@ same losing value.
 ordered by priority, compared with the same predicate that decides agreement.
 **Consequence.** Two sources echoing one another render as one disagreement rather than two,
 which is what they are. The lower-ranked echo is not shown.
+
+## D24 — An unknown country corroborates nothing
+**Context.** `isSameLocation` compares city and country, and treated a null country as "nothing
+to contradict". T5 pinned the consequence: a winner reading "Cambridge" with no country absorbed
+both "Cambridge, GB" and "Cambridge, MA, US" — `conflicts` empty, confidence `confirmed`. A real
+geographic disagreement disappeared and the report called the result certain, which is SPEC §4
+broken in the one place the product cannot afford it.
+**Options.** Leave it and document the limit · split `mergeField` into a "contradicts" predicate
+and a "corroborates" one, which needs a parameter on a frozen signature · require both countries
+to be known and equal.
+**Choice.** Both known and equal. Verified against the fixtures before applying: Nvidia still
+merges to zero conflicts, Stripe still keeps its real GLEIF-versus-Wikidata one, and no signature
+changed — the seam did not need unfreezing after all.
+**Consequence.** A source that omits its country now renders as a conflict rather than as
+agreement. That is noise, and it is the right direction: a false conflict is on the page where a
+reader can judge it, while a hidden real one is a lie the reader cannot see.
 
 ---
 

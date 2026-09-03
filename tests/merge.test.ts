@@ -174,12 +174,23 @@ describe('confidence comes from the source that won', () => {
     }
   })
 
-  it('confirms a value two independent sources agree on, registry or not', () => {
-    // D20 lifts on agreement without restricting which sources may agree, so two weak ones do
-    // reach the top badge. Pinned here because it is the rule's most arguable consequence.
+  it('lifts two agreeing weak sources, but not all the way to confirmed', () => {
+    // D20 as amended: agreement reaches the top badge only behind a registry or a structured
+    // source. A scraped page and a web search echoing each other are better than one of them
+    // alone, and still not a filing.
     const field = mergeField(
       [observation(1, 'website'), observation(1, 'web')],
       ['website', 'web'],
+      NOW,
+    )
+
+    expect(field.found === true && field.confidence).toBe('corroborated')
+  })
+
+  it('confirms when a structured source is among those agreeing', () => {
+    const field = mergeField(
+      [observation(1, 'wikidata'), observation(1, 'website')],
+      ['wikidata', 'website'],
       NOW,
     )
 
@@ -394,16 +405,17 @@ describe('agreement between sources is decided by isSameValue', () => {
     ).toBe(false)
   })
 
-  it('lets an unstated country agree with a stated one, and separates two real ones', () => {
-    // A source that gave only a city (D13) states nothing to contradict with, so it is not
-    // rendered as disagreeing. It does still count as agreement, which is the arguable half.
+  it('refuses to call an unstated country a match, and separates two real ones', () => {
+    // A source that gave only a city (D13) states nothing, and silence is not agreement:
+    // treating it as agreement let a vague winner hide sources that genuinely contradicted
+    // each other. Unknown corroborates nothing.
 
     expect(
       isSameLocation(
         { formatted: 'Cambridge', country: null },
         { formatted: 'Cambridge, GB', country: 'GB' },
       ),
-    ).toBe(true)
+    ).toBe(false)
     expect(
       isSameLocation(
         { formatted: 'Cambridge, GB', country: 'GB' },
@@ -442,7 +454,7 @@ describe('what the location comparator deliberately does not decide', () => {
     expect(field.found === true && field.conflicts).toEqual([])
   })
 
-  it('lets a winner that named no country absorb two sources that disagree about it', () => {
+  it('shows both sides when the winner named no country', () => {
     const field = mergeField(
       [
         observation({ formatted: 'Cambridge', country: null }, 'wikidata'),
@@ -456,10 +468,10 @@ describe('what the location comparator deliberately does not decide', () => {
 
     expect(field.found).toBe(true)
     if (!field.found) return
-    // Each loser agrees with a winner too vague to contradict, so both count as agreement and
-    // neither is shown — and a GB-against-US disagreement never reaches the page.
-    expect(field.conflicts).toEqual([])
-    expect(field.confidence).toBe('confirmed')
+    // England and Massachusetts are a real disagreement. A winner too vague to take a side
+    // does not get to bury it, and does not get to claim certainty either.
+    expect(field.conflicts).toHaveLength(2)
+    expect(field.confidence).toBe('corroborated')
   })
 })
 
