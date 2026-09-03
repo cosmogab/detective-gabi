@@ -87,8 +87,9 @@ export function Sep() {
 }
 
 /**
- * A source that answered has a record to point at, so it is a link. A source that was merely
- * checked has none — see `SourcesChecked`, where the same names are deliberately plain text.
+ * A source that answered has a record to point at, so it is a link, and the accent is spent
+ * here to say so. A source that was merely checked has none — see `SourcesChecked`, where the
+ * same names are deliberately plain, unaccented text.
  */
 export function SourceLink(props: { source: Source; sourceUrl?: string }) {
   const name = SOURCE_NAME[props.source]
@@ -98,7 +99,7 @@ export function SourceLink(props: { source: Source; sourceUrl?: string }) {
       href={props.sourceUrl}
       target="_blank"
       rel="noreferrer"
-      className="label text-muted underline decoration-dotted underline-offset-2 hover:text-ink hover:decoration-solid"
+      className="label text-accent underline decoration-dotted underline-offset-2 transition-colors hover:decoration-solid"
     >
       {name}
     </a>

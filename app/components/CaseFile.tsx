@@ -31,7 +31,7 @@ export function CaseFile(props: { report: Report }) {
   const people = report.people
 
   return (
-    <article className="mx-auto max-w-case px-6 py-10">
+    <article className="mx-auto max-w-case px-6 pt-12 pb-10">
       <header className="border-b-2 border-b-ink pb-4">
         <p className="label text-faint">Case file</p>
         <h1 className="mt-1 font-case text-3xl text-ink">{report.company.name}</h1>
