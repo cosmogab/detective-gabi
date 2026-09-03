@@ -42,15 +42,27 @@ type Confidence = 'confirmed' | 'corroborated' | 'circumstantial'
 
 type Source = 'edgar' | 'gleif' | 'wikidata' | 'abstract' | 'hunter' | 'website' | 'web' | 'llm'
 
-type Field<T> = {
-  value: T | null
+// A value we found and a value we did not are two different shapes, so a displayed value
+// without a source is not constructible.
+type Evidence<T> = {
+  found: true
+  value: T
   source: Source
   sourceUrl?: string
   asOf?: string        // when the fact was true
   fetchedAt: string    // when we retrieved it
   confidence: Confidence
-  conflicts?: Array<{ value: T; source: Source; asOf?: string }>
+  conflicts: Array<{ value: T; source: Source; sourceUrl?: string; asOf?: string }>
 }
+
+type NoEvidence = {
+  found: false
+  value: null
+  sourcesChecked: Source[]   // what `No evidence found` lists
+  fetchedAt: string
+}
+
+type Field<T> = Evidence<T> | NoEvidence
 ```
 
 **Merge priority:** official registry (EDGAR, GLEIF) > structured API (Abstract, Hunter) >

@@ -90,6 +90,59 @@ agent working in a lane.
 **Consequence.** Ten lines of `AGENTS.md` are not mine and will change without my asking. In
 exchange the working tree stays clean and nobody writes Next 15 code from memory.
 
+## D12 — A value found and a value missing are two different types
+**Context.** `SPEC.md` §4 first described `Field<T>` as one flat record with a required `source`,
+while its own prose says a field with nothing found is `null` and lists the sources that were
+checked. Both cannot be true of one shape, and the flat version lets
+`{ value: null, source: 'wikidata', confidence: 'confirmed' }` compile.
+**Options.** Keep the flat record and widen `source` to nullable, leaning on the guardrail test ·
+split it into `Evidence<T> | NoEvidence`.
+**Choice.** The union. `Evidence` cannot be built without a source and a confidence, so a
+displayed value with no provenance is not representable. `Resolution` is built the same way:
+returning one company requires asserting it is the one, so picking silently out of an ambiguous
+set is not expressible either.
+**Consequence.** Every render site narrows on `field.found` before reading a value, and `SPEC.md`
+§4 was rewritten to match. In exchange the product's central rule is enforced by the compiler
+rather than by whoever reviews the pull request.
+
+## D13 — Location is a display line plus a country code
+**Context.** GLEIF returns a structured address, Wikidata `P159` an entity needing a label
+lookup, Abstract a city and a country. Merge has to compare them; the report prints one line.
+**Options.** A plain display string · `{ formatted, country }` · a full structured address.
+**Choice.** `{ formatted: string; country: string | null }`. Providers always fill the line and
+fill the country only when the source actually states it.
+**Consequence.** Conflict detection is a string comparison, and the one structured value the UI
+uses stays available. A source that gives only a city yields `country: null` rather than a guess.
+
+## D14 — The seam carries only what a task builds
+**Context.** `SPEC.md` §2 lists secondary fields — industry, description, LinkedIn, recent news —
+"if time allows", but no task in `TASKS.md` builds any of them.
+**Options.** Add them now as optional keys so the seam never has to be unfrozen · leave them out.
+**Choice.** Leave them out. `CompanyFields` is location, year founded and employees, with people
+alongside on the report.
+**Consequence.** Adding a secondary field later touches a frozen file, which is a coordination
+event once the lanes are running. Worth it: the contract describes what exists, which is the same
+rule the product applies to its own data.
+
+## D15 — Providers declare what they cover
+**Context.** `No evidence found` has to name the sources that were checked. That list cannot be
+derived from a `Partial<CompanyFields>`, where an absent key means both "I looked and found
+nothing" and "that is not my job".
+**Options.** Every provider reports per run which fields it attempted · each provider declares
+its coverage once, statically.
+**Choice.** A static `covers` array on the `Provider` interface. Merge intersects it with the
+providers that actually ran.
+**Consequence.** One more line per provider, and an empty field can say precisely where we looked
+instead of listing every source in the app.
+
+## D16 — A key is never a property on the context
+**Context.** The context object is passed to every provider and is the obvious thing to log when
+debugging a failing lookup.
+**Choice.** `Ctx` exposes `key(id: Source): string | null` as a function rather than holding
+resolved keys as fields.
+**Consequence.** `JSON.stringify(ctx)` cannot leak a key into a log line or an error report. It
+costs nothing and removes an entire category of accident.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

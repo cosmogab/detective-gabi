@@ -15,7 +15,8 @@ app/
     FieldRow.tsx   PersonCard.tsx     InvestigationLog.tsx
     KeysModal.tsx  ErrorState.tsx
 lib/
-  types.ts                     Field<T>, Confidence, Source, Report, LogEvent
+  types.ts                     Field<T>, Confidence, Source, CompanyFields, Person,
+                               Report, LogEvent, Candidate, Resolution
   merge.ts                     merge by source priority, conflicts, confidence
   cache.ts                     TTL cache, key = domain
   keys.ts                      resolve which key to use (user > default > none)
@@ -35,15 +36,25 @@ behind a field. This is what makes the app degrade instead of break, and what ma
 possible.
 
 ```ts
-type ProviderResult = { fields: Partial<CompanyFields>; log: LogEvent[] }
+type ProviderResult = {
+  fields: Partial<CompanyFields>
+  people?: Person[]                      // unioned across sources, not won by one of them
+  log: LogEvent[]
+}
+
+type Coverage = keyof CompanyFields | 'people'
 
 interface Provider {
   id: Source
   requiresKey: boolean
-  available(ctx: Ctx): boolean           // key present? quota left?
+  covers: readonly Coverage[]            // what an empty field lists as "sources checked"
+  available(ctx: Ctx): boolean           // key present? quota left? rate limit not hit?
   run(input: ProviderInput, ctx: Ctx): Promise<ProviderResult>
 }
 ```
+
+`covers` is declared statically so that `No evidence found` can name the sources that were
+consulted without every provider having to report "I looked here and found nothing".
 
 `run` never throws to the caller: it returns whatever it got plus a log event, marking failures.
 A dead provider costs a red line in the log, not a broken page.
@@ -78,6 +89,7 @@ type LogEvent = {
   ms: number
   status: 'ok' | 'empty' | 'failed' | 'skipped'
   cost?: string         // "3 credits used"
+  source?: Source       // which provider, so the UI can attribute a failure to a section
 }
 ```
 
@@ -87,8 +99,10 @@ past fast. When the stream closes, the log folds under the report.
 ## Keys
 
 `lib/keys.ts` resolves, per request and per provider: user key (header from the modal) ->
-environment default -> none. `available()` uses the result to decide whether the provider runs.
-Keys never leave the server route they are used in, are never logged, never put in a URL.
+environment default -> none. The result is reached through `ctx.key(id)` rather than held as a
+property, so a context can be passed around, inspected or serialised without a key surfacing.
+`available()` uses the result to decide whether the provider runs. Keys never leave the server
+route they are used in, are never logged, never put in a URL.
 
 ## Cache
 
