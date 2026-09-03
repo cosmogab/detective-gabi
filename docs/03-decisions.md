@@ -249,6 +249,36 @@ changed — the seam did not need unfreezing after all.
 agreement. That is noise, and it is the right direction: a false conflict is on the page where a
 reader can judge it, while a hidden real one is a lie the reader cannot see.
 
+## D25 — The interface renders provenance, it never re-derives it
+**Context.** Every displayed value carries a source and a confidence, and the UI is the last
+place those could quietly diverge from what merge decided.
+**Choice.** Confidence is read off `field.confidence` and shown through three coordinated
+channels — rule weight, type weight, and the word itself — never recomputed from the source,
+which would be a second implementation of D20 free to disagree with the first. A source that
+answered is a link to its record; a source that was merely checked is plain text, because it has
+no record to point at and minting a URL for it would be the same invention as minting a value.
+`fetchedAt` prints once under the title rather than on every row: one `Ctx.now` per run means
+the row-level repetition would be three copies of one fact.
+**Consequence.** Confidence is never a number or a percentage anywhere. The `AGENTS.md` line
+"every displayed value carries … the date we fetched it" is satisfied once per report rather
+than once per row.
+
+## D26 — Dates are read off the ISO string, never parsed
+**Context.** Sources date facts at different precisions: Wikidata gives "2022" for Stripe's
+employee count and "2026-01-25" for Nvidia's.
+**Choice.** The renderer reads the ISO string with a regular expression. It never goes through
+`Date` or `Intl`. A bare year stays a bare year and is never padded into a day.
+**Consequence.** Two problems avoided at once: the report cannot display a precision the source
+never gave, and server and browser cannot render two different stamps for the same value.
+
+## D27 — Decision makers are a section, not a fourth row
+**Context.** SPEC §6 calls for the four required fields as a top strip, and decision makers are
+the fourth — but D19 gave the people section its own `sourcesChecked`.
+**Choice.** The strip holds the three scalar fields; people follow as their own section carrying
+its own empty state.
+**Consequence.** Fly.io reads as three honest empty states rather than four, because putting
+people in both places would print "No evidence found" twice for one absence.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

@@ -77,8 +77,11 @@ git worktree add ../dg-a1 -b feat/merge
 git worktree add ../dg-a2 -b feat/providers-registry
 # …one per lane
 
-# fast path: share the install instead of five copies
-cd ../dg-a1 && ln -s ../detective-gabi/node_modules node_modules
+# fast path: share the install instead of five copies.
+# A hardlink clone, NOT a symlink: Turbopack refuses a node_modules symlink that points
+# outside the project root and `next build` dies with an internal error. cp -al costs
+# almost no disk and needs no network.
+cd ../dg-a1 && cp -al ../detective-gabi/node_modules node_modules
 ```
 
 Then in each worktree, open Claude Code and paste that lane's brief from below.
@@ -96,6 +99,10 @@ is passing.** The guardrails are written before the code they guard, so the suit
 red from T4 until T10 — guardrail 1 goes green in T5, guardrail 3 in T10, guardrail 2 in T14. A
 guardrail that was green and went red is a stop-everything event; one that has never been green
 yet is the plan working.
+
+`FieldRow` renders `<tr>` elements, so it only composes inside a `<tbody>` — B2 and Wave 3
+need to know before wiring it anywhere else. `PersonCard` is an `<li>`, which is why it can
+carry the email badges.
 
 Disjoint ownership means conflicts should be limited to `package.json` if two lanes add a
 dependency. Decide dependencies in Wave 0 and install them there.
