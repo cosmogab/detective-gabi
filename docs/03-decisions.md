@@ -279,6 +279,42 @@ its own empty state.
 **Consequence.** Fly.io reads as three honest empty states rather than four, because putting
 people in both places would print "No evidence found" twice for one absence.
 
+## D28 — The home field is a lookup, and the interface says so
+**Context.** T8 puts a search field on the page while `api/resolve` is still a stub. A field that
+looks like it searches and does not is an interface lie, in the app whose entire argument is that
+it does not tell them.
+**Options.** A decorative field · borrow SPEC §7's `No trace found` for a query that misses · say
+plainly what the field does today.
+**Choice.** Say it, in the present tense and without promising a future. The button reads **Open**
+rather than *Investigate*, because pressing it runs no investigation. The label reads *Open a case
+file on record*, with *Four are on record* stated before anyone hits the limit rather than after.
+A query that misses returns **"No search ran. This page opens case files that are already on
+record, and … is not one of them"** — a denial that a search happened, which is the opposite claim
+from `No trace found`, and styled neutrally because nothing failed. Matching is exact against a
+recording's key, name, domain or recorded query: prefix or fuzzy matching would be a search by
+another name.
+**Consequence.** *Investigate* becomes a truthful label at T10 and T16 and can be adopted then.
+`SearchBar` also lost its `pending` prop — nothing here is asynchronous, so it would be a state
+that cannot occur; T18 restores it when there is something to be pending on.
+
+## D29 — "How it works" describes only what a reader can go and check
+**Context.** An explainer is the easiest place to describe the app you meant to build rather than
+the one that exists.
+**Choice.** It covers the source ranking, that the four recordings came from live Wikidata, GLEIF
+and SEC EDGAR calls, Stripe's real location disagreement, Fly.io's sparseness, confidence as a
+weight, and that an inferred address is never verified. No vendor is named that is not actually
+behind a recorded value. The SPEC §9 ethics line appears on the report as well as the home page,
+because the report is where people are actually named.
+**Consequence.** Abstract, Hunter, Tavily and Gemini are absent from the interface until something
+of theirs is on the page — verified in the rendered HTML, not just intended.
+
+## D30 — `?domain=` wins when both URL parameters are present
+**Context.** SPEC §6 puts both `?q=` and `?domain=` in the URL without saying which decides.
+**Choice.** `?domain=` is the resolved identifier and takes precedence; `?q=` is what the person
+typed and is kept so the field can echo it back.
+**Consequence.** A shared link carrying both reopens the same case file for everyone, whatever the
+query that first reached it.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

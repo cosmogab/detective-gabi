@@ -11,6 +11,8 @@ build/
 .DS_Store
 *.log
 coverage/
+# Scratch directory the browse tooling drops in a worktree. Not part of the project.
+.gstack/
 tmp/
 _kickoff.md
 
