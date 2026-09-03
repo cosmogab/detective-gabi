@@ -1,6 +1,6 @@
 import { CaseFile } from '@/app/components/CaseFile'
 import { Sep } from '@/app/components/FieldRow'
-import { SearchBar } from '@/app/components/SearchBar'
+import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 
 /**
@@ -69,15 +69,20 @@ export default async function Home({
   if (found !== null) {
     return (
       <main>
+        {/* The chrome is ruled off from the document, so the case file starts where the
+            page furniture stops. */}
         <div className="mx-auto max-w-case px-6 pt-8">
-          <a
-            href="/"
-            className="label text-faint underline decoration-dotted underline-offset-4 hover:text-ink hover:decoration-solid"
-          >
-            Detective Gabi
-          </a>
-          <div className="mt-4">
-            <SearchBar defaultQuery={asked} />
+          <div className="border-b border-b-rule pb-8">
+            <a
+              href="/"
+              className="inline-flex items-center gap-x-2 font-case text-lg text-ink transition-colors hover:text-accent"
+            >
+              <Magnifier className="text-rule-strong" />
+              Detective Gabi
+            </a>
+            <div className="mt-5">
+              <SearchBar defaultQuery={asked} />
+            </div>
           </div>
         </div>
         <CaseFile report={fixtureReport(found)} />
@@ -90,8 +95,11 @@ export default async function Home({
 
   return (
     <main className="mx-auto max-w-case px-6 py-14">
-      <h1 className="font-case text-5xl text-ink">Detective Gabi</h1>
-      <p className="mt-2 font-case text-xl text-muted italic">Company research, with its sources.</p>
+      {/* The mark sits above the title rather than beside it, so the title, the tagline and
+          every line below them share one left edge. */}
+      <Magnifier className="size-7 text-rule-strong" />
+      <h1 className="mt-4 font-case text-5xl text-ink">Detective Gabi</h1>
+      <p className="mt-3 font-case text-xl text-muted italic">Company research, with its sources.</p>
 
       <p className="mt-8 max-w-2xl font-sans text-sm text-ink">
         A case file answers four questions about a company, and every answer carries the source
@@ -131,7 +139,7 @@ export default async function Home({
             <li key={entry.name}>
               <a
                 href={`/?domain=${entry.domain ?? ''}`}
-                className="block border border-rule px-3 py-2 hover:border-ink"
+                className="block border border-rule bg-card px-3 py-2 transition-colors hover:border-accent"
               >
                 <span className="datum block text-ink">{entry.company}</span>
                 <span className="block font-mono text-xs text-faint">{entry.domain}</span>

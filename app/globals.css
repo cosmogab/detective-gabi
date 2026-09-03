@@ -1,23 +1,32 @@
 @import "tailwindcss";
 
 /*
- * Tailwind v4 is configured here rather than in a JS file (decision D10). T19 owns the theme
- * pass: it changes these values. T7 only fixes the names the components spend.
+ * The theme is configured here rather than in a JS file (decision D10).
+ *
+ * Paper, ink, and one accent. The accent means "there is a record behind this" — a source
+ * link, the wordmark, a focus ring — and nothing else wears it. Red belongs to a step that
+ * genuinely failed and is spent nowhere else: `No evidence found` is a finding, not an
+ * incident, and colouring it like one would be the report lying about its own data.
  */
 @theme {
-  --color-paper: #faf9f5;
-  --color-ink: #17150f;
-  --color-muted: #5f5b4f;
-  --color-faint: #767061;
-  --color-rule: #e3dfd3;
-  --color-rule-strong: #b3ac98;
+  --color-paper: #f8f6f0;
+  /* Raised off the paper: the one input, and the cards that open a case file. */
+  --color-card: #fffefa;
+  --color-ink: #16140e;
+  --color-muted: #57523f;
+  --color-faint: #7a7463;
+  --color-rule: #e2ddcf;
+  --color-rule-strong: #b6ae97;
+  /* The single ink accent. Never red, so it can never be mistaken for a failure. */
+  --color-accent: #2c4470;
   /* Reserved for a step that actually failed. `empty` is a source answering "nothing here",
      which is not a failure, so it never uses this. */
   --color-alert: #8c2b1c;
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  --font-case: ui-serif, Georgia, "Times New Roman", serif;
+  /* A system serif stack: the title costs no request and no layout shift. */
+  --font-case: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
 
   --text-meta: 0.6875rem;
   --text-meta--line-height: 1.45;
@@ -35,6 +44,18 @@
   body {
     background-color: var(--color-paper);
     color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Stated once, so every link, input and button is reachable by keyboard without each
+     call site remembering to say so. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 18%, transparent);
   }
 }
 
@@ -57,4 +78,28 @@
   font-size: var(--text-ledger);
   line-height: 1.55;
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Written and left unmounted on purpose. The loading state is the streamed investigation log
+ * (D8, T16), and nothing on the page loads yet — mounting a spinner now would animate an
+ * absence. T16 puts `magnifier-sweep` on the inline magnifier while the stream is open, and
+ * gets a real one instead of a decorative one.
+ */
+@keyframes magnifier-sweep {
+  from {
+    transform: rotate(-12deg);
+  }
+  to {
+    transform: rotate(12deg);
+  }
+}
+
+@utility magnifier-sweep {
+  transform-origin: 68% 68%;
+  animation: magnifier-sweep 1.1s ease-in-out infinite alternate;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
