@@ -1,0 +1,136 @@
+[
+ {
+  "file": "edgar/company-tickers.json",
+  "url": "https://www.sec.gov/files/company_tickers.json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:22.070Z"
+ },
+ {
+  "file": "edgar/submissions-asml.json",
+  "url": "https://data.sec.gov/submissions/CIK0000937966.json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:18:56.479173Z",
+  "note": "captured during this task by the verification pass, not by the recorder script; www.sec.gov began answering 403 to this host before it could be re-fetched"
+ },
+ {
+  "file": "edgar/submissions-nvidia.json",
+  "url": "https://data.sec.gov/submissions/CIK0001045810.json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:23.541Z"
+ },
+ {
+  "file": "edgar/submissions-sea.json",
+  "url": "https://data.sec.gov/submissions/CIK0001703399.json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:18:58.421646Z",
+  "note": "captured during this task by the verification pass, not by the recorder script; www.sec.gov began answering 403 to this host before it could be re-fetched"
+ },
+ {
+  "file": "edgar/submissions-shopify.json",
+  "url": "https://data.sec.gov/submissions/CIK0001594805.json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:24.891Z"
+ },
+ {
+  "file": "gleif/search-flyio.json",
+  "url": "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=fly%20io&page[size]=200",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:20.425Z"
+ },
+ {
+  "file": "gleif/search-nvidia.json",
+  "url": "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=nvidia&page[size]=200",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:18.925Z"
+ },
+ {
+  "file": "gleif/search-shopify.json",
+  "url": "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=shopify&page[size]=200",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:17.019Z"
+ },
+ {
+  "file": "gleif/search-stripe.json",
+  "url": "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=stripe&page[size]=200",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:15.320Z"
+ },
+ {
+  "file": "wikidata/entities-nvidia-referenced.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q159260|Q305177|Q5107317|Q5195858&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:10.548Z"
+ },
+ {
+  "file": "wikidata/entities-shopify-referenced.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1930|Q20684647&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:10:17.775Z"
+ },
+ {
+  "file": "wikidata/entities-stripe-referenced.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q62|Q7146257|Q16233063&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:09.189Z"
+ },
+ {
+  "file": "wikidata/entities-wework-referenced.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q11299|Q34579349|Q42666281&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T22:09:40.520Z"
+ },
+ {
+  "file": "wikidata/entity-country-ca.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q16&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:10:19.448Z"
+ },
+ {
+  "file": "wikidata/entity-country-us.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q30&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:12.617Z"
+ },
+ {
+  "file": "wikidata/entity-flyio.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q133943318&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:07.624Z"
+ },
+ {
+  "file": "wikidata/entity-nvidia.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q182477&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:04.909Z"
+ },
+ {
+  "file": "wikidata/entity-shopify.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7501150&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:06.286Z"
+ },
+ {
+  "file": "wikidata/entity-stripe.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7624104&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:03.382Z"
+ },
+ {
+  "file": "wikidata/entity-wework.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q19995004&props=labels|claims&languages=en&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T22:07:37.925Z"
+ },
+ {
+  "file": "wikidata/search-nothing.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=zzqx%20no%20such%20company%20zzqx&language=en&type=item&format=json&limit=5",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:02.020Z"
+ },
+ {
+  "file": "wikidata/search-stripe.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Stripe&language=en&type=item&format=json&limit=5",
+  "status": 200,
+  "recordedAt": "2026-09-03T21:09:00.684Z"
+ }
+]

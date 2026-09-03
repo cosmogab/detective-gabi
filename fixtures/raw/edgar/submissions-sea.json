@@ -1,0 +1,33 @@
+{
+ "cik": "0001703399",
+ "name": "Sea Ltd",
+ "tickers": [
+  "SE"
+ ],
+ "addresses": {
+  "mailing": {
+   "street1": "C/O 1 FUSIONOPOLIS PLACE",
+   "street2": "# 17-10, GALAXIS",
+   "city": "SINGAPORE",
+   "stateOrCountry": "U0",
+   "zipCode": "138522",
+   "stateOrCountryDescription": "Singapore",
+   "isForeignLocation": 0,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  },
+  "business": {
+   "street1": "C/O 1 FUSIONOPOLIS PLACE",
+   "street2": "# 17-10, GALAXIS",
+   "city": "SINGAPORE",
+   "stateOrCountry": "U0",
+   "zipCode": "138522",
+   "stateOrCountryDescription": "Singapore",
+   "isForeignLocation": null,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  }
+ }
+}

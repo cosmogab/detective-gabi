@@ -1,0 +1,2579 @@
+{
+ "meta": {
+  "pagination": {
+   "total": 57
+  }
+ },
+ "data": [
+  {
+   "id": "894500EDC64T52PGFL08",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE",
+      "language": "nl"
+     },
+     "legalAddress": {
+      "language": "nl",
+      "addressLines": [
+       "Fazantenlaan 2"
+      ],
+      "addressNumber": "2",
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hoeilaart",
+      "region": "BE-VBR",
+      "country": "BE",
+      "postalCode": "1560"
+     },
+     "headquartersAddress": {
+      "language": "nl",
+      "addressLines": [
+       "Fazantenlaan 2"
+      ],
+      "addressNumber": "2",
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hoeilaart",
+      "region": "BE-VBR",
+      "country": "BE",
+      "postalCode": "1560"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-07T06:03:03Z"
+    }
+   }
+  },
+  {
+   "id": "984500WERX9B5D13CC23",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Stripe 158",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One, Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 X576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Rd",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o WAYSTONE MANAGEMENT COMPANY (IE) LIMITED",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-06-28T14:44:58Z"
+    }
+   }
+  },
+  {
+   "id": "984500394F5A508CB252",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Stripe 157",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One, Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 X576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Rd",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o WAYSTONE MANAGEMENT COMPANY (IE) LIMITED",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-06-28T14:43:52Z"
+    }
+   }
+  },
+  {
+   "id": "98450041E7D10F76E987",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 156",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin 2",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 NX59"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Road",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-05-20T06:18:42Z"
+    }
+   }
+  },
+  {
+   "id": "635400UDCXJZGGU4GP67",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 151",
+      "language": "en-IE"
+     },
+     "legalAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "headquartersAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "C/O WAYSTONE INVESTMENT MANAGEMENT (IE) LIMITED",
+       "35 SHELBOURNE ROAD",
+       "BALLSBRIDGE",
+       "Dublin 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-05T23:00:00Z"
+    }
+   }
+  },
+  {
+   "id": "6354007URUVNTUBDVM56",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 152",
+      "language": "en-IE"
+     },
+     "legalAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "headquartersAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "C/O WAYSTONE INVESTMENT MANAGEMENT (IE) LIMITED",
+       "35 SHELBOURNE ROAD",
+       "BALLSBRIDGE",
+       "Dublin 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-05T23:00:00Z"
+    }
+   }
+  },
+  {
+   "id": "635400YNWCWHTGZOJH73",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 138",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Road",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Road",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-05-28T14:24:57Z"
+    }
+   }
+  },
+  {
+   "id": "635400HRTFJLAKITS212",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 133",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 X576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "35 Shelbourne Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "35 Shelbourne Road",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-02-18T16:55:02Z"
+    }
+   }
+  },
+  {
+   "id": "635400KIND1SJLQZLO77",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 109",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor",
+       "35 Shelbourne Road",
+       "Dublin 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Ballsbridge",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-02T20:38:08Z"
+    }
+   }
+  },
+  {
+   "id": "635400Y6XMINOAMOV222",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 121",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor",
+       "35 Shelbourne Road",
+       "Dublin 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Ballsbridge",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-02-25T17:01:09Z"
+    }
+   }
+  },
+  {
+   "id": "635400YIRJQHHJTFYT62",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 130",
+      "language": "en-IE"
+     },
+     "legalAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "d02x576"
+     },
+     "headquartersAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "C/O WAYSTONE INVESTMENT MANAGEMENT (IE) LIMITED",
+       "35 SHELBOURNE ROAD",
+       "BALLSBRIDGE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-10T23:00:00Z"
+    }
+   }
+  },
+  {
+   "id": "635400WHVDNDK3IKHQ26",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 128",
+      "language": "en-IE"
+     },
+     "legalAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "headquartersAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "C/O Waystone Management Company (IE) Limited",
+       "4th Floor",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": null
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-07T23:00:00Z"
+    }
+   }
+  },
+  {
+   "id": "635400OL14IILLXTO155",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 126",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "d02x576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Road",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-30T20:22:22Z"
+    }
+   }
+  },
+  {
+   "id": "6354005OSX2OWVO8BE36",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 127",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One",
+       "Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "d02x576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4th Floor, 35 Shelbourne Road",
+       "Ballsbridge"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Waystone Management Company (IE) Limited",
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-30T20:29:01Z"
+    }
+   }
+  },
+  {
+   "id": "549300CLHGIPTCYHQ143",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE, LLC",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O THE CORPORATION TRUST COMPANY",
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "354 Oyster Point Blvd"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "South San Francisco",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "94080"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-12T05:01:46Z"
+    }
+   }
+  },
+  {
+   "id": "529900PS42DHBKK96T97",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "ProShares UltraShort Stripe",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o CORPORATION SERVICE COMPANY, 251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o PROSHARE ADVISORS LLC, c/o CSC-LAWYERS INCORPORATING SERVICE COMPANY, 7 ST. PAUL STREET, SUITE 820"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o PROSHARE ADVISORS LLC",
+      "city": "BALTIMORE",
+      "region": "US-MD",
+      "country": "US",
+      "postalCode": "21202"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-28T14:41:14Z"
+    }
+   }
+  },
+  {
+   "id": "529900WT4MMBP1GOHS91",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "2x Stripe ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o CORPORATION SERVICE COMPANY, 251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o Volatility Shares LLC, c/o RAD REGISTERED AGENTS !!!!!!!!! LLC, 8 THE GREEN, SUITE I"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Volatility Shares LLC",
+      "city": "DOVER",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19901"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-28T14:04:06Z"
+    }
+   }
+  },
+  {
+   "id": "52990085AZIZAJV64796",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "ProShares Ultra Stripe",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o CORPORATION SERVICE COMPANY,251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o ProShare Advisors LLC, c/o CSC-LAWYERS INCORPORATING SERVICE COMPANY, 7 ST. PAUL STREET, SUITE 820"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o ProShare Advisors LLC",
+      "city": "BALTIMORE",
+      "region": "US-MD",
+      "country": "US",
+      "postalCode": "21202"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-26T08:26:57Z"
+    }
+   }
+  },
+  {
+   "id": "894500XJAOZKM5ACG947",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "The Stripe B.V.",
+      "language": "nl"
+     },
+     "legalAddress": {
+      "language": "nl",
+      "addressLines": [
+       "De Stripe 5"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Jirnsum",
+      "region": null,
+      "country": "NL",
+      "postalCode": "9011XM"
+     },
+     "headquartersAddress": {
+      "language": "nl",
+      "addressLines": [
+       "De Stripe 5"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Jirnsum",
+      "region": null,
+      "country": "NL",
+      "postalCode": "9011XM"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-05T08:58:29Z"
+    }
+   }
+  },
+  {
+   "id": "6354008T7VEFMGAE7B50",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 132 (RE)",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Riverside One, Sir John Rogerson's Quay"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 X576"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "35 SHELBOURNE ROAD",
+       "BALLSBRIDGE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o WAYSTONE INVESTMENT MANAGEMENT (IE) LIMITED",
+      "city": "DUBLIN",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 A4E0"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-11-12T22:22:01Z"
+    }
+   }
+  },
+  {
+   "id": "98450014D54D846EF287",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "RED STRIPE a.s.",
+      "language": "cs"
+     },
+     "legalAddress": {
+      "language": "cs",
+      "addressLines": [
+       "Nová 278"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dolní Břežany",
+      "region": "CZ-10",
+      "country": "CZ",
+      "postalCode": "252 41"
+     },
+     "headquartersAddress": {
+      "language": "cs",
+      "addressLines": [
+       "Nová 278"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dolní Břežany",
+      "region": "CZ-10",
+      "country": "CZ",
+      "postalCode": "252 41"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-10-14T13:48:34Z"
+    }
+   }
+  },
+  {
+   "id": "9845005CY8F9EG89E812",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE & STARE LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Unit L5-L7 Yelverton Business Park",
+       "Crapstone"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Yelverton",
+      "region": null,
+      "country": "GB",
+      "postalCode": "PL20 7PY"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Unit L5-L7 Yelverton Business Park",
+       "Crapstone"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Yelverton",
+      "region": null,
+      "country": "GB",
+      "postalCode": "PL20 7PY"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2025-02-12T16:08:03Z"
+    }
+   }
+  },
+  {
+   "id": "549300YK0Z4SWKNYPQ72",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS COMPANY",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O THE CORPORATION TRUST COMPANY",
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:56:30Z"
+    }
+   }
+  },
+  {
+   "id": "2138007JEGOX5DHXHN90",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 32 L.P.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LIMITED",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LIMITED",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-27T06:04:40Z"
+    }
+   }
+  },
+  {
+   "id": "213800MO5CE7M2JVQI69",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 33 L.P.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN HOUSE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN HOUSE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-26T06:41:08Z"
+    }
+   }
+  },
+  {
+   "id": "549300JAMBQERYYF0V60",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Blue Stripe Holdings",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "241 Commerce Way"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "gallatin",
+      "region": "US-TN",
+      "country": "US",
+      "postalCode": "37066"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "241 commerce way"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "gallatin",
+      "region": "US-TN",
+      "country": "US",
+      "postalCode": "37066"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2023-08-04T16:45:58Z"
+    }
+   }
+  },
+  {
+   "id": "213800TXM5IRFQDBDD04",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 30 L.P.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "UBS HOUSE",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "UBS HOUSE",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-26T13:37:56Z"
+    }
+   }
+  },
+  {
+   "id": "213800TIV2WH1KJ75G06",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 31 L.P.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325E, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "UBS HOUS",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325E, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "UBS HOUS",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-26T13:36:30Z"
+    }
+   }
+  },
+  {
+   "id": "549300EXGSL3RJS5DW95",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "ACCENT STRIPE, INC.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "3275 N BENZING ROAD"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "ORCHARD PARK",
+      "region": "US-NY",
+      "country": "US",
+      "postalCode": "14127"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "3275 North Benzing Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "ORCHARD PARK",
+      "region": "US-NY",
+      "country": "US",
+      "postalCode": "14127"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2024-01-05T13:30:04Z"
+    }
+   }
+  },
+  {
+   "id": "254900VYCQ4K0SLSXF22",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE GLOBAL HOLDINGS INC.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O THE CORPORATION TRUST COMPANY",
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "354 Oyster Point Blvd"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "South San Francisco",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "94080"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-07T19:14:11Z"
+    }
+   }
+  },
+  {
+   "id": "213800ZZGXPUMM9RJQ20",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "GOLD STRIPE ANAESTHESIA LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "80-83 LONG LANE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "LONDON",
+      "region": "GB-LND",
+      "country": "GB",
+      "postalCode": "EC1A 9ET"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "80-83 LONG LANE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "LONDON",
+      "region": "GB-LND",
+      "country": "GB",
+      "postalCode": "EC1A 9ET"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-04-22T12:04:18Z"
+    }
+   }
+  },
+  {
+   "id": "635400IBAVC4GUVT9126",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE TECHNOLOGY COMPANY LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "One Wilton Park",
+       "Wilton Place",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "One Wilton Park",
+       "Wilton Place",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:41:06Z"
+    }
+   }
+  },
+  {
+   "id": "549300H2NPDY8EF01E87",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE NEW ZEALAND LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Quigg Partners",
+       "Level 7",
+       "36 Brandon Street"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Wellington",
+      "region": "NZ-WGN",
+      "country": "NZ",
+      "postalCode": "6011"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Level 7",
+       "36 Brandon Street"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Wellington",
+      "region": "NZ-WGN",
+      "country": "NZ",
+      "postalCode": "6011"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-07T20:22:37Z"
+    }
+   }
+  },
+  {
+   "id": "54930009W67HS4CTSI25",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS CANADA, LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "1200 WATERFRONT CENTRE",
+       "200 BURRARD STREET",
+       "P.O. BOX 48600"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "VANCOUVER",
+      "region": "CA-BC",
+      "country": "CA",
+      "postalCode": "V7X 1T2"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "1200 WATERFRONT CENTRE",
+       "200 BURRARD STREET",
+       "P.O. BOX 48600"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "VANCOUVER",
+      "region": "CA-BC",
+      "country": "CA",
+      "postalCode": "V7X 1T2"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:54:16Z"
+    }
+   }
+  },
+  {
+   "id": "549300DSKP4KJP52XY61",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS EUROPE, LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "ONE WILTON PARK",
+       "WILTON PLACE",
+       "DUBLIN 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DUBLIN",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "ONE WILTON PARK",
+       "WILTON PLACE",
+       "DUBLIN 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DUBLIN",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:52:14Z"
+    }
+   }
+  },
+  {
+   "id": "25490069MHLKLDYRLT92",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Blue Stripe Saucer Ltd",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "42 Berrington Grove"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Milton Keynes",
+      "region": null,
+      "country": "GB",
+      "postalCode": "MK4 4FB"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "42 Berrington Grove"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Milton Keynes",
+      "region": null,
+      "country": "GB",
+      "postalCode": "MK4 4FB"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2022-07-15T13:32:25Z"
+    }
+   }
+  },
+  {
+   "id": "335800ELSFFAIAJP1J63",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE INDIA PRIVATE LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Prestige Tech Pacific Park",
+       "11th Floor, Building 2, Kadubeesanahalli Village",
+       "Varthur Hobli, Bangalore East Taluk",
+       "Panathur"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Bangalore",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560103"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Prestige Tech Pacific Park",
+       "11th Floor, Building 2, Kadubeesanahalli Village",
+       "Varthur Hobli, Bangalore East Taluk",
+       "Panathur"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Bangalore",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560103"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:47:29Z"
+    }
+   }
+  },
+  {
+   "id": "54930064S1C0MS87F789",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS UK LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "9th Floor",
+       "107 Cheapside"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "London",
+      "region": null,
+      "country": "GB",
+      "postalCode": "EC2V 6DN"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "201 Bishopsgate",
+       "Level 5"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "London",
+      "region": null,
+      "country": "GB",
+      "postalCode": "EC2M 3UG"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:42:25Z"
+    }
+   }
+  },
+  {
+   "id": "549300T7WU87LQYO0K16",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE TECHNOLOGY EUROPE, LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "ONE WILTON PARK",
+       "WILTON PLACE",
+       "DUBLIN 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DUBLIN",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "ONE WILTON PARK",
+       "WILTON PLACE",
+       "DUBLIN 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DUBLIN",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:46:00Z"
+    }
+   }
+  },
+  {
+   "id": "549300DHVKOHDYCSOT94",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE INVESTORS EMP LP",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CORPORATION SERVICE COMPANY",
+       "251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "200 West Street"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "New York",
+      "region": "US-NY",
+      "country": "US",
+      "postalCode": "10282"
+     },
+     "status": "INACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "RETIRED",
+     "lastUpdateDate": "2023-08-04T16:20:01Z"
+    }
+   }
+  },
+  {
+   "id": "724500VC4SFJUHJJQ480",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Yellow Stripe Beheer B.V.",
+      "language": "nl"
+     },
+     "legalAddress": {
+      "language": "nl",
+      "addressLines": [
+       "Heemraadschapslaan 71"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Amstelveen",
+      "region": null,
+      "country": "NL",
+      "postalCode": "1181VA"
+     },
+     "headquartersAddress": {
+      "language": "nl",
+      "addressLines": [
+       "Heemraadschapslaan 71"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Amstelveen",
+      "region": null,
+      "country": "NL",
+      "postalCode": "1181VA"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-12-14T06:11:19Z"
+    }
+   }
+  },
+  {
+   "id": "549300X8JSQOYU818H07",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Blue Stripe Investors, LLC",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O GREGORY HOELSCHER",
+       "1 CLAPBOARD RIDGE ROAD"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GREENWICH",
+      "region": "US-CT",
+      "country": "US",
+      "postalCode": "06830"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "1 Clapboard Ridge Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Greenwich",
+      "region": "US-CT",
+      "country": "US",
+      "postalCode": "06830"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-11-19T18:21:27Z"
+    }
+   }
+  },
+  {
+   "id": "213800BC21RCGKK4C727",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 32 INVESTOR LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGETOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGETOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-27T06:04:06Z"
+    }
+   }
+  },
+  {
+   "id": "213800D6FGWYPMWJVA95",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 33 INVESTOR LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-04-27T16:16:22Z"
+    }
+   }
+  },
+  {
+   "id": "21380035ZEFJPXXXI123",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 31 INVESTOR LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD",
+       "PO BOX 2325, UBS HOUSE, 227 ELGIN AVENUE",
+       "UBS HOUSE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD",
+       "PO BOX 2325, 227 ELGIN AVENUE",
+       "UBS HOUSE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-05-25T15:15:45Z"
+    }
+   }
+  },
+  {
+   "id": "213800JBFN4KQ9ZFJ448",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE 30 INVESTOR LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, 227 ELGIN AVENUE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O UBS TRUSTEES (CAYMAN) LTD.",
+       "PO BOX 2325, 227 ELGIN AVENUE",
+       "UBS HOUSE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GEORGE TOWN",
+      "region": null,
+      "country": "KY",
+      "postalCode": "KY1-1106"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2021-05-06T07:02:24Z"
+    }
+   }
+  },
+  {
+   "id": "549300UVT5FMLPRVQX10",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE N SEAL, LLC",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O WILLIAM J OLMO III",
+       "4308 SANTA ROSA AVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SANTA ROSA",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "95407"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "4308 SANTA ROSA AVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SANTA ROSA",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "95407"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2025-06-20T07:14:19Z"
+    }
+   }
+  },
+  {
+   "id": "9845001GDDC586B58823",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "TIGER STRIPE INVESTMENTS PTY LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Level 1, 253 Gympie Terrace"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "NOOSAVILLE",
+      "region": "AU-QLD",
+      "country": "AU",
+      "postalCode": "4566"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Level 1, 253 Gympie Terrace"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "NOOSAVILLE",
+      "region": "AU-QLD",
+      "country": "AU",
+      "postalCode": "4566"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-02-17T10:04:53Z"
+    }
+   }
+  },
+  {
+   "id": "9845000583949FF5DB46",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "WHITE STRIPE FOODS PTY LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "20 RODBOROUGH ROAD",
+       "4 02B BUILDING A' LEVEL 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "FRENCHS FOREST",
+      "region": "AU-NSW",
+      "country": "AU",
+      "postalCode": "2086"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "20 RODBOROUGH ROAD",
+       "4 02B BUILDING A' LEVEL 4"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "FRENCHS FOREST",
+      "region": "AU-NSW",
+      "country": "AU",
+      "postalCode": "2086"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-06-05T08:56:33Z"
+    }
+   }
+  },
+  {
+   "id": "254900880DCLO98HK309",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Stripe International Finance Company Limited",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "One Wilton Park",
+       "Wilton Place",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "One Wilton Park",
+       "Wilton Place",
+       "Dublin 2"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D02 FX04"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-08T12:39:25Z"
+    }
+   }
+  },
+  {
+   "id": "549300TW4DBR7TK3OX31",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS AUSTRALIA PTY LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "1 Sussex Street"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Sydney",
+      "region": "AU-NSW",
+      "country": "AU",
+      "postalCode": "2000"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "1 Sussex Street"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Sydney",
+      "region": "AU-NSW",
+      "country": "AU",
+      "postalCode": "2000"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-07T20:19:42Z"
+    }
+   }
+  },
+  {
+   "id": "9845007B88E46491B514",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE TECHNOLOGY INDIA PRIVATE LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "Prestige Tech Pacific Park",
+       "10th Floor, Building 2, Kadubeesanahalli Village",
+       "Varthur Hobli, Bangalore East Taluk",
+       "Panathur"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Bangalore",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560103"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "Prestige Tech Pacific Park",
+       "10th Floor, Building 2, Kadubeesanahalli Village",
+       "Varthur Hobli, Bangalore East Taluk",
+       "Panathur"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Bangalore",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560103"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-09T19:10:02Z"
+    }
+   }
+  },
+  {
+   "id": "549300BZ4D63648LB590",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "STRIPE PAYMENTS SINGAPORE PTE. LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "38 Beach Road",
+       "#23-11",
+       "South Beach Tower"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Singapore",
+      "region": null,
+      "country": "SG",
+      "postalCode": "189767"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "38 Beach Road",
+       "#23-11",
+       "South Beach Tower"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Singapore",
+      "region": null,
+      "country": "SG",
+      "postalCode": "189767"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-05T18:38:55Z"
+    }
+   }
+  },
+  {
+   "id": "529900MK3XMKOGJUQW24",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "4 Stripe Zártkörűen Működő Részvénytársaság",
+      "language": "hu"
+     },
+     "legalAddress": {
+      "language": "hu",
+      "addressLines": [
+       "Lejtő utca 17. A. ép"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Budapest",
+      "region": null,
+      "country": "HU",
+      "postalCode": "1124"
+     },
+     "headquartersAddress": {
+      "language": "hu",
+      "addressLines": [
+       "Lejtő utca 17. A. ép"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Budapest",
+      "region": null,
+      "country": "HU",
+      "postalCode": "1124"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2022-12-13T13:10:11Z"
+    }
+   }
+  },
+  {
+   "id": "254900XZLW6F69SVFQ60",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Defiance Daily Target 2X Short Stripe ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O THE CORPORATION TRUST COMPANY",
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Tidal Investments LLC",
+       "234 W Florida Street",
+       "Suite 700"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Milwaukee",
+      "region": "US-WI",
+      "country": "US",
+      "postalCode": "53204"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-05-11T11:17:43Z"
+    }
+   }
+  },
+  {
+   "id": "254900HGJGSQFSU74878",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Defiance Daily Target 2X Long Stripe ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O THE CORPORATION TRUST COMPANY",
+       "CORPORATION TRUST CENTER",
+       "1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Tidal Investments LLC",
+       "234 W Florida Street",
+       "Suite 700"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Milwaukee",
+      "region": "US-WI",
+      "country": "US",
+      "postalCode": "53204"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-05-11T06:51:21Z"
+    }
+   }
+  },
+  {
+   "id": "254900H7OHLVNZN6AO10",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "PG STRIPE JOINT INITIATIVE S.C.A., SICAV-RAIF",
+      "language": "fr"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "35D, Avenue John F. Kennedy"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Luxembourg",
+      "region": "LU-LU",
+      "country": "LU",
+      "postalCode": "L-1855"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Partners Group Management VI (USD) S.a r.l.",
+       "35D, Avenue J.F. Kennedy"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Luxembourg",
+      "region": "LU-LU",
+      "country": "LU",
+      "postalCode": "L-1855"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-10-03T13:17:18Z"
+    }
+   }
+  }
+ ]
+}

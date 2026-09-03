@@ -1,0 +1,162 @@
+{
+ "entities": {
+  "Q11299": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Manhattan"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q11299$1DF808A1-71EC-4667-8DFC-E8BF7C15AA28",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "9a5915d4acc79368499dde803e4d1d385e992604",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "d29d09e6acaeb2bde42bcc6eb145b6c39fd49019",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 18912790,
+             "id": "Q18912790"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P244": [
+          {
+           "snaktype": "value",
+           "property": "P244",
+           "hash": "10b41833ea7536dc5471eda90c350b8825f1766e",
+           "datavalue": {
+            "value": "n80118393",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "387c47677d25efdc2964f9b85fd894d6ffefc631",
+           "datavalue": {
+            "value": {
+             "time": "+2021-04-23T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P244",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P571": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P571",
+       "hash": "4e23eba74fa098555f476fb2228fc91871855af1",
+       "datavalue": {
+        "value": {
+         "time": "+1624-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q11299$E35274EE-DE99-47F0-AA0E-BA80CF024156",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "9a24f7c0208b05d6be97077d855671d1dfdbc0dd",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 48183,
+             "id": "Q48183"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q34579349": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Adam Neumann"
+    }
+   },
+   "claims": {}
+  },
+  "Q42666281": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Miguel McKelvey"
+    }
+   },
+   "claims": {}
+  }
+ }
+}
