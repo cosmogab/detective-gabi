@@ -2,8 +2,9 @@ node_modules/
 .next/
 out/
 build/
-.env
-.env*.local
+# Every env file is ignored. The committed template is the one exception.
+.env*
+!.env.example
 .vercel
 .DS_Store
 *.log
