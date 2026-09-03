@@ -42,6 +42,18 @@ measured being refused with 403 while another returned 200 from the same machine
 a Belgian company legally named exactly STRIPE. Rather than guess, GLEIF answers nothing and names
 the competing locations, so Stripe currently has no registry source. Passing a LEI resolves it.
 
+**A web candidate carries its publisher's domain.** A Tavily result becomes a candidate whose
+`domain` is the host of the page (`en.wikipedia.org`, `x.com`) and whose `name` is an article
+title, and both travel on into `ProviderInput` — so into GLEIF's legal-name filter and EDGAR's CIK
+lookup. A page that mentions a company is not that company, and the route does not yet make the
+distinction. The path is only reachable with a Tavily key.
+
+**The Tavily payload is built, not recorded.** The one test that exercises that path fabricates its
+response, and fabricates it in the shape the code already handles: one result where the API returns
+five, and precisely the one that deduplicates cleanly. It is the opposite of D21 and it is the
+weakest test in the repo. Tavily documents a keyless access mode, so a real recording is obtainable
+without a key — the replacement is owed.
+
 **The committed recordings predate the real providers.** They were captured by hand before the
 providers existed, and the pipeline has since become stricter — Stripe's registry source is one it
 would no longer produce. They are due to be re-recorded once identity resolution can supply a LEI.

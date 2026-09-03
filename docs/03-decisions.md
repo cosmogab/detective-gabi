@@ -508,6 +508,30 @@ investigateHref() from the server but investigateHref is on the client."*
 does not enforce, so it belongs written down before Wave 3 wires anything else across it. It is the
 second time in one task that rendering the real page caught what `tsc` and `next build` could not.
 
+## D46 — A capped search may not report the cap as a fact about the world
+
+**Context.** `wbsearchentities` was read twelve matches deep. Apollo Global Management is the
+twenty-sixth match. The route answered `not-found` and named Wikidata as the source it had
+checked — an absence asserted about a source that holds the company, with an LEI and a CIK.
+**Choice.** Read fifty. More generally: a limit we impose on ourselves is never evidence about
+what a source contains, and `sourcesChecked` may only name a source we actually read to the end
+of what we asked it for.
+**Consequence.** Verified live: `apollo` now returns Apollo Global Management first among its
+candidates. The test that used to pin the truncated answer as honest now proves the opposite, and
+carries the reason it exists.
+
+## D47 — `organization` stays among the company classes, and the noise stays visible
+
+**Context.** Candidacy is decided by walking `P31 → P279` to a set of root classes. Keeping
+`organization` among them lets a university or a municipality through: `florida` returns Florida
+A&M University among its candidates.
+**Options.** Drop `organization` — which would also drop record labels, and would make `apollo`
+resolve straight to a company in Bratislava, hiding the rank-26 company D46 exists to surface.
+**Choice.** Keep it. Prefer visible noise over invisible absence: every candidate carries its own
+description, so a reader sees immediately that they are looking at a university.
+**Consequence.** Ambiguous answers are longer than they strictly need to be. That is the cost of
+never silently discarding the right answer with the wrong ones.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
