@@ -139,3 +139,11 @@ CI running `npm test` on push, Vercel deploy, live URL in the README, fixtures f
 **First to go if two hours behind:** T11 (candidate grid → keep only "Not the right company?"),
 the Markdown export, the magnifier animation, half the themed vocabulary.
 **Never cut:** the guardrail tests, the log, the honest empty states, the README.
+
+---
+
+## Running this in parallel
+
+See [`PARALLEL.md`](PARALLEL.md) for the wave decomposition, file-ownership table and the
+ready-to-paste brief for each lane. The task numbers above map onto the waves: T1-T6 are Wave 0,
+T5/T7/T9/T13/T14/T15 are Wave 1, T10/T11/T16/T17 are Wave 2, the rest is Wave 3.
