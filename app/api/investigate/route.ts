@@ -1,9 +1,15 @@
 import { z } from 'zod'
+// The one place a moment is turned into words (D26). It lives in a component file because no
+// other module owned it when it was written; a second copy here would be the drift D26 exists
+// to prevent, so it is imported rather than repeated.
+import { formatFetchedAt } from '@/app/components/FieldRow'
 import { investigateCached } from '@/lib/cache'
+import { demoProviders, parseDemoMode } from '@/lib/demo'
 import { edgar } from '@/lib/providers/edgar'
 import { gleif } from '@/lib/providers/gleif'
 import type { Ctx, Provider } from '@/lib/providers/types'
 import { wikidata } from '@/lib/providers/wikidata'
+import { checkRateLimit, rateLimitNotice } from '@/lib/ratelimit'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
 /**
@@ -26,6 +32,8 @@ const requestSchema = z.object({
   domain: z.string().trim().max(253).nullable().optional(),
   /** An explicit gesture: go past whatever is stored and investigate again (SPEC §6.5). */
   refresh: z.boolean().optional(),
+  /** `?demo=` forwarded verbatim. Anything unrecognised is null, not an error (SPEC §7). */
+  demo: z.string().max(40).nullable().optional(),
 })
 
 /**
@@ -46,6 +54,18 @@ function keysFrom(headers: Headers): (id: Source) => string | null {
   return (id) => headers.get(`x-dg-key-${id}`)
 }
 
+/**
+ * The caller's address, for the rate limiter's counter and nothing else (SPEC §9). It is not
+ * logged, not put in the report, not sent anywhere. Vercel rewrites `x-forwarded-for` at the
+ * edge, so it can be trusted there; locally there is none and every caller shares one bucket,
+ * which is the strict direction to fail in.
+ */
+function clientIp(headers: Headers): string {
+  const forwarded = headers.get('x-forwarded-for')
+  if (forwarded !== null) return forwarded.split(',')[0]?.trim() ?? ''
+  return headers.get('x-real-ip')?.trim() ?? ''
+}
+
 export async function POST(request: Request): Promise<Response> {
   const parsed = requestSchema.safeParse(await request.json().catch(() => null))
   if (!parsed.success) {
@@ -55,13 +75,27 @@ export async function POST(request: Request): Promise<Response> {
   // One clock for the whole run, read once and used in both shapes: the report stamps itself
   // with the ISO string, the cache does its arithmetic on the milliseconds.
   const startedAt = Date.now()
+
+  // A demonstration reaches no source, so it spends no quota and is not counted against one.
+  const demo = parseDemoMode(parsed.data.demo)
+  const providers = demo === null ? PROVIDERS : demoProviders(demo)
+  const verdict =
+    demo === null
+      ? checkRateLimit(clientIp(request.headers), startedAt)
+      : { allowed: true, keyedProvidersAllowed: true }
+
   const ctx: Ctx = {
     key: keysFrom(request.headers),
     signal: request.signal,
     now: new Date(startedAt).toISOString(),
-    // The per-IP limit that can switch this off is T18's; nothing keyed runs yet regardless.
-    allowKeyedProviders: true,
+    // Past the limit this goes false, every keyed provider's `available` returns false, and
+    // the orchestrator records each one as `skipped`. The limit degrades; it never refuses.
+    allowKeyedProviders: verdict.keyedProvidersAllowed,
   }
+
+  // Caller-specific, so it is added to what this caller is sent and never to what is stored:
+  // another visitor's window is not this one's. Null unless the limit withheld something.
+  const notice = rateLimitNotice(verdict, providers, formatFetchedAt)
 
   const encoder = new TextEncoder()
   const stream = new ReadableStream<Uint8Array>({
@@ -79,17 +113,25 @@ export async function POST(request: Request): Promise<Response> {
         }
       }
       try {
+        if (notice !== null) send({ type: 'event', event: notice })
         // A cache hit emits nothing: the stored report carries the log of the run that
         // happened, and sending those lines now would pass another moment's measurements off
         // as this one's.
         const report = await investigateCached(
           { name: parsed.data.name, domain: parsed.data.domain ?? null },
-          PROVIDERS,
+          providers,
           ctx,
           (event) => send({ type: 'event', event }),
-          { refresh: parsed.data.refresh ?? false, now: startedAt },
+          {
+            refresh: parsed.data.refresh ?? false,
+            now: startedAt,
+            simulated: demo !== null,
+          },
         )
-        send({ type: 'report', report })
+        send({
+          type: 'report',
+          report: notice === null ? report : { ...report, log: [notice, ...report.log] },
+        })
       } catch {
         // Nothing from the thrown value is forwarded: an error object here could carry a key
         // or an internal URL, and neither belongs on a client.

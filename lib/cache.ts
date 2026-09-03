@@ -3,7 +3,7 @@ import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
 import type { LogEvent, Report } from '@/lib/types'
 
 /**
- * TTL cache keyed by domain. In-memory, backed by `/tmp` locally.
+ * TTL cache keyed by domain and by how far the run was allowed to reach. In-memory.
  *
  * On Vercel the filesystem is ephemeral, so this is a quota guard and a warm-instance speed
  * win, not persistence — see decision D5. `now` is passed in so the TTL can be tested without
@@ -20,18 +20,38 @@ const TTL_MS = 24 * 60 * 60 * 1000
  */
 const TTL_AFTER_FAILURE_MS = 15 * 60 * 1000
 
+/**
+ * How far a run was allowed to reach. Past the per-IP limit the keyed sources are skipped and
+ * the report is poorer — and that poorer report must not become the answer served to callers
+ * who were never limited. So the reach is part of the key: two runs of different reach are two
+ * different answers about the same company, not one answer that happens to vary by caller.
+ */
+export type Reach = 'full' | 'keyless'
+
 type Entry = { report: Report; expiresAt: number }
 
 const entries = new Map<string, Entry>()
 
 /**
- * The key is the domain and nothing else. A bare name is not a key: two companies can share
- * one, and answering the second with the first's report is the kind of invention this app
- * exists to refuse. No domain means no cache, in both directions.
+ * The key is the domain and the reach, and nothing else. A bare name is not a key: two
+ * companies can share one, and answering the second with the first's report is the kind of
+ * invention this app exists to refuse. No domain means no cache, in both directions.
  */
-function keyFor(domain: string): string | null {
+function keyFor(domain: string, reach: Reach): string | null {
   const key = domain.trim().toLowerCase()
-  return key === '' ? null : key
+  // A domain cannot contain a space, so the two halves of the key cannot run together.
+  return key === '' ? null : `${reach} ${key}`
+}
+
+/**
+ * A run is only "keyless" if the limit actually withheld something. When no provider in the
+ * run needs a key, being past the limit changed nothing, so the answer is the same answer and
+ * splitting the cache would only halve its hit rate for nothing. Every provider wired today is
+ * keyless, so today every run is `full`.
+ */
+function reachOf(providers: readonly Provider[], ctx: Ctx): Reach {
+  if (ctx.allowKeyedProviders) return 'full'
+  return providers.some((provider) => provider.requiresKey) ? 'keyless' : 'full'
 }
 
 function ttlFor(report: Report): number {
@@ -43,8 +63,8 @@ function ttlFor(report: Report): number {
  * A stored report always comes back marked. `cached` and `cachedAt` are set here rather than
  * by the caller, so there is no way to be handed a stored answer that does not say it is one.
  */
-export function readCache(domain: string, now: number): Report | null {
-  const key = keyFor(domain)
+export function readCache(domain: string, now: number, reach: Reach = 'full'): Report | null {
+  const key = keyFor(domain, reach)
   if (key === null) return null
 
   const entry = entries.get(key)
@@ -57,12 +77,34 @@ export function readCache(domain: string, now: number): Report | null {
   return { ...structuredClone(entry.report), cached: true, cachedAt: entry.report.fetchedAt }
 }
 
-export function writeCache(domain: string, report: Report, now: number): void {
-  const key = keyFor(domain)
+export function writeCache(
+  domain: string,
+  report: Report,
+  now: number,
+  reach: Reach = 'full',
+): void {
+  // A forced failure is not an observation, and this is the door it would come through:
+  // `?demo=timeout` on stripe.com would otherwise store a fabricated outage under stripe.com
+  // and hand it to the next visitor — who asked for nothing of the sort — under a `Cached`
+  // line certifying that it happened. The guard is here rather than at the call site so no
+  // caller can forget it.
+  if (report.simulated) return
+
+  const key = keyFor(domain, reach)
   if (key === null) return
   // A copy in each direction, so a caller holding the report cannot edit what the next
   // reader is served.
   entries.set(key, { report: structuredClone(report), expiresAt: now + ttlFor(report) })
+}
+
+/**
+ * A keyless caller may be served a full answer: it is strictly richer and cost them nothing.
+ * The reverse is refused — that is the whole point of the split.
+ */
+function readForReach(domain: string, now: number, reach: Reach): Report | null {
+  const full = readCache(domain, now, 'full')
+  if (full !== null) return full
+  return reach === 'keyless' ? readCache(domain, now, 'keyless') : null
 }
 
 /** Drops every entry. For tests, and for an explicit refresh. */
@@ -75,25 +117,33 @@ export function clearCache(): void {
  * investigate and store the result.
  *
  * It lives here rather than in the route so the policy — what the second call costs, what
- * refresh costs — is provable without a server. A cache hit emits no `LogEvent`: the stored
- * report carries the log of the run that actually happened, and replaying those lines now
- * would present another moment's measurements as this one's.
+ * refresh costs, what a demonstration leaves behind — is provable without a server. A cache
+ * hit emits no `LogEvent`: the stored report carries the log of the run that actually
+ * happened, and replaying those lines now would present another moment's measurements as
+ * this one's.
  */
 export async function investigateCached(
   input: ProviderInput,
   providers: readonly Provider[],
   ctx: Ctx,
   onEvent: (event: LogEvent) => void,
-  options: { refresh: boolean; now: number },
+  options: { refresh: boolean; now: number; simulated?: boolean },
 ): Promise<Report> {
   const domain = input.domain ?? ''
+  const simulated = options.simulated === true
+  const reach = reachOf(providers, ctx)
 
-  if (!options.refresh) {
-    const stored = readCache(domain, options.now)
+  // A simulated run is sealed off from the cache in both directions. It must not read one —
+  // someone who asked for a forced failure has to be shown the failure, not a stored real
+  // answer — and it must not write one. Marking the report and refusing the cache are the
+  // same decision, so they are made in the same place.
+  if (!simulated && !options.refresh) {
+    const stored = readForReach(domain, options.now, reach)
     if (stored !== null) return stored
   }
 
-  const report = await investigate(input, providers, ctx, onEvent)
-  writeCache(domain, report, options.now)
+  const investigated = await investigate(input, providers, ctx, onEvent)
+  const report = simulated ? { ...investigated, simulated: true } : investigated
+  writeCache(domain, report, options.now, reach)
   return report
 }

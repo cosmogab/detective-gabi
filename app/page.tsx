@@ -12,6 +12,10 @@ import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from
  * recording, which is what the field's own label promises — `api/resolve` is a stub and T10 has
  * not been done, so nothing here resolves a name to a company.
  *
+ * `?demo=` rides along with `?investigate=` and forces a failure state (SPEC §7). It is passed
+ * through untouched: the route knows the failure names, and a report built that way comes back
+ * marked `simulated`, which is what puts the label on the screen.
+ *
  * A recording is never passed off as a fresh investigation: it is served under a line that
  * names it a recording and dates it, beside the link that investigates the same company now.
  */
@@ -121,6 +125,11 @@ export default async function Home({
           name={target}
           domain={domain === '' ? null : domain}
           refresh={first(params.refresh) !== ''}
+          // Forwarded as typed. The route is what decides whether it names a failure state,
+          // and an unrecognised value simply is not one — it is never an error (SPEC §7).
+          demo={first(params.demo)}
+          // Deliberately without `demo`: from a simulated report this link is the way back to
+          // a real investigation, which is the same gesture as refreshing a stored one.
           refreshHref={investigateHref(target, domain === '' ? null : domain, { refresh: true })}
         />
         <div className="mx-auto max-w-case px-6 pb-14">
