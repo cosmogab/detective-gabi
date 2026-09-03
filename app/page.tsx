@@ -1,5 +1,6 @@
 import { CaseFile } from '@/app/components/CaseFile'
-import { Sep } from '@/app/components/FieldRow'
+import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
+import { LiveInvestigation } from '@/app/components/InvestigationLog'
 import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 
@@ -7,9 +8,12 @@ import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from
  * Home and case file are one page, switched by the URL, so a report is shareable and
  * reloadable (SPEC §6).
  *
- * No investigation runs here. `api/resolve` is a stub and T10 has not been done, so the field
- * opens one of the four recordings and says so — a field that looked like it searched and did
- * not would be exactly the invention this app refuses.
+ * `?investigate=` runs a real investigation and streams it. `?q=` and `?domain=` still open a
+ * recording, which is what the field's own label promises — `api/resolve` is a stub and T10 has
+ * not been done, so nothing here resolves a name to a company.
+ *
+ * A recording is never passed off as a fresh investigation: it is served under a line that
+ * names it a recording and dates it, beside the link that investigates the same company now.
  */
 
 /** Every name a recording answers to: its fixture key, its company name, its domain, its query. */
@@ -23,6 +27,9 @@ const ON_RECORD = FIXTURE_NAMES.map((name) => {
     keys: keys.map((key) => key.toLowerCase()),
   }
 })
+
+/** Read off the recordings rather than written down, so it cannot drift from them. */
+const RECORDED_ON = formatFetchedAt(fixtureReport(FIXTURE_NAMES[0] ?? 'stripe').fetchedAt)
 
 /**
  * An exact match on one of those names, and nothing looser. A prefix or fuzzy match would be
@@ -41,6 +48,33 @@ function first(value: string | string[] | undefined): string {
 }
 
 const FIELDS = ['Location (HQ)', 'Age (year founded)', 'Employees', 'Decision makers']
+
+/** The one URL that means "run this now". Kept in one place so it cannot drift. */
+function investigateHref(name: string, domain: string | null): string {
+  const params = new URLSearchParams({ investigate: name })
+  if (domain !== null) params.set('domain', domain)
+  return `/?${params.toString()}`
+}
+
+/** The wordmark and the field, ruled off so a document starts where the furniture stops. */
+function Masthead(props: { defaultQuery: string }) {
+  return (
+    <div className="mx-auto max-w-case px-6 pt-8">
+      <div className="border-b border-b-rule pb-8">
+        <a
+          href="/"
+          className="inline-flex items-center gap-x-2 font-case text-lg text-ink transition-colors hover:text-accent"
+        >
+          <Magnifier className="text-rule-strong" />
+          Detective Gabi
+        </a>
+        <div className="mt-5">
+          <SearchBar defaultQuery={props.defaultQuery} />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 /** SPEC §9 asks for a visible line, and it belongs most where people are actually named. */
 function Ethics() {
@@ -63,29 +97,53 @@ export default async function Home({
   // The domain is the resolved identifier, so it wins when both are present (SPEC §6).
   const domain = first(params.domain)
   const query = first(params.q)
+  const target = first(params.investigate)
   const asked = domain !== '' ? domain : query
   const found = domain !== '' ? fixtureForDomain(domain.trim().toLowerCase()) : onRecord(query)
 
-  if (found !== null) {
+  // An explicit action, so no URL ever means both "investigate this now" and "reopen the
+  // recording of it".
+  if (target !== '') {
     return (
       <main>
-        {/* The chrome is ruled off from the document, so the case file starts where the
-            page furniture stops. */}
-        <div className="mx-auto max-w-case px-6 pt-8">
-          <div className="border-b border-b-rule pb-8">
-            <a
-              href="/"
-              className="inline-flex items-center gap-x-2 font-case text-lg text-ink transition-colors hover:text-accent"
-            >
-              <Magnifier className="text-rule-strong" />
-              Detective Gabi
-            </a>
-            <div className="mt-5">
-              <SearchBar defaultQuery={asked} />
-            </div>
-          </div>
+        <Masthead defaultQuery={asked} />
+        <LiveInvestigation name={target} domain={domain === '' ? null : domain} />
+        <div className="mx-auto max-w-case px-6 pb-14">
+          <Ethics />
         </div>
-        <CaseFile report={fixtureReport(found)} />
+      </main>
+    )
+  }
+
+  if (found !== null) {
+    // The screen and the data have to agree: a report served from disk is not one we just
+    // fetched, and `Report` already carries the fields that say so. T17 renders the same two
+    // fields for a TTL cache hit.
+    const captured = fixtureReport(found)
+    const recording = { ...captured, cached: true, cachedAt: captured.fetchedAt }
+    return (
+      <main>
+        <Masthead defaultQuery={asked} />
+        {/* A recording shown without saying so would be the same fault as an invented value:
+            the page would be claiming an investigation that did not happen. */}
+        <div className="mx-auto max-w-case px-6 pt-8">
+          <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-l-4 border-l-rule-strong py-2 pl-4">
+            <span className="label text-ink">Recording</span>
+            <Sep />
+            <span className="font-sans text-sm text-muted">
+              captured {formatFetchedAt(recording.cachedAt ?? recording.fetchedAt)}, not
+              investigated just now
+            </span>
+            <Sep />
+            <a
+              href={investigateHref(recording.company.name, recording.company.domain)}
+              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            >
+              Investigate now
+            </a>
+          </p>
+        </div>
+        <CaseFile report={recording} />
         <div className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
         </div>
@@ -126,19 +184,29 @@ export default async function Home({
       {asked !== '' ? (
         <div className="mt-6 max-w-lg border-y border-y-rule border-l-4 border-l-rule-strong py-3 pl-4">
           <p className="font-sans text-sm text-ink">
-            <span className="font-medium">No search ran.</span> This page opens case files that
+            <span className="font-medium">No search ran.</span> The field opens case files that
             are already on record, and <span className="datum">{asked}</span> is not one of them.
+          </p>
+          {/* Nothing was searched, but something can be: this is the action that actually
+              runs, named as an action rather than implied by the field. */}
+          <p className="mt-2">
+            <a
+              href={investigateHref(asked, null)}
+              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            >
+              Investigate {asked} now
+            </a>
           </p>
         </div>
       ) : null}
 
       <section className="mt-10">
-        <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">On record</h2>
+        <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">Investigate one</h2>
         <ul className="mt-4 flex flex-wrap gap-3">
           {ON_RECORD.map((entry) => (
             <li key={entry.name}>
               <a
-                href={`/?domain=${entry.domain ?? ''}`}
+                href={investigateHref(entry.company, entry.domain)}
                 className="block border border-rule bg-card px-3 py-2 transition-colors hover:border-accent"
               >
                 <span className="datum block text-ink">{entry.company}</span>
@@ -147,6 +215,20 @@ export default async function Home({
             </li>
           ))}
         </ul>
+        {/* The recordings are why the demo works when a source is down (D5). They are offered
+            as recordings, never as a fresh investigation. */}
+        <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-sans text-xs text-faint">
+          <span>Each is also on record from {RECORDED_ON}, if a source is down:</span>
+          {ON_RECORD.map((entry) => (
+            <a
+              key={entry.name}
+              href={`/?domain=${entry.domain ?? ''}`}
+              className="font-mono text-xs text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            >
+              {entry.company}
+            </a>
+          ))}
+        </p>
       </section>
 
       <details className="mt-12 border-t border-t-rule-strong">
