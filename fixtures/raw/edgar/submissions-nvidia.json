@@ -1,0 +1,33 @@
+{
+ "cik": "0001045810",
+ "name": "NVIDIA CORP",
+ "tickers": [
+  "NVDA"
+ ],
+ "addresses": {
+  "mailing": {
+   "street1": "2788 SAN TOMAS EXPRESSWAY",
+   "street2": null,
+   "city": "SANTA CLARA",
+   "stateOrCountry": "CA",
+   "zipCode": "95051",
+   "stateOrCountryDescription": "CA",
+   "isForeignLocation": 0,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  },
+  "business": {
+   "street1": "2788 SAN TOMAS EXPRESSWAY",
+   "street2": null,
+   "city": "SANTA CLARA",
+   "stateOrCountry": "CA",
+   "zipCode": "95051",
+   "stateOrCountryDescription": "CA",
+   "isForeignLocation": null,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  }
+ }
+}

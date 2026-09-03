@@ -1,0 +1,457 @@
+{
+ "entities": {
+  "Q7501150": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Shopify"
+    }
+   },
+   "claims": {
+    "P159": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P159",
+       "hash": "98c750929fd23ddf6f1c0481695935cef8255469",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1930,
+         "id": "Q1930"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7501150$fd16e14d-4811-6d07-654b-7cb5c6b22c57",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "a2c18436670a8387844f5d31c192fff1705251bb",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "4f833b96005b0585ddf433b5c2ed73e20458d9a0",
+           "datavalue": {
+            "value": "https://fortune.com/unicorns/2016/shopify/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "549ffed85e45697fa7f45b7a723278f67728b443",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 97466108,
+             "id": "Q97466108"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "26a5f038459f54a82959858b076401b9d93382bc",
+           "datavalue": {
+            "value": {
+             "time": "+2020-07-17T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "5eedd03b9e8e063759f4fc617bf13c44c282efcf",
+           "datavalue": {
+            "value": {
+             "time": "+2016-01-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 9,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P248",
+         "P813",
+         "P577"
+        ]
+       }
+      ]
+     }
+    ],
+    "P571": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P571",
+       "hash": "47fd3e17c5b9f429115086f36ea29f748c63550e",
+       "datavalue": {
+        "value": {
+         "time": "+2006-00-00T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 9,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q7501150$76a9c23c-472d-4af9-645f-c00552f536c6",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "5607ca2758bfb38a05ae672bce4fde0b759ab98e",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P4656": [
+          {
+           "snaktype": "value",
+           "property": "P4656",
+           "hash": "072c02a8f497ddc16d03a23844af2bede89ef85e",
+           "datavalue": {
+            "value": "https://en.wikipedia.org/wiki/Shopify",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "3c6c0e20106752d03e85e45ae5c603436635337c",
+           "datavalue": {
+            "value": {
+             "time": "+2025-12-03T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143",
+         "P4656",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "a3723c4c3601569aebcc86e0f0c5c3697821da1b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16,
+         "id": "Q16"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7501150$94821bd1-4753-7dbe-4e84-f84b993b8198",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "549e66cf8f85e0ff6b6ee38c7c24da3ea3d48afe",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "1e3161cdcbc21757eccc2287fe82bc204252dc2a",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/shopify-inc?rid=104142342214-75",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P112": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P112",
+       "hash": "bb8aba84232c6b0e81831663ab4c4d194535aad9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20684647,
+         "id": "Q20684647"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q7501150$4842ec3b-493a-8a29-70e6-8d4f130fb7a5",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1128": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "95687757e4a9f2e578d454e8facaec5c12a89174",
+       "datavalue": {
+        "value": {
+         "amount": "+10000",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "4a6fe7f861358928efef462e361b21704446d129",
+         "datavalue": {
+          "value": {
+           "time": "+2021-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q7501150$7a264d33-48d9-4747-4db3-95f857913361",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8d36132d56920d26b4d61cee4088b255b2b5b163",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "d832135e098ea625ac817201818cd9d86298294b",
+           "datavalue": {
+            "value": "https://s27.q4cdn.com/572064924/files/doc_financials/2021/q4/99a0d08d-4015-4a0a-a8fb-fe6ec66553c4.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       },
+       {
+        "hash": "7341cc5127076d6f7bfa30269872e6fad7a0372e",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "730916196fee7c8d7ef2b96afdf071b8d3434bc2",
+           "datavalue": {
+            "value": "https://news.shopify.com/company-info",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "1823500ef5d9fff065b7dadd5111085d87defddc",
+       "datavalue": {
+        "value": {
+         "amount": "+8300",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "1a3e5e8f69f70a8a6b056a6cb8cf5fce7fffa373",
+         "datavalue": {
+          "value": {
+           "time": "+2023-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q7501150$adcb7ba3-4e9f-a414-2821-96b08a60e3b7",
+      "rank": "preferred",
+      "references": [
+       {
+        "hash": "8b7e87755d1674699a8f27ff59451b40f046b581",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "946c16f810e1c175bb9bc66f0ad62b03bc43cf07",
+           "datavalue": {
+            "value": "https://www.shopify.com/news/company-info",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ada3eb68726a05b9f07e34683e5c78b25c52f941",
+           "datavalue": {
+            "value": {
+             "time": "+2024-03-22T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

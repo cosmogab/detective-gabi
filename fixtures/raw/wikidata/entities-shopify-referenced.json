@@ -1,0 +1,127 @@
+{
+ "entities": {
+  "Q1930": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Ottawa"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "a3723c4c3601569aebcc86e0f0c5c3697821da1b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16,
+         "id": "Q16"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q1930$7D6FA512-918F-479A-9A92-1BEBD4282725",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "dcad0ac942977f96456b1dbaa2da49afe617ee68",
+        "snaks": {
+         "P5573": [
+          {
+           "snaktype": "value",
+           "property": "P5573",
+           "hash": "a003ed4d42975f1b8cc851d537c3b7ed56ad8642",
+           "datavalue": {
+            "value": "1212",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "c619cc6e0e5fe3733a8c4a47939343e5970e0e9d",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 265049,
+             "id": "Q265049"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "0c8bd92e73708301fbdef488186bd3197b7c3d1c",
+           "datavalue": {
+            "value": {
+             "time": "+2018-08-06T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P5573",
+         "P248",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P571": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P571",
+       "hash": "7b3be33f93adb8028551ec69e3cded7a39c4a938",
+       "datavalue": {
+        "value": {
+         "time": "+1855-01-01T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q1930$7c410f9e-4db4-4104-fb16-164dafd9da33",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q20684647": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Tobias Lütke"
+    }
+   },
+   "claims": {}
+  }
+ }
+}

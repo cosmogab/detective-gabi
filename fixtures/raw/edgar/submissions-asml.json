@@ -1,0 +1,34 @@
+{
+ "cik": "0000937966",
+ "name": "ASML HOLDING NV",
+ "tickers": [
+  "ASML",
+  "ASMLF"
+ ],
+ "addresses": {
+  "mailing": {
+   "street1": "P.O. BOX 324",
+   "street2": null,
+   "city": "AH VELDHOVEN",
+   "stateOrCountry": "P7",
+   "zipCode": "5500",
+   "stateOrCountryDescription": "Netherlands",
+   "isForeignLocation": 0,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  },
+  "business": {
+   "street1": "DE RUN 6501",
+   "street2": null,
+   "city": "DR VELDHOVEN",
+   "stateOrCountry": "P7",
+   "zipCode": "5504",
+   "stateOrCountryDescription": "Netherlands",
+   "isForeignLocation": null,
+   "foreignStateTerritory": null,
+   "country": null,
+   "countryCode": null
+  }
+ }
+}

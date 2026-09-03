@@ -1,0 +1,905 @@
+{
+ "meta": {
+  "pagination": {
+   "total": 20
+  }
+ },
+ "data": [
+  {
+   "id": "549300S4KLFTLO7GSQ80",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NVIDIA CORPORATION",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CORPORATION SERVICE COMPANY",
+       "251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "2788 SAN TOMAS EXPRESSWAY"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SANTA CLARA",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "95051"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-07T01:29:18Z"
+    }
+   }
+  },
+  {
+   "id": "549300EK80J3WR5TSA69",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NVIDIA INTERNATIONAL, INC.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CORPORATION SERVICE COMPANY",
+       "251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "2788 SAN TOMAS EXPRESSWAY"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SANTA CLARA",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "95051"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-07T12:02:49Z"
+    }
+   }
+  },
+  {
+   "id": "529900YQV0X0R0T0AZ11",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Defiance Nvidia Ventures ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o THE CORPORATION TRUST COMPANY, CORPORATION TRUST CENTER, 1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o DEFIANCE ETFS, LLC, c/o THE CORPORATION TRUST COMPANY, CORPORATION TRUST CENTER, 1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o DEFIANCE ETFS, LLC",
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-01T09:04:48Z"
+    }
+   }
+  },
+  {
+   "id": "894500UB1PEXN75HFT11",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NINEPOINT NVIDIA HIGHSHARES ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "200 Bay Street, Suite 2700"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2J1"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "200 Bay Street, Suite 2700"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2J1"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-27T19:26:49Z"
+    }
+   }
+  },
+  {
+   "id": "335800TGZ6N1BWAN7Q35",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NVIDIA GRAPHICS PRIVATE LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "BAGMANE GOLDSTONE BUILDING",
+       "NORTH TOWER",
+       "ADJACENT TO WORLD TECHNOLOGY CENTRE",
+       "MAHADEVAPURA, K R PURAM HOBLI, MARATHAHALLI OUTER RING ROAD"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "BENGALURU",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560048"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "BAGMANE GOLDSTONE BUILDING",
+       "NORTH TOWER",
+       "ADJACENT TO WORLD TECHNOLOGY CENTRE",
+       "MAHADEVAPURA, K R PURAM HOBLI, MARATHAHALLI OUTER RING ROAD"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "BENGALURU",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560048"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-11-26T11:54:55Z"
+    }
+   }
+  },
+  {
+   "id": "54930030GWBYMACGJH60",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Nvidia Land Development, LLC",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Corporation Service Company",
+       "251 LITTLE FALLS DRIVE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Wilmington",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19808"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "2701 San Tomas Expressway"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Santa Clara",
+      "region": "US-CA",
+      "country": "US",
+      "postalCode": "95050"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2026-06-05T15:19:01Z"
+    }
+   }
+  },
+  {
+   "id": "549300PVTLDCMDI67P44",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NVIDIA SINGAPORE PTE LTD",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "6001 BEACH ROAD",
+       "#15-01",
+       "GOLDEN MILE TOWER"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SINGAPORE",
+      "region": null,
+      "country": "SG",
+      "postalCode": "199589"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "6001 BEACH ROAD",
+       "#15-01",
+       "GOLDEN MILE TOWER"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SINGAPORE",
+      "region": null,
+      "country": "SG",
+      "postalCode": "199589"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-03-06T09:12:32Z"
+    }
+   }
+  },
+  {
+   "id": "894500I8OX9LOVW96G05",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Global X NVIDIA PowerStock ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "800 - 55 University Avenue"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Global X Investments Canada Inc.",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2H7"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "800 - 55 University Avenue"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Global X Investments Canada Inc.",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2H7"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-27T21:32:15Z"
+    }
+   }
+  },
+  {
+   "id": "529900DNJ8TTBQ7N3A45",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Kurv Nvidia (NVDA) Enhanced Income ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o THE CORPORATION TRUST COMPANY, CORPORATION TRUST CENTER, 1209 ORANGE ST"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o Kurv Investment Management LLC, c/o FILEJET INC., 144 KINGS HIGHWAY SOUTHWEST, SUITE 304"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Kurv Investment Management LLC",
+      "city": "DOVER",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19901"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-04-02T11:39:01Z"
+    }
+   }
+  },
+  {
+   "id": "254900QNA8QINPCSJ486",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Tuttle Capital NVIDIA Income Blast ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o Capitol Services, Inc.",
+       "108 Lakeland Ave."
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dover",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19901"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o Tuttle Capital Management, LLC",
+       "155 Lockwood Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Riverside",
+      "region": "US-CT",
+      "country": "US",
+      "postalCode": "06878"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-11-20T11:39:46Z"
+    }
+   }
+  },
+  {
+   "id": "213800NCDIO8XCS9VR90",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "CHINAAMC NVIDIA DAILY (2X) LEVERAGED PRODUCT",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CHINA ASSET MANAGEMENT (HONG KONG) LIMITED",
+       "37/F, BANK OF CHINA TOWER, 1 GARDEN ROAD, HONG KONG"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "HONG KONG",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CHINA ASSET MANAGEMENT (HONG KONG) LIMITED",
+       "37/F, BANK OF CHINA TOWER, 1 GARDEN ROAD, HONG KONG"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "HONG KONG",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2026-03-13T00:29:19Z"
+    }
+   }
+  },
+  {
+   "id": "2549009PXBLM07UDO792",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Harvest NVIDIA High Income Shares ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "610 Chartwell Road",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Harvest Portfolios Group Inc.",
+       "610 Chartwell Road",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-06-17T14:57:35Z"
+    }
+   }
+  },
+  {
+   "id": "894500MINYDC29VJHX52",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NVIDIA (NVDA) Yield Shares Purpose ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "3100-130 Adelaide Street West"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 3P5"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "3100-130 Adelaide Street West",
+       "c/o Purpose Investments Inc."
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 3P5"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-02-27T09:20:32Z"
+    }
+   }
+  },
+  {
+   "id": "5299002NHD2UFJRSJB73",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "PurePlay Nvidia Ecosystem Picks & Shovels Index ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o THE CORPORATION TRUST COMPANY, CORPORATION TRUST CENTER 1209 ORANGE STREET"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "WILMINGTON",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19801"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "c/o Exchange Traded Concepts, LLC, c/o J GARRETT STEVENS,3555 NW 58TH STREET,STE 600"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o Exchange Traded Concepts, LLC",
+      "city": "OKLAHOMA",
+      "region": "US-OK",
+      "country": "US",
+      "postalCode": "73112"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-05-29T10:10:01Z"
+    }
+   }
+  },
+  {
+   "id": "254900KYGYM9J9R7DK98",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "CSOP NVIDIA DAILY MAX (-2X) INVERSE PRODUCT",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "1 Queens Road Central"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hong Kong",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CSOP Asset Management Limited",
+       "Suite 2801-2803",
+       "Two Exchange Square, 8 Connaught Place",
+       "Central and Western District"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hong Kong",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-03T15:16:40Z"
+    }
+   }
+  },
+  {
+   "id": "254900E74PMOXRX5JU10",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "CSOP NVIDIA DAILY MAX (2X) LEVERAGED PRODUCT",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "1 Queens Road Central"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hong Kong",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CSOP Asset Management Limited",
+       "Suite 2801-2803",
+       "Two Exchange Square, 8 Connaught Place",
+       "Central and Western District"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Hong Kong",
+      "region": null,
+      "country": "HK",
+      "postalCode": "999077"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-03T14:32:20Z"
+    }
+   }
+  },
+  {
+   "id": "254900JA4BYINUUZMN26",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Harvest NVIDIA Enhanced High Income Shares ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "610 Chartwell",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Harvest Portfolios Group Inc.",
+       "610 Chartwell Road",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-06-17T14:57:37Z"
+    }
+   }
+  },
+  {
+   "id": "5493000FXLRIR4K3KL28",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "T-Rex 2X Long NVIDIA Daily Target ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CAPITOL SERVICES, INC.",
+       "108 LAKELAND AVE."
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DOVER",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19901"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O TUTTLE CAPITAL MANAGEMENT, LLC",
+       "155 LOCKWOOD ROAD",
+       "RIVERSIDE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GREENWICH",
+      "region": "US-CT",
+      "country": "US",
+      "postalCode": "06878"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-04-07T08:08:22Z"
+    }
+   }
+  },
+  {
+   "id": "5493000FXQCVC1UGCU61",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "T-Rex 2X Inverse NVIDIA Daily Target ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O CAPITOL SERVICES, INC.",
+       "108 LAKELAND AVE."
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "DOVER",
+      "region": "US-DE",
+      "country": "US",
+      "postalCode": "19901"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O TUTTLE CAPITAL MANAGEMENT, LLC",
+       "155 LOCKWOOD ROAD",
+       "RIVERSIDE"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "GREENWICH",
+      "region": "US-CT",
+      "country": "US",
+      "postalCode": "06878"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-04-07T08:08:23Z"
+    }
+   }
+  },
+  {
+   "id": "984500B6FEFBFF48A162",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "ASA STRATEGY AÇÕES NVIDIA CLASSE DE INVESTIMENTO EM AÇÕES - RESP LIMITADA",
+      "language": "pt"
+     },
+     "legalAddress": {
+      "language": "pt",
+      "addressLines": [
+       "R AMADOR BUENO 474, ANDAR 1 BLOCO D"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "SANTO AMARO",
+      "region": "BR-SP",
+      "country": "BR",
+      "postalCode": "04752-901"
+     },
+     "headquartersAddress": {
+      "language": "pt",
+      "addressLines": [
+       "AL SANTOS NÚMERO 2159, CONJ 52"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "c/o ASA ASSET 2 GESTAO DE RECURSOS LTDA.",
+      "city": "CERQUEIRA CESAR",
+      "region": "BR-SP",
+      "country": "BR",
+      "postalCode": "01419-100"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "LAPSED",
+     "lastUpdateDate": "2026-08-08T17:34:47Z"
+    }
+   }
+  }
+ ]
+}

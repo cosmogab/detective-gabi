@@ -1,0 +1,910 @@
+{
+ "entities": {
+  "Q182477": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Nvidia"
+    }
+   },
+   "claims": {
+    "P112": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P112",
+       "hash": "fc0b8122f93f1fc7af701b2243bf78d8c873f563",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 305177,
+         "id": "Q305177"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q182477$5B79E660-9E90-4E01-A2F3-E0345C65942A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P112",
+       "hash": "1de274b177834f252b506702b2b28d2109be094b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5107317,
+         "id": "Q5107317"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q182477$10F4E67A-608F-4865-8DE7-B925D877EE62",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P112",
+       "hash": "85d6094780fe535a9b5eb39e6137e96c1add99c2",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5195858,
+         "id": "Q5195858"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q182477$214D687B-AF69-4BD1-8E16-11F814E0FA97",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P159": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P159",
+       "hash": "4f0900ed2cb34ee71f837d123ad48520e9611119",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 159260,
+         "id": "Q159260"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P625": [
+        {
+         "snaktype": "value",
+         "property": "P625",
+         "hash": "970ae6aaafaff6236f4d8fa118b37093bc7ad555",
+         "datavalue": {
+          "value": {
+           "latitude": 37.3733,
+           "longitude": -121.966,
+           "altitude": null,
+           "precision": 0.0001,
+           "globe": "http://www.wikidata.org/entity/Q2"
+          },
+          "type": "globecoordinate"
+         },
+         "datatype": "globe-coordinate"
+        }
+       ],
+       "P281": [
+        {
+         "snaktype": "value",
+         "property": "P281",
+         "hash": "415c5313a1378462a5cec2c75a51928df46bf03e",
+         "datavalue": {
+          "value": "95050",
+          "type": "string"
+         },
+         "datatype": "string"
+        }
+       ],
+       "P17": [
+        {
+         "snaktype": "value",
+         "property": "P17",
+         "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 30,
+           "id": "Q30"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ],
+       "P6375": [
+        {
+         "snaktype": "value",
+         "property": "P6375",
+         "hash": "9be9414148a0ac940f25e4a94f91ed7dcd07c93b",
+         "datavalue": {
+          "value": {
+           "text": "2788 San Tomas Expressway",
+           "language": "en"
+          },
+          "type": "monolingualtext"
+         },
+         "datatype": "monolingualtext"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P625",
+       "P281",
+       "P17",
+       "P6375"
+      ],
+      "id": "Q182477$CC39674F-2373-4B99-A27C-C08188DDB3A7",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "81cd5a913d24b9127c9dc7a13942f1ac6b399be5",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "ae18771f2f72d44310356b70b842a8124e9b38dd",
+           "datavalue": {
+            "value": "http://s22.q4cdn.com/364334381/files/doc_financials/quarterly_reports/2018/NVIDIA-Q4Y18-Form-10K.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1065": [
+          {
+           "snaktype": "value",
+           "property": "P1065",
+           "hash": "81327f7ba8c9e27b145640b54a5db1378dc608c9",
+           "datavalue": {
+            "value": "https://web.archive.org/web/20180318054314/http://s22.q4cdn.com/364334381/files/doc_financials/quarterly_reports/2018/NVIDIA-Q4Y18-Form-10K.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P2960": [
+          {
+           "snaktype": "value",
+           "property": "P2960",
+           "hash": "2a8c37209c21e557778618e83fbf98f64ccb8611",
+           "datavalue": {
+            "value": {
+             "time": "+2018-03-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1065",
+         "P2960"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q182477$B2E459F6-8DF6-4ACD-8D1F-B3E0D6652195",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "87429bd0fcf6012997dc087ae13ed250fcb09ffd",
+        "snaks": {
+         "P2427": [
+          {
+           "snaktype": "value",
+           "property": "P2427",
+           "hash": "be7ffef12147e7f6339513966773e1fad59081d8",
+           "datavalue": {
+            "value": "grid.451133.1",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ae90b1d079437a9edb042df425fde37e3f367152",
+           "datavalue": {
+            "value": {
+             "time": "+2020-06-13T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "8a3558e787d5e70a3b41785aca27ca2268163429",
+           "datavalue": {
+            "value": "https://www.grid.ac/institutes/grid.451133.1",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "90ed57226f81c281580343f40e5859831bf9b38e",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 27768150,
+             "id": "Q27768150"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P2427",
+         "P813",
+         "P854",
+         "P248"
+        ]
+       },
+       {
+        "hash": "aecbe25ad6224f9728fb9bd8387009da6f327b30",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "c736e4337290285aad1f98328a85127f4204c5f3",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/nvidia-corporation?rid=866541247974-60",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1128": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "5cceb7ea630b1ed57d9fc0693ca0467557729ee3",
+       "datavalue": {
+        "value": {
+         "amount": "+11528",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "bc1d6e8c97965d53381b216886da6b0cc036e967",
+         "datavalue": {
+          "value": {
+           "time": "+2018-01-28T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q182477$fb9b964e-4538-6dd9-9162-5dd8d52719b3",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "81cd5a913d24b9127c9dc7a13942f1ac6b399be5",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "ae18771f2f72d44310356b70b842a8124e9b38dd",
+           "datavalue": {
+            "value": "http://s22.q4cdn.com/364334381/files/doc_financials/quarterly_reports/2018/NVIDIA-Q4Y18-Form-10K.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1065": [
+          {
+           "snaktype": "value",
+           "property": "P1065",
+           "hash": "81327f7ba8c9e27b145640b54a5db1378dc608c9",
+           "datavalue": {
+            "value": "https://web.archive.org/web/20180318054314/http://s22.q4cdn.com/364334381/files/doc_financials/quarterly_reports/2018/NVIDIA-Q4Y18-Form-10K.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P2960": [
+          {
+           "snaktype": "value",
+           "property": "P2960",
+           "hash": "2a8c37209c21e557778618e83fbf98f64ccb8611",
+           "datavalue": {
+            "value": {
+             "time": "+2018-03-18T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1065",
+         "P2960"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "279422e64d7a9c43784e740e81f139c98a2d5bbf",
+       "datavalue": {
+        "value": {
+         "amount": "+13775",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "2d6dc900f10e6c45d1582b3affba1db4072ea019",
+         "datavalue": {
+          "value": {
+           "time": "+2020-01-26T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q182477$EEFF8A10-589E-4973-8207-A8BF3D5EC7AC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "07782a03df1e95921c02b86cf8b6d1a46f739812",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "bb3f4f6111fc576500658cd71062c70a9b5006ea",
+           "datavalue": {
+            "value": "https://s22.q4cdn.com/364334381/files/doc_financials/2020/q4/174b2f06-ba5b-4e0a-b288-e33c46e9a0a4.pdf",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "1c3122e197f7db30006de7bde935c92c437092e3",
+           "datavalue": {
+            "value": {
+             "text": "Nvidia Annual Report 2020 10-K",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476"
+        ]
+       },
+       {
+        "hash": "577d132632d3165d4820b1c2b70390fee3287317",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5239be53202863dfa34b296547a890b7c0b6a06e",
+           "datavalue": {
+            "value": "https://tech.sina.com.cn/roll/2020-04-23/doc-iirczymi7863117.shtml",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "233a7404498146991ae8c26607c83c05073a35fc",
+       "datavalue": {
+        "value": {
+         "amount": "+36000",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "738db398a46d8402871858955019712f4afed16d",
+         "datavalue": {
+          "value": {
+           "time": "+2025-01-26T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q182477$513a73e0-4bd4-ddf0-e54e-46202b3ef552",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "27ea6c6ae8d823a680305a1f3fbc8965b5cef8ad",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "983d6694a79db938bb5152bd8d1f26a8e3026e7d",
+           "datavalue": {
+            "value": "https://investor.nvidia.com/financial-info/sec-filings/sec-filings-details/default.aspx?FilingId=18226262",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1128",
+       "hash": "707b414c729eec7904d1ba4dd042d038bf2a727d",
+       "datavalue": {
+        "value": {
+         "amount": "+42000",
+         "unit": "1"
+        },
+        "type": "quantity"
+       },
+       "datatype": "quantity"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P585": [
+        {
+         "snaktype": "value",
+         "property": "P585",
+         "hash": "50defc36a3aabde088a3d4ebac411c64644f5c7e",
+         "datavalue": {
+          "value": {
+           "time": "+2026-01-25T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 11,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P585"
+      ],
+      "id": "Q182477$1b374939-49e9-2970-e7e5-16bede211181",
+      "rank": "preferred",
+      "references": [
+       {
+        "hash": "80ae1a3d56e1414e68b51f6fca2572b7413a429b",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "5f0b393031c28c1158a3311c0a77a53c7365cc45",
+           "datavalue": {
+            "value": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000021/nvda-20260125.htm",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "1d1fdd3222ee0ad61f620abffca84564e33bca93",
+           "datavalue": {
+            "value": {
+             "time": "+2026-02-25T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "b201b5e31599af662826994384a663df0c7e3504",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 5469880,
+             "id": "Q5469880"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P577",
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P571": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P571",
+       "hash": "644ccd1ac6ef4b9462de79a0d8812aa8a8261812",
+       "datavalue": {
+        "value": {
+         "time": "+1993-04-05T00:00:00Z",
+         "timezone": 0,
+         "before": 0,
+         "after": 0,
+         "precision": 11,
+         "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+        },
+        "type": "time"
+       },
+       "datatype": "time"
+      },
+      "type": "statement",
+      "id": "Q182477$23DBF292-7642-49BD-AA02-B1AFBE0FA4DA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "6a2cc0d880ca57d612b4dba6467a92a6da427444",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "aaa9de0575e86fa91b0a8647528cebb59a32eb09",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 116976023,
+             "id": "Q116976023"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P169": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P169",
+       "hash": "a2b215bb7f362f92af699fdad5eb04479cc4e320",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 305177,
+         "id": "Q305177"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "0aeab9e143c5db97d70edf13eadfbcd2920bb5db",
+         "datavalue": {
+          "value": {
+           "time": "+1993-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580"
+      ],
+      "id": "Q182477$1CA38B7D-31DF-49F6-8F1A-B433596D9506",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "0f5c42add97aa76f0c48edeffb8cbb0b138fae33",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "6d5b0347b88df1a672bc15b81768eccad2ef9cf0",
+           "datavalue": {
+            "value": "https://www.nvidia.com/en-us/about-nvidia/board-of-directors/jensen-huang/",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "810e7f2e3581b17e3b0fcd3bd31fc920815c4456",
+           "datavalue": {
+            "value": {
+             "time": "+2024-03-15T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

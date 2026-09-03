@@ -1,0 +1,137 @@
+{
+ "searchinfo": {
+  "search": "Stripe"
+ },
+ "search": [
+  {
+   "id": "Q7624104",
+   "title": "Q7624104",
+   "pageid": 7544292,
+   "concepturi": "http://www.wikidata.org/entity/Q7624104",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q7624104",
+   "display": {
+    "label": {
+     "value": "Stripe",
+     "language": "en"
+    },
+    "description": {
+     "value": "Irish-American payment technology company",
+     "language": "en"
+    }
+   },
+   "label": "Stripe",
+   "description": "Irish-American payment technology company",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Stripe"
+   }
+  },
+  {
+   "id": "Q3421342",
+   "title": "Q3421342",
+   "pageid": 3259699,
+   "concepturi": "http://www.wikidata.org/entity/Q3421342",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3421342",
+   "display": {
+    "label": {
+     "value": "stripe",
+     "language": "en"
+    },
+    "description": {
+     "value": "long, narrow band of color, often in alternating sets",
+     "language": "en"
+    }
+   },
+   "label": "stripe",
+   "description": "long, narrow band of color, often in alternating sets",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "stripe"
+   }
+  },
+  {
+   "id": "Q127900502",
+   "title": "Q127900502",
+   "pageid": 121885449,
+   "concepturi": "http://www.wikidata.org/entity/Q127900502",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q127900502",
+   "display": {
+    "label": {
+     "value": "Stripe",
+     "language": "en"
+    },
+    "description": {
+     "value": "fictional character in the Gremlins franchise",
+     "language": "en"
+    }
+   },
+   "label": "Stripe",
+   "description": "fictional character in the Gremlins franchise",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Stripe"
+   }
+  },
+  {
+   "id": "Q117454382",
+   "title": "Q117454382",
+   "pageid": 112217248,
+   "concepturi": "http://www.wikidata.org/entity/Q117454382",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q117454382",
+   "display": {
+    "label": {
+     "value": "Stripe",
+     "language": "en"
+    },
+    "description": {
+     "value": "South African progamer",
+     "language": "en"
+    }
+   },
+   "label": "Stripe",
+   "description": "South African progamer",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Stripe"
+   }
+  },
+  {
+   "id": "Q297115",
+   "title": "Q297115",
+   "pageid": 286640,
+   "concepturi": "http://www.wikidata.org/entity/Q297115",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q297115",
+   "display": {
+    "label": {
+     "value": "Meloidae",
+     "language": "en"
+    },
+    "description": {
+     "value": "family of beetles",
+     "language": "en"
+    }
+   },
+   "label": "Meloidae",
+   "description": "family of beetles",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Striped Blister Beetle"
+   },
+   "aliases": [
+    "Striped Blister Beetle"
+   ]
+  }
+ ],
+ "search-continue": 5,
+ "success": 1
+}

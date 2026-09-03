@@ -1,0 +1,67 @@
+{
+ "0": {
+  "cik_str": 1045810,
+  "ticker": "NVDA",
+  "title": "NVIDIA CORP"
+ },
+ "86": {
+  "cik_str": 1594805,
+  "ticker": "SHOP",
+  "title": "SHOPIFY INC."
+ },
+ "1737": {
+  "cik_str": 1860160,
+  "ticker": "FLY",
+  "title": "Firefly Aerospace Inc."
+ },
+ "2086": {
+  "cik_str": 1580560,
+  "ticker": "FLYW",
+  "title": "Flywire Corp"
+ },
+ "2129": {
+  "cik_str": 1804176,
+  "ticker": "BFLY",
+  "title": "Butterfly Network, Inc."
+ },
+ "4221": {
+  "cik_str": 1786286,
+  "ticker": "DPRO",
+  "title": "Draganfly Inc."
+ },
+ "4277": {
+  "cik_str": 1843973,
+  "ticker": "FLYX",
+  "title": "FLYEXCLUSIVE INC."
+ },
+ "5740": {
+  "cik_str": 803578,
+  "ticker": "AIFF",
+  "title": "FIREFLY NEUROSCIENCE, INC."
+ },
+ "5771": {
+  "cik_str": 1847986,
+  "ticker": "DFLI",
+  "title": "Dragonfly Energy Holdings Corp."
+ },
+ "6308": {
+  "cik_str": 1492617,
+  "ticker": "FWFW",
+  "title": "FLYWHEEL ADVANCED TECHNOLOGY, INC."
+ },
+ "6374": {
+  "cik_str": 1975940,
+  "ticker": "FLYE",
+  "title": "Fly-E Group, Inc."
+ },
+ "8639": {
+  "cik_str": 1843973,
+  "ticker": "FLYX-WT",
+  "title": "FLYEXCLUSIVE INC."
+ },
+ "10271": {
+  "cik_str": 1847986,
+  "ticker": "DFLIW",
+  "title": "Dragonfly Energy Holdings Corp."
+ }
+}

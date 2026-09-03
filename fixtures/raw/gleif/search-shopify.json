@@ -1,0 +1,419 @@
+{
+ "meta": {
+  "pagination": {
+   "total": 9
+  }
+ },
+ "data": [
+  {
+   "id": "549300HGQ43STJLLP808",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SHOPIFY INC.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "151 O'Connor Street",
+       "Ground Floor"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "OTTAWA",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "K2P 2L8"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "151 O'Connor Street",
+       "First Floor"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Ottawa",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "K2P 2L8"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-08-30T18:23:10Z"
+    }
+   }
+  },
+  {
+   "id": "635400PWFPJTABS9TT03",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SHOPIFY INTERNATIONAL LIMITED",
+      "language": "en-IE"
+     },
+     "legalAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "2nd Floor, 1-2 Victoria Buildings",
+       "Haddington Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 XN32"
+     },
+     "headquartersAddress": {
+      "language": "en-IE",
+      "addressLines": [
+       "2nd Floor, 1-2 Victoria Buildings",
+       "Haddington Road"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Dublin",
+      "region": "IE-D",
+      "country": "IE",
+      "postalCode": "D04 XN32"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-09-29T23:00:00Z"
+    }
+   }
+  },
+  {
+   "id": "25490082DZVFY78WQS93",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SavvyLong (2X) Shopify ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "390 Bay Street",
+       "Suite 922"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 2Y2"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O LongPoint Asset Management Inc.",
+       "390 Bay Street",
+       "Suite 922"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 2Y2"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-10-02T18:51:28Z"
+    }
+   }
+  },
+  {
+   "id": "2549008NYWSK1XZ45O63",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SavvyShort (-2X) Shopify ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "390 Bay Street",
+       "Suite 922"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 2Y2"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O LongPoint Asset Management Inc.",
+       "390 Bay Street",
+       "Suite 922"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 2Y2"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2025-10-02T18:51:27Z"
+    }
+   }
+  },
+  {
+   "id": "894500PMGEC9G8DPJE82",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "NINEPOINT SHOPIFY HIGHSHARES ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "200 Bay St.",
+       "Suite 2700, P.O. Box 27"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Ninepoint Partners LP",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2J1"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "200 Bay St.",
+       "Suite 2700, P.O. Box 27"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Ninepoint Partners LP",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5J 2J1"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-15T14:01:04Z"
+    }
+   }
+  },
+  {
+   "id": "335800RAB9I5HL531C11",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SHOPIFY COMMERCE INDIA PRIVATE LIMITED",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "UNIT NO.101, 1ST FLOOR, COPPER ARCH",
+       "INFANTRY ROAD, MAHATMA GANDHI ROAD",
+       "BANGALORE NORTH"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "BANGALORE",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560001"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "UNIT NO.101, 1ST FLOOR, COPPER ARCH",
+       "INFANTRY ROAD, MAHATMA GANDHI ROAD",
+       "BANGALORE NORTH"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "BANGALORE",
+      "region": "IN-KA",
+      "country": "IN",
+      "postalCode": "560001"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-01-22T13:50:44Z"
+    }
+   }
+  },
+  {
+   "id": "254900OAZP7ZZSAC6T85",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "SHOPIFY COMMERCE SINGAPORE PTE. LTD.",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "77 Robinson Road",
+       "#13-00",
+       "Robinson 77"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Singapore",
+      "region": "SG-01",
+      "country": "SG",
+      "postalCode": "068896"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "77 Robinson Road",
+       "#13-00",
+       "Robinson 77"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Singapore",
+      "region": null,
+      "country": "SG",
+      "postalCode": "068896"
+     },
+     "status": "ACTIVE",
+     "category": "GENERAL"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-02-27T12:02:23Z"
+    }
+   }
+  },
+  {
+   "id": "894500MWDA8NVM8SQD35",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Purpose Shopify (SHOP) Yield Shares ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "3100-130 Adelaide St W"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Purpose Investments Inc.",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 3P5"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "3100-130 Adelaide St W"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": "C/O Purpose Investments Inc.",
+      "city": "Toronto",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "M5H 3P5"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-16T20:02:36Z"
+    }
+   }
+  },
+  {
+   "id": "254900DHSM3ZA8VYV514",
+   "attributes": {
+    "entity": {
+     "legalName": {
+      "name": "Harvest Shopify Enhanced High Income Shares ETF",
+      "language": "en"
+     },
+     "legalAddress": {
+      "language": "en",
+      "addressLines": [
+       "610 Chartwell Road",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "headquartersAddress": {
+      "language": "en",
+      "addressLines": [
+       "C/O Harvest Portfolios Group Inc.",
+       "610 Chartwell Road",
+       "Suite 204"
+      ],
+      "addressNumber": null,
+      "addressNumberWithinBuilding": null,
+      "mailRouting": null,
+      "city": "Oakville",
+      "region": "CA-ON",
+      "country": "CA",
+      "postalCode": "L6J 4A5"
+     },
+     "status": "ACTIVE",
+     "category": "FUND"
+    },
+    "registration": {
+     "status": "ISSUED",
+     "lastUpdateDate": "2026-07-13T06:06:17Z"
+    }
+   }
+  }
+ ]
+}
