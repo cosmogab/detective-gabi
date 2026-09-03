@@ -1,0 +1,1278 @@
+{
+ "searchinfo": {
+  "search": "florida"
+ },
+ "search": [
+  {
+   "id": "Q812",
+   "title": "Q812",
+   "pageid": 1129,
+   "concepturi": "http://www.wikidata.org/entity/Q812",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q812",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "state of the United States of America",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "state of the United States of America",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q842472",
+   "title": "Q842472",
+   "pageid": 794673,
+   "concepturi": "http://www.wikidata.org/entity/Q842472",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q842472",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "city in Florida Department, Uruguay",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "city in Florida Department, Uruguay",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q2255913",
+   "title": "Q2255913",
+   "pageid": 2178979,
+   "concepturi": "http://www.wikidata.org/entity/Q2255913",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2255913",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "city in the province of Buenos Aires in Argentina",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "city in the province of Buenos Aires in Argentina",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q501758",
+   "title": "Q501758",
+   "pageid": 471925,
+   "concepturi": "http://www.wikidata.org/entity/Q501758",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q501758",
+   "display": {
+    "label": {
+     "value": "University of Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "public research university in Gainesville, Florida, United States",
+     "language": "en"
+    }
+   },
+   "label": "University of Florida",
+   "description": "public research university in Gainesville, Florida, United States",
+   "match": {
+    "type": "alias",
+    "language": "mul",
+    "text": "Florida"
+   },
+   "aliases": [
+    "Florida"
+   ]
+  },
+  {
+   "id": "Q1093490",
+   "title": "Q1093490",
+   "pageid": 1041162,
+   "concepturi": "http://www.wikidata.org/entity/Q1093490",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1093490",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "Colombian municipality of the department of Valle del Cauca",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "Colombian municipality of the department of Valle del Cauca",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q861548",
+   "title": "Q861548",
+   "pageid": 813017,
+   "concepturi": "http://www.wikidata.org/entity/Q861548",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q861548",
+   "display": {
+    "label": {
+     "value": "Florida State University",
+     "language": "en"
+    },
+    "description": {
+     "value": "public university in Tallahassee, Florida, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida State University",
+   "description": "public university in Tallahassee, Florida, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida State University"
+   }
+  },
+  {
+   "id": "Q20000193",
+   "title": "Q20000193",
+   "pageid": 21641275,
+   "concepturi": "http://www.wikidata.org/entity/Q20000193",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q20000193",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "female given name",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "female given name",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q1065809",
+   "title": "Q1065809",
+   "pageid": 1014424,
+   "concepturi": "http://www.wikidata.org/entity/Q1065809",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1065809",
+   "display": {
+    "label": {
+     "value": "Florida International University",
+     "language": "en"
+    },
+    "description": {
+     "value": "public research university in Westchester, Florida, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida International University",
+   "description": "public research university in Westchester, Florida, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida International University"
+   }
+  },
+  {
+   "id": "Q3295272",
+   "title": "Q3295272",
+   "pageid": 3142716,
+   "concepturi": "http://www.wikidata.org/entity/Q3295272",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3295272",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "station of the Buenos Aires Metro",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "station of the Buenos Aires Metro",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q2392006",
+   "title": "Q2392006",
+   "pageid": 2310835,
+   "concepturi": "http://www.wikidata.org/entity/Q2392006",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2392006",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "municipality in Copán Department, Honduras",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "municipality in Copán Department, Honduras",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q5461160",
+   "title": "Q5461160",
+   "pageid": 5222457,
+   "concepturi": "http://www.wikidata.org/entity/Q5461160",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5461160",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "album by DJ Diplo",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "album by DJ Diplo",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q1430048",
+   "title": "Q1430048",
+   "pageid": 1368582,
+   "concepturi": "http://www.wikidata.org/entity/Q1430048",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1430048",
+   "display": {
+    "label": {
+     "value": "Florida A&M University",
+     "language": "en"
+    },
+    "description": {
+     "value": "public, historically black university in Tallahassee, Florida (U.S.)",
+     "language": "en"
+    }
+   },
+   "label": "Florida A&M University",
+   "description": "public, historically black university in Tallahassee, Florida (U.S.)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida A&M University"
+   }
+  },
+  {
+   "id": "Q5842287",
+   "title": "Q5842287",
+   "pageid": 5610542,
+   "concepturi": "http://www.wikidata.org/entity/Q5842287",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5842287",
+   "display": {
+    "label": {
+     "value": "Florida train station",
+     "language": "en"
+    },
+    "description": {
+     "value": "train station of Belgrano Norte Line in Argentina",
+     "language": "en"
+    }
+   },
+   "label": "Florida train station",
+   "description": "train station of Belgrano Norte Line in Argentina",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida train station"
+   }
+  },
+  {
+   "id": "Q5842289",
+   "title": "Q5842289",
+   "pageid": 5610544,
+   "concepturi": "http://www.wikidata.org/entity/Q5842289",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5842289",
+   "display": {
+    "label": {
+     "value": "Florida train station",
+     "language": "en"
+    },
+    "description": {
+     "value": "train station in Argentina",
+     "language": "en"
+    }
+   },
+   "label": "Florida train station",
+   "description": "train station in Argentina",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida train station"
+   }
+  },
+  {
+   "id": "Q16593",
+   "title": "Q16593",
+   "pageid": 19321,
+   "concepturi": "http://www.wikidata.org/entity/Q16593",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q16593",
+   "display": {
+    "label": {
+     "value": "Florida Department",
+     "language": "en"
+    },
+    "description": {
+     "value": "department of Uruguay",
+     "language": "en"
+    }
+   },
+   "label": "Florida Department",
+   "description": "department of Uruguay",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Department"
+   }
+  },
+  {
+   "id": "Q28519051",
+   "title": "Q28519051",
+   "pageid": 30213315,
+   "concepturi": "http://www.wikidata.org/entity/Q28519051",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q28519051",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "Mexico City colonia",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "Mexico City colonia",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q134308316",
+   "title": "Q134308316",
+   "pageid": 128158414,
+   "concepturi": "http://www.wikidata.org/entity/Q134308316",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q134308316",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q139758997",
+   "title": "Q139758997",
+   "pageid": 133212824,
+   "concepturi": "http://www.wikidata.org/entity/Q139758997",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q139758997",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "village in Waspán municipality, Costa Caribe Norte department, Nicaragua",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "village in Waspán municipality, Costa Caribe Norte department, Nicaragua",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q15749995",
+   "title": "Q15749995",
+   "pageid": 17383227,
+   "concepturi": "http://www.wikidata.org/entity/Q15749995",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q15749995",
+   "display": {
+    "label": {
+     "value": "The Florida Entomologist",
+     "language": "en"
+    },
+    "description": {
+     "value": "scientific journal published by the Florida Entomological Society",
+     "language": "en"
+    }
+   },
+   "label": "The Florida Entomologist",
+   "description": "scientific journal published by the Florida Entomological Society",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida Entomologist"
+   },
+   "aliases": [
+    "Florida Entomologist"
+   ]
+  },
+  {
+   "id": "Q643617",
+   "title": "Q643617",
+   "pageid": 605646,
+   "concepturi": "http://www.wikidata.org/entity/Q643617",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q643617",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "municipality and city in Cuba",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "municipality and city in Cuba",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q612530",
+   "title": "Q612530",
+   "pageid": 576829,
+   "concepturi": "http://www.wikidata.org/entity/Q612530",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q612530",
+   "display": {
+    "label": {
+     "value": "John and Mable Ringling Museum of Art",
+     "language": "en"
+    },
+    "description": {
+     "value": "art museum in Sarasota, Florida",
+     "language": "en"
+    }
+   },
+   "label": "John and Mable Ringling Museum of Art",
+   "description": "art museum in Sarasota, Florida",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida State Museum"
+   },
+   "aliases": [
+    "Florida State Museum"
+   ]
+  },
+  {
+   "id": "Q2271950",
+   "title": "Q2271950",
+   "pageid": 2194513,
+   "concepturi": "http://www.wikidata.org/entity/Q2271950",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2271950",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "municipality in Puerto Rico",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "municipality in Puerto Rico",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q555528",
+   "title": "Q555528",
+   "pageid": 523446,
+   "concepturi": "http://www.wikidata.org/entity/Q555528",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q555528",
+   "display": {
+    "label": {
+     "value": "Spanish Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "former Spanish possession in North America (1513–1763, 1783–1821)",
+     "language": "en"
+    }
+   },
+   "label": "Spanish Florida",
+   "description": "former Spanish possession in North America (1513–1763, 1783–1821)",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida"
+   },
+   "aliases": [
+    "Florida"
+   ]
+  },
+  {
+   "id": "Q5027600",
+   "title": "Q5027600",
+   "pageid": 4804282,
+   "concepturi": "http://www.wikidata.org/entity/Q5027600",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5027600",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "town in Montgomery County, New York, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "town in Montgomery County, New York, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q2077862",
+   "title": "Q2077862",
+   "pageid": 2004931,
+   "concepturi": "http://www.wikidata.org/entity/Q2077862",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2077862",
+   "display": {
+    "label": {
+     "value": "Flórida",
+     "language": "en"
+    },
+    "description": {
+     "value": "municipality of Paraná state, Brazil",
+     "language": "en"
+    }
+   },
+   "label": "Flórida",
+   "description": "municipality of Paraná state, Brazil",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Flórida"
+   }
+  },
+  {
+   "id": "Q1112732",
+   "title": "Q1112732",
+   "pageid": 1059970,
+   "concepturi": "http://www.wikidata.org/entity/Q1112732",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q1112732",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "town in Massachusetts, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "town in Massachusetts, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q6914963",
+   "title": "Q6914963",
+   "pageid": 6773119,
+   "concepturi": "http://www.wikidata.org/entity/Q6914963",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q6914963",
+   "display": {
+    "label": {
+     "value": "Morton Valence",
+     "language": "en"
+    },
+    "description": {
+     "value": "UK musical group; London-based rock band",
+     "language": "en"
+    }
+   },
+   "label": "Morton Valence",
+   "description": "UK musical group; London-based rock band",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida"
+   },
+   "aliases": [
+    "Florida"
+   ]
+  },
+  {
+   "id": "Q615791",
+   "title": "Q615791",
+   "pageid": 580002,
+   "concepturi": "http://www.wikidata.org/entity/Q615791",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q615791",
+   "display": {
+    "label": {
+     "value": "Villa Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "city of the Department of Misiones, Paraguay",
+     "language": "en"
+    }
+   },
+   "label": "Villa Florida",
+   "description": "city of the Department of Misiones, Paraguay",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida"
+   },
+   "aliases": [
+    "Florida"
+   ]
+  },
+  {
+   "id": "Q55700",
+   "title": "Q55700",
+   "pageid": 58443,
+   "concepturi": "http://www.wikidata.org/entity/Q55700",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q55700",
+   "display": {
+    "label": {
+     "value": "Floridablanca",
+     "language": "en"
+    },
+    "description": {
+     "value": "municipality of the Philippines in the province of Pampanga",
+     "language": "en"
+    }
+   },
+   "label": "Floridablanca",
+   "description": "municipality of the Philippines in the province of Pampanga",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Floridablanca"
+   }
+  },
+  {
+   "id": "Q2575793",
+   "title": "Q2575793",
+   "pageid": 2485453,
+   "concepturi": "http://www.wikidata.org/entity/Q2575793",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2575793",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "village in Orange County, New York, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "village in Orange County, New York, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q429863",
+   "title": "Q429863",
+   "pageid": 405560,
+   "concepturi": "http://www.wikidata.org/entity/Q429863",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q429863",
+   "display": {
+    "label": {
+     "value": "Florida Atlantic University",
+     "language": "en"
+    },
+    "description": {
+     "value": "public university in Boca Raton, Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida Atlantic University",
+   "description": "public university in Boca Raton, Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Atlantic University"
+   }
+  },
+  {
+   "id": "Q537803",
+   "title": "Q537803",
+   "pageid": 506449,
+   "concepturi": "http://www.wikidata.org/entity/Q537803",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q537803",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "village in Monroe County, Missouri, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "village in Monroe County, Missouri, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q111449880",
+   "title": "Q111449880",
+   "pageid": 106411581,
+   "concepturi": "http://www.wikidata.org/entity/Q111449880",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q111449880",
+   "display": {
+    "label": {
+     "value": "Florida Historical Marker List",
+     "language": "en"
+    },
+    "description": {
+     "value": "website of Florida Department of State containing the official list of Florida's Historical Markers",
+     "language": "en"
+    }
+   },
+   "label": "Florida Historical Marker List",
+   "description": "website of Florida Department of State containing the official list of Florida's Historical Markers",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Historical Marker List"
+   }
+  },
+  {
+   "id": "Q13048",
+   "title": "Q13048",
+   "pageid": 14664,
+   "concepturi": "http://www.wikidata.org/entity/Q13048",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q13048",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "town in Chile",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "town in Chile",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q18342844",
+   "title": "Q18342844",
+   "pageid": 19875216,
+   "concepturi": "http://www.wikidata.org/entity/Q18342844",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q18342844",
+   "display": {
+    "label": {
+     "value": "member of the Florida House of Representatives",
+     "language": "en"
+    },
+    "description": {
+     "value": "elected Representative of the legislature of the state of Florida",
+     "language": "en"
+    }
+   },
+   "label": "member of the Florida House of Representatives",
+   "description": "elected Representative of the legislature of the state of Florida",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida State House Representative"
+   },
+   "aliases": [
+    "Florida State House Representative"
+   ]
+  },
+  {
+   "id": "Q204623",
+   "title": "Q204623",
+   "pageid": 200997,
+   "concepturi": "http://www.wikidata.org/entity/Q204623",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q204623",
+   "display": {
+    "label": {
+     "value": "Florida Panthers",
+     "language": "en"
+    },
+    "description": {
+     "value": "National Hockey League team in Sunrise, Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida Panthers",
+   "description": "National Hockey League team in Sunrise, Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Panthers"
+   }
+  },
+  {
+   "id": "Q4711417",
+   "title": "Q4711417",
+   "pageid": 4501850,
+   "concepturi": "http://www.wikidata.org/entity/Q4711417",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q4711417",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "place in South Africa",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "place in South Africa",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q5461394",
+   "title": "Q5461394",
+   "pageid": 5222689,
+   "concepturi": "http://www.wikidata.org/entity/Q5461394",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5461394",
+   "display": {
+    "label": {
+     "value": "Florida Gators football",
+     "language": "en"
+    },
+    "description": {
+     "value": "football team of the University of Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida Gators football",
+   "description": "football team of the University of Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Gators football"
+   }
+  },
+  {
+   "id": "Q5461408",
+   "title": "Q5461408",
+   "pageid": 5222704,
+   "concepturi": "http://www.wikidata.org/entity/Q5461408",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5461408",
+   "display": {
+    "label": {
+     "value": "Florida Gators men's basketball",
+     "language": "en"
+    },
+    "description": {
+     "value": "men's basketball team of the University of Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida Gators men's basketball",
+   "description": "men's basketball team of the University of Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Gators men's basketball"
+   }
+  },
+  {
+   "id": "Q36859860",
+   "title": "Q36859860",
+   "pageid": 38241032,
+   "concepturi": "http://www.wikidata.org/entity/Q36859860",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q36859860",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "family name",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "family name",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q2548194",
+   "title": "Q2548194",
+   "pageid": 2459147,
+   "concepturi": "http://www.wikidata.org/entity/Q2548194",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q2548194",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "Barcelona Metro station",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "Barcelona Metro station",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q3074270",
+   "title": "Q3074270",
+   "pageid": 2938315,
+   "concepturi": "http://www.wikidata.org/entity/Q3074270",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3074270",
+   "display": {
+    "label": {
+     "value": "Florida Department of Transportation",
+     "language": "en"
+    },
+    "description": {
+     "value": "state transportation agency in Florida, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida Department of Transportation",
+   "description": "state transportation agency in Florida, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Department of Transportation"
+   }
+  },
+  {
+   "id": "Q5461162",
+   "title": "Q5461162",
+   "pageid": 5222460,
+   "concepturi": "http://www.wikidata.org/entity/Q5461162",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5461162",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "episode of 30 Rock (S7 E10)",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "episode of 30 Rock (S7 E10)",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q742699",
+   "title": "Q742699",
+   "pageid": 698656,
+   "concepturi": "http://www.wikidata.org/entity/Q742699",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q742699",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "village in Henry County, Ohio, United States",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "village in Henry County, Ohio, United States",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q3152650",
+   "title": "Q3152650",
+   "pageid": 3011666,
+   "concepturi": "http://www.wikidata.org/entity/Q3152650",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3152650",
+   "display": {
+    "label": {
+     "value": "Florida Institute of Technology",
+     "language": "en"
+    },
+    "description": {
+     "value": "private research university in Melbourne, Florida",
+     "language": "en"
+    }
+   },
+   "label": "Florida Institute of Technology",
+   "description": "private research university in Melbourne, Florida",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Institute of Technology"
+   }
+  },
+  {
+   "id": "Q3746761",
+   "title": "Q3746761",
+   "pageid": 3571937,
+   "concepturi": "http://www.wikidata.org/entity/Q3746761",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q3746761",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "barrio in Vieques, Puerto Rico",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "barrio in Vieques, Puerto Rico",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q818",
+   "title": "Q818",
+   "pageid": 1136,
+   "concepturi": "http://www.wikidata.org/entity/Q818",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q818",
+   "display": {
+    "label": {
+     "value": "Florida Province",
+     "language": "en"
+    },
+    "description": {
+     "value": "province of Bolivia",
+     "language": "en"
+    }
+   },
+   "label": "Florida Province",
+   "description": "province of Bolivia",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida Province"
+   }
+  },
+  {
+   "id": "Q13636655",
+   "title": "Q13636655",
+   "pageid": 15288850,
+   "concepturi": "http://www.wikidata.org/entity/Q13636655",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q13636655",
+   "display": {
+    "label": {
+     "value": "Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "episode of Law & Order: Special Victims Unit",
+     "language": "en"
+    }
+   },
+   "label": "Florida",
+   "description": "episode of Law & Order: Special Victims Unit",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida"
+   }
+  },
+  {
+   "id": "Q780702",
+   "title": "Q780702",
+   "pageid": 733726,
+   "concepturi": "http://www.wikidata.org/entity/Q780702",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q780702",
+   "display": {
+    "label": {
+     "value": "La Florida",
+     "language": "en"
+    },
+    "description": {
+     "value": "1993 film by George Mihalka",
+     "language": "en"
+    }
+   },
+   "label": "La Florida",
+   "description": "1993 film by George Mihalka",
+   "match": {
+    "type": "alias",
+    "language": "en",
+    "text": "Florida"
+   },
+   "aliases": [
+    "Florida"
+   ]
+  },
+  {
+   "id": "Q5461626",
+   "title": "Q5461626",
+   "pageid": 5222918,
+   "concepturi": "http://www.wikidata.org/entity/Q5461626",
+   "repository": "wikidata",
+   "url": "//www.wikidata.org/wiki/Q5461626",
+   "display": {
+    "label": {
+     "value": "Florida State Seminoles football",
+     "language": "en"
+    },
+    "description": {
+     "value": "College Football Bowl Subdivision team; member of Atlantic Coast Conference",
+     "language": "en"
+    }
+   },
+   "label": "Florida State Seminoles football",
+   "description": "College Football Bowl Subdivision team; member of Atlantic Coast Conference",
+   "match": {
+    "type": "label",
+    "language": "en",
+    "text": "Florida State Seminoles football"
+   }
+  }
+ ],
+ "search-continue": 50,
+ "success": 1
+}

@@ -1,0 +1,4467 @@
+{
+ "entities": {
+  "Q665812": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "male given name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "477ef35019874affa392a3f6d7c7062f10a6d132",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 12308941,
+         "id": "Q12308941"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q665812$37CFB203-926F-41F1-9135-BC8BC2725661",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d11275e0d68446e394afe7ec01bc0baeb39380b4",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eda8c132e0266d5cd00721af9a54d1b08b889f77",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 121752426,
+             "id": "Q121752426"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q37340": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "god in Greek and later Roman mythology"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9b9d8ea22320e79f4c8b3d70cdff49f311d2d7fc",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22989102,
+         "id": "Q22989102"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q37340$1b626e1f-4770-5c22-0f2e-a4b367fcd671",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b282a7ff50c8d60e845705082266f6eaff141c03",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 511056,
+         "id": "Q511056"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q37340$583ddc2e-4859-e0a3-0036-553121454577",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "843991238027f9006be64b035847d9b5854fcb30",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 113103481,
+         "id": "Q113103481"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q37340$F7371697-860E-4F02-A0B9-BFAFD4A671B4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "68bad6b6b2ac2ac7d4272f81a5891b219d5bfc37",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "9eef34362269fcbf32da8b59449408fe8349da6d",
+           "datavalue": {
+            "value": "https://greekmythology.fandom.com/wiki/Olympian?oldid=79128#Second_Olympians",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P1476": [
+          {
+           "snaktype": "value",
+           "property": "P1476",
+           "hash": "e32aa88a243448fa7bd0e1581170acf822d31b45",
+           "datavalue": {
+            "value": {
+             "text": "Olympian | Greek Mythology Wiki | Fandom",
+             "language": "en"
+            },
+            "type": "monolingualtext"
+           },
+           "datatype": "monolingualtext"
+          }
+         ],
+         "P958": [
+          {
+           "snaktype": "value",
+           "property": "P958",
+           "hash": "e10691dd35a100660c80620f352767e790a1c6a8",
+           "datavalue": {
+            "value": "Second Olympians",
+            "type": "string"
+           },
+           "datatype": "string"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P1476",
+         "P958"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9a62ecad4e350b2a80314066d11da5b6551e9058",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11688446,
+         "id": "Q11688446"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q37340$c5926239-4075-44de-d777-d73ff01d4836",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q14965": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo Lunar Surface Experiments Package"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo Lunar Surface Experiments Package"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "series of scientific instrument packages left by the Apollo astronauts on the Moon"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3d1f1ac61bda57c2f89d77c7c8fb5cac0dfe7fda",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 100349043,
+         "id": "Q100349043"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q14965$ba3e6602-4e66-10f6-d43c-cdbb5fda95fa",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q14965$3464f0fd-40c3-6706-7b12-56ad499fbf40",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q5634132": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "HMS Royal Scotsman"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "HMS Royal Scotsman"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "1936 ferry converted to infantry landing ship"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "6d1927453eba2a8100107f83bdefef842b5cffd9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 25653,
+         "id": "Q25653"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q5634132$020C56FA-117D-4C52-9972-A4999FE872FC",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "5def4eedb4670e8690dc6a3d6b231b2347558f75",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 6484651,
+         "id": "Q6484651"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5634132$650e0a71-4bb0-3f28-f385-1ccfa0505529",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q18939626": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "street in Amersfoort, the Netherlands"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fbc4854fbefdca0a0775a5e9f7e2610264ca0884",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 79007,
+         "id": "Q79007"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18939626$9055025C-8322-431B-B9AC-460D948F509A",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "dac5a1fd153c973b76efb878e5bdd5c6ec32de2e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "b89b7a433be3dea27e624d836722249fd1bfde10",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 18916547,
+             "id": "Q18916547"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       },
+       {
+        "hash": "01a83a8d545c02a3da85d3f4f6c3fc80af0c71e1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "03fa44d7b89b2412c66c2ebe55af3adf4bb3eb9a",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 2274762,
+             "id": "Q2274762"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "3255495294545a1c2713e0724b0d3ba98a5f16db",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55,
+         "id": "Q55"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18939626$49D6EE45-2091-43FA-AA9E-E99D942F108C",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q41633": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Parnassius apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Parnassius apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "species of butterfly"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q41633$EB36B27D-5692-4A5A-BE14-F4EA8371A953",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q46611": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo program"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "1961–1972 American human spaceflight program"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9c195884ed468e8e7f68ae1da1b162da584a2005",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 13226541,
+         "id": "Q13226541"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q46611$71099c8d-4073-0d9d-b50d-6be1e73d7c76",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "6de8db98bf13730468d0b5f8cd59d63ea538f1ac",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 21605492,
+         "id": "Q21605492"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q46611$a73f2aea-49a8-8f40-3805-978f48db59cc",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "c989f7663346a81db0da30981b575350cea3de04",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 170584,
+         "id": "Q170584"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q46611$cd0cc5e2-4695-16f3-5f91-0cf6a106fb71",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q46611$3a1dafec-4301-2977-8cdd-689fcd6309eb",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q207391": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo asteroid"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family of Earth-crossing asteroids that have an orbital semi-major axis greater than that of the Earth (a > 1 AU) but a perihelion distance less than the Earth's aphelion distance (q < 1.017 AU)"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "16faa84d7c4496ed323438492f559071d061584e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 13441401,
+         "id": "Q13441401"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q207391$c2f17e59-4ae8-aa4d-ea7d-ca425ab88c48",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a4addbf2af4348f7e76150efc95464ed776a8dba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 249083,
+         "id": "Q249083"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q207391$63E09DA1-B051-48E3-A8BD-CF110563D0F0",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q1766885": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Parnassius"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Parnassius"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of insects"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1766885$0D41724E-BFA0-431A-8F74-C2FCB738335D",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q254": {
+   "labels": {
+    "mul": {
+     "language": "mul",
+     "value": "Wolfgang Amadeus Mozart"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Austrian composer of the Classical period (1756-1791)"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q254$2605625c-48e9-01f6-a4be-c479c62ba85e",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "1aa499b139512036fda50f9bcd9a413f2c54952e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 19938912,
+             "id": "Q19938912"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P268": [
+          {
+           "snaktype": "value",
+           "property": "P268",
+           "hash": "405384b9bafad446e41ea1ac5515a54f2881828b",
+           "datavalue": {
+            "value": "14027233b",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "d6162a1716489623c6e595e448b17f8dca4fb2e8",
+           "datavalue": {
+            "value": {
+             "time": "+2015-10-10T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P268",
+         "P813"
+        ]
+       },
+       {
+        "hash": "b086ad8d0352b33540ea4c7548a8fb1b307cef12",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "d1e923075a89220a981d8c2511065b97bcf4dc5c",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 77541206,
+             "id": "Q77541206"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P7796": [
+          {
+           "snaktype": "value",
+           "property": "P7796",
+           "hash": "0b580ac2f7012bd770da2aff287e2df32252d1b8",
+           "datavalue": {
+            "value": "2685",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "a2c482c4381b8ce33ae32b3998e8ec614fedebb7",
+           "datavalue": {
+            "value": {
+             "time": "+2021-02-13T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P7796",
+         "P813"
+        ]
+       },
+       {
+        "hash": "3895a1d700a173c2c1af99a2c647fb7b3bdd2207",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "e512ab8c20aa0d60b4b378d0d8bdd90b4556fe14",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 110775752,
+             "id": "Q110775752"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q119389597": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "third-party Reddit client for iOS and iPadOS"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "83e65e9157fad18c84a41ea98a35c50535ec3423",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 620615,
+         "id": "Q620615"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q119389597$494649f7-4edd-7985-e4f0-0fa681de2605",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "bf972cfd1974e2748f7afad9ec76c9ea6c6e8198",
+       "datavalue": {
+        "value": "https://apolloapp.io/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q119389597$cda6f7f5-4626-0565-9be5-e02b98606ae5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q129182385": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "painting by Dosso Dossi in the Galleria Borghese"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "dfce24c3a9083b334aa9fc35a67b162acd19286f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 3305213,
+         "id": "Q3305213"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q129182385$25c894aa-4d3e-c423-72f5-468b47c52666",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q127786699": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of insects"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q127786699$7DA900CB-CD43-48EF-941F-200E4DD3C904",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "2e0c13df5b13edc9b3db9d8129e466c0894710ac",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "2b1e96d67dc01973d72472f712fd98ce87c6f0d7",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 13679,
+             "id": "Q13679"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q133520791": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "journal, 1793-1797"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "5a7e4696633b9e9f5244b9dfb3ca98300d2b0604",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1002697,
+         "id": "Q1002697"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q133520791$44959202-48f0-d016-0c90-d21c3eb128f3",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q135065384": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "2024 video game developed by Co1e"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "03d2d8ec4a899b29435a104a9ce7c189a31ae380",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7889,
+         "id": "Q7889"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q135065384$7389AAD1-738C-4409-A534-FCFBF6D769B4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "e5e001f5f62895594a359d07852694055adf695c",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "f1480c8590c65080946bd9dfbad4e77cab95b9af",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 337535,
+             "id": "Q337535"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P1733": [
+          {
+           "snaktype": "value",
+           "property": "P1733",
+           "hash": "10cdd82eac5df89bbf73bd2141ce5b471a78a477",
+           "datavalue": {
+            "value": "3306300",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "775623cd2619b70f90f2095f438064fa5276adb4",
+           "datavalue": {
+            "value": {
+             "time": "+2025-06-06T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P1733",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q140860841": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character from the video game Deadlock"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9668489d5a355dc2741a949a92da3245ab9b604d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 89050960,
+         "id": "Q89050960"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q140860841$021e1d92-4c65-0d33-2571-120471e4713a",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "8783a9391733b599aef753a56b06af750c22b23b",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1569167,
+         "id": "Q1569167"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q140860841$46269470-41c7-9967-8612-bfd431fefaed",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q136672011": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "tram stop in Brăila, Romania"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "d1187af66adb4668dac6b0f58c933cf38abb4ff1",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 2175765,
+         "id": "Q2175765"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q136672011$AFB95272-942A-4491-AFE8-55F5DE164D0D",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "8ef322efb0810d012f9b4799c2413f3721f6387a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 218,
+         "id": "Q218"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q136672011$171B405D-AD9B-4A0B-966F-AD373D813922",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q619325": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonia"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonia"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "female given name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "4e5e70c8edf99377228ff12d0ce25a07ecc907c8",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11879590,
+         "id": "Q11879590"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619325$FC75388F-12DB-46D0-9AD7-501DEF2E2627",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "3bf39867b037e8e494a8389ae8a03bad6825a7fc",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5946b91c53409c48f5f1fb0319ed41fc67a764da",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 191168,
+             "id": "Q191168"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       },
+       {
+        "hash": "8531ec591fcecb1698ce86da05a15de4c19c8db0",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "50ed14ed5aa04196e564c8dc46f553c75ca600cd",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 108573326,
+             "id": "Q108573326"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q184201": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo 8"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo 8"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "second crewed flight of the United States Apollo program"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "03438673f5016ebbd87eb27f821af01abcd72137",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 752783,
+         "id": "Q752783"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q184201$C223EAC6-1C79-4309-98EF-E4CCF5380A4C",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q184201$5447d383-43b5-a578-d5d8-063672d9f327",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q192638": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonius of Rhodes"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonius of Rhodes"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "3rd century BC Greek epic poet"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q192638$0FC43661-F8E1-4780-B8BA-72D4C666D1D7",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "17b35e663c5856c5678654b2279be37c8b0df48a",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "f487c993a88b7e91732ae6e2ad2910710a462ad8",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1798125,
+             "id": "Q1798125"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P5587": [
+          {
+           "snaktype": "value",
+           "property": "P5587",
+           "hash": "9f065d576d728480d5e252c30848eb9c3e698add",
+           "datavalue": {
+            "value": "dbqssd3x1dktnsh",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "c26d20b2e9da77149b428760c52a0a989adb9c0e",
+           "datavalue": {
+            "value": {
+             "time": "+2017-11-09T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "a11d62bd1cf10c4155401fd7884e6013285efeaa",
+           "datavalue": {
+            "value": {
+             "time": "+2018-08-24T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P5587",
+         "P577",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q191746": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo 10"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo 10"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fourth crewed flight of the United States Apollo program"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "03438673f5016ebbd87eb27f821af01abcd72137",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 752783,
+         "id": "Q752783"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q191746$0370F22B-14B6-43D9-B78D-DD45487C1E53",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q191746$2ea691d8-49e1-653b-4001-bf33c19c1381",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q15109445": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "arts magazine published in London, UK"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "fb7666e2e8ef0fcade84a1db13a7740ac93e8426",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 41298,
+         "id": "Q41298"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q15109445$A0CC4ED4-F0A4-4EF4-BF6B-8A81A5258D58",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "0c254e4cb8ed77d1a4df9cc7c3fda4a7cd3a28b7",
+       "datavalue": {
+        "value": "http://apollo-magazine.com",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q15109445$A95576D7-A257-4927-B8C4-ADC4DD715FDE",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "e4b755ae23c31c6041877c987b8ff3cf8eeadbfa",
+       "datavalue": {
+        "value": "http://www.exacteditions.com/read/apollo/july-2015-43172/1/2/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q15109445$58C891F2-C30B-4CF3-9DBC-F04617B4D712",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "88dd0b7efc1c8eccc040cab8c0f191da85ce87c9",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "eb6cb701bdaaae80dfa220d3b09a959c96736325",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 70460099,
+             "id": "Q70460099"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P236": [
+          {
+           "snaktype": "value",
+           "property": "P236",
+           "hash": "88556887e8f6062c944878de31aff091b0d95d6e",
+           "datavalue": {
+            "value": "2059-5247",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P236"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q144927": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "1862 Apollo"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "1862 Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "asteroid"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "e270559053acf45c0cac07484fa09d541d7ec134",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 59423687,
+         "id": "Q59423687"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q144927$052c3129-f4e6-483c-aad0-d4a335126503",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "118e0f49ed4a0c4a0d5bcde94ee854e840581b16",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "6f6e9b5c5db0a606f453ff08b5f851657e4a17f0",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 4026990,
+             "id": "Q4026990"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P716": [
+          {
+           "snaktype": "value",
+           "property": "P716",
+           "hash": "d1d9bb4cc9faead383bd9101b283b69994ae4592",
+           "datavalue": {
+            "value": "20001862",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "fec05f7b7fcfadd61e815bb18e08d0c3baa3bdaf",
+           "datavalue": {
+            "value": "https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=20001862",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "7e3bd292e037042d9d2a2df29b62c3ca7ef49583",
+           "datavalue": {
+            "value": {
+             "time": "+2023-10-31T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P716",
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "a0fcfc61dcb7e6b300ef8d8562bd8f4e65b5ba2c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 265392,
+         "id": "Q265392"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q144927$e14f4a4d-61a8-4336-b641-282afed34b1b",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "118e0f49ed4a0c4a0d5bcde94ee854e840581b16",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "6f6e9b5c5db0a606f453ff08b5f851657e4a17f0",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 4026990,
+             "id": "Q4026990"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P716": [
+          {
+           "snaktype": "value",
+           "property": "P716",
+           "hash": "d1d9bb4cc9faead383bd9101b283b69994ae4592",
+           "datavalue": {
+            "value": "20001862",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "fec05f7b7fcfadd61e815bb18e08d0c3baa3bdaf",
+           "datavalue": {
+            "value": "https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=20001862",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "7e3bd292e037042d9d2a2df29b62c3ca7ef49583",
+           "datavalue": {
+            "value": {
+             "time": "+2023-10-31T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P716",
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "1dd82de2bbfd24933a86a0565d0f5c0a7264f78d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 217526,
+         "id": "Q217526"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q144927$3203039d-fec1-4edc-8e64-595effddaaf4",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "684e37d90bb60b3e13a74a480fc0b81d7ed53af2",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "6f6e9b5c5db0a606f453ff08b5f851657e4a17f0",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 4026990,
+             "id": "Q4026990"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P716": [
+          {
+           "snaktype": "value",
+           "property": "P716",
+           "hash": "d1d9bb4cc9faead383bd9101b283b69994ae4592",
+           "datavalue": {
+            "value": "20001862",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "fec05f7b7fcfadd61e815bb18e08d0c3baa3bdaf",
+           "datavalue": {
+            "value": "https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=20001862",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "90777d2c8c666bd1ef55bf48c8ee91022a53cf0a",
+           "datavalue": {
+            "value": {
+             "time": "+2025-10-16T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P716",
+         "P854",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2287871": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo Justice: Ace Attorney"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo Justice: Ace Attorney"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "2007 video game"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "03d2d8ec4a899b29435a104a9ce7c189a31ae380",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7889,
+         "id": "Q7889"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q2287871$CDB3F832-CB5C-45B8-8D24-CC8026D9B8CA",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "744f93d84f0e5f76df67f24402be359003616c5e",
+       "datavalue": {
+        "value": "http://ms2.nintendo-europe.com/AceAttorney3/frFR/index.html",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q2287871$848ECD8E-3BD7-46B6-B1CF-E0D76AABCB9D",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 8447,
+             "id": "Q8447"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q2362334": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollon Grigoryev"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Russian writer (1822–1864)"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2362334$3EFFEA79-E0E8-4893-961D-B312224353FE",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "ac746c77a942c580ee1c7fb9a1e48dadeee463a1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 19938912,
+             "id": "Q19938912"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P268": [
+          {
+           "snaktype": "value",
+           "property": "P268",
+           "hash": "eafaa0f577e24882ae44ac44d7b19e3227a42a3c",
+           "datavalue": {
+            "value": "125524091",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "d6162a1716489623c6e595e448b17f8dca4fb2e8",
+           "datavalue": {
+            "value": {
+             "time": "+2015-10-10T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P268",
+         "P813"
+        ]
+       },
+       {
+        "hash": "24db54079f6c8af9ff116178ef29e43ffcc27b65",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "f487c993a88b7e91732ae6e2ad2910710a462ad8",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 1798125,
+             "id": "Q1798125"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P5587": [
+          {
+           "snaktype": "value",
+           "property": "P5587",
+           "hash": "16e2a1945e9c34109a6c9e54480fc96c68d087e5",
+           "datavalue": {
+            "value": "86lnpnds07qs221",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P577": [
+          {
+           "snaktype": "value",
+           "property": "P577",
+           "hash": "a5e8d37c90563780c7567379a823f2947fdea169",
+           "datavalue": {
+            "value": {
+             "time": "+2012-10-01T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "a11d62bd1cf10c4155401fd7884e6013285efeaa",
+           "datavalue": {
+            "value": {
+             "time": "+2018-08-24T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P5587",
+         "P577",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q619121": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo Global Management"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo Global Management"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "American private equity firm"
+    }
+   },
+   "claims": {
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "815d669e8f9113db9bb4b444c85a1f628fe39e76",
+       "datavalue": {
+        "value": "http://www.agm.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q619121$6e61d2bd-4636-5845-b0db-d8972386dc2a",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "2634307729abe6e1f14c277ad68f3c6ee5ff4f5b",
+       "datavalue": {
+        "value": "https://www.apollo.com/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "id": "Q619121$b8a27ec4-419b-7f59-799f-d9b898ec2919",
+      "rank": "preferred"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f1745a9d987e9c8ec1007fd30ee3277fc076f391",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5418962,
+         "id": "Q5418962"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619121$e5fed643-4048-4661-9303-9cc25c7f70d4",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "326e3d41d1e9c34715e880be6e1c6a1e822e4317",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4830453,
+         "id": "Q4830453"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619121$1D39B672-8749-4C14-95EA-D57CF1D62533",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "eef1731db85f0ac84d4ae5d83756e45ce052108d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 6881511,
+         "id": "Q6881511"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619121$C1562828-020C-475B-965D-FC1A626B9B00",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "af3410ae4f813c757b304403dd1af5becc963ebe",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 891723,
+         "id": "Q891723"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619121$7B64B7D2-9A75-47E3-A39D-92F78DE7F076",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "96445edd0c74078756fba6f66de4b4cf46064af1",
+        "snaks": {
+         "P4656": [
+          {
+           "snaktype": "value",
+           "property": "P4656",
+           "hash": "1d0aeb900a1b92550e42fc2d0bde0c2d0e936c46",
+           "datavalue": {
+            "value": "https://en.wikipedia.org/wiki/Category:Companies_listed_on_the_New_York_Stock_Exchange",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "ec11100215a5926044c30f24900adbf61070d424",
+           "datavalue": {
+            "value": {
+             "time": "+2023-02-21T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P4656",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ],
+    "P1278": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P1278",
+       "hash": "d5bba50cca8a066e5b2cc8c98b4eae272b72fb37",
+       "datavalue": {
+        "value": "54930054P2G7ZJB0KM79",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q619121$1D2028FF-29ED-4790-BCC0-F859744442E6",
+      "rank": "normal"
+     }
+    ],
+    "P5531": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P5531",
+       "hash": "a0b38f3fd223db48233fa37611ebe5bcbbdb561a",
+       "datavalue": {
+        "value": "0001411494",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q619121$692f0b3a-4dff-4523-96ed-7e8d836a964f",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "dc37cb32a499711d6ba7f37a049152bcbe5a47e7",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "23e98a34c6302394e7370b3bbd619e69652f57d6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 105523379,
+             "id": "Q105523379"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P1810": [
+          {
+           "snaktype": "value",
+           "property": "P1810",
+           "hash": "87b4f99c96a47257da677c39bcafd8e5967fd405",
+           "datavalue": {
+            "value": "Apollo Global Management LLC Class A Representing Class A Limitied Liability Company Interests",
+            "type": "string"
+           },
+           "datatype": "string"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "39c5319141b5e2956d40cf4796f9d08b5d147899",
+           "datavalue": {
+            "value": {
+             "time": "+2021-02-20T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P1810",
+         "P813"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P5531",
+       "hash": "ff488ae698547b5b5d6ce7fbfe7f91ba9e57cd8e",
+       "datavalue": {
+        "value": "0001858681",
+        "type": "string"
+       },
+       "datatype": "external-id"
+      },
+      "type": "statement",
+      "id": "Q619121$8AB3CC21-047C-46F6-A702-03FE7C8BB921",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619121$47FBF9E2-8A30-42AD-A641-F415B784B38E",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8adfdf96101d5c32b6b769c4633401ec06e02307",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "88b1aea91b49e7281dc2608b867987d014c88992",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 55259097,
+             "id": "Q55259097"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "e89ed975a583a10e83aa56ce16069435a04494bf",
+           "datavalue": {
+            "value": {
+             "time": "+2024-09-17T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P813"
+        ]
+       },
+       {
+        "hash": "2dcedd85133a6e98ef8277ef823e8de27ceb4992",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "50124d9a15ea0d534af7820b649029eef9917d13",
+           "datavalue": {
+            "value": "https://www.lobbyfacts.eu/datacard/apollo-global-management?rid=646004752544-51",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q3620690": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Italian record label 1969-1974"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "0a32ee3827c9ccab7081419f58b4d3a0601d6b62",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 18127,
+         "id": "Q18127"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3620690$0CCE4768-37FE-426F-A3BC-6A1B6A6B9CE7",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "b48529e9f7e0898ab1ddaefe8547cdb863e0167c",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 38,
+         "id": "Q38"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q3620690$09F8B394-EFEB-491C-83AA-6B42ED1FE195",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5a343e7e758a4282a01316d3e959b6e653b767fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11920,
+             "id": "Q11920"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q618977": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "borough of Pennsylvania"
+    }
+   },
+   "claims": {
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "be4c6eafa2984964f04be85667263f5642ba1a72",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30,
+         "id": "Q30"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q618977$40C2D56F-F63B-4676-84D5-165D85C09708",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 10000,
+             "id": "Q10000"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "aeb9f5f2a854a63573d34cc9f8c7c19b0bdda067",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 777120,
+         "id": "Q777120"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q618977$70A17E05-CBB2-40DA-85FC-56DE0B6A976C",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q12873874": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonides"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Ἀπολλωνίδης"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Wikimedia disambiguation page"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "063d0bad3759d2e038a7b4a7f9c9c71e9d774265",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 22808320,
+         "id": "Q22808320"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q12873874$3A9DDA6E-26B3-4A60-9DC9-624531D294FF",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q14635029": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo Brown"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo Brown"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "American producer (born 1980)"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q14635029$5F211965-3081-4798-AEDE-B7E3EC7A904B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q430728": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "American spacecraft"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "e2647301c4b286a72069fa95915b68061cda6fba",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7217761,
+         "id": "Q7217761"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q430728$ff2326d2-437d-78e8-1d98-cf23fbb84fa9",
+      "rank": "normal"
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "325383db654658a02485a46d66f82e4e97b3b7a4",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 29048319,
+         "id": "Q29048319"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q430728$d566583f-453c-823f-2031-2af8a3a2b6ef",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q428047": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollon Limassol FC"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "men's association football team in Limassol, Cyprus"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "de95c192b6d83336c7c4d98d15b566a0ca33065a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 476028,
+         "id": "Q476028"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q428047$5231F54E-1968-446F-BB5B-09C4DCFF9A29",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       },
+       {
+        "hash": "b6a6242288a3e177468837bb7dd85d15da4a1ec4",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5098f54fb73f56e383c593f296e7b3a7d34549c8",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11918,
+             "id": "Q11918"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "6822d5cfc6eb3afe4144f92894d519e045c99ef0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 103229495,
+         "id": "Q103229495"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q428047$86C12679-DF97-4DE0-87B1-E36A3F37C40F",
+      "rank": "normal"
+     }
+    ],
+    "P856": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P856",
+       "hash": "b6c692ce8f48edeb8206b4b807fe289e0af09d3c",
+       "datavalue": {
+        "value": "https://www.apollon.com.cy/",
+        "type": "string"
+       },
+       "datatype": "url"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P407": [
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "23e7ce4420e95fb6f17407e1e676202606c575f4",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 9129,
+           "id": "Q9129"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        },
+        {
+         "snaktype": "value",
+         "property": "P407",
+         "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+         "datavalue": {
+          "value": {
+           "entity-type": "item",
+           "numeric-id": 1860,
+           "id": "Q1860"
+          },
+          "type": "wikibase-entityid"
+         },
+         "datatype": "wikibase-item"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P407"
+      ],
+      "id": "Q428047$d4981e83-4905-4058-090b-93f08789d38e",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "44e98aa49fcf9455846ddb8d2e6e59a6ec268a7a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 229,
+         "id": "Q229"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q428047$907AB32C-C9DF-4EF1-AE5D-D06C729E3C24",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "b6a6242288a3e177468837bb7dd85d15da4a1ec4",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "5098f54fb73f56e383c593f296e7b3a7d34549c8",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 11918,
+             "id": "Q11918"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q109641420": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo the Shepherd"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo the Shepherd"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Egyptian Christian monk who lived around the C.E.4th century in the desert of Lower Egypt. He was one of the Desert Fathers."
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q109641420$b0438608-7b3a-4e7f-8ff3-5d94c585e4e1",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q900649": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "god in Roman mythology"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "9a62ecad4e350b2a80314066d11da5b6551e9058",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 11688446,
+         "id": "Q11688446"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q900649$99aff69d-4275-0659-21b1-dcd6107a51cd",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q18200050": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonius"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonius"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "male given name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "477ef35019874affa392a3f6d7c7062f10a6d132",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 12308941,
+         "id": "Q12308941"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18200050$6C486260-D11E-47DA-BF06-FA5DBCFD9B5B",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q18045791": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "DCLRE1B"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "protein-coding gene in the species Homo sapiens"
+    }
+   },
+   "claims": {
+    "P279": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P279",
+       "hash": "592014e0b60dc33d7381742611094aa1c60a8268",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 20747295,
+         "id": "Q20747295"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18045791$A98D2B74-6EE6-41D9-B84B-B29FE1157268",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "eccd84945331f1ceb6de753e718af9273ea8713d",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "b1fd439747355215363257596ad33c4fb2c8f85b",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 27975061,
+             "id": "Q27975061"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P594": [
+          {
+           "snaktype": "value",
+           "property": "P594",
+           "hash": "dd5b8a83357e6cd05730a239bdc405a37cbf7680",
+           "datavalue": {
+            "value": "ENSG00000118655",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P594"
+        ]
+       }
+      ]
+     }
+    ],
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f7b5dc954c1e8de67376278f5a41649cdb274834",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 7187,
+         "id": "Q7187"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q18045791$A2A9E532-AF6E-4780-8E60-EC902CA09F07",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "0f88d4774118ff1e23427edb5cb450236defefb1",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "bc7274793ac69d38434ef3646ef5efe9277f54bb",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 111699881,
+             "id": "Q111699881"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P594": [
+          {
+           "snaktype": "value",
+           "property": "P594",
+           "hash": "dd5b8a83357e6cd05730a239bdc405a37cbf7680",
+           "datavalue": {
+            "value": "ENSG00000118655",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P594"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q1922334": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonie Sabatier"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonie Sabatier"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "French model (1822–1890)"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q1922334$6B450E39-2E45-45BD-9F8E-05F94DCB500C",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "0316b7cbbe4bb690044ee9a123e9cef9fa08269e",
+        "snaks": {
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 19938912,
+             "id": "Q19938912"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ],
+         "P268": [
+          {
+           "snaktype": "value",
+           "property": "P268",
+           "hash": "1d0dd139d7a6824e1e04eebf4f25350c2351d155",
+           "datavalue": {
+            "value": "13322729n",
+            "type": "string"
+           },
+           "datatype": "external-id"
+          }
+         ],
+         "P813": [
+          {
+           "snaktype": "value",
+           "property": "P813",
+           "hash": "d6162a1716489623c6e595e448b17f8dca4fb2e8",
+           "datavalue": {
+            "value": {
+             "time": "+2015-10-10T00:00:00Z",
+             "timezone": 0,
+             "before": 0,
+             "after": 0,
+             "precision": 11,
+             "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "type": "time"
+           },
+           "datatype": "time"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P248",
+         "P268",
+         "P813"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q5401099": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollophanes"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollophanes"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of spiders"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q5401099$FC9B026B-B2FE-4129-99DD-BCCCB41AAEBE",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q532190": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonias"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonias"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "genus of plants"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "06629d890d7ab0ff85c403d8aadf57ce9809c01f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 16521,
+         "id": "Q16521"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q532190$A73C481B-31E6-440F-8BD6-399687A478E0",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q12717895": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Jonas Forsang Moksnes"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Norwegian rapper, journalist"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q12717895$ED6D396F-C6BD-424E-BE9E-035325B521E8",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q36902917": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3a01d0950849b76433d9aeec3107b57e86bb6378",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 101352,
+         "id": "Q101352"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q36902917$E07A0035-3336-425C-B5EE-4744B0613DDA",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "8c376f30a6c29ed08110a46e989a72b2b9c967a6",
+        "snaks": {
+         "P854": [
+          {
+           "snaktype": "value",
+           "property": "P854",
+           "hash": "14bbd3989e616652210ba16280e1dea0166635f9",
+           "datavalue": {
+            "value": "https://www2.census.gov/topics/genealogy/2010surnames/names.zip",
+            "type": "string"
+           },
+           "datatype": "url"
+          }
+         ],
+         "P248": [
+          {
+           "snaktype": "value",
+           "property": "P248",
+           "hash": "8ca6dda9dbd16cf0adc91f7ee0ba2810cd79dea6",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 523716,
+             "id": "Q523716"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P854",
+         "P248"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q619275": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "ballet"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "126363198d5e9635575f28b97c13772d6b9324df",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15079786,
+         "id": "Q15079786"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619275$01C24358-6BE0-441B-93DB-3472399DA359",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "5be109d8a3cbbd062357a9d210d4ef00ef25244e",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 105543609,
+         "id": "Q105543609"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q619275$80F98386-6243-4C27-9198-544A317AF162",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q4780268": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Wildstorm/DC Comics superhero character"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "4b61b3ead02d77bdf2ce33a93a40d3329882267d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 1114461,
+         "id": "Q1114461"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q4780268$D68332A4-D835-48D6-AEA4-7887689D9CF0",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "2d3925701e033f2ec036e2b96e68652b2838963a",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 17624054,
+         "id": "Q17624054"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q4780268$96188AC7-9355-4C93-B97B-81D3EBDACB91",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "021024ca812dfe79121263245af065dd4b6e02e7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 30174902,
+         "id": "Q30174902"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q4780268$0685896F-DAB9-4DE2-B194-F467F4AF4F78",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q618975": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "impact crater on the Moon"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "b85edecbd957c17cd5195d55a1aa9138fdde2390",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 55818,
+         "id": "Q55818"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q618975$A3EEEC58-C682-478F-AD6C-4D9AA95EF5BE",
+      "rank": "normal",
+      "references": [
+       {
+        "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+        "snaks": {
+         "P143": [
+          {
+           "snaktype": "value",
+           "property": "P143",
+           "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+           "datavalue": {
+            "value": {
+             "entity-type": "item",
+             "numeric-id": 328,
+             "id": "Q328"
+            },
+            "type": "wikibase-entityid"
+           },
+           "datatype": "wikibase-item"
+          }
+         ]
+        },
+        "snaks-order": [
+         "P143"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q56245988": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonio"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonio"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "family name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3a01d0950849b76433d9aeec3107b57e86bb6378",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 101352,
+         "id": "Q101352"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q56245988$30D75EE0-4CAD-4170-BD2C-134111C3801A",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q100396914": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollonio"
+    },
+    "mul": {
+     "language": "mul",
+     "value": "Apollonio"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "male given name"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "477ef35019874affa392a3f6d7c7062f10a6d132",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 12308941,
+         "id": "Q12308941"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q100396914$47391308-40a1-a22b-cb99-15fd355efac0",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q142139": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "company in Bratislava, Slovakia"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "eef1731db85f0ac84d4ae5d83756e45ce052108d",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 6881511,
+         "id": "Q6881511"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q142139$F6BEB9C0-25C3-44CB-8C07-DCF2A895FD46",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "326e3d41d1e9c34715e880be6e1c6a1e822e4317",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 4830453,
+         "id": "Q4830453"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q142139$e6a69256-4a1b-0256-2e81-69274501899c",
+      "rank": "normal"
+     }
+    ],
+    "P17": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "4c2904f7df1bf50bec10f7fa958b11e2664d9578",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 214,
+         "id": "Q214"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "0aeab9e143c5db97d70edf13eadfbcd2920bb5db",
+         "datavalue": {
+          "value": {
+           "time": "+1993-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580"
+      ],
+      "id": "Q142139$45337A43-F70C-4E6B-993D-927222CEC0BF",
+      "rank": "preferred"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "f1104d128fcb224d67a8747320cea52c55bac51f",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 28513,
+         "id": "Q28513"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "243076ba9721eb1a55f3fc886104f532066f726b",
+         "datavalue": {
+          "value": {
+           "time": "+1895-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P582": [
+        {
+         "snaktype": "value",
+         "property": "P582",
+         "hash": "93ac21226f54574fc2f9f074273226acf3b0705e",
+         "datavalue": {
+          "value": {
+           "time": "+1918-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580",
+       "P582"
+      ],
+      "id": "Q142139$e10d7cd8-4b6f-ac26-4b65-c4028bd6d6cb",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P17",
+       "hash": "ca737d7feef5741cf999730435e289089bdecbe7",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 33946,
+         "id": "Q33946"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "qualifiers": {
+       "P580": [
+        {
+         "snaktype": "value",
+         "property": "P580",
+         "hash": "10a2dfc96e157e37793f5012a6e0f534220ac075",
+         "datavalue": {
+          "value": {
+           "time": "+1918-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ],
+       "P582": [
+        {
+         "snaktype": "value",
+         "property": "P582",
+         "hash": "f294fe6f57dc4483e9ec87952f3f7a3e925c9d7a",
+         "datavalue": {
+          "value": {
+           "time": "+1992-00-00T00:00:00Z",
+           "timezone": 0,
+           "before": 0,
+           "after": 0,
+           "precision": 9,
+           "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+          },
+          "type": "time"
+         },
+         "datatype": "time"
+        }
+       ]
+      },
+      "qualifiers-order": [
+       "P580",
+       "P582"
+      ],
+      "id": "Q142139$dad39cae-4d77-5d49-019b-a4b9ece14253",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q2749640": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Captain Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "fictional character in the Battlestar Galactica franchise"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "29d6e6de9e4e48dd1692512778e3f46581c6b976",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15773317,
+         "id": "Q15773317"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2749640$D5B2089B-60B1-410B-9DC8-2AC68F91C861",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "f963dc19bd5650f5822ec55162163e4a826d8cf0",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 15632617,
+         "id": "Q15632617"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q2749640$66a8f133-4ef2-2232-18e3-ed27696edd39",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q54569042": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "4th-century Christian ascetic from Akhmim, Egypt"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 5,
+         "id": "Q5"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q54569042$6B5B5C84-A273-4B5E-8049-34E36C9C6FC5",
+      "rank": "normal"
+     }
+    ]
+   }
+  },
+  "Q99291613": {
+   "labels": {
+    "en": {
+     "language": "en",
+     "value": "Apollo"
+    }
+   },
+   "descriptions": {
+    "en": {
+     "language": "en",
+     "value": "Czech theatrical troupe"
+    }
+   },
+   "claims": {
+    "P31": [
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "3c9f9d423bb4b1080c7bbebd83a3f9cce18cb443",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 215380,
+         "id": "Q215380"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99291613$78f85752-401b-4a91-4b88-5860518c21c4",
+      "rank": "normal"
+     },
+     {
+      "mainsnak": {
+       "snaktype": "value",
+       "property": "P31",
+       "hash": "00ca078eee15a8413dd7f47925cbf762f1237d94",
+       "datavalue": {
+        "value": {
+         "entity-type": "item",
+         "numeric-id": 742421,
+         "id": "Q742421"
+        },
+        "type": "wikibase-entityid"
+       },
+       "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "Q99291613$f4593e7b-4341-dbeb-5b4e-68081c76673e",
+      "rank": "normal"
+     }
+    ]
+   }
+  }
+ }
+}

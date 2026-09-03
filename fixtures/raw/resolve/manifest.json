@@ -1,0 +1,86 @@
+[
+ {
+  "file": "search-stripe.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=stripe&language=en&type=item&format=json&limit=50",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:35.804Z"
+ },
+ {
+  "file": "entities-stripe.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7624104|Q3421342|Q127900502|Q117454382|Q297115|Q469754|Q842647|Q368495|Q215332|Q631822|Q37535583|Q1058149|Q106318699|Q21169417|Q686439|Q111226046|Q14925277|Q188657|Q133334|Q421516|Q2016506|Q767055|Q226735|Q3023831|Q2319750|Q1313355|Q972004|Q875897|Q780824|Q1210054|Q1190312|Q1942364|Q591562|Q210088|Q107383381|Q104335364|Q104330281|Q104323787|Q104326624|Q29721014|Q19558351|Q104367379|Q19558352|Q688635|Q87069481|Q538161|Q3335431|Q174153|Q3644142|Q1574876&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:40.093Z"
+ },
+ {
+  "file": "classes-stripe.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q12738586|Q61809711|Q3825492|Q15773347|Q5|Q16521|Q101352|Q14970|Q21169422|Q2085381|Q310890|Q29642950|Q2151232|Q7187|Q79007|Q1048314|Q11424&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:44.018Z"
+ },
+ {
+  "file": "search-apollo.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=apollo&language=en&type=item&format=json&limit=50",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:47.711Z"
+ },
+ {
+  "file": "entities-apollo.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q665812|Q37340|Q14965|Q5634132|Q18939626|Q41633|Q46611|Q207391|Q1766885|Q254|Q119389597|Q129182385|Q127786699|Q133520791|Q135065384|Q140860841|Q136672011|Q619325|Q184201|Q192638|Q191746|Q15109445|Q144927|Q2287871|Q2362334|Q619121|Q3620690|Q618977|Q12873874|Q14635029|Q430728|Q428047|Q109641420|Q900649|Q18200050|Q18045791|Q1922334|Q5401099|Q532190|Q12717895|Q36902917|Q619275|Q4780268|Q618975|Q56245988|Q100396914|Q142139|Q2749640|Q54569042|Q99291613&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:51.779Z"
+ },
+ {
+  "file": "classes-apollo.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q12308941|Q22989102|Q511056|Q113103481|Q11688446|Q100349043|Q25653|Q6484651|Q79007|Q16521|Q13226541|Q21605492|Q170584|Q249083|Q5|Q620615|Q3305213|Q1002697|Q7889|Q89050960|Q1569167|Q2175765|Q11879590|Q752783|Q41298|Q59423687|Q265392|Q217526|Q5418962|Q18127|Q777120|Q22808320|Q29048319|Q476028|Q103229495|Q7187|Q101352|Q15079786|Q105543609|Q1114461|Q17624054|Q30174902|Q55818|Q15773317|Q15632617|Q215380|Q742421&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:55.723Z"
+ },
+ {
+  "file": "search-florida.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=florida&language=en&type=item&format=json&limit=50",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:24:59.439Z"
+ },
+ {
+  "file": "entities-florida.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q812|Q842472|Q2255913|Q501758|Q1093490|Q861548|Q20000193|Q1065809|Q3295272|Q2392006|Q5461160|Q1430048|Q5842287|Q5842289|Q16593|Q28519051|Q134308316|Q139758997|Q15749995|Q643617|Q612530|Q2271950|Q555528|Q5027600|Q2077862|Q1112732|Q6914963|Q615791|Q55700|Q2575793|Q429863|Q537803|Q111449880|Q13048|Q18342844|Q204623|Q4711417|Q5461394|Q5461408|Q36859860|Q2548194|Q3074270|Q5461162|Q742699|Q3152650|Q3746761|Q818|Q13636655|Q780702|Q5461626&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:03.830Z"
+ },
+ {
+  "file": "classes-florida.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q35657|Q515|Q123705|Q56061|Q62078547|Q615150|Q23002039|Q45400320|Q2555896|Q875538|Q11879590|Q928830|Q22808403|Q2602693|Q482994|Q3918|Q1620945|Q3914|Q55488|Q55678|Q56059|Q5148433|Q5084|Q5633421|Q773668|Q73364223|Q73365221|Q737498|Q558330|Q207694|Q33506|Q263639|Q17259945|Q15127012|Q106071004|Q3184121|Q215380|Q917092|Q24764|Q620509|Q751708|Q55237813|Q35127|Q1840161|Q3957|Q4164871|Q4498974|Q18558301|Q17156793|Q13393265&props=labels|descriptions|claims&languages=en|mul&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:08.080Z"
+ },
+ {
+  "file": "search-nothing.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=zzqx%20no%20such%20company%20zzqx&language=en&type=item&format=json&limit=50",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:11.758Z"
+ },
+ {
+  "file": "claims-country-us.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetclaims&entity=Q30&property=P297&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:15.524Z"
+ },
+ {
+  "file": "claims-country-ca.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetclaims&entity=Q16&property=P297&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:19.205Z"
+ },
+ {
+  "file": "claims-country-it.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetclaims&entity=Q38&property=P297&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:22.920Z"
+ },
+ {
+  "file": "claims-country-sk.json",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetclaims&entity=Q214&property=P297&format=json",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:25:26.621Z"
+ }
+]
