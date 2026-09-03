@@ -613,6 +613,46 @@ is not a client module, so the route's import is a placement problem and not a r
 formatter should move to a shared module the next time that file is owned by the lane doing the
 work.
 
+## D54 — Resolution gets its own URL parameter
+
+**Context.** SPEC §6.5 says state lives in `?q=…&domain=…`. D38 had already given `?q=` to the
+committed recordings and `?investigate=` to a real investigation, precisely so no URL means two
+things. Identity resolution needs an entry point, and taking `?q=` would have reversed D38 and
+killed the offline demo path (D5).
+**Options.** Repurpose `?q=` as SPEC's letter suggests, moving the recordings wholly to `?domain=`;
+or give resolution its own parameter, the way `?investigate=` got one.
+**Choice.** `?resolve=<name>`. Purely additive: nothing that works today changes meaning.
+**Consequence.** Three entry points, each with one meaning — `?q=` opens a recording,
+`?resolve=` runs identity resolution, `?investigate=` runs an investigation. A pick writes the
+`?investigate=` URL. SPEC's literal `?q=` shape is now the one piece of its URL grammar we do not
+follow, and this is the entry that says so.
+
+## D55 — A resolved answer carries what it beat
+
+**Context.** `ResolveResponse.found` declared, in its own doc comment, "Every candidate, winner
+included. `Resolution` carries only the chosen one, and SPEC §3 needs the alternatives behind
+'Not the right company?' even when one won." `shown()` filtered `found` down to `[winner]` on the
+resolved branch, so the affordance had nothing to reveal and a reader could not see what the
+winner beat.
+**Choice.** The resolved branch serves the de-duplicated list the judgement actually considered,
+winner first. `withoutDuplicates` is exported for it, so the alternatives are the same ones
+`decideResolution` weighed rather than the raw list with its twins back in.
+**Consequence.** Verified live: `stripe` now returns two — Stripe, then Stripe Press. `shopify` and
+`nvidia` return one, because they genuinely have one. So "no alternatives" is a real state and the
+affordance has to say it plainly rather than open onto an empty panel. `Resolution` stayed frozen;
+the alternatives travel in the route's own `Found[]`.
+
+## D56 — The resolved identifiers reach the investigation
+
+**Context.** Resolution computes `wikidataId`, `lei` and `cik`. `/api/investigate` accepted only
+`{name, domain, refresh, demo}`, so those identifiers were dropped at the boundary: resolving
+Stripe's LEI and then investigating it sent GLEIF back to the 57 records named "Stripe" and it
+refused again. T10's whole payoff died one hop before it was used.
+**Choice.** The investigate route accepts the resolved identifiers and passes them into
+`ProviderInput` — which already carried the three fields, so the frozen seam did not move.
+**Consequence accepted.** This is not written in `TASKS.md`; it was added deliberately, because
+without it a picked candidate is worth no more than a typed name.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
