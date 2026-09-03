@@ -339,6 +339,69 @@ therefore untouched despite belonging to the UI lane.
 **Consequence.** The title renders differently across platforms, which is what a system stack is.
 Adopting a webfont later touches one file and no component.
 
+## D33 — `failed` and `empty` are different answers
+**Context.** A provider that reached its source and found nothing, and a provider that never got
+an answer, are the same shape on the wire and mean opposite things to a reader.
+**Choice.** A provider that reached its source and found nothing returns `NoEvidence` on every
+field it covers — it looked, and can say so. A provider that failed returns only what it had
+already read, and never a `NoEvidence`, because claiming "no evidence found, checked EDGAR" after
+a timeout asserts a search that did not happen. A 404 is empty; every other refusal is a failure;
+an unreadable payload is a failure too, since what the source holds is then unknown.
+**Consequence.** A rate-limited source costs a red line in the log and leaves its fields silent,
+rather than quietly converting an outage into an absence of fact.
+
+## D34 — GLEIF answers only when the identification is certain
+**Context.** `filter[entity.legalName]` is not an exact match: "Stripe" returns 57 active records,
+among them a Belgian company legally named exactly STRIPE, in Hoeilaart. Taking the first result
+would have put Stripe's headquarters in Belgium with an official registry's badge on it.
+**Choice.** GLEIF answers only when the legal name, with its legal form stripped, equals the name
+searched, and the entity is ACTIVE and GENERAL. When several such records exist in different
+places, it answers nothing and names the competing locations in the log.
+**Consequence.** Stripe currently gets no registry source at all, and the report says why. This is
+the guardrail-3 philosophy applied to a registry: an ambiguous identity is handed back, not
+guessed. Identity resolution (T10) can pass a LEI, and GLEIF then answers directly. Within a
+record, the headquarters address beats the legal one — a Delaware registered agent is not a head
+office — and on EDGAR the business address beats the mailing one for the same reason.
+
+## D35 — EDGAR's country comes from the name it states, never from its own codes
+**Context.** An adversarial pass found EDGAR reporting `country: "US"` for foreign filers. EDGAR
+fills `isForeignLocation` and `countryCode` for only some filers; for ASML the country lives only
+in `stateOrCountryDescription` ("Netherlands") while `stateOrCountry` reads "P7". The result was
+"Dr Veldhoven, P7, US", marked `confirmed`, winning the merge — an invented location wearing a
+registry's badge.
+**Choice.** A domestic filer repeats its state code in the description, so a description that
+resolves to a country means the filer is foreign. The ISO code is derived from the country name
+EDGAR states, resolved through the runtime's ISO 3166 data. EDGAR's own codes are never printed,
+and a registry's all-caps name is re-cased for display while codes stay codes.
+**Consequence.** Verified against ASML, Sea, Novartis, SAP, Nokia and Toyota. Official names
+carrying a comma — "Korea, Republic of", "Taiwan, Province of China" — do not resolve, and yield
+`country: null` with the name printed as the SEC states it. A missing country is survivable; a
+wrong one is not.
+
+## D36 — A terminated mandate is not a mandate
+**Context.** Wikidata's `P169` for WeWork still lists Adam Neumann, qualified with `P582`
+(end date) of 2019-09-24. `Person` has no way to say "former", so a past officer would have been
+presented as the company's current one.
+**Choice.** A claim carrying an end date is dropped rather than rendered without its qualifier.
+Applied to `P159` as well.
+**Consequence.** Fewer people on some reports. The alternative was a name presented as current
+leadership years after they left, which is the same class of error as an invented value.
+
+## D37 — The EDGAR User-Agent is a shared placeholder, and says so
+**Context.** SPEC §5 promises the app works with no key at all, and the SEC drops callers it
+cannot identify — so a default is load-bearing, not a convenience. The first default,
+`DetectiveGabi/0.1 (https://…)`, was measured returning 403 while a plain contact string returned
+200 from the same host at the same moment.
+**Choice.** The default is a contact string, the shape the SEC asks for. It is documented as a
+placeholder: every unconfigured deployment sends the same identifier, so they share one throttling
+bucket and can be blocked together. An operator running this for real sets `EDGAR_USER_AGENT`.
+`covers` also lost `people`: a company's submissions record publishes no officers, and declaring
+otherwise let an empty report claim EDGAR had been checked for decision makers — the exact lie
+D19 exists to prevent.
+**Consequence.** EDGAR contributes location only until something reads Forms 3/4/5. The four
+recordings' `people.sourcesChecked` were recomputed accordingly — a value derived from `covers`,
+not one recorded from a response, so recomputing it is not editing a recording.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

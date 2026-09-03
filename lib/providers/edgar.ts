@@ -18,8 +18,15 @@ const COMPANY_PAGE = 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany
  * SPEC §5 promises the app works with no key at all, and the SEC drops callers it cannot
  * identify. A default is therefore not a convenience: without one the keyless baseline loses
  * a whole source. `EDGAR_USER_AGENT` replaces it so calls are attributable to whoever runs it.
+ *
+ * Two things about this default, both measured rather than assumed. The SEC rejects some
+ * User-Agent shapes outright — a `Product/version (url)` string returned 403 while a plain
+ * contact string returned 200 — so the format is a contact, which is what the SEC asks for.
+ * And because every unconfigured deployment sends the same string, they share one throttling
+ * bucket and can be blocked together. That is a placeholder, not an identity: an operator
+ * running this for real sets `EDGAR_USER_AGENT` to their own contact.
  */
-const DEFAULT_USER_AGENT = 'DetectiveGabi/0.1 (https://github.com/evoltGABI/detective-gabi)'
+const DEFAULT_USER_AGENT = 'Detective Gabi contact@example.com'
 
 /** An official registry answering for what it publishes (D20). */
 const CONFIDENCE = 'confirmed' as const
@@ -55,7 +62,10 @@ type Address = z.infer<typeof addressSchema>
 export const edgar: Provider = {
   id: 'edgar',
   requiresKey: false,
-  covers: ['location', 'people'],
+  // Location only. A company's submissions record publishes no officers, so declaring
+  // `people` would let the report say EDGAR was checked for decision makers when nothing
+  // here looks for them. Reading Forms 3/4/5 would earn it back; see docs/04-limitations.md.
+  covers: ['location'],
   /**
    * True whatever the context holds: the User-Agent has a default, so there is no configuration
    * under which this provider cannot run.
@@ -81,11 +91,6 @@ export const edgar: Provider = {
       const name = parsed.data.name ?? cik
       return {
         fields: { location },
-        // A company's own submissions record publishes no officers, so there are none to take.
-        // `covers` still declares people because the seam froze it that way before that was
-        // known — which leaves the report able to say EDGAR was checked for decision makers
-        // when nothing here looks. Raised rather than silently corrected; see the hand-off.
-        people: [],
         log: [
           {
             step,

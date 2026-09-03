@@ -157,7 +157,7 @@ function contributionOf(report: Report, source: Source): Omit<ProviderResult, 'l
 }
 
 const COVERS: Partial<Record<Source, readonly Coverage[]>> = {
-  edgar: ['location', 'people'],
+  edgar: ['location'],
   gleif: ['location'],
   wikidata: ['location', 'yearFounded', 'employees', 'people'],
   abstract: ['location', 'yearFounded', 'employees'],

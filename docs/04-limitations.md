@@ -25,6 +25,23 @@ and providers that source from public data. Personal data is displayed, not stor
 ephemeral cache. In a production version this would need a documented retention policy, a lawful
 basis for processing under GDPR, and a way for an individual to request removal.
 
+**EDGAR contributes location only.** A company's submissions record publishes no officers, so
+SEC EDGAR is not a source of decision makers today, despite being listed as one in the brief.
+Reading Forms 3/4/5 would earn it back. Until then it does not claim to have looked.
+
+**The default EDGAR User-Agent is shared.** The SEC throttles by caller identity, so every
+unconfigured deployment sits in one bucket and can be blocked together — one such string was
+measured being refused with 403 while another returned 200 from the same machine. Setting
+`EDGAR_USER_AGENT` moves a deployment into its own bucket.
+
+**GLEIF cannot identify every company by name.** "Stripe" matches 57 active records, one of them
+a Belgian company legally named exactly STRIPE. Rather than guess, GLEIF answers nothing and names
+the competing locations, so Stripe currently has no registry source. Passing a LEI resolves it.
+
+**The committed recordings predate the real providers.** They were captured by hand before the
+providers existed, and the pipeline has since become stricter — Stripe's registry source is one it
+would no longer produce. They are due to be re-recorded once identity resolution can supply a LEI.
+
 ## What I'd do next
 
 - Registry coverage per jurisdiction (Companies House, INSEE Sirene) for legal identity outside

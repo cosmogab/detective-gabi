@@ -496,12 +496,17 @@ describe('SEC EDGAR reads the filed address without inventing a country', () => 
     expect(result.log[0]?.status).toBe('empty')
   })
 
-  it('reports no people, which is what the company record publishes', async () => {
+  it('neither returns people nor claims to look for them', async () => {
     serve(NVIDIA_ROUTES)
 
     const result = await edgar.run(company('Nvidia'), context())
 
-    expect(result.people).toEqual([])
+    // A company's submissions record publishes no officers. Declaring `people` in `covers`
+    // would let an empty report say EDGAR was checked for decision makers when nothing here
+    // looks — the precise claim D19 exists to prevent. Reading Forms 3/4/5 would earn it back.
+    expect(result.people).toBeUndefined()
+    expect(edgar.covers).not.toContain('people')
+    expect(edgar.covers).toEqual(['location'])
   })
 })
 
