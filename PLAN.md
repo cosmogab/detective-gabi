@@ -16,7 +16,7 @@ app/
     KeysModal.tsx  ErrorState.tsx
 lib/
   types.ts                     Field<T>, Confidence, Source, CompanyFields, Person,
-                               Report, LogEvent, Candidate, Resolution
+                               PeopleSection, Report, LogEvent, Candidate, Resolution
   merge.ts                     merge by source priority, conflicts, confidence
   resolve.ts                   is one candidate a clear winner? (pure; the route fetches)
   orchestrate.ts               run the provider groups in parallel, assemble the Report

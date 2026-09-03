@@ -1,0 +1,68 @@
+{
+  "query": "fly.io",
+  "company": {
+    "name": "Fly.io",
+    "domain": "fly.io"
+  },
+  "fields": {
+    "location": {
+      "found": false,
+      "value": null,
+      "sourcesChecked": [
+        "edgar",
+        "gleif",
+        "wikidata"
+      ],
+      "fetchedAt": "2026-09-03T18:40:25.918Z"
+    },
+    "yearFounded": {
+      "found": true,
+      "value": 2017,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q133943318",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": []
+    },
+    "employees": {
+      "found": false,
+      "value": null,
+      "sourcesChecked": [
+        "wikidata"
+      ],
+      "fetchedAt": "2026-09-03T18:40:25.918Z"
+    }
+  },
+  "people": {
+    "found": [],
+    "sourcesChecked": [
+      "edgar",
+      "wikidata"
+    ]
+  },
+  "log": [
+    {
+      "step": "Checking Wikidata",
+      "ms": 301,
+      "status": "ok",
+      "source": "wikidata"
+    },
+    {
+      "step": "Checking GLEIF",
+      "ms": 677,
+      "status": "empty",
+      "source": "gleif",
+      "detail": "no record found"
+    },
+    {
+      "step": "Checking SEC EDGAR",
+      "ms": 317,
+      "status": "empty",
+      "source": "edgar",
+      "detail": "no record found"
+    }
+  ],
+  "fetchedAt": "2026-09-03T18:40:25.918Z",
+  "cached": false,
+  "simulated": false
+}

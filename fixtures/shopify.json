@@ -1,0 +1,80 @@
+{
+  "query": "shopify",
+  "company": {
+    "name": "Shopify",
+    "domain": "shopify.com"
+  },
+  "fields": {
+    "location": {
+      "found": true,
+      "value": {
+        "formatted": "Ottawa, Ontario, CA",
+        "country": "CA"
+      },
+      "source": "edgar",
+      "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001594805",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "confirmed",
+      "conflicts": []
+    },
+    "yearFounded": {
+      "found": true,
+      "value": 2006,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7501150",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": []
+    },
+    "employees": {
+      "found": true,
+      "value": 8300,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7501150",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": [],
+      "asOf": "2023"
+    }
+  },
+  "people": {
+    "found": [
+      {
+        "name": "Tobias L\u00fctke",
+        "title": "Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q20684647",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      }
+    ],
+    "sourcesChecked": [
+      "edgar",
+      "wikidata"
+    ]
+  },
+  "log": [
+    {
+      "step": "Checking Wikidata",
+      "ms": 478,
+      "status": "ok",
+      "source": "wikidata"
+    },
+    {
+      "step": "Checking GLEIF",
+      "ms": 668,
+      "status": "ok",
+      "source": "gleif"
+    },
+    {
+      "step": "Checking SEC EDGAR",
+      "ms": 369,
+      "status": "ok",
+      "source": "edgar"
+    }
+  ],
+  "fetchedAt": "2026-09-03T18:40:25.918Z",
+  "cached": false,
+  "simulated": false
+}

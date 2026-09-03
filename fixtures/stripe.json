@@ -1,0 +1,100 @@
+{
+  "query": "stripe",
+  "company": {
+    "name": "Stripe",
+    "domain": "stripe.com"
+  },
+  "fields": {
+    "location": {
+      "found": true,
+      "value": {
+        "formatted": "South San Francisco, CA, US",
+        "country": "US"
+      },
+      "source": "gleif",
+      "sourceUrl": "https://api.gleif.org/api/v1/lei-records/254900VYCQ4K0SLSXF22",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "confirmed",
+      "conflicts": [
+        {
+          "value": {
+            "formatted": "San Francisco, US",
+            "country": "US"
+          },
+          "source": "wikidata",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q7624104"
+        }
+      ],
+      "asOf": "2026-01-07"
+    },
+    "yearFounded": {
+      "found": true,
+      "value": 2010,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7624104",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": []
+    },
+    "employees": {
+      "found": true,
+      "value": 8000,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7624104",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": [],
+      "asOf": "2022"
+    }
+  },
+  "people": {
+    "found": [
+      {
+        "name": "Patrick Collison",
+        "title": "Chief Executive Officer, Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q7146257",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      },
+      {
+        "name": "John Collison",
+        "title": "Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q16233063",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      }
+    ],
+    "sourcesChecked": [
+      "edgar",
+      "wikidata"
+    ]
+  },
+  "log": [
+    {
+      "step": "Checking Wikidata",
+      "ms": 620,
+      "status": "ok",
+      "source": "wikidata"
+    },
+    {
+      "step": "Checking GLEIF",
+      "ms": 638,
+      "status": "ok",
+      "source": "gleif"
+    },
+    {
+      "step": "Checking SEC EDGAR",
+      "ms": 7258,
+      "status": "empty",
+      "source": "edgar",
+      "detail": "no record found"
+    }
+  ],
+  "fetchedAt": "2026-09-03T18:40:25.918Z",
+  "cached": false,
+  "simulated": false
+}

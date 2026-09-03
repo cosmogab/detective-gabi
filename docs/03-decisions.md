@@ -169,6 +169,45 @@ route fetches from Wikidata and Tavily; the judgement is separate and pure.
 table under B2. The part that carries judgement is the part that gets tested, which is the rule
 `AGENTS.md` already sets.
 
+## D19 — Decision makers get a section, not a bare array
+**Context.** Building the Fly.io fixture exposed a hole in the contract frozen in T3. Every
+scalar field can say `No evidence found` *and list the sources checked*; `Report.people` was a
+`Person[]`, and an empty array can say nothing. The fourth required field was the one that could
+not explain its own emptiness.
+**Options.** Derive the list from the log · add a sibling `peopleSourcesChecked` array · wrap
+people in a section carrying both.
+**Choice.** `people: { found: Person[]; sourcesChecked: Source[] }`. Deriving from the log would
+have claimed GLEIF was checked for decision makers, which it never is.
+**Consequence.** The seam changed inside Wave 0, before any lane started — the only moment it was
+free. This is why T6 comes before the fan-out: the fixtures are the first real client of the
+interface, and a gap found here costs one edit instead of three stalled lanes.
+
+## D20 — How confidence is derived, and what counts as a conflict
+**Context.** The fixtures have to carry a confidence and a conflict list, and T5 has to compute
+the same ones later. Two implementations of the same rule would disagree eventually.
+**Choice.** Confidence: `confirmed` for an official registry (EDGAR, GLEIF) or two independent
+sources agreeing; `corroborated` for a single structured source (Wikidata, Abstract, Hunter);
+`circumstantial` for the company's own site, web search or model extraction. A conflict is a
+genuine disagreement between sources — a dated series from one source is history, not
+disagreement, so the most recent measurement wins and carries its `asOf` alone.
+**Consequence.** Nvidia's four Wikidata employee figures collapse to 42,000 as of 2026-01-25
+rather than rendering three false conflicts, while Stripe's registry-versus-Wikidata location
+disagreement is shown as one. T5 implements this rule rather than inventing its own.
+
+## D21 — The fixtures are recordings, not illustrations
+**Context.** The fixtures are displayed as sourced facts on the public demo. Writing plausible
+values into them from memory would be the app inventing data, in the file that exists to prove
+it does not.
+**Choice.** Every fixture was captured from live Wikidata, GLEIF and SEC EDGAR calls and
+assembled by script rather than by hand. Values, `asOf` dates, source URLs, the `fetchedAt`
+clock and the per-step `ms` timings in the log are all measured. Where a capture failed I
+re-ran it rather than shipping the failure: Fly.io's first EDGAR call returned an error that
+turned out to be our own rate limiting, and a fixture claiming EDGAR was down would have been a
+lie about a source that works.
+**Consequence.** Refreshing a fixture means re-recording, not editing. The four companies show
+genuinely uneven coverage — Stripe carries a real registry-versus-Wikidata disagreement, Fly.io
+has three empty fields beside one sourced one — because that is what the sources actually hold.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

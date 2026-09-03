@@ -141,13 +141,23 @@ export type Resolution =
   | { kind: 'ambiguous'; candidates: Candidate[] }
   | { kind: 'not-found'; query: string; sourcesChecked: Source[] }
 
+/**
+ * Decision makers are the fourth required field, so they must be able to say where we looked
+ * when we found nobody — exactly as `NoEvidence` does for a scalar field. An empty `found`
+ * with a populated `sourcesChecked` is the people section's "No evidence found".
+ */
+export type PeopleSection = {
+  /** Unioned and deduplicated across sources, not won by one of them. */
+  found: Person[]
+  sourcesChecked: Source[]
+}
+
 export type Report = {
   /** What the user typed, kept so the report can state what was searched. */
   query: string
   company: { name: string; domain: string | null }
   fields: CompanyFields
-  /** Unioned and deduplicated across sources, not won by one of them. */
-  people: Person[]
+  people: PeopleSection
   log: LogEvent[]
   fetchedAt: string
   /** True when served from the TTL cache. `cachedAt` is when the cached copy was built. */

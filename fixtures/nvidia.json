@@ -1,0 +1,98 @@
+{
+  "query": "nvidia",
+  "company": {
+    "name": "Nvidia",
+    "domain": "nvidia.com"
+  },
+  "fields": {
+    "location": {
+      "found": true,
+      "value": {
+        "formatted": "Santa Clara, Ca, US",
+        "country": "US"
+      },
+      "source": "edgar",
+      "sourceUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "confirmed",
+      "conflicts": []
+    },
+    "yearFounded": {
+      "found": true,
+      "value": 1993,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q182477",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": []
+    },
+    "employees": {
+      "found": true,
+      "value": 42000,
+      "source": "wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q182477",
+      "fetchedAt": "2026-09-03T18:40:25.918Z",
+      "confidence": "corroborated",
+      "conflicts": [],
+      "asOf": "2026-01-25"
+    }
+  },
+  "people": {
+    "found": [
+      {
+        "name": "Jensen Huang",
+        "title": "Chief Executive Officer, Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q305177",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      },
+      {
+        "name": "Chris Malachowsky",
+        "title": "Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q5107317",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      },
+      {
+        "name": "Curtis Priem",
+        "title": "Founder",
+        "email": null,
+        "source": "wikidata",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q5195858",
+        "fetchedAt": "2026-09-03T18:40:25.918Z",
+        "confidence": "corroborated"
+      }
+    ],
+    "sourcesChecked": [
+      "edgar",
+      "wikidata"
+    ]
+  },
+  "log": [
+    {
+      "step": "Checking Wikidata",
+      "ms": 833,
+      "status": "ok",
+      "source": "wikidata"
+    },
+    {
+      "step": "Checking GLEIF",
+      "ms": 683,
+      "status": "ok",
+      "source": "gleif"
+    },
+    {
+      "step": "Checking SEC EDGAR",
+      "ms": 322,
+      "status": "ok",
+      "source": "edgar"
+    }
+  ],
+  "fetchedAt": "2026-09-03T18:40:25.918Z",
+  "cached": false,
+  "simulated": false
+}
