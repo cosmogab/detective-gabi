@@ -1,6 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+// `CaseFile` imports this module back: the report is only known once the stream closes, so
+// it has to render inside the client boundary. The cycle is safe because both components are
+// hoisted `function` declarations referenced from inside render — converting either to a
+// `const` arrow or wrapping it in `memo` would turn it into a temporal-dead-zone crash.
 import { CaseFile } from './CaseFile'
 import { Magnifier } from './SearchBar'
 import type { LogEvent, LogEventStatus, Report } from '@/lib/types'
@@ -152,20 +156,25 @@ export function LiveInvestigation(props: { name: string; domain: string | null }
       const reader = response.body.getReader()
       const decoder = new TextDecoder()
       let buffer = ''
-      for (;;) {
-        const { done, value } = await reader.read()
-        if (done) break
-        buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split('\n')
-        // The last piece may be half a line; it waits for the rest rather than being parsed.
-        buffer = lines.pop() ?? ''
-        for (const line of lines) {
-          const frame = asFrame(line)
-          if (frame === null) continue
-          if (frame.type === 'event') setEvents((held) => [...held, frame.event])
-          else if (frame.type === 'report') setReport(frame.report)
-          else setFailure(frame.message)
+      try {
+        for (;;) {
+          const { done, value } = await reader.read()
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          // The last piece may be half a line; it waits for the rest rather than parsed early.
+          buffer = lines.pop() ?? ''
+          for (const line of lines) {
+            const frame = asFrame(line)
+            if (frame === null) continue
+            if (frame.type === 'event') setEvents((held) => [...held, frame.event])
+            else if (frame.type === 'report') setReport(frame.report)
+            else setFailure(frame.message)
+          }
         }
+      } finally {
+        // An abort otherwise leaves the body locked to a reader nobody holds.
+        reader.releaseLock()
       }
     }
 

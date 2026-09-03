@@ -21,9 +21,6 @@ import type { LogEvent, Report, Source } from '@/lib/types'
  */
 const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar]
 
-/** Reading `searchParams` is not involved, but an investigation is never a cached page. */
-export const dynamic = 'force-dynamic'
-
 const requestSchema = z.object({
   name: z.string().trim().min(1).max(200),
   domain: z.string().trim().max(253).nullable().optional(),
@@ -65,8 +62,17 @@ export async function POST(request: Request): Promise<Response> {
   const encoder = new TextEncoder()
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
+      // A reader that has gone away cancels the stream, and every later `enqueue` and the
+      // `close` then throw `Invalid state`. Someone navigating away mid-investigation is
+      // ordinary, so it ends the writing rather than raising three errors on the way out.
+      let open = true
       const send = (frame: Frame) => {
-        controller.enqueue(encoder.encode(`${JSON.stringify(frame)}\n`))
+        if (!open) return
+        try {
+          controller.enqueue(encoder.encode(`${JSON.stringify(frame)}\n`))
+        } catch {
+          open = false
+        }
       }
       try {
         const report = await investigate(
@@ -81,7 +87,14 @@ export async function POST(request: Request): Promise<Response> {
         // or an internal URL, and neither belongs on a client.
         send({ type: 'error', message: 'the investigation stopped before it finished' })
       } finally {
-        controller.close()
+        if (open) {
+          open = false
+          try {
+            controller.close()
+          } catch {
+            // Cancelled between the last frame and here. There is nothing left to close.
+          }
+        }
       }
     },
   })
