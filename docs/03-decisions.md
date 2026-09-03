@@ -532,6 +532,87 @@ description, so a reader sees immediately that they are looking at a university.
 **Consequence.** Ambiguous answers are longer than they strictly need to be. That is the cost of
 never silently discarding the right answer with the wrong ones.
 
+## D48 — A recording is only shown under the company it was recorded for
+
+**Context.** The demonstration resolved its recording from the domain alone.
+`{name: "Acme Corp", domain: "shopify.com"}` printed Shopify's recording — Tobias Lütke as
+founder, 2006, 8300 employees — under the name Acme Corp, reachable at a plain URL. A real,
+named person shown as an officer of a company that is not theirs.
+**Choice.** The name and the domain are two separate claims about which company this is. When
+they disagree the recording is withheld and the demonstration shows a company with nothing on
+record — a state the file already had words for. A recording answers to its company name, the
+query it was recorded under, its fixture key and its domain, compared with case, punctuation and
+a trailing legal form removed, and only while more than one word remains so that "Corp" alone
+matches nothing.
+**Consequence.** `simulated` says the data was recorded; it cannot say who it was recorded about,
+so no banner buys this back. Verified across ten adversarial pairs, including four the lane had
+not tested: "Shopify Rebellion", one company's name with another's domain, "Fly" against fly.io,
+and "Inc" alone — all withheld; "Shopify Inc.", "FLY.IO" and "shopify.com" all still answer.
+
+## D49 — What the rate limit withholds, and how it says so
+
+**Context.** The deployment is public and the default keys are ours, so an open quota is an open
+wallet. SPEC §7 asks a limit to name the service and, when known, when it resets.
+**Choice.** A fixed window of one hour and twenty keyed investigations, not a sliding one — a
+fixed window has a reset instant that can be stated, and "when the oldest of your last twenty
+requests turns an hour old" is not something to put on a screen. Past the limit the request is
+never refused: keyed providers are skipped and the keyless ones still run. An unidentifiable
+caller shares one bucket with every other unidentifiable caller, which is the strict direction to
+fail in for a wallet. The address is a `Map` key in memory and never leaves the module — not
+hashed, because an address is short enough that a hash of one is trivially reversed.
+**Consequence.** A reached limit is said as a `skipped` log event with a detail (D39), so `Report`
+stayed frozen. It returns null today: no wired provider needs a key, and a line claiming a source
+was skipped when none was is the scripted step D8 forbids.
+
+## D50 — A demonstration is sealed off from the cache, and the key carries the reach
+
+**Context.** Two ways a stored answer could start lying. A forced failure written under a real
+domain would be replayed to the next real visitor as a real outage, certified by a `Cached`
+banner. And a report impoverished by the rate limit, stored under the plain domain, would be
+served to callers who were never limited.
+**Choice.** `writeCache` refuses any report carrying `simulated`, so no caller can forget, and a
+simulated run neither reads nor writes. The cache key is the domain *and* the reach, `full` or
+`keyless`; a keyless caller may be served a full answer because it is strictly richer and cost
+them nothing, and the reverse is refused. Reach is only `keyless` when the limit actually withheld
+something.
+**Consequence.** Verified live against a warm entry: `?demo=timeout` showed the timeout, and the
+real entry was intact afterwards — the recording's "Santa Clara, Ca, US" never crossed with the
+live "Santa Clara, CA, US".
+
+## D51 — "No trace found" is derived, and it is not a failure
+
+**Context.** SPEC §7 wants a distinct state when a company cannot be found at all.
+**Choice.** It fires only when every field is empty, nobody was found, and nothing failed — every
+source answered and none had a record. When something failed instead, the ordinary case file
+stays, with `No evidence found` fields and red log rows. The invitation to supply a domain appears
+only when no domain was given.
+**Consequence.** D33 made visible: `empty` and `failed` are different answers. Collapsing them
+would tell a visitor "this company does not exist" when the truth is "our sources broke".
+
+## D52 — Three banners, one shell
+
+**Context.** The page now says Recording, Cached and Simulated. D41 says two vocabularies for one
+idea is one too many.
+**Choice.** One component behind all three: same line, same order, same action word. Simulated
+says something genuinely different — a failure forced with `?demo=` over recorded data, no source
+called — and wears the dashed alert rule that already separates `unverified pattern` from
+`verified`. The old `simulated` badge in the case-file header was removed as the second vocabulary
+D41 forbids, and the banner now renders inside `CaseFile`, so a simulated report cannot be
+rendered anywhere without saying so.
+
+## D53 — Two duplications kept on purpose, written down so they are not discovered
+
+**Context.** Both would be drift if they happened by accident.
+**Choice.** `LEGAL_FORMS` and its normalisation are copied from `lib/providers/gleif.ts` rather
+than imported: that module belongs to the provider lane, and a demonstration must never be able to
+break a real provider. And `formatFetchedAt` is imported into a server route from
+`app/components/FieldRow.tsx`, which is the wrong home for it — but a second copy of the one
+date formatter is exactly the drift D26 exists to prevent.
+**Consequence accepted.** If the legal-form list gains an entry it has two homes. `FieldRow.tsx`
+is not a client module, so the route's import is a placement problem and not a repeat of D45; the
+formatter should move to a shared module the next time that file is owned by the lane doing the
+work.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
