@@ -97,7 +97,12 @@ function related(query: string, name: string): boolean {
  * same: two companies can carry one name, and merging those would hide the ambiguity this
  * whole function exists to surface.
  */
-function withoutDuplicates(candidates: readonly Candidate[]): Candidate[] {
+/**
+ * Exported so the route can serve the same de-duplicated list it judged. `ResolveResponse.found`
+ * promises every candidate, and the alternatives behind "Not the right company?" have to be the
+ * ones the judgement actually considered — not the raw list with its twins back in.
+ */
+export function withoutDuplicates(candidates: readonly Candidate[]): Candidate[] {
   const kept: Candidate[] = []
   for (const candidate of candidates) {
     const twin = kept.findIndex((held) => sameDomain(held, candidate))

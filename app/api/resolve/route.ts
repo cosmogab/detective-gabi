@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import type { Ctx, ProviderInput } from '@/lib/providers/types'
-import { decideResolution } from '@/lib/resolve'
+import { decideResolution, withoutDuplicates } from '@/lib/resolve'
 import type { Candidate, LogEvent, Resolution, Source } from '@/lib/types'
 
 /**
@@ -462,11 +462,23 @@ function hostOf(url: string | undefined): string | null {
   }
 }
 
-/** The candidates the resolution kept, so the client is not handed duplicates it must filter. */
+/**
+ * The candidates the resolution kept, so the client is not handed duplicates it must filter.
+ *
+ * A resolved answer carries the alternatives too, winner first. `ResolveResponse.found` says so
+ * three lines above its own declaration, and "Not the right company?" has nothing to reveal
+ * without them: filtering down to the winner here made the affordance unbuildable and left the
+ * reader no way to see what the winner beat.
+ */
 function shown(resolution: Resolution, found: readonly Found[]): Found[] {
   const kept =
     resolution.kind === 'resolved'
-      ? [resolution.candidate]
+      ? [
+          resolution.candidate,
+          ...withoutDuplicates(found.map((entry) => entry.candidate)).filter(
+            (candidate) => candidate !== resolution.candidate,
+          ),
+        ]
       : resolution.kind === 'ambiguous'
         ? resolution.candidates
         : []

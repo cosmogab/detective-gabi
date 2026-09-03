@@ -302,6 +302,25 @@ describe('the route fetches, and lets lib/resolve judge', () => {
     })
   })
 
+  it('carries the alternatives a resolved answer beat, winner first', async () => {
+    serve(STRIPE_ROUTES)
+
+    const body = await (await POST(ask('stripe'))).json()
+
+    // `ResolveResponse.found` promises every candidate, winner included, because SPEC §3 needs
+    // the alternatives behind "Not the right company?" even when one won. Filtering down to the
+    // winner made that affordance unbuildable — a reader could not see what the winner beat.
+    expect(body.resolution.kind).toBe('resolved')
+    expect(body.found.length).toBeGreaterThan(1)
+    expect(body.found[0].candidate.name).toBe(body.resolution.candidate.name)
+
+    // And the alternatives are the de-duplicated ones the judgement actually considered.
+    const domains = body.found
+      .map((entry: { candidate: { domain: string | null } }) => entry.candidate.domain)
+      .filter((domain: string | null) => domain !== null)
+    expect(new Set(domains).size).toBe(domains.length)
+  })
+
   it('finds the company that sits far down the label matches', async () => {
     serve(APOLLO_ROUTES)
 
