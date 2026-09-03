@@ -42,7 +42,7 @@ The stubs matter: they mean no agent ever creates a file another agent also crea
 | **A2 · registry** | `lib/providers/wikidata.ts`, `gleif.ts`, `edgar.ts`, `tests/providers.registry.test.ts` | types, fixtures |
 | **A3 · keyed APIs** | `lib/providers/abstract.ts`, `hunter.ts`, `lib/keys.ts`, `tests/providers.api.test.ts`, `tests/guardrails.email.test.ts` | types, fixtures |
 | **A4 · website** | `lib/providers/website.ts`, `llm.ts`, `tests/providers.website.test.ts` | types, fixtures |
-| **A5 · report UI** | `app/page.tsx`, `app/components/FieldRow.tsx`, `PersonCard.tsx`, `CaseFile.tsx`, `InvestigationLog.tsx` | types, fixtures |
+| **A5 · report UI** | `app/page.tsx`, `app/globals.css`, `app/components/FieldRow.tsx`, `PersonCard.tsx`, `CaseFile.tsx`, `InvestigationLog.tsx`, `SearchBar.tsx` | types, fixtures |
 
 A5 renders **from fixtures only** — no provider, no route. That is what lets it run at the same
 time as everyone else.
@@ -56,7 +56,7 @@ Merge the five branches. Files are disjoint, so the merge is mechanical.
 | Agent | Owns | Depends on |
 |---|---|---|
 | **B1 · orchestration** | `lib/orchestrate.ts`, `app/api/investigate/route.ts` | merge + all providers |
-| **B2 · resolve** | `lib/resolve.ts`, `app/api/resolve/route.ts`, `app/components/SearchBar.tsx`, `CandidateGrid.tsx`, `tests/guardrails.resolve.test.ts` | providers, UI |
+| **B2 · resolve** | `lib/resolve.ts`, `app/api/resolve/route.ts`, `app/components/CandidateGrid.tsx`, `tests/guardrails.resolve.test.ts` | providers, UI |
 | **B3 · resilience** | `lib/cache.ts`, `lib/ratelimit.ts`, `lib/demo.ts`, their tests | types |
 
 ---
@@ -176,13 +176,15 @@ Do not modify `lib/types.ts` or `lib/providers/types.ts` — they are frozen."*
 
 **B2 · resolve**
 > Implement `app/api/resolve/route.ts` (Wikidata search + Tavily when available → candidates with
-> domain, description, country), `SearchBar` and `CandidateGrid`. One clear winner → return it
+> domain, description, country) and `CandidateGrid`. One clear winner → return it
 > and skip the grid; genuinely ambiguous → return candidates and let the user choose. Never pick
 > one silently when confidence is low. The judgement lives in `lib/resolve.ts` as a pure
 > `decideResolution(...)` so it can be tested without network; the route only fetches and calls
 > it. `tests/guardrails.resolve.test.ts` is yours to turn green. Files: `lib/resolve.ts`,
-> `app/api/resolve/route.ts`, `app/components/SearchBar.tsx`, `CandidateGrid.tsx`,
+> `app/api/resolve/route.ts`, `app/components/CandidateGrid.tsx`,
 > `tests/guardrails.resolve.test.ts`.
+> `SearchBar` is not yours: A5 builds it with the home page in T8, because that is the page
+> containing it. Two lanes building two search fields would meet in Wave 3.
 
 **B3 · resilience**
 > Implement `lib/cache.ts` (TTL 24h, key = domain, in-memory + `/tmp`), `lib/ratelimit.ts`
