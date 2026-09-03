@@ -441,6 +441,73 @@ hoisted function declarations referenced from inside render — converting eithe
 or wrapping it in `memo` turns it into a temporal-dead-zone crash. That is now a comment at the
 import rather than a fact somebody has to remember.
 
+## D41 — A cache hit and a recording are one idea, so they get one line
+
+**Context.** SPEC §6.5 asks for `cached · 2 min ago · refresh` under the title. D38 had already
+put a recording behind a banner reading `Recording · … · Investigate now`. Both say the same
+thing — this answer was obtained at another moment — and shipping both would have put two
+vocabularies for "not fresh" on one page.
+**Options.** Two banners, each with its own wording and its own verb; or one component serving
+both.
+**Choice.** One component, `StoredAnswer`. Only the word naming where the answer was stored
+differs, because they really are stored differently: a recording is committed to the repo and
+permanent, a cached answer expires. The action is one gesture, so it has one name —
+`Investigate now`. SPEC's literal `refresh` label is the one piece of its copy not used; the word
+survives as the URL parameter and the mechanism, and stays distinct from *new search*, which is
+the field and the wordmark.
+**Consequence.** A cache hit emits no `LogEvent` frames at all. The stored report keeps the log of
+the run that actually happened — those milliseconds are real measurements of another moment, and
+replaying them now would pass them off as this one's. Measured on the live route: cold 1593 ms
+with 3 event frames, the same request again 41 ms with zero frames and `cached: true`.
+
+## D42 — The moment is absolute, never relative
+
+**Context.** SPEC §6.5 spells the label `2 min ago`. D26 reads every date off its ISO string,
+never through `Date` or `Intl`, so the server and the browser cannot print two different
+timestamps.
+**Options.** A relative label computed on the server (stale before it arrives); computed on the
+client (disagrees with the server's HTML); kept true with a timer on screen (which D8 refuses); or
+the absolute moment.
+**Choice.** The absolute moment, in the format the report header already uses:
+`Cached · from 3 September 2026, 22:56 UTC, not investigated just now · Investigate now`.
+**Consequence.** The reader gets the fact and does the subtraction. The page never prints a number
+that changes depending on who is looking at it. Verified: no relative phrasing survives anywhere in
+the rendered HTML.
+
+## D43 — A run that contains a failure is cached for fifteen minutes
+
+**Context.** Caching a run in which a provider failed replays that outage to every reader for the
+whole TTL — including after a rate limit has reset. Not caching it drops the quota guard during
+exactly the reload-hammering a broken page invites.
+**Options.** Full 24 h; no caching at all; a shorter TTL.
+**Choice.** 15 minutes when any step has status `failed`; the full day otherwise. `empty` and
+`skipped` are ordinary answers, not failures, and keep the full TTL — a company with no GLEIF
+record has that fact cached like any other.
+**Consequence.** A transient outage is held long enough to absorb a reload storm and short enough
+that it cannot become tomorrow's fact.
+
+## D44 — No domain, no cache, in both directions
+
+**Context.** The cache key is the domain. A search can arrive with a bare name and no domain.
+**Choice.** A bare name is not a key. Nothing is stored under an empty key and nothing is served
+from one, so `?investigate=Nvidia` with no domain re-investigates every time.
+**Consequence.** Two companies can share a name, and answering the second with the first's report
+is precisely the invention this app exists to refuse. The cost is that name-only searches never get
+the quota guard — accepted, and identity resolution (T10) is what supplies the domain.
+`readCache` also stamps `cached` and `cachedAt` itself rather than trusting a caller, so there is
+no way to be handed a stored answer that does not say it is one; both directions `structuredClone`,
+so neither side can edit what the other is served.
+
+## D45 — A client module's functions cannot cross the boundary
+
+**Context.** `investigateHref` was exported from a `'use client'` module and imported by the server
+page. It typechecked and it built. At runtime every recording URL returned 500: *"Attempted to call
+investigateHref() from the server but investigateHref is on the client."*
+**Choice.** URLs are built on the server, in one place, and handed down as strings.
+**Consequence.** Only components cross that boundary, never plain functions — a rule the compiler
+does not enforce, so it belongs written down before Wave 3 wires anything else across it. It is the
+second time in one task that rendering the real page caught what `tsc` and `next build` could not.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

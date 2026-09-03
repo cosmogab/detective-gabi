@@ -13,8 +13,12 @@ will produce a sparser report. That sparseness is shown, not padded.
 **Employee counts are often stale.** Wikidata figures carry the year they refer to, which is why
 every field has an `asOf` distinct from `fetchedAt`. When two sources disagree, both are shown.
 
-**No persistence.** The cache is ephemeral on Vercel. Reloading a report re-runs the
-investigation unless the instance is warm.
+**No persistence, and the cache is memory only.** PLAN says in-memory backed by `/tmp`; what
+exists is in-memory. On Vercel each instance has its own `/tmp`, so a disk tier would give the same
+guarantee as module memory and add blocking I/O to every request, plus a file written by an earlier
+version that would need its own schema before being trusted. The visible cost is local development:
+`next dev` restarts on every edit and the cache goes with it. A stored answer lasts 24 hours, or 15
+minutes if a provider failed during it (D43), and is served only under a domain (D44).
 
 **Not tested:** real network calls, deep UI behaviour, the semantic quality of model extraction.
 The tests cover the merge logic and the honesty guardrails — the parts where a bug would make
