@@ -1,4 +1,9 @@
-import type { LogEvent, LogEventStatus } from '@/lib/types'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { CaseFile } from './CaseFile'
+import { Magnifier } from './SearchBar'
+import type { LogEvent, LogEventStatus, Report } from '@/lib/types'
 
 /**
  * The loading state is this log. Events render as they arrive, are kept rather than cleared,
@@ -92,5 +97,110 @@ export function InvestigationLog(props: { events: readonly LogEvent[]; folded?: 
         </table>
       </div>
     </details>
+  )
+}
+
+/** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
+type Frame =
+  | { type: 'event'; event: LogEvent }
+  | { type: 'report'; report: Report }
+  | { type: 'error'; message: string }
+
+function asFrame(line: string): Frame | null {
+  try {
+    const parsed: unknown = JSON.parse(line)
+    if (typeof parsed !== 'object' || parsed === null || !('type' in parsed)) return null
+    const frame = parsed as Frame
+    if (frame.type === 'event' || frame.type === 'report' || frame.type === 'error') return frame
+    return null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Runs one investigation and shows it happening. The log is the loading screen: each line
+ * appears when a provider actually finished, so a fast source flashes past and a slow one
+ * holds the page — which is what happened (D8). Nothing here is paced or scripted, and the
+ * only animation is the magnifier, which turns while the stream is genuinely open.
+ *
+ * The request is a POST so a key can travel in a header; this component never holds one.
+ */
+export function LiveInvestigation(props: { name: string; domain: string | null }) {
+  const { name, domain } = props
+  const [events, setEvents] = useState<readonly LogEvent[]>([])
+  const [report, setReport] = useState<Report | null>(null)
+  const [failure, setFailure] = useState<string | null>(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setEvents([])
+    setReport(null)
+    setFailure(null)
+
+    async function run() {
+      const response = await fetch('/api/investigate', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name, domain }),
+        signal: controller.signal,
+      })
+      if (!response.ok || response.body === null) {
+        throw new Error('the investigation could not be started')
+      }
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      for (;;) {
+        const { done, value } = await reader.read()
+        if (done) break
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        // The last piece may be half a line; it waits for the rest rather than being parsed.
+        buffer = lines.pop() ?? ''
+        for (const line of lines) {
+          const frame = asFrame(line)
+          if (frame === null) continue
+          if (frame.type === 'event') setEvents((held) => [...held, frame.event])
+          else if (frame.type === 'report') setReport(frame.report)
+          else setFailure(frame.message)
+        }
+      }
+    }
+
+    run().catch((error: unknown) => {
+      // A superseded run is not a failure: its own cleanup aborted it (SPEC §7).
+      if (controller.signal.aborted) return
+      setFailure(error instanceof Error ? error.message : 'the investigation stopped')
+    })
+
+    return () => controller.abort()
+  }, [name, domain])
+
+  if (report !== null) return <CaseFile report={report} />
+
+  const finished = failure !== null
+  return (
+    <section className="mx-auto max-w-case px-6 pt-12 pb-10">
+      <p className="label text-faint">Investigating</p>
+      <h1 className="mt-1 flex items-center gap-x-3 font-case text-3xl text-ink">
+        <Magnifier className={finished ? 'text-rule-strong' : 'magnifier-sweep text-rule-strong'} />
+        {name}
+      </h1>
+      {domain !== null ? (
+        <p className="mt-2 font-mono text-xs text-muted">{domain}</p>
+      ) : null}
+
+      {/* Open, because right now it is not a footnote under a report — it is the report so
+          far. It folds itself the moment there is something to fold under. */}
+      <InvestigationLog events={events} />
+
+      {failure !== null ? (
+        <p className="mt-4 border-l-4 border-l-alert py-2 pl-4 font-sans text-sm text-alert">
+          {failure}
+        </p>
+      ) : null}
+    </section>
   )
 }
