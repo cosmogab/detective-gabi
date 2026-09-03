@@ -25,11 +25,18 @@ comment saying it is optional.
 **Commit** `feat(core): add data contract and provider interface`
 
 ### T4 — Guardrail tests (written before the code they guard)
-Three failing tests in `tests/guardrails.test.ts`:
-1. all sources empty → `value: null`, never an invented value
-2. a pattern-derived email is never marked verified
-3. an ambiguous name returns candidates instead of picking one
-**Done when** the three tests exist and are red for the right reason.
+One file per guardrail, so each lane owns the test it is responsible for turning green:
+1. `tests/guardrails.merge.test.ts` — all sources empty → `value: null`, never an invented
+   value. Green in T5.
+2. `tests/guardrails.email.test.ts` — a pattern-derived email is never marked verified.
+   Green in T14.
+3. `tests/guardrails.resolve.test.ts` — an ambiguous name returns candidates instead of
+   picking one. Green in T10.
+
+Each file carries a positive control, so an implementation that always returns nothing fails
+too. Wave 0 also lands the empty stub for every module in `PARALLEL.md`'s ownership table.
+**Done when** the tests exist and are red for the right reason — reaching a `not implemented`
+stub, not failing on an import or a type error.
 **Commit** `test(core): add honesty guardrails before implementation`
 
 ### T5 — Merge engine

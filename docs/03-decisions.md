@@ -143,6 +143,32 @@ resolved keys as fields.
 **Consequence.** `JSON.stringify(ctx)` cannot leak a key into a log line or an error report. It
 costs nothing and removes an entire category of accident.
 
+## D17 — One guardrail file per lane, and a positive control in each
+**Context.** `TASKS.md` put all three guardrails in `tests/guardrails.test.ts`, but they go green
+in three different tasks owned by three different lanes: guardrail 1 in T5 (merge), guardrail 3 in
+T10 (resolve), guardrail 2 in T14 (Hunter). One file would have three lanes writing to it, which
+is exactly what the disjoint-ownership rule forbids.
+**Options.** Keep one file and rely on git merging disjoint `describe` blocks · split it into
+`guardrails.merge`, `guardrails.email` and `guardrails.resolve`.
+**Choice.** Split, one file per owning lane. Each also carries a positive control: guardrail 1
+asserts a real value still comes through, guardrail 2 asserts a genuinely verified address is
+still marked verified, guardrail 3 asserts an unmistakable name still resolves straight through.
+**Consequence.** Three files where the plan named one. Without the positive controls each
+guardrail could be satisfied by an implementation that always returns nothing — which would pass
+the honesty test by making the product useless.
+
+## D18 — The ambiguity judgement lives outside the route
+**Context.** Guardrail 3 has to assert that an ambiguous name is handed back rather than guessed.
+The logic would naturally sit in `app/api/resolve/route.ts`, which cannot be unit-tested without
+network — and "no network in tests" is not negotiable.
+**Options.** Test the route handler with injected providers · extract the decision into a pure
+function.
+**Choice.** `lib/resolve.ts` exports `decideResolution(query, candidates, sourcesChecked)`. The
+route fetches from Wikidata and Tavily; the judgement is separate and pure.
+**Consequence.** One module `PLAN.md` did not name, now added to the layout and to the ownership
+table under B2. The part that carries judgement is the part that gets tested, which is the rule
+`AGENTS.md` already sets.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
