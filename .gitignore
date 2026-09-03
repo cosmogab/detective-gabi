@@ -1,4 +1,6 @@
-node_modules/
+# No trailing slash: with one, a symlinked node_modules (the worktree recipe in
+# PARALLEL.md) is not matched, and `git add -A` commits an absolute path.
+node_modules
 .next/
 out/
 build/
