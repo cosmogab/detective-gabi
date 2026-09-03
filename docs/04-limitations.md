@@ -42,6 +42,11 @@ the competing locations, so Stripe currently has no registry source. Passing a L
 providers existed, and the pipeline has since become stricter — Stripe's registry source is one it
 would no longer produce. They are due to be re-recorded once identity resolution can supply a LEI.
 
+**The investigation has no time limit of its own.** `maxDuration` is unset, so a run is bounded by
+whatever the deployment platform defaults to; a slow multi-provider investigation could outrun it
+and the stream would die mid-flight. Setting a number without knowing the deploy target could lower
+the ceiling below the platform default, so it belongs with the deployment.
+
 ## What I'd do next
 
 - Registry coverage per jurisdiction (Companies House, INSEE Sirene) for legal identity outside

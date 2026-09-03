@@ -139,6 +139,10 @@ Do not modify `lib/types.ts` or `lib/providers/types.ts` — they are frozen."*
 > Files: `lib/merge.ts`, `tests/merge.test.ts`, `tests/guardrails.merge.test.ts`. Nothing else.
 
 **A2 · registry**
+> **A client disconnect aborts with `ResponseAborted`, not `AbortError`.** A provider that checks
+> `err.name === 'AbortError'` will file a reader navigating away as a genuine provider failure.
+> Nothing is user-visible today — those events stream to a client that has already gone — but fix
+> it the next time you touch error handling.
 > Two conventions merge depends on and cannot check: `Location.formatted` must begin with the
 > city, because that is how two sources are compared, and `asOf` must be a valid ISO 8601 string
 > — an empty one is treated as a date and renders an empty "as of".

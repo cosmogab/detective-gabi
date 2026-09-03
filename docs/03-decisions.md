@@ -402,6 +402,45 @@ D19 exists to prevent.
 recordings' `people.sourcesChecked` were recomputed accordingly — a value derived from `covers`,
 not one recorded from a response, so recomputing it is not editing a recording.
 
+## D38 — A recording is labelled a recording, under its own URL
+**Context.** Once the app could investigate for real, `?domain=stripe.com` could mean two things:
+run an investigation now, or reopen the recording captured on 3 September. SPEC §5 and D5 keep the
+recordings precisely so the demo survives a dead quota, so both readings had a claim.
+**Choice.** Two URLs, so neither is ambiguous. `?investigate=` runs a real investigation and
+streams it; `?q=` and `?domain=` open a recording, served under a line that names it a recording,
+dates it, says *not investigated just now*, and offers **Investigate now** beside it. The report
+carries `cached: true` with its `cachedAt`.
+**Consequence.** The demo still works with no network and no quota, and nobody can mistake a
+September capture for a fresh answer. A recording shown without saying so would be the same fault
+as an invented value: the page would be claiming an investigation that did not happen.
+
+## D39 — A skipped provider was never consulted
+**Context.** `sourcesChecked` is the orchestrator's to fill (D15), and a provider can fail to run
+at all — no key, past the rate limit.
+**Choice.** A provider whose `available()` is false emits a `skipped` event and stays out of
+`sourcesChecked` entirely. `skipped` is a real answer about this run, and it is not a failure —
+but it is not a search either.
+**Consequence.** `No evidence found — checked Wikidata` never silently includes a source that was
+configured away. Verified in a live keyless run: EDGAR covers location only, so it appears under
+location's checked sources and never under people's.
+
+## D40 — The stream gives up quietly when the client is gone
+**Context.** After a client hangs up, `controller.enqueue` and `controller.close` both throw
+`TypeError: Invalid state`. A reader navigating away produced three throws on the way out and left
+`start()` rejected — and React StrictMode double-invokes the effect in development, so this fired
+on every page load of a live investigation.
+**Choice.** Track whether the stream is still open and stop writing to it once it is not. On the
+client, `reader.releaseLock()` in a `finally`, so an abort does not leave the body locked to a
+reader nobody holds. `export const dynamic = 'force-dynamic'` was dropped in the same pass: route
+handlers are not cached by default and a POST is never cached, so it bought nothing — and Next 16
+removes `dynamic` when Cache Components is enabled, so it was a line that would hard-fail the
+build the day anyone turns that on.
+**Consequence.** Verified with three mid-flight disconnects: no errors, and a full run still
+streams afterwards. The `CaseFile` ⇄ `InvestigationLog` import cycle is safe only because both are
+hoisted function declarations referenced from inside render — converting either to a `const` arrow
+or wrapping it in `memo` turns it into a temporal-dead-zone crash. That is now a comment at the
+import rather than a fact somebody has to remember.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
