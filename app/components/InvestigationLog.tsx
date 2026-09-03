@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 // hoisted `function` declarations referenced from inside render — converting either to a
 // `const` arrow or wrapping it in `memo` would turn it into a temporal-dead-zone crash.
 import { CaseFile } from './CaseFile'
+import { Sep, formatFetchedAt } from './FieldRow'
 import { Magnifier } from './SearchBar'
 import type { LogEvent, LogEventStatus, Report } from '@/lib/types'
 
@@ -104,6 +105,49 @@ export function InvestigationLog(props: { events: readonly LogEvent[]; folded?: 
   )
 }
 
+/**
+ * A committed recording and a cache hit are the same kind of thing: an answer obtained at
+ * another moment. They get one line, one shape and one action, because two ways of saying
+ * "this is not fresh" on the same page is one too many. Only the word for where it was stored
+ * differs, and it differs because the two really are stored differently — a recording is
+ * committed to the repo and permanent, a cached answer expires.
+ *
+ * The moment is absolute and read off the ISO string (D26). A relative "2 min ago" is right
+ * only at the instant it renders: computed on the server it is stale before it arrives, on
+ * the client it disagrees with the server's HTML, and keeping it true needs a timer this
+ * product does not put on screen. The reader gets the fact and can do the subtraction.
+ */
+export function StoredAnswer(props: {
+  kind: 'Recording' | 'Cached'
+  obtainedAt: string
+  href: string
+}) {
+  return (
+    <div className="mx-auto max-w-case px-6 pt-8">
+      <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-l-4 border-l-rule-strong py-2 pl-4">
+        <span className="label text-ink">{props.kind}</span>
+        <Sep />
+        <span className="font-sans text-sm text-muted">
+          from{' '}
+          <time dateTime={props.obtainedAt} className="font-mono text-xs">
+            {formatFetchedAt(props.obtainedAt)}
+          </time>
+          , not investigated just now
+        </span>
+        <Sep />
+        {/* SPEC §6.5 calls this `refresh`. It is named for what it does instead, so the one
+            gesture does not answer to two words on a page that serves both kinds. */}
+        <a
+          href={props.href}
+          className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+        >
+          Investigate now
+        </a>
+      </p>
+    </div>
+  )
+}
+
 /** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
 type Frame =
   | { type: 'event'; event: LogEvent }
@@ -130,8 +174,14 @@ function asFrame(line: string): Frame | null {
  *
  * The request is a POST so a key can travel in a header; this component never holds one.
  */
-export function LiveInvestigation(props: { name: string; domain: string | null }) {
-  const { name, domain } = props
+export function LiveInvestigation(props: {
+  name: string
+  domain: string | null
+  refresh?: boolean
+  /** Built by the page: URLs are assembled in one place and cross the boundary as data. */
+  refreshHref: string
+}) {
+  const { name, domain, refresh = false, refreshHref } = props
   const [events, setEvents] = useState<readonly LogEvent[]>([])
   const [report, setReport] = useState<Report | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
@@ -146,7 +196,7 @@ export function LiveInvestigation(props: { name: string; domain: string | null }
       const response = await fetch('/api/investigate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, domain }),
+        body: JSON.stringify({ name, domain, refresh }),
         signal: controller.signal,
       })
       if (!response.ok || response.body === null) {
@@ -185,9 +235,23 @@ export function LiveInvestigation(props: { name: string; domain: string | null }
     })
 
     return () => controller.abort()
-  }, [name, domain])
+  }, [name, domain, refresh])
 
-  if (report !== null) return <CaseFile report={report} />
+  if (report !== null) {
+    // A stored answer says so, and offers the gesture that replaces it.
+    return (
+      <>
+        {report.cached ? (
+          <StoredAnswer
+            kind="Cached"
+            obtainedAt={report.cachedAt ?? report.fetchedAt}
+            href={refreshHref}
+          />
+        ) : null}
+        <CaseFile report={report} />
+      </>
+    )
+  }
 
   const finished = failure !== null
   return (

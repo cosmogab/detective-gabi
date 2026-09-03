@@ -1,6 +1,6 @@
 import { CaseFile } from '@/app/components/CaseFile'
 import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
-import { LiveInvestigation } from '@/app/components/InvestigationLog'
+import { LiveInvestigation, StoredAnswer } from '@/app/components/InvestigationLog'
 import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 
@@ -49,10 +49,20 @@ function first(value: string | string[] | undefined): string {
 
 const FIELDS = ['Location (HQ)', 'Age (year founded)', 'Employees', 'Decision makers']
 
-/** The one URL that means "run this now". Kept in one place so it cannot drift. */
-function investigateHref(name: string, domain: string | null): string {
+/**
+ * The one URL that means "run this now", and `refresh` is what makes it go past whatever is
+ * stored. It is built here, on the server, and handed to the client as a string: a function
+ * exported from a `'use client'` module cannot be called from a server component, only
+ * rendered.
+ */
+function investigateHref(
+  name: string,
+  domain: string | null,
+  options: { refresh?: boolean } = {},
+): string {
   const params = new URLSearchParams({ investigate: name })
-  if (domain !== null) params.set('domain', domain)
+  if (domain !== null && domain !== '') params.set('domain', domain)
+  if (options.refresh === true) params.set('refresh', '1')
   return `/?${params.toString()}`
 }
 
@@ -107,7 +117,12 @@ export default async function Home({
     return (
       <main>
         <Masthead defaultQuery={asked} />
-        <LiveInvestigation name={target} domain={domain === '' ? null : domain} />
+        <LiveInvestigation
+          name={target}
+          domain={domain === '' ? null : domain}
+          refresh={first(params.refresh) !== ''}
+          refreshHref={investigateHref(target, domain === '' ? null : domain, { refresh: true })}
+        />
         <div className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
         </div>
@@ -124,25 +139,14 @@ export default async function Home({
     return (
       <main>
         <Masthead defaultQuery={asked} />
-        {/* A recording shown without saying so would be the same fault as an invented value:
-            the page would be claiming an investigation that did not happen. */}
-        <div className="mx-auto max-w-case px-6 pt-8">
-          <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-l-4 border-l-rule-strong py-2 pl-4">
-            <span className="label text-ink">Recording</span>
-            <Sep />
-            <span className="font-sans text-sm text-muted">
-              captured {formatFetchedAt(recording.cachedAt ?? recording.fetchedAt)}, not
-              investigated just now
-            </span>
-            <Sep />
-            <a
-              href={investigateHref(recording.company.name, recording.company.domain)}
-              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
-            >
-              Investigate now
-            </a>
-          </p>
-        </div>
+        {/* The same line a cache hit gets. A stored answer shown without saying so would be
+            the same fault as an invented value: the page would be claiming an investigation
+            that did not happen. */}
+        <StoredAnswer
+          kind="Recording"
+          obtainedAt={recording.cachedAt ?? recording.fetchedAt}
+          href={investigateHref(recording.company.name, recording.company.domain)}
+        />
         <CaseFile report={recording} />
         <div className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
