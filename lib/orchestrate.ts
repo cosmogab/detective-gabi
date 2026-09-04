@@ -4,7 +4,7 @@ import type { Coverage, Ctx, Provider, ProviderInput, ProviderResult } from '@/l
 import type { CompanyFields, Field, LogEvent, Report, Source } from '@/lib/types'
 
 /**
- * Runs the registry, API and website groups in parallel and assembles the report.
+ * Runs every provider that can answer, all at once, and assembles the report.
  *
  * Providers are injected rather than imported, so the whole pipeline can be exercised with
  * fakes and no network. `onEvent` fires as each provider completes — every event is a real
@@ -44,8 +44,8 @@ export async function investigate(
     })
   }
 
-  // Every group starts at once and each one reports the moment it is done. Nothing waits for
-  // a neighbour, so a slow source delays only its own line.
+  // Every one of them starts at once and reports the moment it is done. Nothing waits for a
+  // neighbour, so a slow source delays only its own line.
   const outcomes = await Promise.all(runnable.map((provider) => runOne(provider, input, ctx, emit)))
 
   return {
@@ -65,7 +65,7 @@ export async function investigate(
 
 /**
  * `run` never throws to the caller by contract. This catch is for the day one does: the dead
- * provider costs a red line and the other groups finish normally (SPEC §7).
+ * provider costs a red line and the others finish normally (SPEC §7).
  */
 async function runOne(
   provider: Provider,

@@ -101,10 +101,11 @@
 }
 
 /*
- * Written and left unmounted on purpose. The loading state is the streamed investigation log
- * (D8, T16), and nothing on the page loads yet — mounting a spinner now would animate an
- * absence. T16 puts `magnifier-sweep` on the inline magnifier while the stream is open, and
- * gets a real one instead of a decorative one.
+ * Written and still unmounted. The loading state is the wait's own bar and the investigation
+ * log under it (D8, D86), and neither wanted a second thing moving: what animates during a run
+ * is `step-dots` beside the step and `ledger-advance` on the parts as they ink. Nothing
+ * references this, and it is kept only because a magnifier that turns while a stream is open is
+ * the one honest use left for it.
  */
 @keyframes magnifier-sweep {
   from {

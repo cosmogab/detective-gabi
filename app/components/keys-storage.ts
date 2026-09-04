@@ -102,9 +102,9 @@ export function clearKey(id: Source): void {
 /**
  * The headers a request carries. The one way a key leaves this module.
  *
- * The name is spelled by `lib/keys.ts`, which is also what the routes read with — two lanes
- * writing that string by hand is exactly how two conventions shipped in parallel (D62), so
- * there is one spelling in one file and both ends import it.
+ * The name is spelled by `lib/key-header.ts`, which the server's `lib/keys.ts` imports too —
+ * two lanes writing that string by hand is exactly how two conventions shipped in parallel
+ * (D62), so there is one spelling in one file and both ends import it.
  */
 export function keyHeaders(): Record<string, string> {
   const stored = readStoredKeys()

@@ -32,10 +32,10 @@ const formatLocation = (value: Location) => value.formatted
 
 
 /**
- * The only source that returns addresses. It is not wired: `?demo=quota-exhausted` is the one
- * way to reach the line below today, and every report carrying it says `simulated`. The
- * failure is attributed by `source` rather than by matching the step's wording — that is what
- * `source` is on `LogEvent` for.
+ * The only source that returns addresses. A run where it broke — a spent quota, a refused key —
+ * carries a `failed` event from it, and `?demo=quota-exhausted` reaches the same line without
+ * one, in a report that says `simulated`. The failure is attributed by `source` rather than by
+ * matching the step's wording — that is what `source` is on `LogEvent` for.
  */
 const EMAIL_SOURCE: Source = 'hunter'
 

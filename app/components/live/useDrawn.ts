@@ -15,7 +15,10 @@ import { STEP_MS, TAIL_MS, allDrawn, drawable } from './pacing'
  * swap, because the parent is what holds the report:
  *
  *   const settled = useSettled(drawn, total)
- *   if (report !== null && (report.cached || settled)) return <CaseFile report={report} />
+ *   if (report !== null && (total === 0 || settled)) return <CaseFile report={report} />
+ *
+ * A stored answer no longer skips the wait — it replays the bar its own log records (D89) — so
+ * what excuses the wait is having nothing to draw, not having been cached.
  */
 export function useSettled(drawn: number, total: number, tailMs: number = TAIL_MS): boolean {
   const complete = allDrawn(drawn, total)

@@ -91,8 +91,9 @@ function identityOf(input: ProviderInput): string {
  * had none, `no key available` still in its log.
  *
  * Asking `available` rather than `ctx.key` also means the cache never handles key material at
- * all — it learns that a source could run, never what let it. `canRun` is the orchestrator's
- * own predicate, imported rather than copied, so the two cannot fall out of agreement.
+ * all — it learns that a source could run, never what let it. `canRun` is the registry's, and
+ * this file and the orchestrator both import it rather than keep a copy, so the two cannot fall
+ * out of agreement about what a run could reach.
  */
 function reachOf(providers: readonly Provider[], ctx: Ctx): readonly Source[] {
   return providers

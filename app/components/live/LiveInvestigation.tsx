@@ -113,10 +113,10 @@ export function investigationBody(asked: {
 }
 
 /**
- * Runs one investigation and shows it happening. The log is the loading screen: each line
- * appears when a provider actually finished, so a fast source flashes past and a slow one
- * holds the page — which is what happened (D8). Nothing here is paced or scripted, and the
- * only animation is the magnifier, which turns while the stream is genuinely open.
+ * Runs one investigation and shows it happening. The bar and the log under it are the loading
+ * screen: a part inks when a provider actually finished, so a fast source flashes past and a
+ * slow one holds the page (D8, D86). Nothing here is invented — the pacing may lag the facts,
+ * it never runs ahead of them — and the only thing moving is the dots beside the step.
  *
  * The request is a POST so a key can travel in a header; this component never holds one.
  */
@@ -240,8 +240,8 @@ export function LiveInvestigation(props: {
         sources={parts}
         events={shown}
         drawn={drawn}
-        // Not `answered === announced`: a run that died at three of six has finished, and a
-        // magnifier still sweeping over it would claim work that stopped.
+        // Not `answered === announced`: a run that died at three of six has finished, and dots
+        // still cycling over it would claim work that stopped.
         running={failure === null && report === null}
       />
 

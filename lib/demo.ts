@@ -164,8 +164,8 @@ export function demoProviders(mode: DemoMode): readonly Provider[] {
   if (mode === 'replay') return SHAPE.map(paced)
 
   // The Hunter state (SPEC §7): the keyless sources answer, so names and titles are there,
-  // and the address lookup is down. Hunter is not wired — this fake is the only thing behind
-  // that line, and the report it appears in says `simulated`.
+  // and the address lookup is down. The real Hunter produces this line when its quota is spent;
+  // this fake is how the state is reachable without a key, in a report that says `simulated`.
   if (mode === 'quota-exhausted') {
     return [...SHAPE.map(recorded), failingProvider('hunter', 'quota-exhausted')]
   }
