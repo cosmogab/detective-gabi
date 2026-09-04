@@ -27,11 +27,28 @@ const STATUS_DETAIL: Record<number, string> = {
  * fields a company would have fill are simply absent there, and every field this provider
  * reads is optional — so without this the body would parse cleanly and be reported as a
  * company about which the source holds nothing. An error is not an emptiness (D33).
+ *
+ * The key is tested for, not its shape. A schema matching `{ error: { code } }` let
+ * `{ "error": "rate limited" }` through and answered "no record found" — measured — which is
+ * the same false absence one layer down. A body that mentions an error is not a company
+ * whatever it puts beside the word.
  */
-const errorSchema = z.object({ error: z.object({ code: z.string().nullable().optional() }) })
+function isErrorBody(body: unknown): boolean {
+  if (typeof body !== 'object' || body === null) return false
+  return 'error' in body || 'errors' in body
+}
 
+/**
+ * `domain` is required, and it is what says this body is an enrichment record at all.
+ *
+ * Every other field is optional, so without it `{}` — or `{ data: { ... } }`, or an error
+ * carrying a string instead of an object — parsed cleanly and came back `empty`, and the page
+ * printed "No evidence found — checked Abstract" for an absence the source never stated.
+ * Measured on all four recordings, including the one for a domain no company sits behind: the
+ * requested domain is echoed every time, so a body without it is a body we did not understand.
+ */
 const payloadSchema = z.object({
-  domain: z.string().nullable().optional(),
+  domain: z.string().min(1),
   company_name: z.string().nullable().optional(),
   city: z.string().nullable().optional(),
   state: z.string().nullable().optional(),
@@ -77,7 +94,7 @@ export const abstract: Provider = {
 
       const body: unknown = await response.json()
       // Checked before the payload, because the payload shape would accept this one.
-      if (errorSchema.safeParse(body).success) throw new Error('the source returned an error')
+      if (isErrorBody(body)) throw new Error('the source returned an error')
       const parsed = payloadSchema.safeParse(body)
       // A payload we cannot read is not a company with no data.
       if (!parsed.success) throw new Error('unreadable response')
@@ -85,9 +102,9 @@ export const abstract: Provider = {
 
       // One request spent, and no header says how many of the hundred are left.
       const cost = '1 request used'
-      const answered = (payload.domain ?? '').trim().toLowerCase()
+      const answered = payload.domain.trim().toLowerCase()
       // The Hunter lesson (D58): a payload about another domain is not evidence about this one.
-      if (answered !== '' && answered !== domain) {
+      if (answered !== domain) {
         return empty(step, started, ctx.now, `answered for ${answered}, not ${domain} — ignored`, cost)
       }
 
@@ -176,43 +193,167 @@ function readLocation(payload: Payload, fetchedAt: string): Field<Location> {
  * source fills it that way; "United States" there would fail to match "US" from Wikidata and
  * GLEIF, and every company two sources cover would show a conflict neither source had.
  *
- * Abstract states `country_iso_code` and leaves it null — null on Stripe, whose country reads
- * "United States". So the name is resolved against ISO 3166 itself, exactly as
- * `lib/providers/edgar.ts` resolves EDGAR's country descriptions.
+ * The stated code is checked against the codes ISO actually assigns, not against its shape.
+ * Measured: Abstract answers `country_iso_code: "UK"` beside `country: "United Kingdom"`, and
+ * "UK" is not an ISO code — GB is. A shape test returned "UK" and skipped the name that would
+ * have resolved correctly, so a code we do not recognise is discarded and the name decides.
  */
 function isoCountry(payload: Payload): string | null {
   const stated = (payload.country_iso_code ?? '').trim().toUpperCase()
-  if (/^[A-Z]{2}$/.test(stated)) return stated
-  const name = (payload.country ?? '').trim().toLowerCase()
-  return name === '' ? null : (isoRegions().get(name) ?? null)
+  if (countries().codes.has(stated)) return stated
+  return countryFromName(payload.country)
+}
+
+/** The country a name refers to, or null. Never a guess, and never a shape. */
+function countryFromName(stated: string | null | undefined): string | null {
+  const name = comparableName(stated ?? '')
+  return name === '' ? null : (countries().byName.get(name) ?? null)
 }
 
 /**
- * Country name to ISO 3166-1 alpha-2, read out of the runtime's own region data rather than a
- * table written from memory. A name it does not know yields nothing, never a guess. Withdrawn
- * codes are skipped: a code that canonicalises to itself is one ISO still assigns.
- *
- * Copied from `lib/providers/edgar.ts` rather than imported, deliberately. Two providers
- * sharing one name-matching table means a change made for the shape of EDGAR's descriptions
- * silently moves the companies Abstract reports, and a provider is meant to be replaceable on
- * its own.
+ * CLDR names a few things "regions" that ISO 3166-1 does not assign to a country. They are
+ * listed because a company cannot be headquartered in one, and because leaving them in would
+ * let a source place a company in "the European Union".
  */
-let regions: Map<string, string> | null = null
-function isoRegions(): Map<string, string> {
-  if (regions !== null) return regions
-  const display = new Intl.DisplayNames(['en'], { type: 'region' })
-  const built = new Map<string, string>()
+const NOT_A_COUNTRY = new Set(['EU', 'EZ', 'UN', 'QO'])
+
+/**
+ * Alternate English names for countries the runtime spells differently.
+ *
+ * This list is not a map of the world and does not pretend to be one — the world comes from
+ * ICU below. It holds the names a data source is likely to write that CLDR does not produce:
+ * the ISO 3166 official forms ("Viet Nam", "Republic of Korea"), and the former or informal
+ * names that outlived the rename ("Czech Republic", "Turkey", "Swaziland"). Measured against
+ * the real provider before being written here — "Czechia" resolved and "Czech Republic" did
+ * not, which is the spelling a company API actually uses.
+ *
+ * Every entry is dropped unless the runtime knows the code it points at, so this can add a
+ * spelling and never a country. And a name that is in neither place is reported in the log
+ * rather than passed off as an unknown location.
+ */
+const ALSO_KNOWN_AS: ReadonlyArray<readonly [string, string]> = [
+  ['czech republic', 'CZ'],
+  ['turkey', 'TR'],
+  ['ivory coast', 'CI'],
+  ['cabo verde', 'CV'],
+  ['swaziland', 'SZ'],
+  ['macedonia', 'MK'],
+  ['east timor', 'TL'],
+  ['holy see', 'VA'],
+  ['vatican', 'VA'],
+  ['united states of america', 'US'],
+  ['usa', 'US'],
+  ['great britain', 'GB'],
+  ['uae', 'AE'],
+  ['democratic republic of the congo', 'CD'],
+  ['dr congo', 'CD'],
+  ['republic of the congo', 'CG'],
+  ['russian federation', 'RU'],
+  ['republic of korea', 'KR'],
+  ['korea republic of', 'KR'],
+  ['democratic peoples republic of korea', 'KP'],
+  ['viet nam', 'VN'],
+  ['syrian arab republic', 'SY'],
+  ['lao peoples democratic republic', 'LA'],
+  ['brunei darussalam', 'BN'],
+  ['iran islamic republic of', 'IR'],
+  ['bolivia plurinational state of', 'BO'],
+  ['venezuela bolivarian republic of', 'VE'],
+  ['tanzania united republic of', 'TZ'],
+  ['moldova republic of', 'MD'],
+  ['micronesia federated states of', 'FM'],
+  ['palestine state of', 'PS'],
+  ['taiwan province of china', 'TW'],
+  ['macau', 'MO'],
+]
+
+/**
+ * One comparable form for a country name, so spellings that differ only in presentation meet.
+ * Accents, punctuation and case go; "&" becomes "and"; "St." becomes "Saint", which is a
+ * dozen countries in one rule; "the" is dropped wherever it falls.
+ */
+function comparableName(name: string): string {
+  return name
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(' ')
+    .flatMap((word) => (word === 'the' ? [] : [word === 'st' ? 'saint' : word]))
+    .join(' ')
+}
+
+/** "Myanmar (Burma)" is two names for one place, and a source will write either. */
+function spellings(name: string): string[] {
+  const parenthesised = /^(.*?)\s*\((.*?)\)\s*$/.exec(name)
+  return parenthesised === null ? [name] : [name, parenthesised[1] ?? '', parenthesised[2] ?? '']
+}
+
+type Countries = { byName: Map<string, string>; codes: Set<string> }
+
+/**
+ * The countries ISO 3166-1 assigns, read out of the runtime's own region data rather than a
+ * table written from memory — and one table, so the codes we accept from a source are exactly
+ * the codes we can produce ourselves.
+ *
+ * A code has to survive three checks the runtime answers. It must have a name of its own, which
+ * excludes every unassigned pair such as "XX". It must not canonicalise to a different code,
+ * which is how a withdrawn one like "UK" or "SU" is caught. And it must survive `maximize()`,
+ * which is what separates a place from "ZZ", the code CLDR names "Unknown Region" and would
+ * otherwise have let a source put a company nowhere.
+ *
+ * The middle check is deliberately kept though `maximize()` happens to catch withdrawn codes
+ * as well — measured, and a mutation of it survives the suite. It states the rule D35 settled
+ * for EDGAR in the file this was copied from: a missing country is survivable, a wrong one is
+ * not. Removing it would leave that rule resting on a side effect of the third check.
+ *
+ * All three display styles are read, because the short form is a name a source will write:
+ * "Hong Kong" is the short name and "Hong Kong SAR China" the long one.
+ *
+ * Copied in spirit from `lib/providers/edgar.ts` rather than imported, deliberately: two
+ * providers sharing one name table means a change made for the shape of EDGAR's descriptions
+ * silently moves the companies Abstract reports.
+ */
+let resolved: Countries | null = null
+function countries(): Countries {
+  if (resolved !== null) return resolved
+  const display = (['long', 'short', 'narrow'] as const).map(
+    (style) => new Intl.DisplayNames(['en'], { type: 'region', style }),
+  )
+  const byName = new Map<string, string>()
+  const codes = new Set<string>()
+
   for (let first = 65; first <= 90; first++) {
     for (let second = 65; second <= 90; second++) {
       const code = String.fromCharCode(first, second)
-      const name = display.of(code)
-      if (name === undefined || name === code) continue
-      if (new Intl.Locale(`und-${code}`).region !== code) continue
-      built.set(name.toLowerCase(), code)
+      if (NOT_A_COUNTRY.has(code)) continue
+      const locale = new Intl.Locale(`und-${code}`)
+      if (locale.region !== code || locale.maximize().region !== code) continue
+      const names = display
+        .map((style) => style.of(code))
+        .filter((name): name is string => name !== undefined && name !== code)
+      if (names.length === 0) continue
+
+      codes.add(code)
+      for (const name of names) {
+        for (const spelling of spellings(name)) {
+          const key = comparableName(spelling)
+          // The long name wins a collision, and an alias never overwrites a real one.
+          if (key !== '' && !byName.has(key)) byName.set(key, code)
+        }
+      }
     }
   }
-  regions = built
-  return built
+
+  for (const [name, code] of ALSO_KNOWN_AS) {
+    // An alias can add a spelling for a country the runtime knows. It can never add a country.
+    if (codes.has(code)) byName.set(comparableName(name), code)
+  }
+
+  resolved = { byName, codes }
+  return resolved
 }
 
 /** A year a company could have been founded in. The future is not one, and neither is 0. */
@@ -237,6 +378,13 @@ function describe(payload: Payload, fields: CompanyFields): string {
   const name = (payload.company_name ?? '').trim()
   const parts = name === '' ? [] : [name]
   if (fields.location.found) parts.push(fields.location.value.formatted)
+  // A country we could not place is said out loud. `sameCountry` in lib/merge.ts reads a null
+  // country as "not the same place" rather than as "unknown", so an unresolved name is what
+  // turns two sources that agree into a conflict — and it must not do that silently.
+  const unresolved = (payload.country ?? '').trim()
+  if (fields.location.found && fields.location.value.country === null && unresolved !== '') {
+    parts.push(`country "${unresolved}" not matched to ISO 3166`)
+  }
   if (fields.yearFounded.found) parts.push(`founded ${fields.yearFounded.value}`)
   if (fields.employees.found) parts.push(`${fields.employees.value} employees`)
   return parts.length === 0 ? 'no record found' : parts.join(' · ')
