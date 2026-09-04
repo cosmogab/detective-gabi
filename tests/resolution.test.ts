@@ -1,6 +1,13 @@
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { InvestigationLog, ResolutionLog } from '@/app/components/InvestigationLog'
 import {
+  CandidateGrid,
   type Found,
+  NotTheRightCompany,
+  SoleRecord,
+  identityOf,
   investigateHref,
   isPublisherDomain,
   targetFor,
@@ -177,6 +184,107 @@ describe('the identity that was resolved reaches the investigation', () => {
   })
 })
 
+
+/** What actually reaches the screen, rather than what the data says should. */
+const render = renderToStaticMarkup
+
+describe('what a lone record is allowed to look like', () => {
+  const lone = entry(
+    { name: 'Umbrella Corporation', domain: 'umbrella.example', description: 'a holding company' },
+  )
+
+  it('is not laid out as a card in a grid, and does not invite confirmation', () => {
+    const html = render(createElement(SoleRecord, { query: 'delta', entry: lone }))
+
+    expect(html).toContain('Umbrella Corporation')
+    expect(html).toContain('not enough to identify the company')
+    // "Investigate this one" is the grid's wording, and it means "this is the one". A record
+    // the judgement could not settle on must not borrow it.
+    expect(html).not.toContain('Investigate this one')
+    expect(html).not.toContain('<ul')
+    // The way forward is offered as a condition the reader has to judge, not as a confirmation.
+    expect(html).toContain('If it is the company you meant')
+  })
+})
+
+describe('the affordance for the alternatives a winner beat', () => {
+  const alternatives = [
+    entry({ name: 'Stripe Press', domain: 'press.stripe.com' }),
+    entry({ name: 'Stripe Belgium', domain: 'stripe.be' }),
+  ]
+
+  it('never opens on an empty panel when the winner had no rivals', () => {
+    const html = render(createElement(NotTheRightCompany, { query: 'shopify', alternatives: [] }))
+
+    // No disclosure at all: opening one to find nothing would imply a choice was made among
+    // several, and a search that returned one company made no choice.
+    expect(html).not.toContain('<details')
+    expect(html).not.toContain('Not the right company?')
+    expect(html).toContain('No other company came back')
+    expect(html).toContain('shopify')
+  })
+
+  it('says the absence is over the sources that answered, not over the world', () => {
+    const html = render(createElement(NotTheRightCompany, { query: 'shopify', alternatives: [] }))
+
+    // A source can be skipped or fail without changing the verdict, so "nothing else matched"
+    // is only true of what answered. An unqualified version would be an absence claim the
+    // search cannot support.
+    expect(html).toContain('from the sources that answered')
+  })
+
+  it('reveals them, and says how many, when there are any', () => {
+    const html = render(createElement(NotTheRightCompany, { query: 'stripe', alternatives }))
+
+    expect(html).toContain('<details')
+    expect(html).toContain('Not the right company?')
+    expect(html).toContain('2 other matches')
+    expect(html).toContain('Stripe Press')
+    expect(html).toContain('Stripe Belgium')
+  })
+})
+
+describe('the grid shows the whole list it was given', () => {
+  it('renders every candidate, actionable or not', () => {
+    const found = [
+      entry({ name: 'Meta Platforms', domain: 'meta.com' }),
+      entry({ name: 'Metal Blade Records', domain: 'metalblade.com' }),
+      entry({ name: 'ACME' }),
+      entry({ name: 'ACME' }),
+    ]
+    const html = render(createElement(CandidateGrid, { query: 'meta', found }))
+
+    for (const name of ['Meta Platforms', 'Metal Blade Records', 'ACME']) {
+      expect(html).toContain(name)
+    }
+    // Four cards, two of them without an action — not two cards and a quiet omission.
+    expect(html.split('<li').length - 1).toBe(4)
+    expect(html.split('Investigate this one').length - 1).toBe(2)
+    expect(html).toContain('would open exactly the same investigation')
+  })
+})
+
+describe('the link and the run start from one identity', () => {
+  it('builds the URL out of exactly what the investigation would be given', () => {
+    const stripe = entry(
+      { name: 'Stripe', domain: 'stripe.com' },
+      { domain: 'stripe.com', lei: '549300CLHGIPTCYHQ143' },
+    )
+    const { name, domain, ...identifiers } = identityOf(stripe)
+
+    expect(investigateHref(name, domain, identifiers)).toBe(targetFor(stripe))
+  })
+
+  it('strips a publisher down to its name on both sides at once', () => {
+    const mention = entry(
+      { name: 'Stripe', domain: 'en.wikipedia.org', source: 'web' },
+      { domain: 'en.wikipedia.org', lei: 'NOT-STRIPES' },
+    )
+    expect(identityOf(mention)).toEqual({ name: 'Stripe', domain: null })
+    expect(targetFor(mention)).toBe('/?investigate=Stripe')
+  })
+})
+
 /**
  * The last link in that chain, tested through the real route: what the browser POSTs has to
  * arrive in the `ProviderInput` the providers are handed. The cache is replaced so the
@@ -246,5 +354,36 @@ describe('the route hands the resolved identifiers to the providers', () => {
   it('drops an identifier sent as an empty string', async () => {
     const input = await investigateWith({ name: 'Stripe', domain: 'stripe.com', lei: '' })
     expect('lei' in input).toBe(false)
+  })
+})
+
+describe('a log says which run it came from', () => {
+  const steps = [
+    { step: 'Searching Wikidata', ms: 2536, status: 'ok' as const, source: 'wikidata' as const },
+    { step: 'Searching the web', ms: 0, status: 'skipped' as const, detail: 'no key configured', source: 'web' as const },
+  ]
+
+  it('calls the resolution steps a search, because nothing was investigated to get them', () => {
+    // Every one of the four outcomes renders this component and none of them names the run,
+    // so the four cannot drift apart: the name is decided here or nowhere.
+    const html = render(createElement(ResolutionLog, { events: steps }))
+
+    expect(html).toContain('Search log')
+    // The resolution runs before any provider does. Calling its steps an investigation log
+    // would claim an investigation that has not started.
+    expect(html).not.toContain('Investigation log')
+  })
+
+  it('still calls the investigation steps an investigation by default', () => {
+    const html = render(createElement(InvestigationLog, { events: steps }))
+    expect(html).toContain('Investigation log')
+  })
+
+  it('keeps a skipped source visible, so an absence can be read against what ran', () => {
+    const html = render(createElement(ResolutionLog, { events: steps }))
+
+    expect(html).toContain('Searching the web')
+    expect(html).toContain('no key configured')
+    expect(html).toContain('skipped')
   })
 })

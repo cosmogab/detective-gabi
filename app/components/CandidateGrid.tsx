@@ -69,14 +69,30 @@ export function resolveHref(query: string): string {
  * handing it on as the company's own domain would key an entire report to somebody else's
  * address. Such a candidate is investigated by name alone, which is all it actually gave us.
  */
-export function targetFor(entry: Found): string {
-  if (isPublisherDomain(entry.candidate)) return investigateHref(entry.input.name, null)
+export function identityOf(entry: Found): {
+  name: string
+  domain: string | null
+  wikidataId?: string
+  lei?: string
+  cik?: string
+} {
+  // A publisher stated a page, not a company: neither its host nor any identifier beside it
+  // describes the company, so only the name survives.
+  if (isPublisherDomain(entry.candidate)) return { name: entry.input.name, domain: null }
   const { name, domain, wikidataId, lei, cik } = entry.input
-  return investigateHref(name, domain, {
+  return {
+    name,
+    domain,
     ...(wikidataId === undefined ? {} : { wikidataId }),
     ...(lei === undefined ? {} : { lei }),
     ...(cik === undefined ? {} : { cik }),
-  })
+  }
+}
+
+/** The URL that identity leads to. One rule, so the link and the run cannot start apart. */
+export function targetFor(entry: Found): string {
+  const { name, domain, ...identifiers } = identityOf(entry)
+  return investigateHref(name, domain, identifiers)
 }
 
 /**
@@ -201,6 +217,50 @@ export function CandidateGrid(props: { query: string; found: readonly Found[] })
         ))}
       </ul>
     </section>
+  )
+}
+
+/**
+ * The alternatives a clear winner beat.
+ *
+ * When there are none this is a plain sentence and not something to open. A disclosure that
+ * reveals an empty panel implies a choice was made among several, and on a search that returned
+ * exactly one company no choice was made at all — saying so out loud is the honest version, and
+ * it is a frequent state: two of the four recorded companies resolve with no alternative.
+ */
+export function NotTheRightCompany(props: { query: string; alternatives: readonly Found[] }) {
+  const { query, alternatives } = props
+
+  if (alternatives.length === 0) {
+    return (
+      <p className="mt-3 max-w-2xl font-sans text-sm text-faint">
+        {/* Qualified, because it is an absence claim: a source can have been skipped or have
+            failed without changing the verdict, and the search log below says which. */}
+        No other company came back from the sources that answered, so there was nothing else to
+        choose from. If <span className="datum">{query}</span> is the wrong company, enter the
+        right domain above.
+      </p>
+    )
+  }
+
+  return (
+    <details className="mt-3 border-t border-t-rule">
+      <summary className="cursor-pointer py-3">
+        <span className="label ml-1 text-ink">Not the right company?</span>
+        <span className="ml-3 font-mono text-xs text-faint">
+          {alternatives.length} other {alternatives.length === 1 ? 'match' : 'matches'}
+        </span>
+      </summary>
+      <ul className="grid items-stretch gap-3 pb-4 sm:grid-cols-2">
+        {withActions(alternatives).map(({ entry, href }, i) => (
+          <CandidateCard
+            key={`${entry.candidate.source}-${entry.candidate.name}-${i}`}
+            entry={entry}
+            href={href}
+          />
+        ))}
+      </ul>
+    </details>
   )
 }
 

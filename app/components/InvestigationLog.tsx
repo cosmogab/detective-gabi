@@ -8,12 +8,14 @@ import { type ReactNode, useEffect, useState } from 'react'
 import { CaseFile } from './CaseFile'
 import {
   CandidateGrid,
-  CandidateMeta,
+  type Found,
   NoCompanyFound,
+  NotTheRightCompany,
   type ResolveResponse,
   ResolutionFailed,
   SoleRecord,
-  targetFor,
+  identityOf,
+  investigateHref,
 } from './CandidateGrid'
 import { Sep, formatFetchedAt } from './FieldRow'
 import { Magnifier } from './SearchBar'
@@ -43,15 +45,24 @@ const CELL = 'border-t border-t-rule py-2 align-baseline'
 const HEAD = 'label border-b border-b-rule-strong pb-1.5 text-left font-normal text-faint'
 const MS = new Intl.NumberFormat('en-US')
 
-export function InvestigationLog(props: { events: readonly LogEvent[]; folded?: boolean }) {
-  const { events, folded = false } = props
+export function InvestigationLog(props: {
+  events: readonly LogEvent[]
+  folded?: boolean
+  /**
+   * What run these steps are from. A resolution and an investigation are two different runs
+   * with two different sets of steps, and calling a resolution's steps an investigation log
+   * would claim an investigation that has not happened yet.
+   */
+  title?: string
+}) {
+  const { events, folded = false, title = 'Investigation log' } = props
   const failed = events.filter((event) => event.status === 'failed')
 
   return (
     <details open={!folded} className="mt-10 border-t-2 border-t-ink">
       <summary className="cursor-pointer py-3">
         <span className="ml-1 inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="label text-ink">Investigation log</span>
+          <span className="label text-ink">{title}</span>
           <span className="font-mono text-xs tabular-nums text-muted">
             {events.length} {events.length === 1 ? 'step' : 'steps'}
           </span>
@@ -217,6 +228,15 @@ export function SimulatedRun(props: { href?: string }) {
  * There are four outcomes and each is a different thing to say. A resolution that failed is
  * not a resolution that found nothing, and neither is a company identified.
  */
+/**
+ * The resolution's own steps. A wrapper rather than a title passed at each of the four
+ * outcomes, so they cannot drift into naming the same run two ways — and so that naming it is
+ * one decision in one place: nothing has been investigated to produce these.
+ */
+export function ResolutionLog(props: { events: readonly LogEvent[]; folded?: boolean }) {
+  return <InvestigationLog events={props.events} folded={props.folded} title="Search log" />
+}
+
 type ResolutionState =
   | { kind: 'searching' }
   | { kind: 'answered'; response: ResolveResponse }
@@ -287,6 +307,28 @@ export function LiveResolution(props: { query: string }) {
     return () => controller.abort()
   }, [query, attempt])
 
+  // A clear winner does not stop to be announced: it is the investigation, under a line that
+  // says who chose the company. Returned before the identifying frame so the case file keeps
+  // its own full-width layout rather than nesting inside it.
+  if (state.kind === 'answered' && state.response.resolution.kind === 'resolved') {
+    const { candidate } = state.response.resolution
+    // The route puts the winner first. If it ever did not, the resolution still names the
+    // company, so the page states an identity rather than falling through to nothing.
+    const winner = state.response.found[0] ?? {
+      candidate,
+      input: { name: candidate.name, domain: candidate.domain },
+    }
+    return (
+      <Identified
+        query={query}
+        name={candidate.name}
+        winner={winner}
+        alternatives={state.response.found.slice(1)}
+        log={state.response.log}
+      />
+    )
+  }
+
   const searching = state.kind === 'searching'
   return (
     <section className="mx-auto max-w-case px-6 pt-12 pb-10">
@@ -311,7 +353,7 @@ export function LiveResolution(props: { query: string }) {
             onRetry={() => setAttempt((held) => held + 1)}
           />
           {/* Red steps and all: this is the only account of what was attempted. */}
-          <InvestigationLog events={state.log} />
+          <ResolutionLog events={state.log} />
         </>
       ) : null}
 
@@ -323,9 +365,59 @@ export function LiveResolution(props: { query: string }) {
 }
 
 /**
- * The verdict, said plainly. The candidate grid and the discreet "Not the right company?" are
- * the next two steps; what this has to get right first is that the four outcomes are four
- * different statements and never borrow each other's words.
+ * The company was identified, so the investigation starts — and the page says plainly that the
+ * search chose it. A reader who assumed they had picked it would be trusting their own
+ * judgement where ours was used.
+ *
+ * The URL is rewritten to the investigation, and *replaced* rather than pushed. Pushing would
+ * trap the reader: Back would land on the resolution URL, which resolves again, wins again and
+ * moves forward again. Replacing leaves Back pointing at whatever came before the search, and
+ * leaves behind the URL that is worth sharing — the identity, not the question (R7).
+ */
+function Identified(props: {
+  query: string
+  name: string
+  winner: Found
+  alternatives: readonly Found[]
+  /**
+   * The steps that produced this identity. Shown here for the same reason the other three
+   * outcomes show theirs, and most of all here: this is the outcome that makes a positive
+   * claim about a company, and it is also the one where a source can have failed or been
+   * skipped without changing the verdict. A search that answered on one source out of two is
+   * not a settled one, and only the log can say which happened (SPEC §7).
+   */
+  log: readonly LogEvent[]
+}) {
+  const { name: identified, domain, ...identifiers } = identityOf(props.winner)
+  const href = investigateHref(identified, domain, identifiers)
+
+  useEffect(() => {
+    window.history.replaceState(null, '', href)
+  }, [href])
+
+  return (
+    <>
+      <div className="mx-auto max-w-case px-6 pt-8">
+        <BannerLine kind="Identified" kindClass="text-ink" ruleClass="border-l-rule-strong">
+          {props.name} was the one clear match for{' '}
+          <span className="datum">{props.query}</span> — chosen by the search, not by you.
+        </BannerLine>
+        <NotTheRightCompany query={props.query} alternatives={props.alternatives} />
+        <ResolutionLog events={props.log} folded />
+      </div>
+      <LiveInvestigation
+        name={identified}
+        domain={domain}
+        identity={identifiers}
+        refreshHref={investigateHref(identified, domain, { refresh: true, ...identifiers })}
+      />
+    </>
+  )
+}
+
+/**
+ * The verdicts that are an answer in themselves rather than a step on the way: nothing found,
+ * and a choice handed back. Four outcomes, four statements, and none borrowing another's words.
  */
 function Verdict(props: { query: string; response: ResolveResponse }) {
   const { query, response } = props
@@ -335,7 +427,7 @@ function Verdict(props: { query: string; response: ResolveResponse }) {
     return (
       <>
         <NoCompanyFound query={query} sourcesChecked={resolution.sourcesChecked} />
-        <InvestigationLog events={log} folded />
+        <ResolutionLog events={log} folded />
       </>
     )
   }
@@ -350,38 +442,13 @@ function Verdict(props: { query: string; response: ResolveResponse }) {
         ) : (
           <CandidateGrid query={query} found={found} />
         )}
-        <InvestigationLog events={log} folded />
+        <ResolutionLog events={log} folded />
       </>
     )
   }
 
-  const winner = found[0]
-  return (
-    <section className="mt-8">
-      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">Identified</h2>
-      <div className="border-b border-b-rule py-3 pl-4">
-        <p className="datum text-ink">{resolution.candidate.name}</p>
-        <CandidateMeta candidate={resolution.candidate} />
-        {/* Said out loud, because nobody chose it: a reader who assumed they had picked this
-            company would be trusting their own judgement instead of ours (R7). */}
-        <p className="mt-3 max-w-2xl font-sans text-sm text-muted">
-          One clear match for <span className="datum">{query}</span>, chosen by the search and
-          not by you.
-        </p>
-        {winner !== undefined ? (
-          <p className="mt-3">
-            <a
-              href={targetFor(winner)}
-              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
-            >
-              Investigate {resolution.candidate.name}
-            </a>
-          </p>
-        ) : null}
-      </div>
-      <InvestigationLog events={log} folded />
-    </section>
-  )
+  // `resolved` never reaches here: `LiveResolution` returns `Identified` before this runs.
+  return <ResolutionLog events={log} folded />
 }
 
 /** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
