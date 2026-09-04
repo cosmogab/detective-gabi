@@ -176,6 +176,18 @@ appears exactly once on the page inside the claim it illustrates, every claim is
 the recording it links to (D29), and a render test proves all three.
 **Commit** `feat(ui): reduce the home page to a title, a subtitle and a field`
 
+### T24 — The keys go to the top right, the explanation to the footer
+`KeysButton` becomes an icon button — a hand-drawn key, two shapes, no icon library for two
+shapes (D31) — sitting top right on every screen: in the `Masthead`, where the text button already
+was, and in the home page's first screen. `How it works` moves into the page footer beside the
+ethics line, so the bottom of the page is one block rather than a section with a leftover under it.
+`Ethics` stops being a `<footer>` itself and becomes the line inside one, now that it has company.
+An icon with no accessible name is a picture, so the button carries one.
+**Done when** the button has an accessible name, the first screen holds the title, the subtitle,
+the field and that one control and nothing else, and the explanation sits inside the page's single
+`<footer>`.
+**Commit** `feat(ui): put the keys behind an icon and the explanation in the footer`
+
 ---
 
 ## Cut line
