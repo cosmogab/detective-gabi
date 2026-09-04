@@ -1,7 +1,19 @@
 import { z } from 'zod'
 import type { CompanyFields, Field, Location, NoEvidence, Person } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
-import { fetchJson, reason, since } from '@/lib/net'
+import { reason, since } from '@/lib/net'
+import {
+  API,
+  ENTITY_PAGE,
+  type Entity,
+  type Statement,
+  entityId,
+  entityIdValue,
+  getJson,
+  loadEntities,
+  pickBest,
+  searchSchema,
+} from './wikidata-api'
 import { counted } from '@/lib/text'
 
 /**
@@ -11,15 +23,6 @@ import { counted } from '@/lib/text'
  * P1128 (employees, with its point-in-time qualifier feeding `asOf`), P169 (CEO),
  * P112 (founders) and P856 (official website).
  */
-
-const API = 'https://www.wikidata.org/w/api.php'
-const ENTITY_PAGE = 'https://www.wikidata.org/wiki/'
-
-/**
- * Wikimedia asks every automated caller to identify itself and throttles those that do not.
- * Not a key and not a secret — an unidentified caller is simply one they are entitled to drop.
- */
-const USER_AGENT = 'DetectiveGabi/0.1 (https://github.com/evoltGABI/detective-gabi)'
 
 /** One structured source answering alone, which is what `corroborated` means (D20). */
 const CONFIDENCE = 'corroborated' as const
@@ -34,37 +37,8 @@ const ISO_ALPHA_2 = 'P297'
 const POINT_IN_TIME = 'P585'
 const END_TIME = 'P582'
 
-const snakSchema = z.object({
-  snaktype: z.string(),
-  datavalue: z.object({ type: z.string(), value: z.unknown() }).optional(),
-})
-
-const statementSchema = z.object({
-  mainsnak: snakSchema,
-  rank: z.string(),
-  qualifiers: z.record(z.string(), z.array(snakSchema)).optional(),
-})
-
-const entitiesSchema = z.object({
-  entities: z.record(
-    z.string(),
-    z.object({
-      labels: z.record(z.string(), z.object({ value: z.string() })).optional(),
-      claims: z.record(z.string(), z.array(statementSchema)).optional(),
-    }),
-  ),
-})
-
-const searchSchema = z.object({
-  search: z.array(z.object({ id: z.string(), label: z.string().optional() })),
-})
-
 const timeValue = z.object({ time: z.string(), precision: z.number() })
-const entityIdValue = z.object({ id: z.string() })
 const quantityValue = z.object({ amount: z.string() })
-
-type Statement = z.infer<typeof statementSchema>
-type Entity = z.infer<typeof entitiesSchema>['entities'][string]
 
 export const wikidata: Provider = {
   id: 'wikidata',
@@ -141,11 +115,6 @@ export const wikidata: Provider = {
   },
 }
 
-/** Wikimedia drops callers it cannot identify, so every call here carries the contact. */
-async function getJson(url: string, ctx: Ctx): Promise<unknown> {
-  return fetchJson(url, ctx, { headers: { 'User-Agent': USER_AGENT } })
-}
-
 /**
  * Identity resolution belongs to `lib/resolve.ts`, which hands the id down as `wikidataId`.
  * Without one this falls back to the best search hit and names it in the log, so the entity
@@ -158,34 +127,6 @@ async function searchEntityId(name: string, ctx: Ctx): Promise<string | null> {
   const parsed = searchSchema.safeParse(await getJson(url, ctx))
   if (!parsed.success) throw new Error('unreadable response')
   return parsed.data.search[0]?.id ?? null
-}
-
-async function loadEntities(ids: readonly string[], ctx: Ctx): Promise<Record<string, Entity>> {
-  const unique = [...new Set(ids)]
-  if (unique.length === 0) return {}
-  const url =
-    `${API}?action=wbgetentities&ids=${unique.join('|')}` +
-    '&props=labels|claims&languages=en&format=json'
-  const parsed = entitiesSchema.safeParse(await getJson(url, ctx))
-  // A payload we cannot read is not a company with no headquarters. Saying "nothing found"
-  // here would put a claim about the world on a request that did not come back readable.
-  if (!parsed.success) throw new Error('unreadable response')
-  return parsed.data.entities
-}
-
-/**
- * Wikidata ranks the statements of one property. `deprecated` is the community saying a value
- * is wrong, and a `preferred` statement is the one they consider current.
- */
-function pickBest(statements: readonly Statement[]): Statement[] {
-  const live = statements.filter((s) => s.rank !== 'deprecated' && s.mainsnak.snaktype === 'value')
-  const preferred = live.filter((s) => s.rank === 'preferred')
-  return preferred.length > 0 ? preferred : live
-}
-
-function entityId(statement: Statement): string[] {
-  const parsed = entityIdValue.safeParse(statement.mainsnak.datavalue?.value)
-  return parsed.success ? [parsed.data.id] : []
 }
 
 /** Wikidata dates carry their precision: 9 is a year, 10 a month, 11 a day or finer. */
