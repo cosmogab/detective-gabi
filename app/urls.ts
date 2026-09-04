@@ -60,6 +60,10 @@ export function identityOf(entry: Found): {
   wikidataId?: string
   lei?: string
   cik?: string
+  // Declared, because it is returned. Left out, it still reached the URL — spread properties
+  // escape excess-property checking — and was invisible to everything downstream, which is how
+  // it came to be dropped at the request that needed it (T50).
+  country?: string
 } {
   // A publisher stated a page, not a company: neither its host nor any identifier beside it
   // describes the company, so only the name survives.

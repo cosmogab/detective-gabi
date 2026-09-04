@@ -88,6 +88,31 @@ function asFrame(line: string): Frame | null {
 }
 
 /**
+ * The body one investigation is asked with.
+ *
+ * A plain function for the reason `readFrames` is one: this is the only place the identity a
+ * resolution settled can be dropped, and it was — the country reached the URL and stopped here,
+ * so GLEIF was asked a question it answers by refusing (T50).
+ *
+ * An identifier that was not settled is absent rather than `''`, which the route would take for
+ * a stated one and dutifully search for.
+ */
+export function investigationBody(asked: {
+  name: string
+  domain: string | null
+  refresh: boolean
+  demo: string | null
+  wikidataId: string
+  lei: string
+  cik: string
+  country: string
+}): Record<string, unknown> {
+  const { name, domain, refresh, demo, ...identifiers } = asked
+  const stated = Object.entries(identifiers).filter(([, value]) => value !== '')
+  return { name, domain, refresh, demo, ...Object.fromEntries(stated) }
+}
+
+/**
  * Runs one investigation and shows it happening. The log is the loading screen: each line
  * appears when a provider actually finished, so a fast source flashes past and a slow one
  * holds the page — which is what happened (D8). Nothing here is paced or scripted, and the
@@ -102,7 +127,7 @@ export function LiveInvestigation(props: {
   /** `?demo=` verbatim. The route decides what it means; an unknown value simply is not one. */
   demo?: string | null
   /** What resolution settled, forwarded to the providers that can use it (D56). */
-  identity?: { wikidataId?: string; lei?: string; cik?: string }
+  identity?: { wikidataId?: string; lei?: string; cik?: string; country?: string }
   /** Built by the page: URLs are assembled in one place and cross the boundary as data. */
   refreshHref: string
   /** The header, rendered by the server page and handed down. It is not shown while the bar is
@@ -116,6 +141,7 @@ export function LiveInvestigation(props: {
   const wikidataId = props.identity?.wikidataId ?? ''
   const lei = props.identity?.lei ?? ''
   const cik = props.identity?.cik ?? ''
+  const country = props.identity?.country ?? ''
   // What the run said it would ask. Empty until the first frame lands, which is the honest
   // state: before the server has spoken we do not know how many sources this run has.
   const [sources, setSources] = useState<readonly Source[]>([])
@@ -141,15 +167,9 @@ export function LiveInvestigation(props: {
         // moment ago is used by this request. They exist only as headers: never in the URL,
         // never in the body, never rendered (SPEC §5).
         headers: requestHeaders(),
-        body: JSON.stringify({
-          name,
-          domain,
-          refresh,
-          demo,
-          ...(wikidataId === '' ? {} : { wikidataId }),
-          ...(lei === '' ? {} : { lei }),
-          ...(cik === '' ? {} : { cik }),
-        }),
+        body: JSON.stringify(
+          investigationBody({ name, domain, refresh, demo, wikidataId, lei, cik, country }),
+        ),
         signal: controller.signal,
       })
       if (!response.ok || response.body === null) {
@@ -174,7 +194,7 @@ export function LiveInvestigation(props: {
     })
 
     return () => controller.abort()
-  }, [name, domain, refresh, demo, wikidataId, lei, cik])
+  }, [name, domain, refresh, demo, wikidataId, lei, cik, country])
 
   // The pacing lives here rather than in the bar, because the same number decides two things:
   // how much of the bar is drawn, and when the last part has finished arriving. Swapping the

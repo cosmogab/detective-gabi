@@ -1643,3 +1643,37 @@ not be lost, and wrong that the bar was where it had to be kept.
 
 D99's other half stands: the identify bar still derives its parts and its step from one call to
 `displayOrder`, where it used to use two derivations that agreed only by luck.
+
+## D103 — The identity is declared where it travels, and the request that carries it is a function
+
+**Context.** Writing `docs/02-architecture.md` meant tracing the identity a resolution settles
+from the candidate card to the provider. Four identifiers leave `identityOf`; three arrive.
+`?country=` is written into every investigate link by `investigateHref`, read back by
+`app/page.tsx`, typed by `InvestigateScreen`, accepted by the route and forwarded into
+`ProviderInput` — and dropped in the one step between: `LiveInvestigation`'s `identity` prop and
+the body it POSTs name `wikidataId`, `lei` and `cik` only.
+
+**Why nothing caught it.** `identityOf` declared a return type without `country` while its body
+returned one. Spread properties escape excess-property checking, so the value existed at runtime,
+reached the URL, and was invisible to every consumer's type. Handing it to a prop typed without
+it is not an error — there is nothing there to be wrong. The measured cost: with no country,
+`search()` in `lib/providers/gleif.ts` returns "a name alone does not identify a company here"
+*before making a request* (D79), so from the UI GLEIF answered only for a company whose LEI
+resolution had won. D79 says that path was verified end to end; what was verified was the half
+that ends at the URL.
+
+**Options considered.** Add `country` to the prop and the body and leave the declaration alone.
+Or declare it where it is produced, so the drop becomes a type error rather than a silence.
+
+**Choice.** Both, plus the seam that makes the last link testable. `identityOf` declares
+`country`. `LiveInvestigation` reads it beside the other three and depends on it, so a superseded
+run restarts on a changed country like on a changed LEI. And the body leaves the effect as
+`investigationBody`, a plain exported function — for the reason `readFrames` is one: what the
+browser sends is the only place the identity can still be dropped, and an effect cannot be read
+without a browser. Reverted, the fix now fails twice: the body test on the value, the typecheck
+on the declaration.
+
+**Consequence accepted.** A fifth thing to keep in step when an identifier is added — the
+declared type, the prop, the effect's dependencies, the body, the route's schema. The
+alternative was a fourth copy of the same four names with nothing checking they agree, which is
+what produced this.

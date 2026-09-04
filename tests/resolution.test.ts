@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { InvestigationLog, ResolutionLog } from '@/app/components/case/InvestigationLog'
 import { CandidateGrid, NotTheRightCompany } from '@/app/components/resolve/CandidateGrid'
 import { SoleRecord } from '@/app/components/resolve/Verdicts'
+import { investigationBody } from '@/app/components/live/LiveInvestigation'
 import { identityOf, investigateHref, targetFor, withActions } from '@/app/urls'
 import { type Found, decideResolution, domainTyped, hostOf, isPublisherDomain } from '@/lib/resolve'
 import type { ProviderInput } from '@/lib/providers/types'
@@ -304,6 +305,37 @@ describe('the link and the run start from one identity', () => {
     expect(investigateHref(name, domain, identifiers)).toBe(targetFor(stripe))
   })
 
+  it('carries the country, which is the identifier a registry checks itself against', () => {
+    const basecamp = entry(
+      { name: 'Basecamp', domain: 'basecamp.com', country: 'US' },
+      { domain: 'basecamp.com', country: 'US' },
+    )
+    // Read off the declared type, not off the object: it was returned and undeclared before,
+    // which is exactly how it survived to the URL and no further.
+    expect(identityOf(basecamp).country).toBe('US')
+    expect(targetFor(basecamp)).toContain('country=US')
+  })
+
+  it('sends every identifier that was settled, and no empty one', () => {
+    const sent = investigationBody({
+      name: 'Basecamp',
+      domain: 'basecamp.com',
+      refresh: false,
+      demo: null,
+      wikidataId: 'Q4866205',
+      lei: '',
+      cik: '',
+      country: 'US',
+    })
+
+    // The country stopped here. With none, GLEIF answers "a name alone does not identify a
+    // company here" without making a request, so a resolution that settled one bought nothing.
+    expect(sent.country).toBe('US')
+    expect(sent.wikidataId).toBe('Q4866205')
+    expect('lei' in sent).toBe(false)
+    expect('cik' in sent).toBe(false)
+  })
+
   it('strips a publisher down to its name on both sides at once', () => {
     const mention = entry(
       { name: 'Stripe', domain: 'en.wikipedia.org', source: 'web' },
@@ -368,6 +400,16 @@ describe('the route hands the resolved identifiers to the providers', () => {
     expect(input.wikidataId).toBe('Q7624104')
     expect(input.name).toBe('Stripe')
     expect(input.domain).toBe('stripe.com')
+  })
+
+  it('passes the country the reader settled, which is what a registry checks', async () => {
+    const input = await investigateWith({
+      name: 'Basecamp',
+      domain: 'basecamp.com',
+      country: 'US',
+    })
+
+    expect(input.country).toBe('US')
   })
 
   it('leaves an identifier absent rather than empty when none was resolved', async () => {
