@@ -1,7 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { keyHeaderName } from '@/lib/keys'
+// From the header-only module, never '@/lib/keys': that one defaults `env` to `process.env`
+// and has no business in a browser bundle.
+import { keyHeaderName } from '@/lib/key-header'
 import type { Source } from '@/lib/types'
 
 /**
