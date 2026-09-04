@@ -1,14 +1,18 @@
 /**
- * The single input. State lives in the URL (`?q=`, `?domain=`) so a report is shareable and
- * reloadable.
+ * The single input. State lives in the URL so a report is shareable and reloadable.
  *
- * A plain `GET` form: submitting navigates to `/?q=…` with no JavaScript, which is also why
- * the field has no pending state — nothing here is asynchronous yet.
+ * A plain `GET` form: submitting navigates to `/?resolve=…` with no JavaScript.
  *
- * The label is part of the field and travels with it, because it is the field's honest
- * description: today this opens a case file that is already on record. It does not say
- * "Investigate", and the button does not either — no investigation runs when it is pressed.
- * The word becomes true in T10/T16 (D28), and the theme pass is not the place to borrow it.
+ * It says "Investigate" now, and it is the one word that had to wait. When this field was
+ * written, neither identity resolution nor the investigation existed, so the honest label was
+ * "open a case file on record" and D28 said the word became true in T10 and T16. Both landed,
+ * and the label did not follow — which left the front door of a company-research tool opening
+ * only four committed examples. The four are still one click away, on the cards below.
+ *
+ * It goes to `?resolve=` and not `?investigate=` because a bare name is not yet a company:
+ * asking every source to investigate "Basecamp" makes each of them guess which one is meant,
+ * and that guess is what D79 was about. Resolution answers the question first, and hands the
+ * investigation an identity rather than a word.
  */
 
 /**
@@ -37,32 +41,35 @@ export function Magnifier(props: { className?: string }) {
 export function SearchBar(props: { defaultQuery?: string }) {
   return (
     <form method="get" action="/" role="search" className="max-w-lg">
-      <label htmlFor="q" className="label text-faint">
-        Open a case file on record
+      <label htmlFor="resolve" className="label text-faint">
+        Investigate a company
       </label>
       <div className="mt-1.5 flex items-stretch border border-rule-strong bg-card focus-within:border-accent">
         <span className="flex items-center pl-3 text-faint">
           <Magnifier />
         </span>
         <input
-          id="q"
-          name="q"
+          id="resolve"
+          name="resolve"
           type="search"
           autoComplete="off"
           spellCheck={false}
           defaultValue={props.defaultQuery}
-          placeholder="stripe.com"
+          placeholder="Basecamp"
           className="datum min-w-0 grow px-2.5 py-2.5 text-ink placeholder:text-faint focus:outline-none"
         />
         <button
           type="submit"
           className="label border-l border-l-rule-strong px-4 text-ink transition-colors hover:bg-ink hover:text-paper"
         >
-          Open
+          Investigate
         </button>
       </div>
-      {/* The limit is stated before it is hit, not only after a query misses. */}
-      <p className="mt-1.5 font-sans text-xs text-faint">By name or domain. Four are on record.</p>
+      {/* What happens next, said before it happens: a name is identified before it is
+          investigated, because the alternative is asking every source to guess. */}
+      <p className="mt-1.5 font-sans text-xs text-faint">
+        Any company, by name or domain. Names are identified first.
+      </p>
     </form>
   )
 }
