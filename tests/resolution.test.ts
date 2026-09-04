@@ -5,7 +5,7 @@ import { InvestigationLog, ResolutionLog } from '@/app/components/case/Investiga
 import { CandidateGrid, NotTheRightCompany } from '@/app/components/resolve/CandidateGrid'
 import { SoleRecord } from '@/app/components/resolve/Verdicts'
 import { identityOf, investigateHref, targetFor, withActions } from '@/app/urls'
-import { type Found, decideResolution, isPublisherDomain } from '@/lib/resolve'
+import { type Found, decideResolution, domainTyped, hostOf, isPublisherDomain } from '@/lib/resolve'
 import type { ProviderInput } from '@/lib/providers/types'
 import type { Candidate, Source } from '@/lib/types'
 
@@ -458,5 +458,37 @@ describe('the sole record obeys the same description rule as the grid', () => {
     const html = render(createElement(SoleRecord, { query: 'stripe', entry: only }))
 
     expect(html).toContain('American financial services company')
+  })
+})
+
+/**
+ * The other half of the field's promise. Measured on `modern.tech`: no registry held it, the
+ * only candidate came from web search, and the publisher rule dropped the very host the card
+ * displayed — so the three sources that need a domain were all skipped and the report was empty.
+ */
+describe('a domain typed into the field', () => {
+  it('is already an identity, so nothing is resolved', () => {
+    expect(domainTyped('modern.tech')).toBe('modern.tech')
+    expect(domainTyped('  https://WWW.Modern.tech/about  ')).toBe('modern.tech')
+  })
+
+  it('leaves a name to resolution, including the page title that broke it', () => {
+    expect(domainTyped('Basecamp')).toBeNull()
+    expect(
+      domainTyped('Modern.tech | Enterprise-Grade Software Development - Modern.tech'),
+    ).toBeNull()
+    expect(domainTyped('hello@modern.tech')).toBeNull()
+  })
+
+  it("normalises exactly as a candidate's domain does, so both key one report", () => {
+    expect(domainTyped('WWW.Modern.Tech')).toBe(hostOf('https://www.modern.tech/team'))
+  })
+
+  it('reaches the providers as a domain, which is the part that was missing', () => {
+    const typed = domainTyped('modern.tech')
+    expect(typed).not.toBeNull()
+    expect(investigateHref(typed as string, typed)).toBe(
+      '/?investigate=modern.tech&domain=modern.tech',
+    )
   })
 })

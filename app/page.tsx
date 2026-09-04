@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
-import { resolveHref } from '@/app/urls'
+import { investigateHref, resolveHref } from '@/app/urls'
 import { fixtureForDomain } from '@/lib/providers/fake'
+import { domainTyped } from '@/lib/resolve'
 import { HomeScreen } from './screens/HomeScreen'
 import { InvestigateScreen } from './screens/InvestigateScreen'
 import { RecordingScreen } from './screens/RecordingScreen'
@@ -52,7 +53,15 @@ export default async function Home({
   // Its own parameter, because it is its own question: which company is this name? Nothing is
   // investigated here and no provider is called — the answer is an identity, or a request for
   // one (D54).
-  if (resolving !== '') return <ResolveScreen query={resolving} />
+  //
+  // Unless what was typed is already the answer. A domain is the identifier a report is keyed
+  // on, so there is nothing left to identify and the field's own promise — "by name or domain"
+  // — is kept here rather than by two searches that would drop the host on the way through.
+  if (resolving !== '') {
+    const typed = domainTyped(resolving)
+    if (typed !== null) redirect(investigateHref(typed, typed))
+    return <ResolveScreen query={resolving} />
+  }
 
   // An explicit action, so no URL ever means both "investigate this now" and "reopen the
   // recording of it".

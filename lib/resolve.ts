@@ -48,6 +48,34 @@ export function hostOf(url: string | undefined): string | null {
   }
 }
 
+/**
+ * The domain someone typed, when what they typed is already an identity.
+ *
+ * A name is a question — which company is this? — and a domain is the answer to it: it is the
+ * identifier a report is keyed on. Sending one through resolution asks two searches which
+ * company `modern.tech` is, spends a Tavily credit to be told about pages that mention it, and
+ * then drops that very host under the publisher rule, because a web result's host belongs to
+ * whoever published the page. Measured on `modern.tech`: the card showed the company's own site,
+ * choosing it investigated the page's *title* with no domain at all, and Abstract, Hunter and
+ * the website reader — the only three sources that could answer for a company that size — all
+ * reported `no domain to search`.
+ *
+ * Beside `hostOf` because it must normalise a typed domain exactly as a candidate's is
+ * normalised, or the same company would be keyed two ways.
+ *
+ * Deliberately strict. Anything with a space, an `@`, or no label that could be a suffix is a
+ * name and goes to resolution as before: the cost of treating a name as a domain is a report
+ * keyed on something that does not exist, and the cost of the reverse is only the search we
+ * already run.
+ */
+export function domainTyped(query: string): string | null {
+  const trimmed = query.trim().toLowerCase()
+  if (trimmed === '' || /\s/.test(trimmed) || trimmed.includes('@')) return null
+  const host = hostOf(trimmed.includes('://') ? trimmed : `https://${trimmed}`)
+  if (host === null) return null
+  return /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(host) ? host : null
+}
+
 export function decideResolution(
   query: string,
   candidates: readonly Candidate[],
