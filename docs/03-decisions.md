@@ -1364,3 +1364,27 @@ every description".
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
+
+## D91 — The constraint that authorised the copies expired, so the copies go
+
+**Context.** `PARALLEL.md`'s first rule is that no two agents ever write the same file, and it is
+what D53 and D65 cite when they record a duplication kept on purpose: `LEGAL_FORMS` copied from
+`gleif.ts` into `demo.ts`, `isoRegions()` copied from `edgar.ts` into `abstract.ts`, and
+`formatFetchedAt` imported into a server route from a component. D53 named its own exit condition
+in the same paragraph — *the formatter should move to a shared module the next time that file is
+owned by the lane doing the work.*
+
+**Options considered.** Leave them, on the grounds that they were deliberate. Or read the
+deliberation for what it says: each one is justified by lane ownership, not by the sharing being
+wrong. Measured across the repo, the same constraint produced more than those three: `since()` in
+seven byte-identical copies, `getJson()` in four that drifted apart on the 404, name
+normalisation in four implementations of three different algorithms.
+
+**Choice.** The lanes are merged and there is one owner, so the constraint no longer holds and
+T28–T48 are the exit D53 named. What was written down as deliberate is undone deliberately, in
+commits that say so, rather than discovered later as drift.
+
+**Consequence accepted.** Two of the copies do not come back together, and both are recorded
+separately: the two name keys of D94, because they genuinely disagree about `AT&T`, and possibly
+EDGAR's country table, which T31 will only merge if the recordings agree. A duplication kept
+after this pass needs a reason that is not "another lane owns that file", because no lane does.

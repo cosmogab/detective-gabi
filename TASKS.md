@@ -235,6 +235,206 @@ still the trace, no longer the lead.
 
 ---
 
+## The quality pass
+
+T1–T27 built the product in parallel lanes, and `PARALLEL.md`'s first rule — no two agents ever
+write the same file — is what D53 and D65 cite when they record a duplication kept on purpose.
+D53 names its own exit condition: *the formatter should move to a shared module the next time
+that file is owned by the lane doing the work.* The lanes are merged. This section is that exit,
+and the split the two biggest files have needed since they stopped being one lane's each.
+
+`lib/types.ts` and `lib/providers/types.ts` are not touched by any task below. The three
+guardrail files are not opened, except `tests/guardrails.resolve.test.ts`, which gains one case
+in T34.
+
+### T28 — One fetch, one clock, one filtered reason
+`lib/net.ts`: `since`, `reason`, `safeReasonFrom(allowed)`, `fetchJson(url, ctx, opts)` with
+`headers`, `detail` and `emptyOn`. Adopted by `wikidata.ts`, `gleif.ts`, `edgar.ts`, deleting
+three copies of each. `emptyOn: 404` is a parameter because GLEIF and EDGAR mean "no such
+record" where Wikidata means "error" — today that difference is an accident of four copies.
+**Done when** `tests/providers.registry.test.ts` is green and unchanged, and `tests/net.test.ts`
+pins `emptyOn`, `HTTP nnn` and that the whitelist lets nothing but its own set out.
+**Commit** `refactor(core): give the providers one fetch, one clock and one filtered reason`
+
+### T29 — The keyed calls go through the same seam
+`abstract.ts`, `hunter.ts`, `website.ts` and `llm.ts` adopt `lib/net.ts`, each passing its own
+`STATUS_DETAIL` table. `isSafeReason` becomes the same primitive read as a predicate, so there
+is one spelling of the rule and four tables.
+**Done when** `providers.api`, `providers.website` and `guardrails.email` are green and
+unchanged, and a new case proves a `fetch` TypeError quoting a header value does not survive.
+**Commit** `refactor(providers): route every keyed call through the shared fetch and its whitelist`
+
+### T30 — One legal-form list, one title-caser, one name key
+`lib/text.ts`: `LEGAL_FORMS` (four byte-identical copies today), `titleCase`, `nameKey`,
+`looseNameKey`, `plural`. Two name keys on purpose: `nameKey` strips only `.` and `,`, because
+`&` is part of a legal name; `looseNameKey` strips every non-alphanumeric, because user input
+is not a legal name. Merging them would decide something about AT&T in silence.
+**Done when** `guardrails.resolve` (its `Apple Inc.` / `Apple Records` case), `merge`,
+`orchestrate` and `demo.replay` are green, and `tests/text.test.ts` pins that the two keys
+disagree on `AT&T` and says why.
+**Commit** `refactor(core): one legal-form list, one title-caser, one name key`
+
+### T31 — The ISO country table gets one home
+`lib/countries.ts` takes Abstract's `NOT_A_COUNTRY`, `ALSO_KNOWN_AS`, `spellings` and
+`countries()` — about 200 lines of a 458-line provider. EDGAR drops `isoRegions` and adopts it.
+**Done when** `providers.registry` is green, which drives EDGAR over four recorded submissions
+including two foreign filers, and `tests/countries.test.ts` proves `UK`, `SU`, `ZZ` and `EU` are
+all refused.
+**Stop condition.** The two tables are not the same one. If `providers.registry` goes red, ship
+the Abstract extraction alone, leave `isoRegions` in `edgar.ts`, and write the decision naming
+the spelling the shared table refuses. Do not edit the test.
+**Commit** `refactor(providers): give the ISO country table one home`
+
+### T32 — Wikidata gets one client
+`lib/providers/wikidata-api.ts`: the snak, entity and search schemas, `pickBest` (with the
+`snaktype === 'value'` guard), `entityIds`, `loadEntities(ids, ctx, props)`. `wikidata.ts`
+adopts it. The route's copies go in T33.
+**Done when** `providers.registry` is green and unchanged — its fixtures are keyed on the exact
+URL string, so the parameterised loader is proved byte for byte.
+**Commit** `refactor(providers): give Wikidata one client for its schemas and claim ranks`
+
+### T33 — The searches leave the resolve route
+`app/api/resolve/route.ts` is 487 lines and holds a Wikidata + Tavily provider pair. They become
+`lib/search/wikidata.ts` and `lib/search/tavily.ts`, built on `lib/net.ts` and the Wikidata
+client. `Found`, `ResolveResponse` and `Search` move to `lib/resolve.ts`, and `CandidateGrid`
+imports them instead of hand-copying them. `best()` is carried across verbatim: this commit
+changes no behaviour. They go to `lib/search/` and not `lib/providers/` because the frozen seam
+returns `CompanyFields` and a resolver returns candidates.
+**Done when** `guardrails.resolve` is green with `import { POST } from '@/app/api/resolve/route'`
+unchanged, and the route is under 80 lines.
+**Commit** `refactor(resolve): move the Wikidata and Tavily searches out of the route`
+
+### T34 — A claim marked "no value" may not outrank one that has one
+The route's `best()` filters on rank alone; the provider's `pickBest` also requires
+`snaktype === 'value'`. Wikidata states "has no official website" as a `novalue` snak, and it can
+be ranked `preferred` — then `preferred.length > 0` returns only statements that yield nothing,
+and the real, normal-ranked URL is never read. A company loses its domain, and with it its GLEIF
+and EDGAR reach and its cache key.
+**Done when** a test places a `preferred` `novalue` P856 statement beside a live one and the
+domain still resolves.
+**Commit** `fix(resolve): a claim marked "no value" may not outrank one that has one`
+
+### T35 — The investigate route becomes a registry, a stream and a handler
+`lib/providers/registry.ts` holds `PROVIDERS` and `canRun`, which `cache.ts` and `orchestrate.ts`
+both wrote their own copy of. `lib/stream.ts` holds `type Frame` and `ndjson()` — the open flag,
+the send closure and the close-safety written once instead of inline in a 51-line callback.
+`LiveInvestigation` imports `Frame` instead of mirroring it.
+`investigateCached` does not move: `tests/announce.test.ts` mocks `@/lib/cache`, and a mock that
+stops binding sends that test to the network.
+**Done when** `announce`, `resolution` and `resilience` are green, and `POST` is under 40 lines
+with no nesting deeper than two.
+**Commit** `refactor(core): split the investigate route into a registry, a stream and a handler`
+
+### T36 — The date formatters leave the component
+`lib/format.ts`: `formatAsOf`, `formatFetchedAt`, `MONTHS`, `formatCount`. This is D53's stated
+exit condition, and it deletes the `app/api/investigate/route.ts` → `app/components/FieldRow`
+import that D53 called the wrong home.
+**Done when** `tests/format.test.ts` exists — the first test these formatters have ever had —
+proving a bare year prints unchanged, a full ISO date prints in words, and the reading is done on
+the string rather than through `Date`, so it holds in any zone.
+**Commit** `refactor(ui): move the date formatters out of a component and into lib/format.ts`
+
+### T37 — The people-merge policy moves beside the priority table
+`unionPeople`, `recordsWithAnAddress` and `isSamePerson` leave `lib/orchestrate.ts` for
+`lib/merge.ts`, where the priority table they already call lives. `orchestrate.ts` is left with
+scheduling and assembly.
+**Done when** `merge`, `orchestrate` and the D69 case in `providers.api` are green and unchanged.
+**Commit** `refactor(core): move the people-merge policy beside the priority table it uses`
+
+### T38 — The comments the code outgrew
+Five comments state things the code beside them stopped doing: the investigate route calls
+`website` a stub one line above the array containing it; `ratelimit.ts` says every wired provider
+is keyless; the resolve route promises a per-IP limit that shipped elsewhere; `website.ts` says
+three fields are not read yet; `vitest.config.mts` says the repo ships zero tests. The resolve
+route's line is rewritten to state the true fact — that route is not limited — rather than to
+promise again. Also the two stacked JSDoc blocks on one function in `lib/resolve.ts`.
+**Done when** the suite is green and no comment in those six files contradicts the code below it.
+**Commit** `docs: correct the comments the code outgrew`
+
+### T39 — Delete the field and the measurement nothing reads
+`RateLimitVerdict.allowed` is always `true` and is read only by two assertions that pass through
+it to assert `true`. `fake.ts` reads `performance.now()` twice with nothing between, so its `ms`
+is structurally zero.
+**Done when** the suite is green with two assertions fewer and none weakened.
+**Commit** `refactor(core): delete the verdict field and the measurement nothing reads`
+
+### T40 — Group the components by the screen they belong to
+`app/components/` is thirteen files flat. They become `case/`, `live/`, `resolve/`, `icons/`,
+with `SearchBar`, `Blackout` and `KeysModal` staying flat as page chrome. `Magnifier` leaves
+`SearchBar.tsx` and `Key` leaves `KeysModal.tsx`, so `app/page.tsx` stops reaching into a
+component for an icon — the same misplacement D53 describes for the formatter.
+A pure move: no content changes, so the diff is checkable with `git show --stat` alone.
+`tests/keys.client.test.ts` reads two of these files by path and breaks on the move; its path is
+updated in this commit, which is the maintenance D68 accepted when it chose a source-text test.
+**Done when** the whole suite is green and every moved file has the same line count it had.
+**Commit** `refactor(ui): group the components by the screen they belong to`
+
+### T41 — The URL grammar leaves the candidate grid
+`app/urls.ts`: `investigateHref`, `resolveHref`, `identityOf`, `targetFor`, `withActions`. It
+sits beside `page.tsx` because it writes the router's own parameters (D54), not in `lib/`.
+`PUBLISHER_SOURCES`, `isPublisherDomain` and `describesTheCompany` go to `lib/resolve.ts`
+instead, beside `DECISIVE_SOURCES`: they are the same judgement, and putting them together shows
+they are not complements.
+**Done when** `resolution.test.ts` is green with only its import line changed, and
+`CandidateGrid.tsx` holds components only.
+**Commit** `refactor(ui): move the URL grammar out of the candidate grid`
+
+### T42 — The repeated shapes get one component each
+`app/components/ui/`: `SectionHeading` (written six times), `PanelBody` (four), `Lead` (five),
+`DottedLink` (seven), `Ledger` (twice), and `classes.ts` for `HEAD`, `CELL` and `NO_RULE` —
+`HEAD` is declared identically in two files today.
+**Done when** `home.test.tsx` and `resolution.test.ts` are green: both read raw markup and count
+tags, so the markup has to come out byte-identical.
+**Commit** `refactor(ui): give the repeated panel, heading and link shapes one component each`
+
+### T43 — The sole record and the grid draw one card
+`SoleRecord` hand-inlines `CandidateCard`'s body, and the list block is written twice. One
+`CandidateCard`, one `CandidateList`, and the file splits into the card, the grid and the
+verdicts.
+**Done when** D90's two assertions in `resolution.test.ts` hold — a page excerpt does not reach
+the screen and a Wikidata description does — which is exactly what one shared body could break.
+**Commit** `refactor(ui): the sole record and the grid draw one card`
+
+### T44 — The wait splits into its logic, its hooks and its bar
+`Progress.tsx` is 328 lines of pure functions, two hooks and two components. It becomes
+`live/progress.ts` (pure, no directive), `live/useDrawn.ts` (the only `'use client'` part),
+`live/WaitBar.tsx` and `live/Progress.tsx`. The `filled` computed and unused in `Progress` goes.
+**Done when** `progress.test.tsx` is green and covers `fillOf` and `stepAt` directly.
+**Commit** `refactor(ui): split the wait into its logic, its hooks and its bar`
+
+### T45 — The identify bar draws a failed source the way the investigation does
+`LiveResolution` hard-codes `fill: 'bg-ink'` and re-derives the drawn step inline, so a
+resolution where the web search failed draws that part in ink while the investigation bar draws
+the same fact in red. It calls `fillOf` and `stepAt` instead, which `progress.ts` owns.
+**Done when** a test proves a log of one `ok` and one `failed` source yields ink then alert.
+**Commit** `fix(ui): the identify bar draws a failed source the way the investigation does`
+
+### T46 — The key vault splits from the dialog that fills it
+`KeysModal.tsx` mixes session storage and header building with a 142-line component whose
+per-source row is 57 lines nested six deep. The row becomes `KeyRow`; the pure half becomes
+`app/components/keys-storage.ts`. `keys.client.test.ts` greps for the import literal, which
+changes with the move.
+**Done when** `keys.client.test.ts` is green, D67's assertion included, and the dialog is under
+180 lines.
+**Commit** `refactor(ui): split the key vault from the dialog that fills it`
+
+### T47 — Each of the four screens gets its own file
+`Home` is 207 lines and four screens: resolve, investigate, recording, home. Four files under
+`app/screens/`, plus `Shell.tsx` for the footer written verbatim four times. `page.tsx` is left
+reading the parameters and choosing.
+`home.test.tsx` slices the first screen at the first `<section>`, so `Shell` must not emit one
+before it.
+**Done when** `home.test.tsx` is green and entirely unchanged, and `page.tsx` is under 80 lines.
+**Commit** `refactor(ui): give each of the four screens its own file`
+
+### T48 — Write the architecture the split produced
+`docs/02-architecture.md`, which T21 owed and never wrote. The boundaries are now worth a page:
+what is server-only, where the seam is, what `lib/search/` is and why it is not `lib/providers/`.
+**Done when** the file describes what is in the repo and nothing that is not.
+**Commit** `docs: write the architecture the split produced`
+
+---
+
 ## Cut line
 
 **Ships no matter what:** T1–T10, T14, T16, T17, T18, T20, T21.
