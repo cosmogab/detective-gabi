@@ -9,13 +9,29 @@ import { counted } from '@/lib/text'
 /**
  * The company's own site. No key of its own, though the extraction step needs one.
  *
- * Fetches `/about`, `/team` and `/leadership`, reduces the HTML with Cheerio, then hands the
+ * Fetches `/about`, `/team` and `/leadership` — then `/about-us` and `/company` if none of
+ * those answered — reduces the HTML with Cheerio, then hands the
  * text to `llm.ts` for extraction under a Zod schema. Ranks below the registries and the APIs
  * on merge: a company's own page is a claim, not a filing.
  */
 
-/** The three paths T15 names. A site that hides its people elsewhere is a site we miss. */
+/** The three paths T15 names, and what a site that publishes its people usually calls them. */
 const PATHS = ['/about', '/team', '/leadership'] as const
+
+/**
+ * Tried only when none of the three above answered, so a site that names its pages the usual
+ * way costs nothing extra and nothing slower.
+ *
+ * Measured on `modern.tech`: `/about`, `/team` and `/leadership` are all 404, and the ten people
+ * it publishes sit on `/about-us`. The first list could never reach them, so the provider
+ * reported "no about, team or leadership page" about a company that has one — an absence that
+ * was ours, not the company's, which is the one kind this app must not print.
+ *
+ * The home page is deliberately not on this list. These five are pages a company writes about
+ * itself; a home page is where testimonials and customer logos live, and a name lifted from one
+ * of those would be published as an officer of the wrong company.
+ */
+const FALLBACK_PATHS = ['/about-us', '/company'] as const
 
 /**
  * What one page may contribute to a prompt. Measured on real pages: fly.io's roster reduces to
@@ -86,7 +102,7 @@ export const website: Provider = {
     if (key === null) return nothingAsked(step, started, 'no extraction key configured')
 
     const pages = await readPages(domain, ctx)
-    // We reached the site and it publishes none of the three pages. That is an answer about
+    // We reached the site and it publishes none of the five pages. That is an answer about
     // the company, unlike everything above it, so it is `empty` and the source counts as
     // checked.
     if (pages.length === 0) {
@@ -98,7 +114,7 @@ export const website: Provider = {
             step,
             ms: since(started),
             status: 'empty',
-            detail: 'no about, team or leadership page',
+            detail: 'no about, team, leadership, about-us or company page',
             source: 'website',
           },
         ],
@@ -252,7 +268,16 @@ function describe(
  * by the caller, which can see how many pages came back.
  */
 export async function readPages(domain: string, ctx: Ctx): Promise<PageText[]> {
-  const pages = await Promise.all(PATHS.map((path) => readPage(`https://${domain}${path}`, ctx)))
+  const usual = await fetchAll(PATHS, domain, ctx)
+  return usual.length > 0 ? usual : fetchAll(FALLBACK_PATHS, domain, ctx)
+}
+
+async function fetchAll(
+  paths: readonly string[],
+  domain: string,
+  ctx: Ctx,
+): Promise<PageText[]> {
+  const pages = await Promise.all(paths.map((path) => readPage(`https://${domain}${path}`, ctx)))
   return pages.filter((page): page is PageText => page !== null)
 }
 

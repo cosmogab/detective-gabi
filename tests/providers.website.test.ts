@@ -298,10 +298,16 @@ function reply(text: string): unknown {
   return { candidates: [{ content: { parts: [{ text, thoughtSignature: 'x' }] }, finishReason: 'STOP' }] }
 }
 
-/** Serves the site and the model separately, and counts what the model was asked. */
-function serveSite(page: string | null, model: readonly Route[]): Call[] {
+/**
+ * Serves the site and the model separately, and counts what the model was asked.
+ *
+ * `extra` is declared ahead of the three usual paths because matching is `includes`, so a
+ * route for `/about-us` has to be found before the one for `/about` swallows it.
+ */
+function serveSite(page: string | null, model: readonly Route[], extra: readonly Route[] = []): Call[] {
   const routes: Route[] = [
     ...model.map((route) => ({ ...route, when: MODEL_CALL })),
+    ...extra,
     { when: '/about', ...(page === null ? { status: 404 } : { body: page }) },
     { when: '/team', status: 404 },
     { when: '/leadership', status: 404 },
@@ -662,5 +668,57 @@ describe('what the model is actually asked', () => {
     expect(json(sent.generationConfig.responseSchema)).not.toContain('additionalProperties')
     // Bounded: a page cannot set the bill.
     expect(prompt.length).toBeLessThan(14000)
+  })
+})
+
+/**
+ * Measured on `modern.tech`, the case that produced this: `/about`, `/team` and `/leadership`
+ * are all 404, and the ten people it publishes sit on `/about-us`.
+ *
+ * Route order matters in this stub — it matches on `includes`, so `/about` also matches an
+ * `/about-us` URL and the longer path has to be declared first.
+ */
+describe('a site that does not name its pages the usual way', () => {
+  // Measured on modern.tech: `/about`, `/team` and `/leadership` are all 404, and the ten people
+  // it publishes sit on `/about-us`. The first list could never reach them.
+  const read = [{ when: MODEL_CALL, body: json(extraction('flyio-page1.json')) }]
+  const elsewhere = (body: string): Route[] => [
+    { when: '/about-us', body },
+    { when: '/company', status: 404 },
+  ]
+
+  it('is read from /about-us when none of the three usual paths answers', async () => {
+    const calls = serveSite(null, read, elsewhere(FLYIO))
+
+    const result = await website.run(company('example.com'), withReader())
+
+    expect(result.people?.map((person) => person.name)).toContain('Kurt Mackey')
+    expect(calls.some((call) => call.url.endsWith('/about-us'))).toBe(true)
+  })
+
+  it('does not spend the extra fetches when the usual paths answer', async () => {
+    // The positive control. A second pass that always ran would satisfy the test above while
+    // making every investigation two requests slower on the sites that already worked.
+    const calls = serveSite(FLYIO, read, elsewhere('<body><p>never fetched</p></body>'))
+
+    await website.run(company('example.com'), withReader())
+
+    expect(calls.filter((call) => call.url.endsWith('/about-us'))).toEqual([])
+    expect(calls.filter((call) => call.url.endsWith('/company'))).toEqual([])
+  })
+
+  it('still reports an absence when none of the five answers', async () => {
+    serveSite(null, read, [
+      { when: '/about-us', status: 404 },
+      { when: '/company', status: 404 },
+    ])
+
+    const result = await website.run(company('example.com'), withReader())
+
+    expect(result.people).toEqual([])
+    expect(result.log[0]).toMatchObject({
+      status: 'empty',
+      detail: 'no about, team, leadership, about-us or company page',
+    })
   })
 })
