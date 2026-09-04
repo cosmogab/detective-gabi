@@ -79,7 +79,8 @@ function sweep(now: number): void {
  *
  * Null unless the limit actually withheld something. If no provider in this run needs a key,
  * the limit changed nothing, and a line claiming otherwise would be the scripted step D8
- * forbids. Every provider wired today is keyless, so today this returns null every time.
+ * forbids. Abstract and Hunter both declare `requiresKey`, so a caller past the limit does see
+ * this line — which was not true when it was written, and the comment went on saying so.
  *
  * The moment is formatted by the caller: this module owns when the window resets, not how a
  * date is written, and a second copy of that is the drift D26 exists to prevent.

@@ -122,8 +122,7 @@ function related(query: string, name: string): boolean {
  * worked twice would look like a choice to make. Only a shared domain proves they are the
  * same: two companies can carry one name, and merging those would hide the ambiguity this
  * whole function exists to surface.
- */
-/**
+ *
  * Exported so the route can serve the same de-duplicated list it judged. `ResolveResponse.found`
  * promises every candidate, and the alternatives behind "Not the right company?" have to be the
  * ones the judgement actually considered — not the raw list with its twins back in.

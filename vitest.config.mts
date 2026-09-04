@@ -13,7 +13,8 @@ export default defineConfig({
     environment: 'node',
     // Deliberately wide: no lane owns this file, so adding a test must never require editing it.
     include: ['tests/**/*.test.{ts,tsx}'],
-    // The scaffold ships zero tests on purpose. The guardrails are written in T4.
+    // Kept for a filtered run that matches nothing, which is not a failure. The suite itself
+    // is far past empty; this said "the scaffold ships zero tests on purpose" until T38.
     passWithNoTests: true,
   },
 })

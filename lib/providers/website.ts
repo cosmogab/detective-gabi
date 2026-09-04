@@ -64,9 +64,10 @@ export const website: Provider = {
   // which belongs to `llm`, not to this provider — so `run` says which one is missing rather
   // than this returning false and the orchestrator guessing at a reason.
   requiresKey: false,
-  // The three scalar fields are on the stub's coverage list and are not read yet. A `covers`
-  // that overstates makes the report say "checked website" beside a field nothing looked for —
-  // the EDGAR defect of T9 (D57). It grows when the extraction does.
+  // People only. The extraction reads a page for names and titles and asks it for nothing
+  // else, so location, year and headcount are not on this list: a `covers` that overstates
+  // makes the report say "checked website" beside a field nothing looked for — the EDGAR
+  // defect of T9 (D57). It grows if and when the extraction does.
   covers: ['people'],
   available(): boolean {
     return true

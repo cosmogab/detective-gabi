@@ -33,7 +33,10 @@ export async function POST(request: Request): Promise<Response> {
     key: keyResolver(userKeysFrom(request.headers)),
     signal: request.signal,
     now: new Date().toISOString(),
-    // The per-IP limit lands in lib/ratelimit.ts; until then nothing is degraded here.
+    // Always true, and that is a hole rather than a decision: `lib/ratelimit.ts` exists and
+    // guards `/api/investigate`, and this route was never wired to it. It spends a Tavily
+    // credit per call and `app/page.tsx` redirects every unrecognised query straight here, so
+    // it is the cheaper door and the busier one. Wiring it is its own task, not a comment.
     allowKeyedProviders: true,
   }
 
