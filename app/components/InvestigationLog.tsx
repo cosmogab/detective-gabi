@@ -6,6 +6,17 @@ import { type ReactNode, useEffect, useState } from 'react'
 // hoisted `function` declarations referenced from inside render — converting either to a
 // `const` arrow or wrapping it in `memo` would turn it into a temporal-dead-zone crash.
 import { CaseFile } from './CaseFile'
+import {
+  CandidateGrid,
+  type Found,
+  NoCompanyFound,
+  NotTheRightCompany,
+  type ResolveResponse,
+  ResolutionFailed,
+  SoleRecord,
+  identityOf,
+  investigateHref,
+} from './CandidateGrid'
 import { Sep, formatFetchedAt } from './FieldRow'
 import { Magnifier } from './SearchBar'
 import type { LogEvent, LogEventStatus, Report } from '@/lib/types'
@@ -34,15 +45,24 @@ const CELL = 'border-t border-t-rule py-2 align-baseline'
 const HEAD = 'label border-b border-b-rule-strong pb-1.5 text-left font-normal text-faint'
 const MS = new Intl.NumberFormat('en-US')
 
-export function InvestigationLog(props: { events: readonly LogEvent[]; folded?: boolean }) {
-  const { events, folded = false } = props
+export function InvestigationLog(props: {
+  events: readonly LogEvent[]
+  folded?: boolean
+  /**
+   * What run these steps are from. A resolution and an investigation are two different runs
+   * with two different sets of steps, and calling a resolution's steps an investigation log
+   * would claim an investigation that has not happened yet.
+   */
+  title?: string
+}) {
+  const { events, folded = false, title = 'Investigation log' } = props
   const failed = events.filter((event) => event.status === 'failed')
 
   return (
     <details open={!folded} className="mt-10 border-t-2 border-t-ink">
       <summary className="cursor-pointer py-3">
         <span className="ml-1 inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="label text-ink">Investigation log</span>
+          <span className="label text-ink">{title}</span>
           <span className="font-mono text-xs tabular-nums text-muted">
             {events.length} {events.length === 1 ? 'step' : 'steps'}
           </span>
@@ -195,6 +215,242 @@ export function SimulatedRun(props: { href?: string }) {
   )
 }
 
+/**
+ * Runs one resolution and shows what came back.
+ *
+ * The request is a POST from the browser, not a server render, for two reasons that both
+ * matter: `/api/resolve` exports only POST, so a server component cannot reach it by
+ * navigating; and the user's keys live in `sessionStorage`, so resolving on the server would
+ * pin every reader to the keyless tier and Tavily would never run for anyone (R6). No key is
+ * held here — T12 adds the header, and until it exists the route falls back to the
+ * environment.
+ *
+ * There are four outcomes and each is a different thing to say. A resolution that failed is
+ * not a resolution that found nothing, and neither is a company identified.
+ */
+/**
+ * The resolution's own steps. A wrapper rather than a title passed at each of the four
+ * outcomes, so they cannot drift into naming the same run two ways — and so that naming it is
+ * one decision in one place: nothing has been investigated to produce these.
+ */
+export function ResolutionLog(props: { events: readonly LogEvent[]; folded?: boolean }) {
+  return <InvestigationLog events={props.events} folded={props.folded} title="Search log" />
+}
+
+type ResolutionState =
+  | { kind: 'searching' }
+  | { kind: 'answered'; response: ResolveResponse }
+  | { kind: 'failed'; message: string; log: readonly LogEvent[] }
+
+const RESOLUTION_KINDS = ['resolved', 'ambiguous', 'not-found']
+
+/** The route's own shape, checked rather than trusted: it crossed a network to get here. */
+function asResolveResponse(body: unknown): ResolveResponse | null {
+  if (typeof body !== 'object' || body === null) return null
+  const held = body as Partial<ResolveResponse>
+  if (!Array.isArray(held.found) || !Array.isArray(held.log)) return null
+  const resolution = held.resolution
+  if (typeof resolution !== 'object' || resolution === null) return null
+  if (!RESOLUTION_KINDS.includes(resolution.kind)) return null
+  return { resolution, found: held.found, log: held.log }
+}
+
+/** A 502 carries `{error, log}`. The log is the whole of what can be said, so it is kept. */
+function asFailure(body: unknown): { message: string; log: readonly LogEvent[] } {
+  const held = typeof body === 'object' && body !== null ? (body as Record<string, unknown>) : {}
+  return {
+    message: typeof held.error === 'string' ? held.error : 'the search stopped before it finished',
+    log: Array.isArray(held.log) ? (held.log as LogEvent[]) : [],
+  }
+}
+
+export function LiveResolution(props: { query: string }) {
+  const { query } = props
+  const [attempt, setAttempt] = useState(0)
+  const [state, setState] = useState<ResolutionState>({ kind: 'searching' })
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setState({ kind: 'searching' })
+
+    async function run() {
+      const response = await fetch('/api/resolve', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ query }),
+        signal: controller.signal,
+      })
+      const body: unknown = await response.json().catch(() => null)
+      // Checked before every write, not only around the request: a superseded search must not
+      // land in the state of the one that replaced it (SPEC §7).
+      if (controller.signal.aborted) return
+
+      if (!response.ok) {
+        const failure = asFailure(body)
+        setState({ kind: 'failed', message: failure.message, log: failure.log })
+        return
+      }
+      const parsed = asResolveResponse(body)
+      if (parsed === null) throw new Error('the search returned something unreadable')
+      setState({ kind: 'answered', response: parsed })
+    }
+
+    run().catch((error: unknown) => {
+      if (controller.signal.aborted) return
+      setState({
+        kind: 'failed',
+        message: error instanceof Error ? error.message : 'the search stopped',
+        log: [],
+      })
+    })
+
+    return () => controller.abort()
+  }, [query, attempt])
+
+  // A clear winner does not stop to be announced: it is the investigation, under a line that
+  // says who chose the company. Returned before the identifying frame so the case file keeps
+  // its own full-width layout rather than nesting inside it.
+  if (state.kind === 'answered' && state.response.resolution.kind === 'resolved') {
+    const { candidate } = state.response.resolution
+    // The route puts the winner first. If it ever did not, the resolution still names the
+    // company, so the page states an identity rather than falling through to nothing.
+    const winner = state.response.found[0] ?? {
+      candidate,
+      input: { name: candidate.name, domain: candidate.domain },
+    }
+    return (
+      <Identified
+        query={query}
+        name={candidate.name}
+        winner={winner}
+        alternatives={state.response.found.slice(1)}
+        log={state.response.log}
+      />
+    )
+  }
+
+  const searching = state.kind === 'searching'
+  return (
+    <section className="mx-auto max-w-case px-6 pt-12 pb-10">
+      <p className="label text-faint">Identifying</p>
+      <h1 className="mt-1 flex items-center gap-x-3 font-case text-3xl text-ink">
+        <Magnifier className={searching ? 'magnifier-sweep text-rule-strong' : 'text-rule-strong'} />
+        {query}
+      </h1>
+
+      {state.kind === 'searching' ? (
+        <p className="mt-4 font-sans text-sm text-muted">
+          Searching the sources that name companies. Nothing is investigated until one of them
+          is identified.
+        </p>
+      ) : null}
+
+      {state.kind === 'failed' ? (
+        <>
+          <ResolutionFailed
+            query={query}
+            message={state.message}
+            onRetry={() => setAttempt((held) => held + 1)}
+          />
+          {/* Red steps and all: this is the only account of what was attempted. */}
+          <ResolutionLog events={state.log} />
+        </>
+      ) : null}
+
+      {state.kind === 'answered' ? (
+        <Verdict query={query} response={state.response} />
+      ) : null}
+    </section>
+  )
+}
+
+/**
+ * The company was identified, so the investigation starts — and the page says plainly that the
+ * search chose it. A reader who assumed they had picked it would be trusting their own
+ * judgement where ours was used.
+ *
+ * The URL is rewritten to the investigation, and *replaced* rather than pushed. Pushing would
+ * trap the reader: Back would land on the resolution URL, which resolves again, wins again and
+ * moves forward again. Replacing leaves Back pointing at whatever came before the search, and
+ * leaves behind the URL that is worth sharing — the identity, not the question (R7).
+ */
+function Identified(props: {
+  query: string
+  name: string
+  winner: Found
+  alternatives: readonly Found[]
+  /**
+   * The steps that produced this identity. Shown here for the same reason the other three
+   * outcomes show theirs, and most of all here: this is the outcome that makes a positive
+   * claim about a company, and it is also the one where a source can have failed or been
+   * skipped without changing the verdict. A search that answered on one source out of two is
+   * not a settled one, and only the log can say which happened (SPEC §7).
+   */
+  log: readonly LogEvent[]
+}) {
+  const { name: identified, domain, ...identifiers } = identityOf(props.winner)
+  const href = investigateHref(identified, domain, identifiers)
+
+  useEffect(() => {
+    window.history.replaceState(null, '', href)
+  }, [href])
+
+  return (
+    <>
+      <div className="mx-auto max-w-case px-6 pt-8">
+        <BannerLine kind="Identified" kindClass="text-ink" ruleClass="border-l-rule-strong">
+          {props.name} was the one clear match for{' '}
+          <span className="datum">{props.query}</span> — chosen by the search, not by you.
+        </BannerLine>
+        <NotTheRightCompany query={props.query} alternatives={props.alternatives} />
+        <ResolutionLog events={props.log} folded />
+      </div>
+      <LiveInvestigation
+        name={identified}
+        domain={domain}
+        identity={identifiers}
+        refreshHref={investigateHref(identified, domain, { refresh: true, ...identifiers })}
+      />
+    </>
+  )
+}
+
+/**
+ * The verdicts that are an answer in themselves rather than a step on the way: nothing found,
+ * and a choice handed back. Four outcomes, four statements, and none borrowing another's words.
+ */
+function Verdict(props: { query: string; response: ResolveResponse }) {
+  const { query, response } = props
+  const { resolution, found, log } = response
+
+  if (resolution.kind === 'not-found') {
+    return (
+      <>
+        <NoCompanyFound query={query} sourcesChecked={resolution.sourcesChecked} />
+        <ResolutionLog events={log} folded />
+      </>
+    )
+  }
+
+  if (resolution.kind === 'ambiguous') {
+    // One candidate is not a choice of one, and must never be laid out as one (R2).
+    const only = found.length === 1 ? found[0] : undefined
+    return (
+      <>
+        {only !== undefined ? (
+          <SoleRecord query={query} entry={only} />
+        ) : (
+          <CandidateGrid query={query} found={found} />
+        )}
+        <ResolutionLog events={log} folded />
+      </>
+    )
+  }
+
+  // `resolved` never reaches here: `LiveResolution` returns `Identified` before this runs.
+  return <ResolutionLog events={log} folded />
+}
+
 /** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
 type Frame =
   | { type: 'event'; event: LogEvent }
@@ -277,10 +533,17 @@ export function LiveInvestigation(props: {
   refresh?: boolean
   /** `?demo=` verbatim. The route decides what it means; an unknown value simply is not one. */
   demo?: string | null
+  /** What resolution settled, forwarded to the providers that can use it (D56). */
+  identity?: { wikidataId?: string; lei?: string; cik?: string }
   /** Built by the page: URLs are assembled in one place and cross the boundary as data. */
   refreshHref: string
 }) {
   const { name, domain, refresh = false, demo = null, refreshHref } = props
+  // Read into strings so the effect can depend on the values rather than on a fresh object
+  // identity every render, which would restart the investigation on each one.
+  const wikidataId = props.identity?.wikidataId ?? ''
+  const lei = props.identity?.lei ?? ''
+  const cik = props.identity?.cik ?? ''
   const [events, setEvents] = useState<readonly LogEvent[]>([])
   const [report, setReport] = useState<Report | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
@@ -295,7 +558,15 @@ export function LiveInvestigation(props: {
       const response = await fetch('/api/investigate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, domain, refresh, demo }),
+        body: JSON.stringify({
+          name,
+          domain,
+          refresh,
+          demo,
+          ...(wikidataId === '' ? {} : { wikidataId }),
+          ...(lei === '' ? {} : { lei }),
+          ...(cik === '' ? {} : { cik }),
+        }),
         signal: controller.signal,
       })
       if (!response.ok || response.body === null) {
@@ -319,7 +590,7 @@ export function LiveInvestigation(props: {
     })
 
     return () => controller.abort()
-  }, [name, domain, refresh, demo])
+  }, [name, domain, refresh, demo, wikidataId, lei, cik])
 
   if (report !== null) {
     // A stored answer says so, and offers the gesture that replaces it.
