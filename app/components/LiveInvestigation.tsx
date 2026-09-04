@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { StoredAnswer } from './Banners'
 import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
+import { FLOOR_MS, Progress, useMinimumHold } from './Progress'
 import { requestHeaders } from './KeysModal'
-import { Magnifier } from './SearchBar'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
 /**
@@ -121,6 +121,9 @@ export function LiveInvestigation(props: {
   const [events, setEvents] = useState<readonly LogEvent[]>([])
   const [report, setReport] = useState<Report | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
+  // When this wait appeared. The floor is measured from here rather than from the last source,
+  // so a long run pays nothing for it and only a short one is stopped from flashing past.
+  const [shownAt, setShownAt] = useState(() => Date.now())
 
   useEffect(() => {
     const controller = new AbortController()
@@ -128,6 +131,7 @@ export function LiveInvestigation(props: {
     setEvents([])
     setReport(null)
     setFailure(null)
+    setShownAt(Date.now())
 
     async function run() {
       const response = await fetch('/api/investigate', {
@@ -171,7 +175,11 @@ export function LiveInvestigation(props: {
     return () => controller.abort()
   }, [name, domain, refresh, demo, wikidataId, lei, cik])
 
-  if (report !== null) {
+  // A stored answer investigated nothing, so it has no progression to show and no floor to
+  // serve: it goes straight to the document under the line that says where it came from.
+  const holding = useMinimumHold(shownAt, report?.cached === true ? 0 : FLOOR_MS)
+
+  if (report !== null && !holding) {
     // A stored answer says so, and offers the gesture that replaces it.
     return (
       <>
@@ -189,21 +197,23 @@ export function LiveInvestigation(props: {
     )
   }
 
-  const finished = failure !== null
   return (
     <section className="mx-auto max-w-case px-6 pt-12 pb-10">
-      <p className="label text-faint">Investigating</p>
-      <h1 className="mt-1 flex items-center gap-x-3 font-case text-3xl text-ink">
-        <Magnifier className={finished ? 'text-rule-strong' : 'magnifier-sweep text-rule-strong'} />
-        {name}
-      </h1>
-      {domain !== null ? (
-        <p className="mt-2 font-mono text-xs text-muted">{domain}</p>
-      ) : null}
+      <Progress
+        name={name}
+        domain={domain}
+        sources={sources}
+        events={events}
+        // Not `answered === announced`: a run that died at three of six has finished, and a
+        // magnifier still sweeping over it would claim work that stopped.
+        running={failure === null && report === null}
+      />
 
-      {/* Open, because right now it is not a footnote under a report — it is the report so
-          far. It folds itself the moment there is something to fold under. */}
-      <InvestigationLog events={events} />
+      {/* Folded, and no longer the lead. It is still the evidence — every line, in the order it
+          arrived, with a failure named in the summary even when it is shut — but the band above
+          is what the wait is now, and two accounts of the same six sources opened side by side
+          is one too many. */}
+      <InvestigationLog events={events} folded />
 
       {/*
         The one failure that is still allowed to be the whole answer: the run never produced a

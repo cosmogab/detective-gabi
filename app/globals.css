@@ -179,3 +179,43 @@
     transition-duration: 450ms;
   }
 }
+
+/*
+ * The wait, filling in.
+ *
+ * Both transitions interpolate between two facts — a box a source has answered and one it has
+ * not, a tally that has moved from three sixths to four. Neither advances because time passed,
+ * which is the thing D8 forbids: take the transition away and the screen still tells the truth,
+ * one step later. A reader who asked for less motion gets exactly that.
+ */
+@utility ledger-advance {
+  transition-property: transform, width;
+  transition-duration: 400ms;
+  transition-timing-function: ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: none;
+  }
+}
+
+/*
+ * The maxim arrives rather than switching. Opacity only: a line that also slid would be movement
+ * for its own sake. Under reduced motion the words still change — that is content, not motion —
+ * and only the fade is dropped.
+ */
+@keyframes phrase-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility phrase-in {
+  animation: phrase-in 320ms ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

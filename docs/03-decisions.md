@@ -1146,4 +1146,54 @@ yet — that is the next task, and this is the fact it will count.
 
 ---
 
+## D85 — The bar counts sources, and the seven silent seconds are carried by a sentence
+
+**Context.** The wait was a dense four-column table filling in, with a 15px magnifier as the only
+sign of life. Stripe's recording spends 7,258 ms on SEC EDGAR, and for those seven seconds the
+screen said nothing at all. The ask was a large progress bar, a line rotating every 2.5s, and a
+minimum time on screen.
+
+**The conflict, and how it resolves.** SPEC §6.2 and D8 forbid a scripted progress bar — one that
+moves because time passed would be the app inventing, which is the only thing it may never do. But
+a bar filled by `answered / announced` is made of facts: D84's `start` frame gives the denominator,
+and each source moves it exactly once. A 400ms CSS transition *between two true values* is
+interpolation, not drift; delete every transition and the same screen reports the same facts one
+step later. That is the line.
+
+**The thing four independent designs all ran into.** During those seven seconds nothing may
+honestly move. The client is never told which provider is in flight — they start together and
+speak only when done — so a pulsing row, a per-source spinner or a creeping bar would each be the
+screen guessing at a door being knocked on. The wait is *drawn*, not animated: a box ruled and
+sized and blank. What carries the seven seconds is the maxim, and that is why it exists.
+
+**The maxims claim no action.** "Cross-referencing the archives" is the obvious copy and every word
+of it would be false — nothing cross-references. So the ten are maxims, each true the whole time it
+is on screen whether or not anything is happening, and each one a rule this code actually keeps.
+A test asserts the shape rather than trusting the wording.
+
+**What a screen reader hears is the fact, never the mood.** The count is a `role="status"` live
+region carrying "3 of 6 sources answered"; the maxim is `aria-hidden`. It is decoration, and this
+is the one channel where decoration is only noise.
+
+**Details that were judged and changed.** A failed source is a 4px left rule and a red word — the
+way `InvestigationLog`, the email-lookup note and `BannerLine` all draw a failure — not a solid
+field of `alert`, which would have been legal (only `failed` reaches red) and still the loudest
+mark in the interface, spent on one source in six. The rotation keeps running under
+`prefers-reduced-motion`: replacing a sentence is a change of content, not movement, and only the
+fade is dropped. "Still running" is a prop from the stream, not `answered === announced` — a run
+that died at three of six has finished, and a magnifier sweeping over it would claim work that
+stopped. The floor is measured from when the wait appeared, not from when the last source answered:
+holding a further 2.5s after a nine-second run taxes the reader for nothing. A cached report passes
+a floor of 0 and skips the screen entirely — nothing was investigated, so there is no progression
+to hold.
+
+**Consequence.** The log drops below the band, folded. It is still the evidence and a failure still
+shows in its summary while shut, but two accounts of the same six sources open side by side is one
+too many — a real demotion of D8's "the log is the loading screen", made because the log is now
+the second telling rather than the only one. Verified against `?demo=replay`: 0 of 3 at 400ms,
+2 of 3 at 1.4s, holding through EDGAR's seven seconds, the case file after. No horizontal scroll
+at 390px.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->
