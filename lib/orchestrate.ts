@@ -1,8 +1,7 @@
-import { fold } from '@/lib/text'
-import { isSameLocation, mergeField, type Observation } from '@/lib/merge'
+import { isSameLocation, mergeField, unionPeople, type Observation } from '@/lib/merge'
 import { canRun } from '@/lib/providers/registry'
 import type { Coverage, Ctx, Provider, ProviderInput, ProviderResult } from '@/lib/providers/types'
-import type { CompanyFields, Field, LogEvent, Person, Report, Source } from '@/lib/types'
+import type { CompanyFields, Field, LogEvent, Report, Source } from '@/lib/types'
 
 /**
  * Runs the registry, API and website groups in parallel and assembles the report.
@@ -54,7 +53,7 @@ export async function investigate(
     company: { name: input.name, domain: input.domain },
     fields: mergeFields(outcomes, ctx.now),
     people: {
-      found: unionPeople(outcomes, ctx.now),
+      found: unionPeople(outcomes.flatMap((outcome) => outcome.result.people ?? []), ctx.now),
       sourcesChecked: checked(outcomes, 'people'),
     },
     log,
@@ -186,55 +185,3 @@ function whySkipped(provider: Provider, ctx: Ctx): string {
   if (!ctx.allowKeyedProviders) return 'rate limited, keyless sources only'
   return 'unavailable'
 }
-
-/**
- * People are unioned across sources rather than won by one of them, so two sources naming the
- * same person are one person. Which record survives is decided by running that name's records
- * through `mergeField`: the priority table lives in `lib/merge.ts` and a second copy here
- * would be free to disagree with it (D25).
- */
-function unionPeople(outcomes: readonly Outcome[], fetchedAt: string): Person[] {
-  const byName = new Map<string, Observation<Person>[]>()
-  for (const outcome of outcomes) {
-    for (const person of outcome.result.people ?? []) {
-      const key = fold(person.name)
-      const held = byName.get(key)
-      const observation: Observation<Person> = { value: person, source: person.source }
-      if (held === undefined) byName.set(key, [observation])
-      else held.push(observation)
-    }
-  }
-
-  const people: Person[] = []
-  for (const records of byName.values()) {
-    const won = mergeField(recordsWithAnAddress(records), [], fetchedAt, isSamePerson)
-    if (won.found) people.push(won.value)
-  }
-  return people
-}
-
-/**
- * Among records for one person, a record that carries an address outranks one that does not.
- *
- * Priority alone lost every address this app can find. Hunter is the only source of emails and
- * Wikidata names exactly the executives Hunter returns, so Wikidata won the record and Hunter's
- * verified address was discarded — measured: Patrick Collison came back with Wikidata's title
- * and `email: null`, with `patrick@stripe.com · verified` computed and thrown away.
- *
- * The winning record is still served whole and from one source, which is why this reorders
- * rather than merging attributes: a `Person` carries a single `source`, so taking the title from
- * one source and the address from another would attribute an address to a source that never
- * published it — the misattribution of D48 and D58. Between two records that both carry an
- * address, or neither, priority decides as before.
- */
-function recordsWithAnAddress(records: readonly Observation<Person>[]): Observation<Person>[] {
-  const stated = records.filter((record) => record.value.email !== null)
-  // Narrowed rather than reordered: `mergeField` sorts by priority itself, so a reordering
-  // would be discarded. Among the records left, priority decides exactly as before.
-  return stated.length === 0 ? [...records] : stated
-}
-
-function isSamePerson(a: Person, b: Person): boolean {
-  return fold(a.name) === fold(b.name)
-}
-

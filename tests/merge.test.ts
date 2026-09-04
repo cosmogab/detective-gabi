@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { isSameLocation, mergeField, type Observation } from '@/lib/merge'
+import { isSameLocation, mergeField, unionPeople, type Observation } from '@/lib/merge'
 import { fakeProvidersFor, fixtureReport } from '@/lib/providers/fake'
 import type { Ctx, ProviderInput } from '@/lib/providers/types'
-import type { Field, Location, Source } from '@/lib/types'
+import type { Field, Location, Person, Source } from '@/lib/types'
 
 const NOW = '2026-09-03T10:00:00.000Z'
 
@@ -541,5 +541,85 @@ describe('the merge reproduces the recorded investigation', () => {
     const merged = mergeField(observations, ['wikidata', 'abstract'], recorded.fetchedAt)
 
     expect(merged).toStrictEqual(recorded.fields.employees)
+  })
+})
+
+// ---------------------------------------------------------------------------------------
+// T37. `unionPeople` decided which record for one person survives, and it lived in the
+// orchestrator while the priority table it calls lives here. It is merge policy, so it is
+// tested here, directly, rather than only through a whole investigation.
+// ---------------------------------------------------------------------------------------
+
+function person(over: Partial<Person> & { name: string; source: Source }): Person {
+  return {
+    title: null,
+    email: null,
+    fetchedAt: NOW,
+    confidence: 'circumstantial',
+    ...over,
+  }
+}
+
+describe('people are unioned, not won', () => {
+  it('reads two sources naming the same person as one person', () => {
+    const people = unionPeople(
+      [
+        person({ name: 'Patrick Collison', source: 'wikidata', title: 'chief executive officer' }),
+        person({ name: 'patrick  collison', source: 'hunter', title: 'CEO' }),
+      ],
+      NOW,
+    )
+
+    expect(people).toHaveLength(1)
+  })
+
+  it('keeps two different people apart', () => {
+    const people = unionPeople(
+      [
+        person({ name: 'Patrick Collison', source: 'wikidata' }),
+        person({ name: 'John Collison', source: 'wikidata' }),
+      ],
+      NOW,
+    )
+
+    expect(people).toHaveLength(2)
+  })
+
+  it('lets the record that carries an address beat the higher-priority one (D69)', () => {
+    // Measured before this rule existed: Wikidata outranks Hunter and names exactly the
+    // executives Hunter returns, so Patrick Collison came back with Wikidata's title and
+    // `email: null`, with `patrick@stripe.com · verified` computed and thrown away.
+    const people = unionPeople(
+      [
+        person({ name: 'Patrick Collison', source: 'wikidata', title: 'chief executive officer' }),
+        person({
+          name: 'Patrick Collison',
+          source: 'hunter',
+          title: 'CEO',
+          email: { address: 'patrick@stripe.com', status: 'verified' },
+        }),
+      ],
+      NOW,
+    )
+
+    expect(people).toHaveLength(1)
+    expect(people[0]?.email?.address).toBe('patrick@stripe.com')
+    // Served whole and from one source: taking the title from Wikidata and the address from
+    // Hunter would attribute an address to a source that never published it (D48, D58).
+    expect(people[0]?.source).toBe('hunter')
+    expect(people[0]?.title).toBe('CEO')
+  })
+
+  it('falls back to priority when neither record carries an address', () => {
+    const people = unionPeople(
+      [
+        person({ name: 'Ada Lovelace', source: 'llm', title: 'from the page' }),
+        person({ name: 'Ada Lovelace', source: 'wikidata', title: 'from the registry' }),
+      ],
+      NOW,
+    )
+
+    expect(people).toHaveLength(1)
+    expect(people[0]?.source).toBe('wikidata')
   })
 })

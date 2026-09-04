@@ -1,5 +1,5 @@
 import { fold } from '@/lib/text'
-import type { Confidence, Conflict, Field, Location, Source } from '@/lib/types'
+import type { Confidence, Conflict, Field, Location, Person, Source } from '@/lib/types'
 
 /** One source's answer for one field, before priority is applied. */
 export type Observation<T> = {
@@ -184,3 +184,55 @@ function sameCountry(a: string | null, b: string | null): boolean {
   return fold(a) === fold(b)
 }
 
+
+/**
+ * People are unioned across sources rather than won by one of them, so two sources naming the
+ * same person are one person. Which record survives is decided by running that name's records
+ * through `mergeField` — which is why this lives beside it rather than in the orchestrator: it
+ * is merge policy, and a second priority table would be free to disagree with the first (D25).
+ *
+ * It takes the people, not the runs that produced them. The orchestrator owns what a provider
+ * returned; merge only has to know which records name the same person.
+ */
+export function unionPeople(found: readonly Person[], fetchedAt: string): Person[] {
+  const byName = new Map<string, Observation<Person>[]>()
+  for (const person of found) {
+    const key = fold(person.name)
+    const held = byName.get(key)
+    const observation: Observation<Person> = { value: person, source: person.source }
+    if (held === undefined) byName.set(key, [observation])
+    else held.push(observation)
+  }
+
+  const people: Person[] = []
+  for (const records of byName.values()) {
+    const won = mergeField(recordsWithAnAddress(records), [], fetchedAt, isSamePerson)
+    if (won.found) people.push(won.value)
+  }
+  return people
+}
+
+/**
+ * Among records for one person, a record that carries an address outranks one that does not.
+ *
+ * Priority alone lost every address this app can find. Hunter is the only source of emails and
+ * Wikidata names exactly the executives Hunter returns, so Wikidata won the record and Hunter's
+ * verified address was discarded — measured: Patrick Collison came back with Wikidata's title
+ * and `email: null`, with `patrick@stripe.com · verified` computed and thrown away.
+ *
+ * The winning record is still served whole and from one source, which is why this reorders
+ * rather than merging attributes: a `Person` carries a single `source`, so taking the title from
+ * one source and the address from another would attribute an address to a source that never
+ * published it — the misattribution of D48 and D58. Between two records that both carry an
+ * address, or neither, priority decides as before.
+ */
+function recordsWithAnAddress(records: readonly Observation<Person>[]): Observation<Person>[] {
+  const stated = records.filter((record) => record.value.email !== null)
+  // Narrowed rather than reordered: `mergeField` sorts by priority itself, so a reordering
+  // would be discarded. Among the records left, priority decides exactly as before.
+  return stated.length === 0 ? [...records] : stated
+}
+
+function isSamePerson(a: Person, b: Person): boolean {
+  return fold(a.name) === fold(b.name)
+}
