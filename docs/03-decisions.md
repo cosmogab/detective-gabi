@@ -904,6 +904,60 @@ themselves — the borrowing this repo keeps refusing, most recently when a reso
 forbidden from reusing the report's wording.
 **Consequence.** Two Wave 0 stubs remain, `lib/providers/website.ts` and `llm.ts`, both under T15.
 
+## D75 — A country code is checked against the standard, not against a shape
+
+**Context.** An adversarial review of the two newest providers confirmed what a shape test lets
+through. `isoCountry` returned `country_iso_code` on a bare `/^[A-Z]{2}$/` match, *before*
+consulting the resolved table — so the unvalidated branch shadowed the validated one in the same
+file. And that table was keyed on `Intl.DisplayNames` output, which is CLDR presentation spelling,
+not the names a data vendor writes.
+**Choice.** The stated code must be a code the standard assigns; otherwise the name is resolved,
+through a table that accepts the spellings vendors actually use.
+**Consequence.** Measured before and after on the real provider:
+`"United Kingdom" + iso "UK"` gave `UK` and now gives `GB`; `"United States" + iso "ZZ"` gave `ZZ`
+and now gives `US`; `"Czech Republic"`, `"Hong Kong"` and `"Turkey"` gave `null` — which
+`sameCountry` reads as *not the same place* — and now give `CZ`, `HK`, `TR`. This restores D35's
+rule ("a missing country is survivable; a wrong one is not") in the file that had copied its table
+precisely to honour it. The false conflict the ISO resolution existed to prevent was live for every
+company outside the United States.
+
+## D76 — An extracted person is sourced to the model, not to the site
+
+**Context.** The company's own page is the evidence and the model is only its reader, but a
+`Person` carries a single `source`.
+**Choice.** `source: 'llm'`. Crediting `website` would put the model's mistakes in the company's
+mouth, and would rank them above a web search at the merge. The `LogEvent` still says
+`source: 'website'` — the source that was consulted — while `sourceUrl` says where to check.
+**And a guard, because instructions are not enough.** A name absent from the text that was sent is
+dropped. All 58 people found across the recorded pages appeared in their text word for word, so it
+costs nothing real and makes an invented name unpublishable.
+**Consequence.** Extracted people rank last (SPEC's priority) and carry no address, so under D69
+they lose to Hunter — correct and expected.
+
+## D77 — With no reader, nothing is fetched
+
+**Context.** The fetch-and-reduce half needs no key; the extraction does.
+**Choice.** Without an extraction key the provider fetches nothing at all and reports
+`skipped · no extraction key configured`. Asking a company's site for three pages nobody can read
+would spend its bandwidth to learn nothing.
+**Consequence.** `skipped` keeps it out of `sourcesChecked` (D59). Reaching the site and finding it
+publishes none of the three pages is a different answer — `empty`, and the source counts as checked,
+because that *is* a fact about the company.
+
+## D78 — The reduction strips markup instead of guessing where the team is
+
+**Context.** The first reduction picked the "team area" by class name. Measured: on one company's
+`/team` it handed the pricing table to the model.
+**Choice.** Remove markup and plumbing, prefer `main`, and leave interpretation to the reader.
+Guessing meaning before the reader sees the page is how the wrong section gets read confidently.
+**Also measured, and not built:** five sites were checked for schema.org markup. Three had some, one
+`Person` in total, zero `jobTitle`. A keyless structured path would have been a feature no real data
+supports.
+**Consequence.** The prompt carries the judgement instead: asking for "the people named on this
+page" returned 57 people from one site, illustrators included. Asking, on a full directory, only for
+those whose title shows they lead returns five — which is the task's done-when, on a company GLEIF,
+EDGAR and Hunter cannot name.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
