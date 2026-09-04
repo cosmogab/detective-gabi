@@ -222,18 +222,10 @@ export function Progress(props: {
       </p>
 
       <div className="relative mt-10 flex h-20 overflow-hidden border border-rule-strong bg-card sm:h-24">
-        {/* One hairline per division, painted before the parts and therefore beneath them: a
-            part that has been inked covers its own seam, so the drawn stretch reads as one bar
-            and only the part still to come is divided from it. */}
-        {Array.from({ length: Math.max(0, total - 1) }, (_, i) => (
-          <span
-            key={i}
-            aria-hidden="true"
-            className="absolute inset-y-0 w-px bg-rule"
-            style={{ left: `${((i + 1) / total) * 100}%` }}
-          />
-        ))}
-
+        {/* No rule between the parts. The bar is divided by how far the ink has reached and by
+            nothing else — a hairline across the paper draws the divisions of a form that has not
+            been filled in yet, which is a promise about what is coming rather than a report of
+            what has happened. The only edge on this bar is the one the ink itself makes. */}
         {total === 0 ? (
           /* Ruled and sized and claiming nothing, so the page does not jump when the
              announcement lands. */

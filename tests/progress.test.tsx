@@ -138,11 +138,12 @@ describe('what is on the screen', () => {
     expect(render([], [])).toContain('not yet said which sources')
   })
 
-  it('divides the bar with one hairline per boundary, and none at the ends', () => {
-    // Painted beneath the parts, so an inked stretch covers its own seams and reads as one bar
-    // rather than as three objects sitting next to each other.
-    expect(render(ALL, []).split('w-px').length - 1).toBe(2)
-    expect(render(['wikidata'], []).split('w-px').length - 1).toBe(0)
+  it('draws no rule between the parts, so the ink makes the only edge', () => {
+    // Hairlines across the paper draw the divisions of a form not yet filled in — a promise
+    // about what is coming rather than a report of what happened. How far the ink has reached
+    // is the division.
+    expect(render(ALL, [])).not.toContain('w-px')
+    expect(render(ALL, [], 2)).not.toContain('w-px')
   })
 
   it('never paints a source red for answering that it holds nothing', () => {

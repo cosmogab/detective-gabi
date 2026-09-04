@@ -1232,7 +1232,11 @@ Verified: 0 fields during, 1 after.
 **Two things the first rendering got wrong.** The divisions were borders on each part, so the fill
 sat inside them and a light seam stayed visible across the ink — three objects side by side rather
 than one bar. They are now hairlines painted *beneath* the parts, so an inked stretch covers its
-own seams and only the part still to come is divided from the rest. And the swap was governed by a
+own seams and only the part still to come is divided from the rest. Seeing that rendered, the
+remaining hairlines went too: a rule across the paper draws the divisions of a form that has not
+been filled in, which is a promise about what is coming rather than a report of what happened.
+How far the ink has reached is the division, and the only edge on the bar is the one the ink
+itself makes. And the swap was governed by a
 flat floor, which on Stripe had long since passed by the time SEC EDGAR answered at 7,258ms: the
 last part was inked and the case file took the screen in the same frame, so the part the reader
 waited seven seconds for was never seen arriving. The floor is gone. The screen now leaves when
