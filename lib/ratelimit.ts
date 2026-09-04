@@ -9,9 +9,14 @@ import type { LogEvent } from '@/lib/types'
  * ones still run. The report says less rather than failing.
  */
 export type RateLimitVerdict = {
-  /** False only if we ever decide to refuse outright. Degrading is the normal path. */
-  allowed: boolean
-  /** Feeds `Ctx.allowKeyedProviders`. */
+  /**
+   * Feeds `Ctx.allowKeyedProviders`.
+   *
+   * There is no `allowed` beside it. One existed, was `true` at both return sites, and was
+   * read only by two assertions that passed through it to assert `true` — a promise to maybe
+   * refuse one day, kept nowhere. Degrading is the whole design: a request is never turned
+   * away, only its keys are.
+   */
   keyedProvidersAllowed: boolean
   /** ISO 8601, when the caller's window resets. */
   resetsAt?: string
@@ -53,9 +58,8 @@ export function checkRateLimit(ip: string, now: number): RateLimitVerdict {
   buckets.set(key, bucket)
   if (buckets.size > MAX_BUCKETS) sweep(now)
 
-  if (bucket.count <= KEYED_BUDGET) return { allowed: true, keyedProvidersAllowed: true }
+  if (bucket.count <= KEYED_BUDGET) return { keyedProvidersAllowed: true }
   return {
-    allowed: true,
     keyedProvidersAllowed: false,
     resetsAt: new Date(bucket.startedAt + WINDOW_MS).toISOString(),
   }

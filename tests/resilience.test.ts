@@ -315,12 +315,10 @@ describe('the per-IP limit', () => {
   it('degrades at the budget instead of refusing', () => {
     let verdict = checkRateLimit(ip, NOW)
     for (let i = 1; i < KEYED_BUDGET; i += 1) verdict = checkRateLimit(ip, NOW)
-    expect(verdict.allowed).toBe(true)
     expect(verdict.keyedProvidersAllowed).toBe(true)
 
     verdict = checkRateLimit(ip, NOW)
     // The request is never turned away. Only the keys are.
-    expect(verdict.allowed).toBe(true)
     expect(verdict.keyedProvidersAllowed).toBe(false)
     expect(verdict.resetsAt).toBe(new Date(NOW + WINDOW_MS).toISOString())
   })
@@ -345,16 +343,16 @@ describe('the per-IP limit', () => {
   })
 
   it('says nothing when the limit withheld nothing', () => {
-    const verdict = { allowed: true, keyedProvidersAllowed: false, resetsAt: NOW_ISO }
+    const verdict = { keyedProvidersAllowed: false, resetsAt: NOW_ISO }
     // Every provider wired today is keyless: there is no skipped source to report, and a line
     // claiming one would be the scripted step D8 forbids.
     expect(rateLimitNotice(verdict, fakeProvidersFor('stripe'), (iso) => iso)).toBeNull()
-    expect(rateLimitNotice({ allowed: true, keyedProvidersAllowed: true }, [keyed], (iso) => iso))
+    expect(rateLimitNotice({ keyedProvidersAllowed: true }, [keyed], (iso) => iso))
       .toBeNull()
   })
 
   it('names what was withheld and when it comes back, in words the caller supplies', () => {
-    const verdict = { allowed: true, keyedProvidersAllowed: false, resetsAt: NOW_ISO }
+    const verdict = { keyedProvidersAllowed: false, resetsAt: NOW_ISO }
     const event = rateLimitNotice(verdict, withKeyed, (iso) => `«${iso}»`)
     expect(event?.status).toBe('skipped')
     expect(event?.detail).toBe(`hunter skipped until «${NOW_ISO}»`)

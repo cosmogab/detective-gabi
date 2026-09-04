@@ -88,7 +88,7 @@ export async function POST(request: Request): Promise<Response> {
   const verdict =
     demo === null
       ? checkRateLimit(clientIp(request.headers), startedAt)
-      : { allowed: true, keyedProvidersAllowed: true }
+      : { keyedProvidersAllowed: true }
 
   const ctx: Ctx = {
     key: keyResolver(userKeysFrom(request.headers)),

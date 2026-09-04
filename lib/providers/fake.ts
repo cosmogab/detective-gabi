@@ -214,8 +214,9 @@ export function failingProvider(id: Source, failure: FakeFailure): Provider {
     'not-found': 'no record found',
   }
   return fakeProvider(id, async () => {
-    const started = performance.now()
-    const ms = Math.round(performance.now() - started)
+    // Zero, stated rather than measured: nothing happens between a fake's call and its answer,
+    // and the two adjacent clock reads that used to sit here always subtracted to this.
+    const ms = 0
     return {
       fields: {},
       log: [
