@@ -1,6 +1,6 @@
 import { investigate } from '@/lib/orchestrate'
 import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
-import type { LogEvent, Report } from '@/lib/types'
+import type { LogEvent, Report, Source } from '@/lib/types'
 
 /**
  * TTL cache keyed by domain and by how far the run was allowed to reach. In-memory.
@@ -21,26 +21,42 @@ const TTL_MS = 24 * 60 * 60 * 1000
 const TTL_AFTER_FAILURE_MS = 15 * 60 * 1000
 
 /**
- * How far a run was allowed to reach. Past the per-IP limit the keyed sources are skipped and
- * the report is poorer — and that poorer report must not become the answer served to callers
- * who were never limited. So the reach is part of the key: two runs of different reach are two
- * different answers about the same company, not one answer that happens to vary by caller.
+ * What a run could actually consult, and what it knew about the company. Two runs that differ
+ * on either produce different reports about the same domain, so both are part of the key.
+ *
+ * `reach` holds source *ids* and never a key value. A secret has no business in a cache
+ * identifier, and it is not what changes the report anyway: what changes it is which sources
+ * could be reached, not what credential reached them. Two readers who each configured their own
+ * Abstract key are at the same reach and legitimately share an entry, without either one's key
+ * ever being part of anything.
  */
-export type Reach = 'full' | 'keyless'
+export type Scope = {
+  /** The ids of the sources this run could consult, sorted. */
+  reach: readonly Source[]
+  /** The identifiers the run was given, or `unidentified`. */
+  identity: string
+}
 
-type Entry = { report: Report; expiresAt: number }
+/** A run that states nothing about itself. The default for callers that have no scope. */
+const ANY: Scope = { reach: [], identity: 'unidentified' }
+
+type Entry = { report: Report; expiresAt: number; domain: string; scope: Scope }
 
 const entries = new Map<string, Entry>()
 
 /**
- * The key is the domain and the reach, and nothing else. A bare name is not a key: two
- * companies can share one, and answering the second with the first's report is the kind of
- * invention this app exists to refuse. No domain means no cache, in both directions.
+ * The key is the domain, the identity and the reach, and nothing else. A bare name is not a
+ * key: two companies can share one, and answering the second with the first's report is the
+ * kind of invention this app exists to refuse. No domain means no cache, in both directions.
  */
-function keyFor(domain: string, reach: Reach, identity: string): string | null {
-  const key = domain.trim().toLowerCase()
-  // Neither a domain nor an identifier can contain a space, so the parts cannot run together.
-  return key === '' ? null : `${reach} ${identity} ${key}`
+function keyFor(domain: string, scope: Scope): string | null {
+  const key = normalise(domain)
+  // None of the three parts can contain a space, so they cannot run together.
+  return key === '' ? null : `${scope.identity} ${scope.reach.join('+') || 'nothing'} ${key}`
+}
+
+function normalise(domain: string): string {
+  return domain.trim().toLowerCase()
 }
 
 /**
@@ -50,14 +66,11 @@ function keyFor(domain: string, reach: Reach, identity: string): string | null {
  *
  * Measured before this was part of the key: a cold investigation of stripe.com by name alone
  * stored `gleif empty, edgar empty`, and the very next request — carrying the LEI resolution had
- * just found — was answered from that entry, still empty, silently undoing D56. The recording
- * banner's "Investigate now" builds exactly that identifier-free URL, so one visit to a recording
- * poisoned every resolved investigation of that domain for a day.
+ * just found — was answered from that entry, still empty, silently undoing D56.
  *
- * A caller that knows less is NOT served an entry built by a run that knew more, unlike `Reach`.
- * Reach has two ordered levels and "keyless" is strictly poorer than "full"; identifiers are not
- * ordered like that, and an entry stored under a wrong identifier would be handed on as the
- * answer for everyone. A cache miss costs an investigation; the other direction costs the truth.
+ * A caller that knows less is NOT served an entry built by a run that knew more. Identifiers are
+ * not ordered the way reach is, and an entry stored under a wrong identifier would be handed on
+ * as the answer for everyone.
  */
 function identityOf(input: ProviderInput): string {
   const parts = [input.wikidataId, input.lei, input.cik]
@@ -67,14 +80,71 @@ function identityOf(input: ProviderInput): string {
 }
 
 /**
- * A run is only "keyless" if the limit actually withheld something. When no provider in the
- * run needs a key, being past the limit changed nothing, so the answer is the same answer and
- * splitting the cache would only halve its hit rate for nothing. Every provider wired today is
- * keyless, so today every run is `full`.
+ * The sources this run could consult, asked of the providers themselves.
+ *
+ * `available(ctx)` is the same predicate the orchestrator runs, and it already folds in both
+ * things that vary per caller: the per-IP limit, and whether a key exists for that source. The
+ * flag alone does not — `ctx.allowKeyedProviders` is only the rate limiter's verdict, and
+ * reading it as "the keyed sources ran" was the defect this replaces. Measured: a caller who
+ * had configured an Abstract key was served, for twenty-four hours, the report of a caller who
+ * had none, `no key available` still in its log.
+ *
+ * Asking `available` rather than `ctx.key` also means the cache never handles key material at
+ * all — it learns that a source could run, never what let it.
  */
-function reachOf(providers: readonly Provider[], ctx: Ctx): Reach {
-  if (ctx.allowKeyedProviders) return 'full'
-  return providers.some((provider) => provider.requiresKey) ? 'keyless' : 'full'
+function reachOf(providers: readonly Provider[], ctx: Ctx): readonly Source[] {
+  return providers
+    .filter((provider) => canRun(provider, ctx))
+    .map((provider) => provider.id)
+    .sort()
+}
+
+/** `available` is not supposed to throw. One that does cannot run, exactly as the orchestrator reads it. */
+function canRun(provider: Provider, ctx: Ctx): boolean {
+  try {
+    return provider.available(ctx)
+  } catch {
+    return false
+  }
+}
+
+/** Everything about this run that changes the answer without changing the company. */
+export function scopeOf(
+  providers: readonly Provider[],
+  ctx: Ctx,
+  input: ProviderInput,
+): Scope {
+  return { reach: reachOf(providers, ctx), identity: identityOf(input) }
+}
+
+/**
+ * Whether a stored run's reach covers what this caller could have reached.
+ *
+ * A run that could consult more sources attempted at least as much, so its answer is richer or
+ * equal and costs this caller nothing — and the report says on its face that it comes from
+ * another moment. The reverse is refused, and that refusal is the whole point: a caller who
+ * configured a key must never be handed the answer of a caller who had none.
+ */
+function covers(stored: readonly Source[], wanted: readonly Source[]): boolean {
+  return wanted.every((id) => stored.includes(id))
+}
+
+/**
+ * A source that needs a key and failed. Never stored, at any TTL.
+ *
+ * `reach` deliberately holds no key value, so two readers with different Abstract keys sit at
+ * the same reach — which means a rejected key would be cached as though it were a fact about
+ * the source. It is not: it is a fact about one caller's credential. D43 keeps a failed run for
+ * fifteen minutes because a timeout is genuinely shared, and everyone sees the same outage; a
+ * rejection is not shared, and the reader who fixes their key has to see that immediately
+ * rather than in a quarter of an hour. Nothing is lost by not storing it: a rejected request
+ * spends no quota, which is the only thing the TTL after a failure was protecting.
+ */
+function keyedFailure(report: Report, keyed: readonly Source[]): boolean {
+  return report.log.some(
+    (event) =>
+      event.status === 'failed' && event.source !== undefined && keyed.includes(event.source),
+  )
 }
 
 function ttlFor(report: Report): number {
@@ -85,32 +155,40 @@ function ttlFor(report: Report): number {
 /**
  * A stored report always comes back marked. `cached` and `cachedAt` are set here rather than
  * by the caller, so there is no way to be handed a stored answer that does not say it is one.
+ *
+ * The scan is over entries rather than a single lookup because a run may be answered by one
+ * that reached more sources than it could — see `covers`. Expired entries are dropped as they
+ * are passed, so a cache nobody reads does not grow for ever.
  */
-export function readCache(
-  domain: string,
-  now: number,
-  reach: Reach = 'full',
-  identity = 'unidentified',
-): Report | null {
-  const key = keyFor(domain, reach, identity)
-  if (key === null) return null
+export function readCache(domain: string, now: number, scope: Scope = ANY): Report | null {
+  const wanted = normalise(domain)
+  if (wanted === '') return null
 
-  const entry = entries.get(key)
-  if (entry === undefined) return null
-  if (now >= entry.expiresAt) {
-    entries.delete(key)
-    return null
+  let best: Entry | null = null
+  for (const [key, entry] of entries) {
+    if (now >= entry.expiresAt) {
+      entries.delete(key)
+      continue
+    }
+    if (entry.domain !== wanted) continue
+    if (entry.scope.identity !== scope.identity) continue
+    if (!covers(entry.scope.reach, scope.reach)) continue
+    // The closest match wins: an entry that reached exactly what this caller could is a
+    // better answer than one that reached more.
+    if (best === null || entry.scope.reach.length < best.scope.reach.length) best = entry
   }
+  if (best === null) return null
 
-  return { ...structuredClone(entry.report), cached: true, cachedAt: entry.report.fetchedAt }
+  return { ...structuredClone(best.report), cached: true, cachedAt: best.report.fetchedAt }
 }
 
 export function writeCache(
   domain: string,
   report: Report,
   now: number,
-  reach: Reach = 'full',
-  identity = 'unidentified',
+  scope: Scope = ANY,
+  /** The sources in this run that need a key, so a rejected credential is never shared. */
+  keyed: readonly Source[] = [],
 ): void {
   // A forced failure is not an observation, and this is the door it would come through:
   // `?demo=timeout` on stripe.com would otherwise store a fabricated outage under stripe.com
@@ -118,27 +196,25 @@ export function writeCache(
   // line certifying that it happened. The guard is here rather than at the call site so no
   // caller can forget it.
   if (report.simulated) return
+  // Same reasoning, one step along: a keyed source that failed says something about the
+  // caller's own credential, and this key cannot tell one credential from another.
+  if (keyedFailure(report, keyed)) return
 
-  const key = keyFor(domain, reach, identity)
+  const key = keyFor(domain, scope)
   if (key === null) return
   // A copy in each direction, so a caller holding the report cannot edit what the next
   // reader is served.
-  entries.set(key, { report: structuredClone(report), expiresAt: now + ttlFor(report) })
+  entries.set(key, {
+    report: structuredClone(report),
+    expiresAt: now + ttlFor(report),
+    domain: normalise(domain),
+    scope,
+  })
 }
 
-/**
- * A keyless caller may be served a full answer: it is strictly richer and cost them nothing.
- * The reverse is refused — that is the whole point of the split.
- */
-function readForReach(
-  domain: string,
-  now: number,
-  reach: Reach,
-  identity: string,
-): Report | null {
-  const full = readCache(domain, now, 'full', identity)
-  if (full !== null) return full
-  return reach === 'keyless' ? readCache(domain, now, 'keyless', identity) : null
+/** Every key currently held. For tests: what a cache identifier is allowed to contain. */
+export function storedKeys(): string[] {
+  return [...entries.keys()]
 }
 
 /** Drops every entry. For tests, and for an explicit refresh. */
@@ -165,20 +241,20 @@ export async function investigateCached(
 ): Promise<Report> {
   const domain = input.domain ?? ''
   const simulated = options.simulated === true
-  const reach = reachOf(providers, ctx)
-  const identity = identityOf(input)
+  const scope = scopeOf(providers, ctx, input)
+  const keyed = providers.filter((provider) => provider.requiresKey).map((provider) => provider.id)
 
   // A simulated run is sealed off from the cache in both directions. It must not read one —
   // someone who asked for a forced failure has to be shown the failure, not a stored real
   // answer — and it must not write one. Marking the report and refusing the cache are the
   // same decision, so they are made in the same place.
   if (!simulated && !options.refresh) {
-    const stored = readForReach(domain, options.now, reach, identity)
+    const stored = readCache(domain, options.now, scope)
     if (stored !== null) return stored
   }
 
   const investigated = await investigate(input, providers, ctx, onEvent)
   const report = simulated ? { ...investigated, simulated: true } : investigated
-  writeCache(domain, report, options.now, reach, identity)
+  writeCache(domain, report, options.now, scope, keyed)
   return report
 }

@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { clearCache, investigateCached, readCache, writeCache } from '@/lib/cache'
+import { clearCache, investigateCached, readCache, scopeOf, storedKeys, writeCache } from '@/lib/cache'
 import { fakeProvidersFor, fixtureReport } from '@/lib/providers/fake'
 import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
-import type { LogEvent, Report } from '@/lib/types'
+import type { LogEvent, Report, Source } from '@/lib/types'
 
 const NOW_ISO = '2026-09-03T10:00:00.000Z'
 const NOW = 1_772_532_000_000
@@ -302,5 +302,222 @@ describe('a run that knew who the company was is not the same run', () => {
     // direction costs the truth.
     expect(bare.cached).toBe(false)
     expect(runs()).toBe(providers.length * 2)
+  })
+})
+
+
+/**
+ * A source that charges, and only answers to a caller who has a key for it. The shape of
+ * Abstract and Hunter, small enough to reason about.
+ */
+const SECRET = 'abstract-live-8b41f0'
+
+function keyed(id: Source, contribution: 'answers' | 'rejects'): Provider {
+  return {
+    id,
+    requiresKey: true,
+    covers: ['yearFounded'],
+    // The same predicate the orchestrator runs: past the limit, or with no key, it stands down.
+    available: (context: Ctx) => context.allowKeyedProviders && context.key(id) !== null,
+    run: async () =>
+      contribution === 'answers'
+        ? {
+            fields: {
+              yearFounded: {
+                found: true as const,
+                value: 2010,
+                source: id,
+                fetchedAt: NOW_ISO,
+                confidence: 'corroborated' as const,
+                conflicts: [],
+              },
+            },
+            log: [{ step: `Checking ${id}`, ms: 1, status: 'ok' as const, source: id }],
+          }
+        : {
+            fields: {},
+            log: [
+              {
+                step: `Checking ${id}`,
+                detail: 'the key was rejected',
+                ms: 1,
+                status: 'failed' as const,
+                source: id,
+              },
+            ],
+          },
+  }
+}
+
+/** A caller holding a key for `id`, and one holding none. Neither ever sees the other's. */
+function readerWith(id: Source, secret: string): Ctx {
+  return { ...ctx, allowKeyedProviders: true, key: (asked) => (asked === id ? secret : null) }
+}
+const readerWithout: Ctx = { ...ctx, allowKeyedProviders: true }
+
+describe('a key level is part of the key', () => {
+  const withAbstract = [...fakeProvidersFor('stripe'), keyed('abstract', 'answers')]
+
+  /** What that source did on this run, which is exactly what the two callers disagree about. */
+  const abstractStep = (report: Report) =>
+    report.log.find((event) => event.source === 'abstract')?.status
+
+  it('does not serve a caller who has a key the report of a caller who had none', async () => {
+    const none = await investigateCached(stripe, withAbstract, readerWithout, swallow, {
+      refresh: false,
+      now: NOW,
+    })
+    // The poorer run: the source stood down for want of a key and says so.
+    expect(none.cached).toBe(false)
+    expect(abstractStep(none)).toBe('skipped')
+
+    const configured = await investigateCached(
+      stripe,
+      withAbstract,
+      readerWith('abstract', SECRET),
+      swallow,
+      { refresh: false, now: NOW + MINUTE },
+    )
+
+    // The defect this key exists to prevent: for twenty-four hours, someone who had gone to
+    // the trouble of configuring a key was handed the answer of someone who had not, with
+    // `no key available` still sitting in its log.
+    expect(configured.cached).toBe(false)
+    expect(abstractStep(configured)).toBe('ok')
+  })
+
+  it('lets two callers at the same key level share one entry', async () => {
+    const first = await investigateCached(
+      stripe,
+      withAbstract,
+      readerWith('abstract', SECRET),
+      swallow,
+      { refresh: false, now: NOW },
+    )
+    expect(first.cached).toBe(false)
+
+    // A different reader, a different key, the same reach. They see the same answer and
+    // neither one's credential is any part of what made that possible.
+    const second = await investigateCached(
+      stripe,
+      withAbstract,
+      readerWith('abstract', 'a-completely-different-key'),
+      swallow,
+      { refresh: false, now: NOW + MINUTE },
+    )
+    expect(second.cached).toBe(true)
+    expect(abstractStep(second)).toBe('ok')
+  })
+
+  it('reads the reach off the providers, not off the rate-limit flag', () => {
+    // `allowKeyedProviders` is only the rate limiter's verdict. Reading it as "the keyed
+    // sources ran" is what let a keyless run answer for a configured one.
+    const configured = scopeOf(withAbstract, readerWith('abstract', SECRET), stripe)
+    const bare = scopeOf(withAbstract, readerWithout, stripe)
+
+    expect(configured.reach).toContain('abstract')
+    expect(bare.reach).not.toContain('abstract')
+    // Both flags say keyed providers are allowed; only one of them has a key.
+    expect(readerWith('abstract', SECRET).allowKeyedProviders).toBe(true)
+    expect(readerWithout.allowKeyedProviders).toBe(true)
+  })
+
+  it('still lets a caller who could reach less take a richer answer', async () => {
+    await investigateCached(stripe, withAbstract, readerWith('abstract', SECRET), swallow, {
+      refresh: false,
+      now: NOW,
+    })
+
+    // Richer or equal, and it cost this caller nothing — and the report says on its face that
+    // it comes from another moment. Only this direction; the reverse is the test above.
+    const served = await investigateCached(stripe, withAbstract, readerWithout, swallow, {
+      refresh: false,
+      now: NOW + MINUTE,
+    })
+    expect(served.cached).toBe(true)
+  })
+})
+
+describe('no key value ever reaches a cache identifier', () => {
+  it('keys on which sources could answer, never on what let them', async () => {
+    const withAbstract = [...fakeProvidersFor('stripe'), keyed('abstract', 'answers')]
+    await investigateCached(stripe, withAbstract, readerWith('abstract', SECRET), swallow, {
+      refresh: false,
+      now: NOW,
+    })
+
+    const keys = storedKeys()
+    expect(keys).toHaveLength(1)
+    for (const key of keys) {
+      expect(key).not.toContain(SECRET)
+      // The source is named, because that is what changes the report.
+      expect(key).toContain('abstract')
+    }
+  })
+
+  it('gives two readers with different keys the very same identifier', async () => {
+    const withAbstract = [...fakeProvidersFor('stripe'), keyed('abstract', 'answers')]
+    await investigateCached(stripe, withAbstract, readerWith('abstract', SECRET), swallow, {
+      refresh: false,
+      now: NOW,
+    })
+    const afterFirst = storedKeys()
+
+    // A refresh, so the second reader writes rather than reading — which is what makes the
+    // two identifiers comparable at all.
+    await investigateCached(stripe, withAbstract, readerWith('abstract', 'someone-elses'), swallow, {
+      refresh: true,
+      now: NOW + MINUTE,
+    })
+
+    expect(storedKeys()).toEqual(afterFirst)
+    expect(storedKeys()).toHaveLength(1)
+  })
+})
+
+describe('a rejected key is nobody else\'s answer', () => {
+  const rejecting = [...fakeProvidersFor('stripe'), keyed('abstract', 'rejects')]
+
+  it('is not stored at all, not even for fifteen minutes', async () => {
+    const report = await investigateCached(
+      stripe,
+      rejecting,
+      readerWith('abstract', 'wrong-key'),
+      swallow,
+      { refresh: false, now: NOW },
+    )
+    expect(report.log.some((event) => event.status === 'failed')).toBe(true)
+
+    // D43 keeps a failed run for fifteen minutes because a timeout is shared by everyone. A
+    // rejection is not: it is about one caller's credential, and the reach cannot tell one
+    // credential from another. So the next reader — whose key may be perfectly good — runs.
+    expect(storedKeys()).toEqual([])
+    expect(readCache('stripe.com', NOW, scopeOf(rejecting, readerWith('abstract', 'wrong-key'), stripe))).toBeNull()
+  })
+
+  it('still stores a run where only a keyless source failed', async () => {
+    const broken = fakeProvidersFor('stripe').map((provider) => ({
+      ...provider,
+      run: async () => ({
+        fields: {},
+        log: [
+          {
+            step: `Checking ${provider.id}`,
+            detail: 'timed out',
+            ms: 1,
+            status: 'failed' as const,
+            source: provider.id,
+          },
+        ],
+      }),
+    }))
+
+    await investigateCached(stripe, broken, ctx, swallow, { refresh: false, now: NOW })
+
+    // Everyone sees that outage, so it is worth the fifteen minutes D43 gives it.
+    expect(storedKeys()).toHaveLength(1)
+    const scope = scopeOf(broken, ctx, stripe)
+    expect(readCache('stripe.com', NOW + 14 * MINUTE, scope)).not.toBeNull()
+    expect(readCache('stripe.com', NOW + 15 * MINUTE, scope)).toBeNull()
   })
 })
