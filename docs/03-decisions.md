@@ -849,6 +849,61 @@ only when a key was actually there to be spent —
 **Consequence.** Both reasons are now reachable and each is pinned by its own test; removing either
 branch turns exactly one red.
 
+## D71 — Reach is what a run could actually reach, read from `available`
+
+**Context.** `reachOf` read `ctx.allowKeyedProviders`, which is only the rate limiter's verdict and
+says nothing about whether a key exists. Reproduced: a caller with a working Abstract key was
+served, `cached: true`, the report of a caller who had none — for a day. The third time the cache
+had served an answer produced under poorer conditions, after D50 (simulated) and D60 (identity).
+**Choice.** Reach is now the sorted list of source ids for which `provider.available(ctx)` is
+true — the orchestrator's own predicate, so "could this source run" cannot have two answers. It
+folds in both things that vary per caller: the limit and whether a key exists.
+**Consequence.** Verified: A with no key and B with a key each run their own investigation and get
+their own entry; B is never handed A's. The identifier reads
+`unidentified abstract acme.com`. A run may still be answered by an entry whose reach *covers* its
+own — richer, and it cost the reader nothing — never the reverse, and the closest covering entry
+wins so an exact match is not passed over.
+
+## D72 — A cache identifier holds source ids, never a key
+
+**Context.** What changes the report is *which sources could answer*, not which credential opened
+them. Putting a key in an identifier would put a secret in a cache.
+**Choice.** The cache asks `available(ctx)` rather than `ctx.key`, so it never handles key material
+at all: it learns that a source could run, never what let it. Two readers who each configured their
+own Abstract key produce the same identifier and share the entry, and neither key is any part of
+it.
+**Consequence.** Verified against the stored identifiers themselves rather than a proxy: the secret
+appears in none of them. `storedKeys()` is exported for that test, because asserting on the
+scope function alone would have missed a leak through `keyFor`.
+
+## D73 — A rejected key is never cached, which narrows D43
+
+**Context.** D43 keeps a failed run for fifteen minutes: an outage is shared, everyone sees it, and
+the short TTL guards the quota against reload-hammering. A rejected credential is not that.
+**Choice.** `writeCache` refuses any report in which a *keyed* source failed, beside the existing
+`simulated` refusal and at the same door, so no caller can forget it. A keyless source failing —
+Wikidata returning 503 — is still stored for its fifteen minutes.
+**Reasoning, which is the point.** A rejection is a fact about one caller's credential, and the
+reach deliberately cannot tell one credential from another, so storing it would hand one reader's
+bad key to every reader at that level. Neither argument for D43 survives: a rejected request spends
+no quota, so there is nothing to guard, and a reader who fixes their key must see that on the next
+request rather than in a quarter of an hour.
+**Consequence.** Verified: after a rejected key the cache holds zero entries. D43 now applies only
+to failures every caller would have seen.
+
+## D74 — The generic error box was deleted rather than adopted
+
+**Context.** `ErrorState.tsx` was a Wave 0 stub — `{title, detail?, simulated?}` — that threw and
+was imported by nobody. By the time it could have been used, every error state had been built where
+its data lives: `No trace found` derived in `CaseFile` (D51), `No company found` and
+`The search could not run` in the grid, `No evidence found` in `FieldRow`,
+`email lookup unavailable` beside the section it cost, and `simulated` as a banner the report
+carries so it cannot be dropped.
+**Choice.** Delete it. Adopting the box would have meant replacing words those states say for
+themselves — the borrowing this repo keeps refusing, most recently when a resolution miss was
+forbidden from reusing the report's wording.
+**Consequence.** Two Wave 0 stubs remain, `lib/providers/website.ts` and `llm.ts`, both under T15.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
