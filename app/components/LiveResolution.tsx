@@ -15,6 +15,7 @@ import {
 } from './CandidateGrid'
 import { ResolutionLog } from './InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
+import { requestHeaders } from './KeysModal'
 import { Magnifier } from './SearchBar'
 import type { LogEvent } from '@/lib/types'
 
@@ -69,7 +70,10 @@ export function LiveResolution(props: { query: string }) {
     async function run() {
       const response = await fetch('/api/resolve', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        // Carries the reader's own keys, read from this tab at request time so one saved a
+        // moment ago is used by this request. They exist only as headers: never in the URL,
+        // never in the body, never rendered (SPEC §5).
+        headers: requestHeaders(),
         body: JSON.stringify({ query }),
         signal: controller.signal,
       })

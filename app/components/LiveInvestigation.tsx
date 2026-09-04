@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { StoredAnswer } from './Banners'
 import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
+import { requestHeaders } from './KeysModal'
 import { Magnifier } from './SearchBar'
 import type { LogEvent, Report } from '@/lib/types'
 
@@ -122,7 +123,10 @@ export function LiveInvestigation(props: {
     async function run() {
       const response = await fetch('/api/investigate', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        // Carries the reader's own keys, read from this tab at request time so one saved a
+        // moment ago is used by this request. They exist only as headers: never in the URL,
+        // never in the body, never rendered (SPEC §5).
+        headers: requestHeaders(),
         body: JSON.stringify({
           name,
           domain,
