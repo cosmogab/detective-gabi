@@ -2,15 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { BannerLine } from '../case/Banners'
-import {
-  CandidateGrid,
-  type Found,
-  NoCompanyFound,
-  NotTheRightCompany,
-  type ResolveResponse,
-  ResolutionFailed,
-  SoleRecord,
-} from '../resolve/CandidateGrid'
+import type { Found, ResolveResponse } from '@/lib/resolve'
+import { CandidateGrid, NotTheRightCompany } from '../resolve/CandidateGrid'
+import { NoCompanyFound, ResolutionFailed, SoleRecord } from '../resolve/Verdicts'
 import { identityOf, investigateHref } from '@/app/urls'
 import { ResolutionLog } from '../case/InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'

@@ -2,11 +2,8 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { InvestigationLog, ResolutionLog } from '@/app/components/case/InvestigationLog'
-import {
-  CandidateGrid,
-  NotTheRightCompany,
-  SoleRecord,
-} from '@/app/components/resolve/CandidateGrid'
+import { CandidateGrid, NotTheRightCompany } from '@/app/components/resolve/CandidateGrid'
+import { SoleRecord } from '@/app/components/resolve/Verdicts'
 import { identityOf, investigateHref, targetFor, withActions } from '@/app/urls'
 import { type Found, decideResolution, isPublisherDomain } from '@/lib/resolve'
 import type { ProviderInput } from '@/lib/providers/types'
@@ -417,5 +414,49 @@ describe('a log says which run it came from', () => {
     expect(html).toContain('Searching the web')
     expect(html).toContain('no key configured')
     expect(html).toContain('skipped')
+  })
+})
+
+// ---------------------------------------------------------------------------------------
+// T43. The grid and the sole record draw one card now, which is how this surfaced: the sole
+// record had a hand-written copy of the card's inner block, and that copy predated D90 — it
+// printed whatever the candidate carried as a description. A web result reaches this screen
+// exactly as often as any other, because a web result can never win (`decides` refuses it), so
+// a Tavily-only answer is precisely the one-candidate ambiguous case `SoleRecord` renders.
+// ---------------------------------------------------------------------------------------
+
+describe('the sole record obeys the same description rule as the grid', () => {
+  const scraped = '## Overview ### Crunchbase N/A ### LinkedIn N/A ### Industry'
+
+  it('never prints a page excerpt where a description goes', () => {
+    const web = entry({ name: 'Stripe', domain: 'linkedin.com' })
+    const only = { ...web, candidate: { ...web.candidate, source: 'web' as const, description: scraped } }
+
+    const html = render(createElement(SoleRecord, { query: 'stripe', entry: only }))
+
+    expect(html).not.toContain('Crunchbase')
+    expect(html).not.toContain('N/A')
+    // Still shown, and still saying what it is and where it came from — a candidate is
+    // labelled, never hidden.
+    expect(html).toContain('linkedin.com')
+    expect(html).toContain('Stripe')
+  })
+
+  it('keeps a description a source actually wrote', () => {
+    // The positive control: gating everything would pass the test above and lose the one line
+    // Wikidata writes on purpose.
+    const wiki = entry({ name: 'Stripe', domain: 'stripe.com' })
+    const only = {
+      ...wiki,
+      candidate: {
+        ...wiki.candidate,
+        source: 'wikidata' as const,
+        description: 'American financial services company',
+      },
+    }
+
+    const html = render(createElement(SoleRecord, { query: 'stripe', entry: only }))
+
+    expect(html).toContain('American financial services company')
   })
 })

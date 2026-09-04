@@ -1569,3 +1569,27 @@ company it is. Neither file said that while they were apart.
 **Consequence accepted.** `CandidateGrid.tsx` is 278 lines of components and nothing else, and no
 re-export shim was left behind: a caller now imports from the module that owns the thing.
 `app/page.tsx` imports only components from `app/components/`.
+
+## D101 — Drawing one card found a second copy of the rule, and it was the older one
+
+**Context.** T43 was a tidy-up: `SoleRecord` held a hand-written copy of `CandidateCard`'s inner
+block — name, description, provenance — and the list of cards was written out twice. Extracting
+one `CandidateBody` and one `CandidateList` was meant to change nothing.
+
+**What it found.** The two copies were not the same. D90 added a rule to the card — a description
+is printed only when the source wrote one *about the company*, because a web result carries an
+excerpt of whatever page mentioned the name (`### Crunchbase N/A ### LinkedIn N/A` off a LinkedIn
+overview, a Play Store footer). `SoleRecord`'s copy predated it and printed whatever was there.
+
+**Why it was reachable.** `SoleRecord` renders the ambiguous verdict that holds exactly one
+candidate. A web result can never win — `decides` refuses it — so a Tavily-only answer is
+*precisely* that case. The screen most likely to be showing a scrape was the one not checking.
+
+**Choice.** One `CandidateBody`, so the rule cannot exist in two versions, and a test for
+`SoleRecord` beside the one D90 wrote for the grid. Verified both ways: the split alone renders
+markup byte-identical to before, and removing the gate fails the new test and D90's original
+together.
+
+**Consequence accepted.** A visible change on one screen — a sole web record now shows its name,
+host and source with no line under it, where it used to show a page excerpt. That is the correct
+absence, and it is D90's own reasoning applied where D90 did not reach.
