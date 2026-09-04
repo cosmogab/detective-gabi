@@ -29,6 +29,16 @@ import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 export const STEP_MS = 1000
 
 /**
+ * The same, for a run that is not happening.
+ *
+ * A stored answer is already in hand, so its bar is not a wait — it is the record being read
+ * back. Drawing six parts at a second each would charge the reader six seconds for something
+ * that took none, which is the toll a cache exists to remove. Fast enough to be over, slow
+ * enough to be seen travelling.
+ */
+export const REPLAY_STEP_MS = 200
+
+/**
  * The order the sources answered in, first line each. This is what the bar draws, so a part is
  * always the source that actually reported at that position — the pacing slows the telling, it
  * does not reorder it.
@@ -82,6 +92,22 @@ function statusBySource(
     }
   }
   return held
+}
+
+/**
+ * The sources a log speaks of, in the order it speaks of them.
+ *
+ * A stored report carries the log of the run that produced it, so a cache hit has a real record
+ * of which sources answered and in what order — it is simply not this moment's record, which is
+ * what the `Cached` line above the report says. Drawing the bar from it replays that run rather
+ * than inventing one.
+ */
+export function sourcesIn(events: readonly LogEvent[]): Source[] {
+  const out: Source[] = []
+  for (const event of events) {
+    if (event.source !== undefined && !out.includes(event.source)) out.push(event.source)
+  }
+  return out
 }
 
 /** Sources that have answered. `skipped` counts: it is a real answer about this run (D84). */

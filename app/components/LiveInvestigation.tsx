@@ -5,7 +5,7 @@ import type { ReactNode } from 'react'
 import { StoredAnswer } from './Banners'
 import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
-import { Progress, answeredCount, useDrawn, useSettled } from './Progress'
+import { Progress, REPLAY_STEP_MS, STEP_MS, answeredCount, sourcesIn, useDrawn, useSettled } from './Progress'
 import { requestHeaders } from './KeysModal'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
@@ -183,13 +183,21 @@ export function LiveInvestigation(props: {
   // The pacing lives here rather than in the bar, because the same number decides two things:
   // how much of the bar is drawn, and when the last part has finished arriving. Swapping the
   // screen in the frame the final part is inked means never seeing it land.
-  const total = new Set(sources).size
-  const drawn = useDrawn(shownAt, answeredCount(sources, events))
+  //
+  // A stored answer emits no events of its own — nothing was asked this time — but it carries
+  // the log of the run that produced it. The bar draws from that, which replays a real record
+  // rather than inventing one, and the `Cached` line above the report says whose moment it is.
+  // Without this a cache hit arrived with no wait at all, which reads as a broken button.
+  const cached = report?.cached === true
+  const shown = cached ? report.log : events
+  const parts = cached ? sourcesIn(report.log) : sources
+  const total = new Set(parts).size
+  const drawn = useDrawn(shownAt, answeredCount(parts, shown), cached ? REPLAY_STEP_MS : STEP_MS)
   const settled = useSettled(drawn, total)
 
-  // A stored answer investigated nothing, so it has no progression to draw and nothing to wait
-  // for: it goes straight to the document under the line that says where it came from.
-  if (report !== null && (report.cached || settled)) {
+  // Nothing to draw at all — a stored report with no log, which no run produces but which must
+  // not strand the reader on an empty bar for ever.
+  if (report !== null && (total === 0 || settled)) {
     // A stored answer says so, and offers the gesture that replaces it.
     return (
       <>
@@ -213,8 +221,8 @@ export function LiveInvestigation(props: {
       <Progress
         name={name}
         domain={domain}
-        sources={sources}
-        events={events}
+        sources={parts}
+        events={shown}
         drawn={drawn}
         // Not `answered === announced`: a run that died at three of six has finished, and a
         // magnifier still sweeping over it would claim work that stopped.

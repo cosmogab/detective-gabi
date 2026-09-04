@@ -1295,4 +1295,32 @@ investigation title did — that reason is now the bar.
 
 ---
 
+## D89 — A cached run draws its own stored log, at the speed of reading rather than of waiting
+
+**Context.** D86 said a stored answer has no progression to draw, so it skipped the wait entirely
+and the case file appeared in one frame. Watching it, that reads as a broken button: you press
+`Investigate now`, the screen flickers, and a document is there. D88 fixed the half of it where a
+cache hit was served to someone who had asked for a live run; this is the other half, where the
+cache hit is the right answer and still has to be shown arriving.
+
+**Choice, and why it is not an invention.** A stored report carries the log of the run that
+produced it. The bar draws from *that* — its sources, in the order they answered, with their
+statuses — so a cache hit replays a real record rather than staging a fake one. It is the same
+move `?demo=replay` makes with a recording (D83), and the `Cached · from <date>` line above the
+report is what says whose moment it is. What would have been an invention is drawing the bar from
+this run's events, of which there are none.
+
+**And it is drawn at a different speed, deliberately.** A live part waits a second because a
+second is how long it takes two sources answering 18ms apart to be told apart. A stored run is
+not a wait at all — the answer is already in hand — so charging six seconds for it is the toll a
+cache exists to remove. `REPLAY_STEP_MS` is 200: fast enough to be over, slow enough to be seen
+travelling. The dots do not cycle, because nothing is being asked.
+
+**Consequence, measured.** A cache hit now takes 2.5s from click to case file, with the bar
+travelling its full width; the same investigation with `refresh` takes 7.4s, which is what SEC
+EDGAR actually costs. Two paces, and the difference between them is the difference between
+reading a record and waiting for one.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->
