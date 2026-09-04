@@ -23,6 +23,11 @@
      which is not a failure, so it never uses this. */
   --color-alert: #8c2b1c;
 
+  /* The dark the home page arrives in, and the lamp that finds it. Warm rather than neutral:
+     a desk lamp on paper, not a screen switched off. Spent nowhere but the blackout. */
+  --color-night: #0b0a07;
+  --color-lamp: #ffd08a;
+
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   /* A system serif stack: the title costs no request and no layout shift. */
@@ -101,5 +106,76 @@
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
+  }
+}
+
+/*
+ * The blackout: the home page arrives in the dark and a circle of light finds it.
+ *
+ * This one rule decides whether the effect exists at all, and `Blackout.tsx` reads the decision
+ * back off the element rather than keeping a second copy of it. No JavaScript, a reader who
+ * asked for less motion, or a browser that has never heard of `scripting` all get the lit page —
+ * painted correctly on the first frame, because nothing had to mount to work that out.
+ */
+@property --lamp-r {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --lamp-x {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --lamp-y {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+.blackout {
+  display: none;
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .blackout {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    /* The finger carries the beam. Without this it would drag the document instead. */
+    touch-action: none;
+    /* The light is the pointer; a second pointer beside it would be one too many. */
+    cursor: none;
+    background:
+      radial-gradient(
+        circle var(--lamp-r) at var(--lamp-x) var(--lamp-y),
+        color-mix(in oklab, var(--color-lamp) 9%, transparent) 0%,
+        color-mix(in oklab, var(--color-lamp) 3%, transparent) 45%,
+        transparent 68%
+      ),
+      radial-gradient(
+        circle var(--lamp-r) at var(--lamp-x) var(--lamp-y),
+        transparent 0%,
+        transparent 46%,
+        color-mix(in oklab, var(--color-night) 72%, transparent) 72%,
+        var(--color-night) 94%
+      );
+    transition-property: --lamp-r;
+    transition-timing-function: ease-out;
+    /* `dark` opens with no hole and no animation: there is nothing yet to animate from. */
+    transition-duration: 0ms;
+  }
+
+  /* The lamp fades into your hand rather than snapping on. */
+  .blackout[data-phase="armed"] {
+    transition-duration: 320ms;
+  }
+
+  /* Under half a second, because this plays again every time you come back to the page. */
+  .blackout[data-phase="lighting"] {
+    transition-duration: 450ms;
   }
 }

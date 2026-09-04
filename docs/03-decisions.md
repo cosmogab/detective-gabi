@@ -982,4 +982,36 @@ already made.
 
 ---
 
+## D80 — The blackout is gated in CSS, so the page is readable before anything runs
+
+**Context.** The home page now arrives in the dark, and a circle of light around the pointer is
+how you find it. Every version of that effect I have seen is a client component that mounts, reads
+`matchMedia`, and decides whether to cover the page — which means the lit page is painted first and
+then goes out, and means a reader with no JavaScript is at the mercy of a component that never ran.
+In an app whose one rule is that it does not hide things from the reader, an effect that can strand
+one is worse than no effect.
+
+**Options.** Decide in JavaScript on mount, accepting the flash · render the overlay always and
+remove it in an effect · put the condition in CSS and have the component obey it.
+
+**Choice.** `.blackout` is `display: none`, and only
+`@media (scripting: enabled) and (prefers-reduced-motion: no-preference)` turns it on. No
+JavaScript, a reader who asked for less motion, or a browser that has never heard of `scripting`
+each get the lit page — painted correctly on the first frame, because nothing had to mount for the
+browser to know. `Blackout.tsx` then reads that decision back off the element
+(`getComputedStyle(el).display === 'none'`) and unmounts itself rather than re-deciding it. One
+rule governs both what is painted and what runs; a second copy in JavaScript is a second copy that
+can disagree.
+
+**Consequence, verified in a browser.** With JavaScript disabled the page renders whole and the
+field works. Under `prefers-reduced-motion: reduce` the page renders lit and `body.overflow` is
+`visible` — the scroll lock never lands on a reader who was excluded, because the component that
+would have applied it unmounted first. The overlay is in the server HTML with `data-phase="dark"`,
+so there is no lit frame to un-flash. Nothing is behind the effect: the whole page is in the markup
+from the first byte, and the darkness is a decoration over it, marked `aria-hidden`. It is mounted
+on the home page alone — the other three screens are documents someone asked for, and a document
+does not need finding.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->
