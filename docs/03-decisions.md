@@ -1522,3 +1522,22 @@ beside the assertion, which is what D21 asks for when no capture holds the shape
 than as an answer, which is what it means — but the app does not yet distinguish "Wikidata says
 there is none" from "Wikidata does not say". Both come back as no evidence, listing Wikidata among
 the sources checked, which is true of each.
+
+## D97 — The date formatter left the component, and the route stopped reaching into the UI
+
+**Context.** `formatAsOf` and `formatFetchedAt` lived in `app/components/FieldRow.tsx`, and
+`app/api/investigate/route.ts` imported one of them from there to build a rate-limit notice. D53
+recorded that as the wrong home and refused the alternative — a second copy of the one date
+formatter is exactly the drift D26 exists to prevent — and named the exit condition: move it the
+next time that file is owned by the lane doing the work.
+
+**Choice.** `lib/format.ts`, holding both date formatters and `formatCount`, which was
+`new Intl.NumberFormat('en-US')` declared identically in two components. Every importer
+re-pointed. The route no longer imports anything from `app/components/`.
+
+**Consequence accepted.** `FieldRow.tsx` is still the citation vocabulary and still untested as a
+component — but the part of it a server route depended on is now in `lib/`, and
+`tests/format.test.ts` is the first cover it has ever had. That test pins the behaviour the
+comment claimed and nothing proved: the stamp is read off the ISO string rather than through
+`Date`, so a server and a browser in different zones print the same words. Verified by running
+the suite under `TZ=America/New_York` as well as UTC.

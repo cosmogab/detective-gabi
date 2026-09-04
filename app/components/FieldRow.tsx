@@ -1,3 +1,4 @@
+import { formatAsOf } from '@/lib/format'
 import { Fragment } from 'react'
 import type { Confidence, Field, Source } from '@/lib/types'
 
@@ -22,32 +23,6 @@ export const SOURCE_NAME: Record<Source, string> = {
   website: 'Company website',
   web: 'Web search',
   llm: 'Model extraction',
-}
-
-const MONTHS = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December',
-]
-
-/**
- * Sources date a fact two ways: Wikidata gives a bare year, a registry gives a full date.
- * Padding `2022` out to a day would invent precision the source never published, so anything
- * that is not a full ISO date is printed exactly as recorded.
- */
-export function formatAsOf(asOf: string): string {
-  const parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(asOf)
-  if (parts === null) return asOf
-  return `${Number(parts[3])} ${MONTHS[Number(parts[2]) - 1]} ${parts[1]}`
-}
-
-/**
- * Read off the ISO string rather than through `Date`, so a server and a browser in different
- * zones cannot print two different stamps for the same fetch.
- */
-export function formatFetchedAt(iso: string): string {
-  const parts = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(iso)
-  if (parts === null) return iso
-  return `${Number(parts[3])} ${MONTHS[Number(parts[2]) - 1]} ${parts[1]}, ${parts[4]}:${parts[5]} UTC`
 }
 
 /**

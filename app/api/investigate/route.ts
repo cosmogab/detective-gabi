@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { investigateCached } from '@/lib/cache'
-import { formatFetchedAt } from '@/app/components/FieldRow'
+import { formatFetchedAt } from '@/lib/format'
 import { keyResolver, userKeysFrom } from '@/lib/keys'
 import { demoProviders, parseDemoMode } from '@/lib/demo'
 import { PROVIDERS } from '@/lib/providers/registry'

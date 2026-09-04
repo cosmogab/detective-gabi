@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { Sep, formatFetchedAt } from './FieldRow'
+import { formatFetchedAt } from '@/lib/format'
+import { Sep } from './FieldRow'
 
 /**
  * The line an answer wears when it is not a fresh investigation: Recording, Cached, Simulated,

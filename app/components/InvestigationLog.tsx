@@ -1,3 +1,4 @@
+import { formatCount } from '@/lib/format'
 import type { LogEvent, LogEventStatus } from '@/lib/types'
 
 /**
@@ -26,7 +27,6 @@ const STATUS: Record<LogEventStatus, { rule: string; word: string }> = {
 
 const CELL = 'border-t border-t-rule py-2 align-baseline'
 const HEAD = 'label border-b border-b-rule-strong pb-1.5 text-left font-normal text-faint'
-const MS = new Intl.NumberFormat('en-US')
 
 export function InvestigationLog(props: {
   events: readonly LogEvent[]
@@ -94,7 +94,7 @@ export function InvestigationLog(props: {
                   ) : null}
                 </td>
                 <td className={`${CELL} pr-4 text-right`}>
-                  <span className="datum text-muted">{MS.format(event.ms)} ms</span>
+                  <span className="datum text-muted">{formatCount(event.ms)} ms</span>
                 </td>
                 <td className={`${CELL} pr-3`}>
                   <span className={`label ${STATUS[event.status].word}`}>{event.status}</span>

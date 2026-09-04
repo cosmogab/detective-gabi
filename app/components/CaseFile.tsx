@@ -1,5 +1,6 @@
 import type { Field, Location, Report, Source } from '@/lib/types'
-import { FieldRow, NoEvidence, Sep, SourcesChecked, formatFetchedAt } from './FieldRow'
+import { formatCount, formatFetchedAt } from '@/lib/format'
+import { FieldRow, NoEvidence, Sep, SourcesChecked } from './FieldRow'
 import { SimulatedRun } from './Banners'
 import { InvestigationLog } from './InvestigationLog'
 import { PersonCard } from './PersonCard'
@@ -18,11 +19,9 @@ import { PersonCard } from './PersonCard'
  * with it (SPEC §7).
  */
 
-const COUNT = new Intl.NumberFormat('en-US')
-
 /** A year is a name, not a quantity: 1993, never 1,993. That is why `format` is a prop. */
 const formatYear = (value: number) => String(value)
-const formatEmployees = (value: number) => COUNT.format(value)
+const formatEmployees = (value: number) => formatCount(value)
 /**
  * Printed exactly as the source recorded it, odd casing included (D21). `country` already sits
  * inside `formatted`, and a null one must never print as "null".
