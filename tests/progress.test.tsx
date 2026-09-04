@@ -2,14 +2,13 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { Progress } from '@/app/components/live/Progress'
+import { InvestigationLog } from '@/app/components/case/InvestigationLog'
 import {
   allDrawn,
   answeredCount,
   arrivalOrder,
   displayOrder,
-  barParts,
   drawable,
-  fillOf,
   stepAt,
 } from '@/app/components/live/pacing'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
@@ -149,37 +148,23 @@ describe('what is on the screen', () => {
     expect(render(ALL, [], 2)).not.toContain('w-px')
   })
 
-  it('never paints a source red for answering that it holds nothing', () => {
-    // `empty` is a working source saying "nothing here" and `skipped` is one saying it did not
-    // run. Three of the four recordings depend on that being said correctly.
-    expect(render(ALL, [said('gleif', 'empty'), said('edgar', 'skipped')])).not.toContain('alert')
-    expect(render(ALL, [said('gleif', 'failed')])).toContain('bg-alert')
-  })
-})
-
-// ---------------------------------------------------------------------------------------
-// T44. Both of these were written inline inside a component, and one of them twice — the
-// identify bar worked out its own step and hard-coded its own colour. They are the wait's
-// arithmetic, so they live in `pacing.ts` and are tested as arithmetic.
-// ---------------------------------------------------------------------------------------
-
-describe('fillOf', () => {
-  it('inks a part red only when the source genuinely failed', () => {
-    expect(fillOf('failed')).toBe('bg-alert')
-  })
-
-  it('inks every other answer the same as any other part', () => {
-    // `empty` is a working source saying "nothing here" and `skipped` is one saying it did not
-    // run. Both answered. Three of the four recordings depend on that being said correctly.
-    for (const status of ['ok', 'empty', 'skipped'] as const) {
-      expect(fillOf(status), status).toBe('bg-ink')
+  it('inks every part the same, whatever the source answered', () => {
+    // It used to paint a failure red, and the word written inside the bar sits over the parts
+    // already drawn rather than over the one it names — so `GLEIF` appeared in cream on the red
+    // of wikidata's segment, saying "this step failed" about a step that had not. The bar counts;
+    // the log says what happened, and it is the only one of the two that can carry the reason.
+    for (const status of ['empty', 'skipped', 'failed'] as const) {
+      expect(render(ALL, [said('gleif', status)]), status).not.toContain('alert')
     }
-  })
-
-  it('inks a part that has not answered yet as ink, not as a failure', () => {
-    expect(fillOf(undefined)).toBe('bg-ink')
+    // Three parts, one ink class each, and no second colour anywhere on the bar.
+    expect(render(ALL, [said('gleif', 'failed')]).match(/bg-ink/g)).toHaveLength(3)
   })
 })
+
+// ---------------------------------------------------------------------------------------
+// T44. `stepAt` was written inline inside a component, and in one of them twice. It is the
+// wait's arithmetic, so it lives in `pacing.ts` and is tested as arithmetic.
+// ---------------------------------------------------------------------------------------
 
 describe('stepAt', () => {
   const order: Source[] = ['wikidata', 'gleif', 'edgar']
@@ -202,47 +187,21 @@ describe('stepAt', () => {
 })
 
 // ---------------------------------------------------------------------------------------
-// T45. Both waits draw one bar and there is one rule for what red means. The identify bar
-// used to write `fill: 'bg-ink'` for every part, so a source that failed while resolving was
-// drawn like one that answered — the same fact, drawn two ways on two screens.
+// The bar counts; the log says what happened. A red part said "failed" a second time, in a
+// channel that cannot carry the reason, over a word naming a different source entirely —
+// measured: `GLEIF` written on the red of wikidata's segment. The information is not lost,
+// it is where the reason can travel with it.
 // ---------------------------------------------------------------------------------------
 
-describe('barParts', () => {
-  function event(source: Source, status: LogEventStatus): LogEvent {
-    return { step: `Checking ${source}`, ms: 1, status, source }
-  }
+describe('the bar counts, and the log says what happened', () => {
+  const mixed = [said('wikidata', 'failed'), said('gleif'), said('edgar', 'empty')]
 
-  it('draws a failed source red and an answering one in ink', () => {
-    const log = [event('wikidata', 'ok'), event('web', 'failed')]
+  it('does not lose the failure, because the log is still carrying it', () => {
+    // The positive control, and the whole reason the bar may drop the colour: an investigation
+    // that lost the failure altogether would be the app claiming a run that did not happen.
+    const html = renderToStaticMarkup(createElement(InvestigationLog, { events: mixed }))
 
-    expect(barParts(['wikidata', 'web'], log)).toEqual([
-      { key: 'wikidata', fill: 'bg-ink' },
-      { key: 'web', fill: 'bg-alert' },
-    ])
-  })
-
-  it('draws an empty or skipped source in ink, because both answered', () => {
-    const log = [event('wikidata', 'empty'), event('web', 'skipped')]
-
-    expect(barParts(['wikidata', 'web'], log).map((part) => part.fill)).toEqual([
-      'bg-ink',
-      'bg-ink',
-    ])
-  })
-
-  it('draws the parts in the order they answered, not the order they were named', () => {
-    // The word written inside the bar is read from the same order, which is why the name is
-    // right even though the sources answer out of turn.
-    const log = [event('edgar', 'ok'), event('wikidata', 'ok')]
-
-    expect(barParts(['wikidata', 'gleif', 'edgar'], log).map((part) => part.key)).toEqual([
-      'edgar',
-      'wikidata',
-      'gleif',
-    ])
-  })
-
-  it('draws a source that has not answered yet in ink, not as a failure', () => {
-    expect(barParts(['wikidata'], [])).toEqual([{ key: 'wikidata', fill: 'bg-ink' }])
+    expect(html).toContain('failed')
+    expect(html).toContain('wikidata')
   })
 })

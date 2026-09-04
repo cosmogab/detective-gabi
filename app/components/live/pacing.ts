@@ -1,11 +1,14 @@
-import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
+import type { LogEvent, Source } from '@/lib/types'
 
 /**
  * What the wait is made of, with no React in it.
  *
- * The order the parts are drawn in, how many have answered, how fast they may be drawn, and
- * what colour a part is. All of it is a function of the frames that arrived, so all of it can
- * be tested without a browser — which is the only way this repo tests anything visual.
+ * The order the parts are drawn in, how many have answered, and how fast they may be drawn.
+ * All of it is a function of the frames that arrived, so all of it can be tested without a
+ * browser — which is the only way this repo tests anything visual.
+ *
+ * Nothing here says what colour a part is. Every part is inked the same: the bar counts what
+ * has answered, and what each source answered is the log's to say.
  */
 
 /**
@@ -75,26 +78,6 @@ export function displayOrder(announced: readonly Source[], events: readonly LogE
   return [...arrived, ...rest]
 }
 
-/** What each source said, so a part that failed can be drawn as one. */
-export function statusBySource(
-  announced: readonly Source[],
-  events: readonly LogEvent[],
-): Map<Source, LogEventStatus> {
-  const expected = new Set(announced)
-  const held = new Map<Source, LogEventStatus>()
-  for (const event of events) {
-    const source = event.source
-    if (source === undefined || !expected.has(source)) continue
-    const seen = held.get(source)
-    // A failure among a source's lines is the one the bar shows. The bar is a summary, and the
-    // summary that loses the failure is the only one it may not be.
-    if (seen === undefined || (seen !== 'failed' && event.status === 'failed')) {
-      held.set(source, event.status)
-    }
-  }
-  return held
-}
-
 /**
  * The sources a log speaks of, in the order it speaks of them.
  *
@@ -147,15 +130,6 @@ export function allDrawn(drawn: number, total: number): boolean {
 }
 
 /**
- * Red is a source that genuinely failed and nothing else. `empty` is a working source saying
- * "nothing here" and `skipped` is one saying it did not run — both answered, so both are drawn
- * in ink like any other part. Three of the four recordings depend on that being said correctly.
- */
-export function fillOf(status: LogEventStatus | undefined): string {
-  return status === 'failed' ? 'bg-alert' : 'bg-ink'
-}
-
-/**
  * Which step the bar is drawing, read off the order at the position being drawn.
  *
  * When every part is drawn there is no step left, so the last one stays written until the
@@ -163,23 +137,4 @@ export function fillOf(status: LogEventStatus | undefined): string {
  */
 export function stepAt(order: readonly Source[], drawn: number): Source | undefined {
   return order[Math.min(drawn, Math.max(0, order.length - 1))]
-}
-
-/**
- * Every part of the bar, in the order they are drawn, each with the class that inks it.
- *
- * One function because there is one rule for what red means, and the two bars were about to
- * hold two: the identify bar wrote `fill: 'bg-ink'` for every part, so a source that failed
- * during resolution was drawn like one that answered, while the investigation bar drew the
- * same fact in red.
- */
-export function barParts(
-  announced: readonly Source[],
-  events: readonly LogEvent[],
-): { key: string; fill: string }[] {
-  const status = statusBySource(announced, events)
-  return displayOrder(announced, events).map((source) => ({
-    key: source,
-    fill: fillOf(status.get(source)),
-  }))
 }

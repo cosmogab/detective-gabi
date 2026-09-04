@@ -11,7 +11,7 @@ import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from '../keys-storage'
 import { SOURCE_NAME } from '../case/FieldRow'
 import { WaitBar } from './WaitBar'
-import { IDENTIFY_STEP_MS, answeredCount, barParts, displayOrder, fillOf, sourcesIn, stepAt } from './pacing'
+import { IDENTIFY_STEP_MS, answeredCount, displayOrder, sourcesIn, stepAt } from './pacing'
 import { useDrawn, useSettled } from './useDrawn'
 import type { LogEvent, Source } from '@/lib/types'
 
@@ -157,13 +157,9 @@ export function LiveResolution(props: { query: string }) {
       {searching || drawing ? (
         <>
           <WaitBar
-            parts={
-              // Nothing has answered yet, so nothing can have failed: one placeholder part,
-              // inked by the same rule rather than by a class written here.
-              total === 0
-                ? [{ key: 'identifying', fill: fillOf(undefined) }]
-                : barParts(parts, log)
-            }
+            // One placeholder part until the answer lands and the bar becomes the sources
+            // it actually asked.
+            parts={total === 0 ? ['identifying'] : displayOrder(parts, log)}
             drawn={drawn}
             word={total === 0 ? 'Identifying' : wordFor(stepAt(displayOrder(parts, log), drawn))}
             running={searching}

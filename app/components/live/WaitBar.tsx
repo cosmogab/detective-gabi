@@ -25,8 +25,15 @@ function Step(props: { name: string; running: boolean }) {
  * not feel they have changed application.
  */
 export function WaitBar(props: {
-  /** One entry per part, in the order they are drawn. `fill` is the class that inks it. */
-  parts: readonly { key: string; fill: string }[]
+  /**
+   * One key per part, in the order they are drawn.
+   *
+   * A key and nothing else: every part is inked the same. The bar counts what has answered,
+   * and what each source answered is the log's to say — in words, with the reason beside it.
+   * A red part here said "failed" a second time, in a channel that cannot carry the reason,
+   * over a word naming a different source entirely.
+   */
+  parts: readonly string[]
   drawn: number
   /** The step written inside. Nothing is written when there is none to name. */
   word?: string
@@ -45,10 +52,10 @@ export function WaitBar(props: {
         <span className="grow" />
       ) : (
         parts.map((part, i) => (
-          <span key={part.key} className="relative grow">
+          <span key={part} className="relative grow">
             <span
               aria-hidden="true"
-              className={`ledger-advance absolute inset-0 origin-left ${part.fill}`}
+              className="ledger-advance absolute inset-0 origin-left bg-ink"
               // Two values, both true: not drawn, or drawn. The transition interpolates between
               // them and never runs ahead of the fact.
               style={{ transform: i < drawn ? 'scaleX(1)' : 'scaleX(0)' }}

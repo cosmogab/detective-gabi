@@ -438,6 +438,20 @@ what is server-only, where the seam is, what `lib/search/` is and why it is not 
 
 ---
 
+## Reported after the pass
+
+### T49 — The bar counts, and the log says what happened
+The word written inside the bar is anchored left, so it sits over the parts already drawn
+rather than over the one it names. When one of those was red, `GLEIF` appeared in cream on the
+red of wikidata's segment — the bar saying "this step failed" about a step that had not.
+`fillOf`, `barParts` and `statusBySource` go; every part is inked the same and `WaitBar` takes
+keys rather than `{ key, fill }`. The failure keeps the channel that can carry its reason.
+**Done when** no answer paints a part red on either bar, the log still shows the failure, and a
+capture of `?demo=timeout` mid-draw shows an unbroken ink bar.
+**Commit** `fix(ui): the bar counts, and the log is what says a source failed`
+
+---
+
 ## Cut line
 
 **Ships no matter what:** T1–T10, T14, T16, T17, T18, T20, T21.

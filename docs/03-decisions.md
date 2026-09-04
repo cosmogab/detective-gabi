@@ -1611,3 +1611,35 @@ failed now draws that part red instead of ink. It also fixed something nobody ha
 the identify bar built its parts from `sourcesIn(log)` while reading its step from
 `displayOrder(...)`, two derivations of one order that agreed only because the resolution log
 arrives complete. One function now settles both.
+
+## D102 — The bar counts, and the log is what says a source failed
+
+**Context.** The bar drew a failed source red. D99 had just made both waits agree on that rule.
+Then it was looked at rather than reasoned about: `?demo=timeout`, captured mid-draw, shows
+`GLEIF` written in cream on a red block — and the red belongs to *wikidata*, the segment
+underneath. GLEIF had not failed.
+
+**Why the two collide.** The word is `absolute inset-0`, anchored left. It names
+`stepAt(order, drawn)` — the source being waited on — but it physically sits over `order[0]`,
+the first source that answered. Two channels share one space: the segments say what each source
+answered, the word says where the run is. Their meanings cross, and the colour lands on the
+wrong one. It is not a new defect; it predates the whole pass, and D99 only spread it to the
+second bar.
+
+**Options considered.** Move the word into the unfilled region so it never sits on ink. Give it
+a neutral plate. Or take the colour off the bar.
+
+**Choice.** The colour comes off. `fillOf`, `barParts` and `statusBySource` are deleted and
+`WaitBar` takes part keys rather than `{ key, fill }`. Nothing is lost: the investigation log
+below already prints `Checking wikidata — failed — timed out` in red, **with the reason**. The
+bar could only ever say "failed" a second time, in a channel with no room for why — and it was
+saying it over the wrong name.
+
+**Consequence accepted.** A run whose sources all failed now draws a full black bar, and a
+reader has to look one line down to learn that. That is the correct place to look: the log is
+the trace (SPEC §6.2), and the bar is a count. The comment in `statusBySource` that said the
+summary "may not lose the failure" went with the function — it was right that the failure may
+not be lost, and wrong that the bar was where it had to be kept.
+
+D99's other half stands: the identify bar still derives its parts and its step from one call to
+`displayOrder`, where it used to use two derivations that agreed only by luck.
