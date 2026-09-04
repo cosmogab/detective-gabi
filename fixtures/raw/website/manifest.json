@@ -1,0 +1,25 @@
+[
+ {
+  "file": "flyio-about.html",
+  "url": "https://fly.io/about",
+  "status": 200,
+  "contentType": "text/html; charset=utf-8",
+  "recordedAt": "2026-09-04T03:55:31.781Z"
+ },
+ {
+  "file": "basecamp-about.html",
+  "url": "https://basecamp.com/about",
+  "status": 200,
+  "contentType": "text/html",
+  "recordedAt": "2026-09-04T03:55:32.204Z"
+ },
+ {
+  "file": "posthog-team.html",
+  "url": "https://posthog.com/team",
+  "status": 200,
+  "contentType": "text/html; charset=utf-8",
+  "recordedAt": "2026-09-04T03:55:33.154Z",
+  "restricted": "script, style and svg elements removed whole; nothing the provider reads was touched",
+  "bytesBefore": 1069234
+ }
+]
