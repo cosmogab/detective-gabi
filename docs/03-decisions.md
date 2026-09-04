@@ -778,6 +778,47 @@ for EDGAR's shape would silently move Abstract's companies. And `fixtures/flyio.
 is now a demonstration that shows less than the app does. Re-recording it is owed, and belongs with
 the re-recording already due after identity resolution landed.
 
+## D66 — The client module was split so the cycle disappeared rather than moved
+
+**Context.** One 647-line `'use client'` module held three unrelated subjects, and `CaseFile` ⇄
+`InvestigationLog` was a real import cycle that D40 said was safe only because both sides were
+hoisted `function` declarations — tidying either into a `const` or a `memo` would have crashed it.
+**Choice.** Four files. The ledger and the banners hold no state, so neither needs `'use client'`,
+and moving them out is what removes the cycle: `CaseFile` now depends only on leaves, and nothing
+depends on `CaseFile` except the two live components.
+**Consequence.** Verified mechanically on the whole component graph: no cycles. D40's hoisting rule
+is no longer load-bearing anywhere, which is written at the head of the file so nobody reinstates
+the hazard by tidying.
+
+## D67 — A stored key is never rendered back, and the status says stored, not working
+
+**Context.** SPEC §5 wants masked inputs and a per-service status. A status claiming validity is a
+claim the modal cannot make without spending a request.
+**Choice.** The input starts empty every time; the screen shows only *key stored* / *no key* and a
+Forget button. So no path exists by which a key lands in the DOM, a screenshot or server HTML — the
+property is structural rather than promised, and a test asserts the markup holds no stored value.
+The status is "a key is stored"; the footer points at the investigation log, where
+`skipped · no key available` and `failed · the key was rejected` are already two different lines.
+**Consequence.** Verified live on the real server: with no key Abstract answers from the
+environment default; with a key in the header it comes back `failed · the key was rejected`, which
+is user-over-environment resolution working end to end. The value appears zero times in the HTTP
+response, the server log, all four page shapes, and the client chunks. Only Abstract, Hunter and
+Tavily are offered — Gemini is configurable but consumed by nothing, and EDGAR's value is a contact
+address the SEC asks for, not a credential.
+
+## D68 — One test reads source text, on purpose
+
+**Context.** This repo has now shipped "built but not wired" four times: the providers absent from
+`PROVIDERS`, `lib/keys.ts` imported by no route, the identifiers absent from the cache key, and the
+client sending no key header at all. The modal storing a key that nothing sends would have been the
+fifth.
+**Choice.** A test reads the source of both live components and asserts they call
+`requestHeaders()`. With no DOM in this Vitest setup an effect cannot be run, so asserting the call
+site exists is the only way to hold the property.
+**Consequence accepted.** It is a brittle test that breaks on a rename rather than on a regression,
+and it is flagged here rather than left to be discovered. It guards the failure mode this repo
+demonstrably keeps repeating, which is worth a brittle test.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
