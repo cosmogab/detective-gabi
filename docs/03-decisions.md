@@ -1057,21 +1057,25 @@ T16; it did, and this is the rest of that sentence being paid.
 to scroll past six paragraphs to find the place to do it. A setting belongs in the corner settings
 live in, not in the reading order of an argument.
 
-**Choice.** `KeysButton` is an icon button in the top right of every screen: the `Masthead` where
-the text button already sat, and the home page's first screen. The key is hand-drawn, two shapes,
-no icon library — the rule D31 set for the magnifier. It is horizontal where the magnifier is
-diagonal, so the two are told apart at seventeen pixels rather than only up close, and it is a
-shade larger because it stands alone rather than beside a word. `How it works` moves inside the
-page's `<footer>`, and `Ethics` gives up being a `<footer>` itself to become the line inside one —
-a landmark announcing another landmark is one too many.
+**Choice.** `KeysButton` moves to the top right of every screen: the `Masthead` where the text
+button already sat, and the home page's first screen. It gains a key, hand-drawn, two shapes, no
+icon library — the rule D31 set for the magnifier — horizontal where the magnifier is diagonal, so
+the two are told apart at a glance rather than only up close. **The icon is added to the word, not
+substituted for it.** An icon alone in a corner at fifteen pixels is a control nobody finds, and
+this is the one place in the app a reader hands over a secret; the first attempt dropped the label
+for the glyph and had to be reversed on sight of it. `How it works` moves inside the page's
+`<footer>`, and `Ethics` gives up being a `<footer>` itself to become the line inside one — a
+landmark announcing another landmark is one too many.
 
-**Consequence.** An icon with no accessible name is a picture, and the modal behind this one is
-the only place in the app a reader hands over a secret, so the button carries `aria-label` and
-`title` and the test asserts the name rather than the glyph. The first-screen test now counts
-controls instead of forbidding them: two buttons, the field's own and this one, and no third. Its
-probe was also bounded by `</section>` rather than by whatever element follows — the element
-following it had already changed once, and a probe that swallows the rest of the document passes
-by accident.
+**Consequence.** The button's accessible name is the word on the screen, and there is no
+`aria-label` beside it. That is the stronger arrangement rather than the lazier one: an attribute
+can drift from what is rendered and nothing catches it, whereas a visible label cannot disagree
+with itself. The test asks for the word in the markup, and asserts the button carries no
+`aria-label` — so a future change that hides the name in an attribute again fails rather than
+passes quietly. The first-screen test also counts controls instead of forbidding them: two
+buttons, the field's own and this one, and no third. Its probe is bounded by `</section>` rather
+than by whatever element follows — the element following it had already changed once, and a probe
+that swallows the rest of the document passes by accident.
 
 ---
 

@@ -26,6 +26,15 @@ async function home(params: Record<string, string> = {}): Promise<string> {
  * follows it has changed once already, and a probe that silently swallows the rest of the
  * document would let this whole describe block pass by accident.
  */
+/**
+ * Each `<button>` whole, attributes and children, so an assertion can name the control it is
+ * about instead of reporting on the screen around it. Nothing nests a button inside a button,
+ * so the lazy match closes on the right tag.
+ */
+function buttons(html: string): string[] {
+  return html.match(/<button[\s\S]*?<\/button>/g) ?? []
+}
+
 function firstScreen(html: string): string {
   const open = html.indexOf('<section')
   const close = html.indexOf('</section>', open)
@@ -54,10 +63,16 @@ describe('the first screen', () => {
     }
   })
 
-  it('gives the keys button a name and not only a picture', async () => {
-    // It is an icon now. An icon with no accessible name is a control only sighted readers can
-    // find, and the modal behind it is the one place a reader hands over a secret.
-    expect(firstScreen(await home())).toContain('aria-label="Your keys"')
+  it('names the keys button on the screen, not only in an attribute', async () => {
+    // An icon alone in a corner is a control nobody finds, and the modal behind this one is the
+    // one place in the app a reader hands over a secret. The word is visible, which is also
+    // what makes it the button's accessible name without an `aria-label` to keep in step.
+    const button = buttons(firstScreen(await home())).find((held) => held.includes('Your keys'))
+    expect(button).toBeDefined()
+    // On the button itself, not merely absent from the screen: an `aria-label` somewhere else
+    // here would be nobody's business but its own, and a test that fails for it is a test
+    // reporting on something it was not asked about.
+    expect(button).not.toContain('aria-label')
   })
 
   it('does not deny a search that it is about to run', async () => {

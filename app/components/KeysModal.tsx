@@ -140,10 +140,8 @@ function Key(props: { className?: string }) {
   return (
     <svg
       viewBox="0 0 16 16"
-      // A shade larger than the magnifier: it stands alone in a corner rather than beside a
-      // word, and at fifteen pixels a key with two teeth reads as a smudge.
-      width="17"
-      height="17"
+      width="15"
+      height="15"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.4"
@@ -161,16 +159,18 @@ export function KeysButton() {
   const [open, setOpen] = useState(false)
   return (
     <>
+      {/* The icon carries the word rather than replacing it. Alone in a corner at fifteen
+          pixels it is a control nobody finds, and this is the one place in the app a reader
+          hands over a secret — so the name is on the screen and not only in an attribute. */}
       <button
         type="button"
         onClick={() => setOpen(true)}
-        // An icon alone is a picture. The name is what a screen reader reads and what a
-        // pointer's tooltip says, so the control is not one only sighted readers can guess at.
-        aria-label="Your keys"
-        title="Your keys"
-        className="-m-2 cursor-pointer p-2 text-faint transition-colors hover:text-accent"
+        className="label group -m-2 inline-flex cursor-pointer items-center gap-x-2 p-2 text-faint transition-colors hover:text-accent"
       >
         <Key />
+        <span className="underline decoration-dotted underline-offset-2 group-hover:decoration-solid">
+          Your keys
+        </span>
       </button>
       <KeysModal open={open} onClose={() => setOpen(false)} />
     </>
