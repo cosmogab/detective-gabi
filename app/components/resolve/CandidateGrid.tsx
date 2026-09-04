@@ -2,8 +2,11 @@ import type { Found, ResolveResponse } from '@/lib/resolve'
 
 /** Re-exported so the pieces that render a resolution and the type they render stay together. */
 export type { Found, ResolveResponse }
+import { targetFor, withActions } from '@/app/urls'
+import { describesTheCompany, isPublisherDomain } from '@/lib/resolve'
 import type { Candidate, Source } from '@/lib/types'
 import { Sep, SourcesChecked } from '../case/FieldRow'
+
 
 /**
  * What a resolution turns into on screen, and — because it is the same question — the URL a
@@ -14,125 +17,6 @@ import { Sep, SourcesChecked } from '../case/FieldRow'
  * way (D45). The pieces here are rendered from a client component, which is allowed, and the
  * URL grammar stays in one copy that both sides read.
  */
-
-/**
- * Sources that publish about a company rather than for it. Their result is a page that
- * mentions a name, so the host on it belongs to whoever published the page — en.wikipedia.org,
- * x.com — and is never the company's own domain. `lib/resolve.ts` draws the same line to
- * decide what may win; here it decides what may be passed on.
- */
-const PUBLISHER_SOURCES: readonly Source[] = ['web', 'llm']
-
-export function isPublisherDomain(candidate: Candidate): boolean {
-  return PUBLISHER_SOURCES.includes(candidate.source)
-}
-
-/**
- * Whether the line a candidate carries was written to describe a company.
- *
- * Wikidata writes one, deliberately, in a sentence. A web result carries an excerpt of whatever
- * page happened to mention the name — `### Crunchbase N/A ### LinkedIn N/A` from a LinkedIn
- * overview, a follower count from X, `Gift cards · Redeem · Refund policy` from the Play Store.
- * Setting the second where the first goes presents a scrape as a summary, which is the same
- * fault as presenting a guess as a value.
- *
- * The same list as `PUBLISHER_SOURCES`, for the same reason: a publisher stated a page, not a
- * company, so neither its host nor its blurb is about the company.
- */
-export function describesTheCompany(candidate: Candidate): boolean {
-  return !PUBLISHER_SOURCES.includes(candidate.source)
-}
-
-/**
- * The one URL that means "investigate this now", and `refresh` is what makes it go past
- * whatever is stored. Moved here from `app/page.tsx` so the server page and the candidate
- * cards write the same grammar rather than two copies of it.
- *
- * The identifiers resolution won ride in it. They are public identifiers, not secrets, and
- * carrying them is what makes the link reproduce the report instead of a poorer one: without
- * the LEI, GLEIF falls back to searching by name, finds every record that shares it and
- * identifies none of them. A link that quietly answers a worse question than the one that
- * produced it would be its own small dishonesty, so the identity travels with the URL (D56).
- */
-export function investigateHref(
-  name: string,
-  domain: string | null,
-  options: {
-    refresh?: boolean
-    wikidataId?: string
-    lei?: string
-    cik?: string
-    country?: string
-  } = {},
-): string {
-  const params = new URLSearchParams({ investigate: name })
-  if (domain !== null && domain !== '') params.set('domain', domain)
-  if (options.refresh === true) params.set('refresh', '1')
-  if (options.wikidataId !== undefined) params.set('wikidataId', options.wikidataId)
-  if (options.lei !== undefined) params.set('lei', options.lei)
-  if (options.country !== undefined) params.set('country', options.country)
-  if (options.cik !== undefined) params.set('cik', options.cik)
-  return `/?${params.toString()}`
-}
-
-/** The URL that means "work out which company this name is". Its own parameter (D54). */
-export function resolveHref(query: string): string {
-  return `/?${new URLSearchParams({ resolve: query }).toString()}`
-}
-
-/**
- * Where choosing this candidate would lead.
- *
- * A publisher's host is dropped: it identifies the page which mentioned the company, and
- * handing it on as the company's own domain would key an entire report to somebody else's
- * address. Such a candidate is investigated by name alone, which is all it actually gave us.
- */
-export function identityOf(entry: Found): {
-  name: string
-  domain: string | null
-  wikidataId?: string
-  lei?: string
-  cik?: string
-} {
-  // A publisher stated a page, not a company: neither its host nor any identifier beside it
-  // describes the company, so only the name survives.
-  if (isPublisherDomain(entry.candidate)) return { name: entry.input.name, domain: null }
-  const { name, domain, wikidataId, lei, cik, country } = entry.input
-  return {
-    name,
-    domain,
-    ...(wikidataId === undefined ? {} : { wikidataId }),
-    ...(lei === undefined ? {} : { lei }),
-    ...(country === undefined ? {} : { country }),
-    ...(cik === undefined ? {} : { cik }),
-  }
-}
-
-/** The URL that identity leads to. One rule, so the link and the run cannot start apart. */
-export function targetFor(entry: Found): string {
-  const { name, domain, ...identifiers } = identityOf(entry)
-  return investigateHref(name, domain, identifiers)
-}
-
-/**
- * The candidates paired with the action each one offers, in the order they were returned.
- *
- * An action is offered only when it distinguishes this candidate from every other card on
- * screen. Two cards that would open the same investigation are not two choices, and a button
- * on each would promise a difference the data does not have — so both lose the button and keep
- * only what actually separates them, which in that case is nothing.
- *
- * Neither card is removed. A candidate is labelled, never hidden: hiding one would be choosing
- * on the reader's behalf, which is the whole thing an ambiguous verdict refuses to do.
- */
-export function withActions(found: readonly Found[]): { entry: Found; href: string | null }[] {
-  const targets = found.map(targetFor)
-  return found.map((entry, index) => {
-    const target = targets[index]
-    const shared = targets.filter((other) => other === target).length > 1
-    return { entry, href: target === undefined || shared ? null : target }
-  })
-}
 
 /** The line under a candidate's name. Never invented: absent parts leave no separator behind. */
 export function CandidateMeta(props: { candidate: Candidate }) {

@@ -1541,3 +1541,31 @@ component — but the part of it a server route depended on is now in `lib/`, an
 comment claimed and nothing proved: the stamp is read off the ISO string rather than through
 `Date`, so a server and a browser in different zones print the same words. Verified by running
 the suite under `TZ=America/New_York` as well as UTC.
+
+## D98 — The URL grammar is the router's vocabulary; the publisher rule is resolution's
+
+**Context.** `app/components/resolve/CandidateGrid.tsx` held nine components and six pure
+functions, and `app/page.tsx` — a server component — imported two of those functions from it to
+build links. That is not D45's fault, since the module is not `'use client'`, but it is the same
+shape: a page reaching into a component for something that is not a component.
+
+**Options considered.** One `lib/urls.ts`. Or split the six by what they actually are.
+
+**Choice.** Two homes, because they are two things.
+
+`investigateHref`, `resolveHref`, `identityOf`, `targetFor` and `withActions` go to
+**`app/urls.ts`**. They write `?resolve=`, `?investigate=`, `?q=` — the three parameters D54 gave
+three meanings to — so they are the App Router's own vocabulary and belong beside the page that
+reads them, not in `lib/`, which knows nothing about a router.
+
+`isPublisherDomain`, `describesTheCompany` and `PUBLISHER_SOURCES` go to **`lib/resolve.ts`**,
+beside `DECISIVE_SOURCES`. They are the same judgement from the other end: one list says which
+sources may decide which company a report is about, the other which may not be passed on at all.
+
+**What putting them together showed.** They are not complements. `website` is in neither list —
+it reads a company's own pages, so it speaks *for* the company and still never settles *which*
+company it is. Neither file said that while they were apart.
+
+**Consequence accepted.** `CandidateGrid.tsx` is 278 lines of components and nothing else, and no
+re-export shim was left behind: a caller now imports from the module that owns the thing.
+`app/page.tsx` imports only components from `app/components/`.

@@ -10,9 +10,8 @@ import {
   type ResolveResponse,
   ResolutionFailed,
   SoleRecord,
-  identityOf,
-  investigateHref,
 } from '../resolve/CandidateGrid'
+import { identityOf, investigateHref } from '@/app/urls'
 import { ResolutionLog } from '../case/InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from '../KeysModal'

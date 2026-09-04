@@ -154,3 +154,36 @@ function host(domain: string | null): string | null {
 }
 
 /** Case, punctuation and a trailing legal form are how the same name gets written twice. */
+
+/**
+ * Sources that publish about a company rather than for it. Their result is a page that
+ * mentions a name, so the host on it belongs to whoever published the page — en.wikipedia.org,
+ * x.com — and is never the company's own domain.
+ *
+ * The same judgement `DECISIVE_SOURCES` above makes, from the other end: that list says which
+ * sources may decide which company the report is about, this one says which may not be passed
+ * on at all. Side by side they show what neither said alone — they are not complements.
+ * `website` is in neither: it reads a company's own pages, so it speaks for the company and
+ * still never settles which company it is.
+ */
+export const PUBLISHER_SOURCES: readonly Source[] = ['web', 'llm']
+
+export function isPublisherDomain(candidate: Candidate): boolean {
+  return PUBLISHER_SOURCES.includes(candidate.source)
+}
+
+/**
+ * Whether the line a candidate carries was written to describe a company.
+ *
+ * Wikidata writes one, deliberately, in a sentence. A web result carries an excerpt of whatever
+ * page happened to mention the name — `### Crunchbase N/A ### LinkedIn N/A` from a LinkedIn
+ * overview, a follower count from X, `Gift cards · Redeem · Refund policy` from the Play Store.
+ * Setting the second where the first goes presents a scrape as a summary, which is the same
+ * fault as presenting a guess as a value.
+ *
+ * The same list as `PUBLISHER_SOURCES`, for the same reason: a publisher stated a page, not a
+ * company, so neither its host nor its blurb is about the company.
+ */
+export function describesTheCompany(candidate: Candidate): boolean {
+  return !PUBLISHER_SOURCES.includes(candidate.source)
+}

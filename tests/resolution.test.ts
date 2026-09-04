@@ -4,16 +4,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { InvestigationLog, ResolutionLog } from '@/app/components/case/InvestigationLog'
 import {
   CandidateGrid,
-  type Found,
   NotTheRightCompany,
   SoleRecord,
-  identityOf,
-  investigateHref,
-  isPublisherDomain,
-  targetFor,
-  withActions,
 } from '@/app/components/resolve/CandidateGrid'
-import { decideResolution } from '@/lib/resolve'
+import { identityOf, investigateHref, targetFor, withActions } from '@/app/urls'
+import { type Found, decideResolution, isPublisherDomain } from '@/lib/resolve'
 import type { ProviderInput } from '@/lib/providers/types'
 import type { Candidate, Source } from '@/lib/types'
 

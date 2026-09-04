@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { CaseFile } from '@/app/components/case/CaseFile'
-import { investigateHref, resolveHref } from '@/app/components/resolve/CandidateGrid'
+import { investigateHref, resolveHref } from '@/app/urls'
 import { Sep } from '@/app/components/case/FieldRow'
 import { formatFetchedAt } from '@/lib/format'
 import { StoredAnswer } from '@/app/components/case/Banners'
