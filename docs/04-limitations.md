@@ -47,15 +47,14 @@ when it is handed an LEI. The cost is real and is the point: an investigation re
 URL, with no country and no LEI, gets nothing from GLEIF rather than a guess. Companies whose
 country resolution cannot establish lose the source entirely.
 
-**GLEIF cannot identify every company by name.** "Stripe" matches 57 active records, one of them
-a Belgian company legally named exactly STRIPE. Rather than guess, GLEIF answers nothing and names
-the competing locations, so Stripe currently has no registry source. Passing a LEI resolves it.
-
 **A web candidate carries its publisher's domain.** A Tavily result becomes a candidate whose
 `domain` is the host of the page (`en.wikipedia.org`, `x.com`) and whose `name` is an article
 title, and both travel on into `ProviderInput` — so into GLEIF's legal-name filter and EDGAR's CIK
 lookup. A page that mentions a company is not that company, and the route does not yet make the
-distinction. The path is only reachable with a Tavily key.
+distinction. The card no longer prints the page's excerpt as a description, and it offers no action
+when its domain is a publisher's — but the entry is still there among the companies, and now that
+the search field goes to resolution, every search lands on that grid. What is missing is upstream:
+a web result should not become a candidate company on the strength of mentioning the name.
 
 **The Tavily payload is built, not recorded.** The one test that exercises that path fabricates its
 response, and fabricates it in the shape the code already handles: one result where the API returns
