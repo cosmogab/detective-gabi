@@ -36,7 +36,7 @@ export async function investigate(
     }
     emit({
       step: `Checking ${provider.id}`,
-      detail: provider.requiresKey ? 'no key available' : 'unavailable',
+      detail: whySkipped(provider, ctx),
       ms: 0,
       status: 'skipped',
       source: provider.id,
@@ -180,6 +180,24 @@ function consulted(outcome: Outcome): boolean {
 }
 
 /**
+ * Why a provider stood down, in its own words rather than in one guessed from `requiresKey`.
+ *
+ * A keyed provider is unavailable for two different reasons and the old line named only one:
+ * a caller past the per-IP limit (D49) was told "no key available" even when they had pasted a
+ * working key into the modal. Telling someone who configured a key that they have none is the
+ * false-absence family of D59, aimed at the reader's own configuration.
+ */
+function whySkipped(provider: Provider, ctx: Ctx): string {
+  if (!provider.requiresKey) return 'unavailable'
+  // The key is asked about first because it is the condition the reader controls and the one
+  // that settles it: with no key the source stands down whatever the limit says. The limit is
+  // only the reason when a key was actually there to be spent.
+  if (ctx.key(provider.id) === null) return 'no key available'
+  if (!ctx.allowKeyedProviders) return 'rate limited, keyless sources only'
+  return 'unavailable'
+}
+
+/**
  * People are unioned across sources rather than won by one of them, so two sources naming the
  * same person are one person. Which record survives is decided by running that name's records
  * through `mergeField`: the priority table lives in `lib/merge.ts` and a second copy here
@@ -199,10 +217,31 @@ function unionPeople(outcomes: readonly Outcome[], fetchedAt: string): Person[] 
 
   const people: Person[] = []
   for (const records of byName.values()) {
-    const won = mergeField(records, [], fetchedAt, isSamePerson)
+    const won = mergeField(recordsWithAnAddress(records), [], fetchedAt, isSamePerson)
     if (won.found) people.push(won.value)
   }
   return people
+}
+
+/**
+ * Among records for one person, a record that carries an address outranks one that does not.
+ *
+ * Priority alone lost every address this app can find. Hunter is the only source of emails and
+ * Wikidata names exactly the executives Hunter returns, so Wikidata won the record and Hunter's
+ * verified address was discarded — measured: Patrick Collison came back with Wikidata's title
+ * and `email: null`, with `patrick@stripe.com · verified` computed and thrown away.
+ *
+ * The winning record is still served whole and from one source, which is why this reorders
+ * rather than merging attributes: a `Person` carries a single `source`, so taking the title from
+ * one source and the address from another would attribute an address to a source that never
+ * published it — the misattribution of D48 and D58. Between two records that both carry an
+ * address, or neither, priority decides as before.
+ */
+function recordsWithAnAddress(records: readonly Observation<Person>[]): Observation<Person>[] {
+  const stated = records.filter((record) => record.value.email !== null)
+  // Narrowed rather than reordered: `mergeField` sorts by priority itself, so a reordering
+  // would be discarded. Among the records left, priority decides exactly as before.
+  return stated.length === 0 ? [...records] : stated
 }
 
 function isSamePerson(a: Person, b: Person): boolean {

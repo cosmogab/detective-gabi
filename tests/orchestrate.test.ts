@@ -424,3 +424,104 @@ describe('a source that was never asked is not a source that was checked', () =>
     expect(report.people.sourcesChecked).toEqual(['hunter'])
   })
 })
+
+describe('a record that carries an address outranks one that does not', () => {
+  const collison = (over: Partial<Person>): Person => ({
+    name: 'Patrick Collison',
+    title: null,
+    email: null,
+    source: 'wikidata',
+    fetchedAt: NOW,
+    confidence: 'corroborated',
+    ...over,
+  })
+
+  const naming = (id: Source, people: Person[]): Provider => ({
+    id,
+    requiresKey: id === 'hunter',
+    covers: ['people'],
+    available: () => true,
+    run: async () => ({
+      fields: {},
+      people,
+      log: [{ step: `Checking ${id}`, ms: 1, status: 'ok', source: id }],
+    }),
+  })
+
+  it('keeps the verified address instead of the higher-priority record that has none', async () => {
+    // Measured before this guard: Wikidata won on priority and Hunter's verified address was
+    // computed and thrown away. Hunter is the only source of addresses, and Wikidata names
+    // exactly the executives Hunter returns, so priority alone lost every address the app finds.
+    const report = await investigate(
+      { name: 'Stripe', domain: 'stripe.com' },
+      [
+        naming('wikidata', [collison({ title: 'Chief Executive Officer' })]),
+        naming('hunter', [
+          collison({
+            source: 'hunter',
+            title: 'CEO',
+            email: { address: 'patrick@stripe.com', status: 'verified' },
+          }),
+        ]),
+      ],
+      ctx,
+      () => {},
+    )
+
+    expect(report.people.found).toHaveLength(1)
+    const person = report.people.found[0]
+    expect(person?.email).toEqual({ address: 'patrick@stripe.com', status: 'verified' })
+    // Served whole and from one source: the title comes from the same record as the address, so
+    // no source is credited with something it did not publish.
+    expect(person?.source).toBe('hunter')
+    expect(person?.title).toBe('CEO')
+  })
+
+  it('lets priority decide when neither record has an address', async () => {
+    const report = await investigate(
+      { name: 'Stripe', domain: 'stripe.com' },
+      [
+        naming('wikidata', [collison({ title: 'Chief Executive Officer' })]),
+        naming('hunter', [collison({ source: 'hunter', title: 'CEO' })]),
+      ],
+      ctx,
+      () => {},
+    )
+
+    expect(report.people.found[0]?.source).toBe('wikidata')
+  })
+})
+
+describe('a skipped provider says which of its two reasons applies', () => {
+  const keyed: Provider = {
+    id: 'hunter',
+    requiresKey: true,
+    covers: ['people'],
+    available: (c) => c.allowKeyedProviders && c.key('hunter') !== null,
+    run: async () => ({ fields: {}, people: [], log: [] }),
+  }
+
+  it('names the rate limit rather than a key the caller does have', async () => {
+    // Telling someone who pasted a working key into the modal that they have none is a false
+    // absence about the reader's own configuration.
+    const report = await investigate(
+      { name: 'X', domain: 'x.com' },
+      [keyed],
+      { ...ctx, allowKeyedProviders: false, key: () => 'a-key-the-reader-pasted' },
+      () => {},
+    )
+
+    expect(report.log[0]?.detail).toBe('rate limited, keyless sources only')
+  })
+
+  it('still says no key available when there is none', async () => {
+    const report = await investigate(
+      { name: 'X', domain: 'x.com' },
+      [keyed],
+      { ...ctx, key: () => null },
+      () => {},
+    )
+
+    expect(report.log[0]?.detail).toBe('no key available')
+  })
+})
