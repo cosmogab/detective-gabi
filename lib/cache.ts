@@ -37,10 +37,33 @@ const entries = new Map<string, Entry>()
  * companies can share one, and answering the second with the first's report is the kind of
  * invention this app exists to refuse. No domain means no cache, in both directions.
  */
-function keyFor(domain: string, reach: Reach): string | null {
+function keyFor(domain: string, reach: Reach, identity: string): string | null {
   const key = domain.trim().toLowerCase()
-  // A domain cannot contain a space, so the two halves of the key cannot run together.
-  return key === '' ? null : `${reach} ${key}`
+  // Neither a domain nor an identifier can contain a space, so the parts cannot run together.
+  return key === '' ? null : `${reach} ${identity} ${key}`
+}
+
+/**
+ * What the run knew about which company this is, beyond the domain. Two runs of the same domain
+ * are not the same run when one carries an LEI and a CIK and the other does not: the identified
+ * one reaches GLEIF and EDGAR, and the bare one gets nothing from either.
+ *
+ * Measured before this was part of the key: a cold investigation of stripe.com by name alone
+ * stored `gleif empty, edgar empty`, and the very next request — carrying the LEI resolution had
+ * just found — was answered from that entry, still empty, silently undoing D56. The recording
+ * banner's "Investigate now" builds exactly that identifier-free URL, so one visit to a recording
+ * poisoned every resolved investigation of that domain for a day.
+ *
+ * A caller that knows less is NOT served an entry built by a run that knew more, unlike `Reach`.
+ * Reach has two ordered levels and "keyless" is strictly poorer than "full"; identifiers are not
+ * ordered like that, and an entry stored under a wrong identifier would be handed on as the
+ * answer for everyone. A cache miss costs an investigation; the other direction costs the truth.
+ */
+function identityOf(input: ProviderInput): string {
+  const parts = [input.wikidataId, input.lei, input.cik]
+    .map((part) => (part ?? '').trim().toLowerCase())
+    .filter((part) => part !== '')
+  return parts.length === 0 ? 'unidentified' : parts.sort().join('+')
 }
 
 /**
@@ -63,8 +86,13 @@ function ttlFor(report: Report): number {
  * A stored report always comes back marked. `cached` and `cachedAt` are set here rather than
  * by the caller, so there is no way to be handed a stored answer that does not say it is one.
  */
-export function readCache(domain: string, now: number, reach: Reach = 'full'): Report | null {
-  const key = keyFor(domain, reach)
+export function readCache(
+  domain: string,
+  now: number,
+  reach: Reach = 'full',
+  identity = 'unidentified',
+): Report | null {
+  const key = keyFor(domain, reach, identity)
   if (key === null) return null
 
   const entry = entries.get(key)
@@ -82,6 +110,7 @@ export function writeCache(
   report: Report,
   now: number,
   reach: Reach = 'full',
+  identity = 'unidentified',
 ): void {
   // A forced failure is not an observation, and this is the door it would come through:
   // `?demo=timeout` on stripe.com would otherwise store a fabricated outage under stripe.com
@@ -90,7 +119,7 @@ export function writeCache(
   // caller can forget it.
   if (report.simulated) return
 
-  const key = keyFor(domain, reach)
+  const key = keyFor(domain, reach, identity)
   if (key === null) return
   // A copy in each direction, so a caller holding the report cannot edit what the next
   // reader is served.
@@ -101,10 +130,15 @@ export function writeCache(
  * A keyless caller may be served a full answer: it is strictly richer and cost them nothing.
  * The reverse is refused — that is the whole point of the split.
  */
-function readForReach(domain: string, now: number, reach: Reach): Report | null {
-  const full = readCache(domain, now, 'full')
+function readForReach(
+  domain: string,
+  now: number,
+  reach: Reach,
+  identity: string,
+): Report | null {
+  const full = readCache(domain, now, 'full', identity)
   if (full !== null) return full
-  return reach === 'keyless' ? readCache(domain, now, 'keyless') : null
+  return reach === 'keyless' ? readCache(domain, now, 'keyless', identity) : null
 }
 
 /** Drops every entry. For tests, and for an explicit refresh. */
@@ -132,18 +166,19 @@ export async function investigateCached(
   const domain = input.domain ?? ''
   const simulated = options.simulated === true
   const reach = reachOf(providers, ctx)
+  const identity = identityOf(input)
 
   // A simulated run is sealed off from the cache in both directions. It must not read one —
   // someone who asked for a forced failure has to be shown the failure, not a stored real
   // answer — and it must not write one. Marking the report and refusing the cache are the
   // same decision, so they are made in the same place.
   if (!simulated && !options.refresh) {
-    const stored = readForReach(domain, options.now, reach)
+    const stored = readForReach(domain, options.now, reach, identity)
     if (stored !== null) return stored
   }
 
   const investigated = await investigate(input, providers, ctx, onEvent)
   const report = simulated ? { ...investigated, simulated: true } : investigated
-  writeCache(domain, report, options.now, reach)
+  writeCache(domain, report, options.now, reach, identity)
   return report
 }

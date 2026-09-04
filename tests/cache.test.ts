@@ -246,3 +246,61 @@ describe('a stored report cannot be edited from outside', () => {
     expect(readCache('stripe.com', NOW)?.company.name).toBe('Stripe')
   })
 })
+
+describe('a run that knew who the company was is not the same run', () => {
+  const identified: ProviderInput = {
+    name: 'Stripe',
+    domain: 'stripe.com',
+    lei: '549300CLHGIPTCYHQ143',
+    cik: '0001691342',
+    wikidataId: 'Q7624104',
+  }
+
+  it('does not answer an identified request with a report built without the identifiers', async () => {
+    const { providers, runs } = counted('stripe')
+
+    // The bare-name run first, which is what the recording banner's "Investigate now" builds.
+    await investigateCached(stripe, providers, ctx, swallow, { refresh: false, now: NOW })
+    expect(runs()).toBe(providers.length)
+
+    // Then the same domain, now carrying the identifiers resolution found. Reproduced live
+    // before this guard: cached=true and GLEIF and EDGAR still empty, silently undoing D56 —
+    // and one visit to a recording poisoned every resolved investigation for a day.
+    const resolved = await investigateCached(identified, providers, ctx, swallow, {
+      refresh: false,
+      now: NOW + MINUTE,
+    })
+
+    expect(resolved.cached).toBe(false)
+    expect(runs()).toBe(providers.length * 2)
+  })
+
+  it('still serves a second identified request from the first', async () => {
+    const { providers, runs } = counted('stripe')
+
+    await investigateCached(identified, providers, ctx, swallow, { refresh: false, now: NOW })
+    const again = await investigateCached(identified, providers, ctx, swallow, {
+      refresh: false,
+      now: NOW + MINUTE,
+    })
+
+    expect(again.cached).toBe(true)
+    expect(runs()).toBe(providers.length)
+  })
+
+  it('does not hand an identified report to a request that named no identity', async () => {
+    const { providers, runs } = counted('stripe')
+
+    await investigateCached(identified, providers, ctx, swallow, { refresh: false, now: NOW })
+    const bare = await investigateCached(stripe, providers, ctx, swallow, {
+      refresh: false,
+      now: NOW + MINUTE,
+    })
+
+    // Unlike `Reach`, identifiers are not two ordered levels: an entry stored under the wrong
+    // identifier would become everyone's answer. A miss costs an investigation; the other
+    // direction costs the truth.
+    expect(bare.cached).toBe(false)
+    expect(runs()).toBe(providers.length * 2)
+  })
+})
