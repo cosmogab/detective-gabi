@@ -1,0 +1,9 @@
+{
+ "errors": [
+  {
+   "id": "authentication_failed",
+   "code": 401,
+   "details": "No user found for the API key supplied"
+  }
+ ]
+}

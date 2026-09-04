@@ -1,0 +1,21 @@
+[
+ {
+  "file": "domain-search-piedpiper.json",
+  "url": "https://api.hunter.io/v2/domain-search?domain=piedpiper.com&decision_maker=true&seniority=executive&limit=3",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:54:27.605Z"
+ },
+ {
+  "file": "domain-search-stripe.json",
+  "url": "https://api.hunter.io/v2/domain-search?domain=stripe.com&decision_maker=true&seniority=executive&limit=3",
+  "status": 200,
+  "recordedAt": "2026-09-03T23:54:27.849Z"
+ },
+ {
+  "file": "error-401.json",
+  "url": "https://api.hunter.io/v2/domain-search?domain=piedpiper.com&decision_maker=true&seniority=executive&limit=3",
+  "status": 401,
+  "recordedAt": "2026-09-03T23:54:28.062Z",
+  "note": "the key travels in a header, so no key appears in any URL here; this one was recorded with the deliberately invalid key \"not-a-key\""
+ }
+]
