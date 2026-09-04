@@ -1,5 +1,6 @@
 import { formatCount } from '@/lib/format'
 import type { LogEvent, LogEventStatus } from '@/lib/types'
+import { HEAD, LEDGER_SCROLL, LEDGER_TABLE } from '../ui/classes'
 
 /**
  * The ledger: a run's steps, as they were measured.
@@ -26,7 +27,6 @@ const STATUS: Record<LogEventStatus, { rule: string; word: string }> = {
 }
 
 const CELL = 'border-t border-t-rule py-2 align-baseline'
-const HEAD = 'label border-b border-b-rule-strong pb-1.5 text-left font-normal text-faint'
 
 export function InvestigationLog(props: {
   events: readonly LogEvent[]
@@ -59,8 +59,8 @@ export function InvestigationLog(props: {
         ))}
       </summary>
 
-      <div className="overflow-x-auto border-b border-b-rule">
-        <table className="w-full min-w-ledger table-fixed">
+      <div className={LEDGER_SCROLL}>
+        <table className={LEDGER_TABLE}>
           <colgroup>
             <col className="w-[34%]" />
             <col className="w-[34%]" />

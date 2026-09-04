@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { formatFetchedAt } from '@/lib/format'
 import { Sep } from './FieldRow'
+import { DOTTED } from '../ui/classes'
 
 /**
  * The line an answer wears when it is not a fresh investigation: Recording, Cached, Simulated,
@@ -37,7 +38,7 @@ export function BannerLine(props: {
               gesture does not answer to two words on a page that serves three kinds. */}
           <a
             href={props.href}
-            className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            className={`label text-accent ${DOTTED} hover:decoration-solid`}
           >
             Investigate now
           </a>

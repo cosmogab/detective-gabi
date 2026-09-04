@@ -6,6 +6,8 @@ import { targetFor, withActions } from '@/app/urls'
 import { describesTheCompany, isPublisherDomain } from '@/lib/resolve'
 import type { Candidate, Source } from '@/lib/types'
 import { Sep, SourcesChecked } from '../case/FieldRow'
+import { DOTTED } from '../ui/classes'
+import { Lead, PanelBody, SectionHeading } from '../ui/Panel'
 
 
 /**
@@ -43,7 +45,7 @@ export function CandidateMeta(props: { candidate: Candidate }) {
           href={candidate.sourceUrl}
           target="_blank"
           rel="noreferrer"
-          className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+          className={`label text-accent ${DOTTED} hover:decoration-solid`}
         >
           {candidate.source}
         </a>
@@ -76,7 +78,7 @@ export function CandidateCard(props: { entry: Found; href: string | null }) {
           <p className="mt-3">
             <a
               href={href}
-              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+              className={`label text-accent ${DOTTED} hover:decoration-solid`}
             >
               Investigate this one
             </a>
@@ -101,17 +103,17 @@ export function CandidateGrid(props: { query: string; found: readonly Found[] })
 
   return (
     <section className="mt-8">
-      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
+      <SectionHeading>
         More than one record answers to that name
-      </h2>
+      </SectionHeading>
       {/* Records, not companies. Five results can be five pages about one company, and calling
           them companies would settle in a sentence the thing this screen exists because nobody
           settled. */}
-      <p className="mt-3 max-w-2xl font-sans text-sm text-ink">
+      <Lead className="mt-3">
         <span className="datum">{query}</span> brought back {found.length} records, and they may
         not describe the same company. Pick the one that looks right, or enter its domain in the
         field above.
-      </p>
+      </Lead>
       <ul className="mt-5 grid items-stretch gap-3 sm:grid-cols-2">
         {withActions(found).map(({ entry, href }, i) => (
           <CandidateCard
@@ -182,14 +184,14 @@ export function SoleRecord(props: { query: string; entry: Found }) {
 
   return (
     <section className="mt-8">
-      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
+      <SectionHeading>
         One record, not a conclusion
-      </h2>
-      <div className="border-b border-b-rule py-3 pl-4">
-        <p className="max-w-2xl font-sans text-sm text-ink">
+      </SectionHeading>
+      <PanelBody>
+        <Lead>
           The search for <span className="datum">{query}</span> returned one company record, and
           it was not enough to identify the company.
-        </p>
+        </Lead>
         <div className="mt-4 border-l-4 border-l-rule py-1 pl-4">
           <p className="datum text-ink">{candidate.name}</p>
           {candidate.description !== null ? (
@@ -201,13 +203,13 @@ export function SoleRecord(props: { query: string; entry: Found }) {
           Read the source and judge it yourself. If it is the company you meant,{' '}
           <a
             href={targetFor(entry)}
-            className="text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            className={`text-accent ${DOTTED} hover:decoration-solid`}
           >
             investigate {candidate.name}
           </a>
           . If it is not, enter the domain in the field above.
         </p>
-      </div>
+      </PanelBody>
     </section>
   )
 }
@@ -220,11 +222,11 @@ export function SoleRecord(props: { query: string; entry: Found }) {
 export function NoCompanyFound(props: { query: string; sourcesChecked: readonly Source[] }) {
   return (
     <section className="mt-8">
-      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">No company found</h2>
-      <div className="border-b border-b-rule py-3 pl-4">
-        <p className="max-w-2xl font-sans text-sm text-ink">
+      <SectionHeading>No company found</SectionHeading>
+      <PanelBody>
+        <Lead>
           Nothing matching <span className="datum">{props.query}</span> came back as a company.
-        </p>
+        </Lead>
         <p className="mt-2">
           <SourcesChecked sources={props.sourcesChecked} />
         </p>
@@ -235,7 +237,7 @@ export function NoCompanyFound(props: { query: string; sourcesChecked: readonly 
           says what was read, not what exists. Enter the domain in the field above and the
           company is identified rather than searched for.
         </p>
-      </div>
+      </PanelBody>
     </section>
   )
 }
@@ -248,13 +250,13 @@ export function NoCompanyFound(props: { query: string; sourcesChecked: readonly 
 export function ResolutionFailed(props: { query: string; message: string; onRetry: () => void }) {
   return (
     <section className="mt-8">
-      <h2 className="label border-b border-b-alert pb-1.5 text-alert">The search could not run</h2>
-      <div className="border-b border-b-rule py-3 pl-4">
-        <p className="max-w-2xl font-sans text-sm text-ink">
+      <SectionHeading tone="alert">The search could not run</SectionHeading>
+      <PanelBody>
+        <Lead>
           No source answered, so nothing is known about{' '}
           <span className="datum">{props.query}</span> — not that it exists, and not that it
           does not.
-        </p>
+        </Lead>
         <p className="mt-2 font-sans text-sm text-alert">{props.message}</p>
         <p className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           {/* A button and not a link: the URL has not changed, so navigating to it again
@@ -262,7 +264,7 @@ export function ResolutionFailed(props: { query: string; message: string; onRetr
           <button
             type="button"
             onClick={props.onRetry}
-            className="label cursor-pointer text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            className={`label cursor-pointer text-accent ${DOTTED} hover:decoration-solid`}
           >
             Search again
           </button>
@@ -272,7 +274,7 @@ export function ResolutionFailed(props: { query: string; message: string; onRetr
             searching for it.
           </span>
         </p>
-      </div>
+      </PanelBody>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import { formatAsOf } from '@/lib/format'
 import { Fragment } from 'react'
 import type { Confidence, Field, Source } from '@/lib/types'
+import { DOTTED } from '../ui/classes'
 
 /**
  * One line of the case file: the value, then `asOf · source · confidence` beside it.
@@ -74,7 +75,7 @@ export function SourceLink(props: { source: Source; sourceUrl?: string }) {
       href={props.sourceUrl}
       target="_blank"
       rel="noreferrer"
-      className="label text-accent underline decoration-dotted underline-offset-2 transition-colors hover:decoration-solid"
+      className={`label text-accent ${DOTTED} transition-colors hover:decoration-solid`}
     >
       {name}
     </a>

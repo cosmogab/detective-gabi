@@ -4,6 +4,8 @@ import { FieldRow, NoEvidence, Sep, SourcesChecked } from './FieldRow'
 import { SimulatedRun } from './Banners'
 import { InvestigationLog } from './InvestigationLog'
 import { PersonCard } from './PersonCard'
+import { Lead, PanelBody, SectionHeading } from '../ui/Panel'
+import { HEAD, LEDGER_SCROLL, LEDGER_TABLE } from '../ui/classes'
 
 /**
  * The report: the required fields as a top strip, then Persons of interest, then the folded
@@ -28,7 +30,6 @@ const formatEmployees = (value: number) => formatCount(value)
  */
 const formatLocation = (value: Location) => value.formatted
 
-const HEAD = 'label border-b border-b-rule-strong pb-1.5 text-left font-normal text-faint'
 
 /**
  * The only source that returns addresses. It is not wired: `?demo=quota-exhausted` is the one
@@ -106,12 +107,12 @@ export function CaseFile(props: { report: Report; realHref?: string }) {
           it is the evidence that we looked. */}
       {noTrace ? (
         <section className="mt-8">
-          <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">No trace found</h2>
-          <div className="border-b border-b-rule py-3 pl-4">
-            <p className="max-w-2xl font-sans text-sm text-ink">
+          <SectionHeading>No trace found</SectionHeading>
+          <PanelBody>
+            <Lead>
               Every source answered, and none of them holds a record for{' '}
               <span className="datum">{report.query}</span>.
-            </p>
+            </Lead>
             <p className="mt-2">
               <SourcesChecked sources={checked} />
             </p>
@@ -121,14 +122,14 @@ export function CaseFile(props: { report: Report; realHref?: string }) {
                 not, and the sources are indexed by the first.
               </p>
             ) : null}
-          </div>
+          </PanelBody>
         </section>
       ) : (
         <>
           <section className="mt-8">
             <h2 className="sr-only">Required fields</h2>
-            <div className="overflow-x-auto border-b border-b-rule">
-              <table className="w-full min-w-ledger table-fixed">
+            <div className={LEDGER_SCROLL}>
+              <table className={LEDGER_TABLE}>
                 <colgroup>
                   <col className="w-[22%]" />
                   <col className="w-[43%]" />
@@ -163,9 +164,9 @@ export function CaseFile(props: { report: Report; realHref?: string }) {
           </section>
 
           <section className="mt-10">
-            <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
+            <SectionHeading>
               Persons of interest
-            </h2>
+            </SectionHeading>
             {/* The people survive the failure; only their addresses are missing, and the section
                 says which lookup went down rather than leaving a silent gap. */}
             {emailLookup !== undefined ? (

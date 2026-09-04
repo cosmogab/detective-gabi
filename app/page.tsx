@@ -12,6 +12,8 @@ import { Blackout } from '@/app/components/Blackout'
 import { Magnifier } from '@/app/components/icons/Magnifier'
 import { SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
+import { DOTTED } from '@/app/components/ui/classes'
+import { SectionHeading } from '@/app/components/ui/Panel'
 
 /**
  * Home and case file are one page, switched by the URL, so a report is shareable and
@@ -103,7 +105,7 @@ function Proof(props: { of: FixtureName; children: ReactNode }) {
     <span className="mt-1.5 block font-sans text-xs text-faint">
       <a
         href={`/?domain=${entry.domain}`}
-        className="datum text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+        className={`datum text-accent ${DOTTED} hover:decoration-solid`}
       >
         {entry.company}
       </a>{' '}
@@ -262,7 +264,7 @@ export default async function Home({
         {/* The explanation is the foot of the page: the argument you reach by scrolling past the
             one thing there is to do, not a section competing with it. */}
         <footer className="mx-auto max-w-case px-6 pb-14">
-          <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">How it works</h2>
+          <SectionHeading>How it works</SectionHeading>
 
           <div className="mt-5 max-w-2xl font-sans text-sm text-muted">
             <p>

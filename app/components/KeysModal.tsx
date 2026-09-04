@@ -6,6 +6,7 @@ import { Key } from './icons/Key'
 // and has no business in a browser bundle.
 import { keyHeaderName } from '@/lib/key-header'
 import type { Source } from '@/lib/types'
+import { DOTTED } from './ui/classes'
 
 /**
  * Bring-your-own-key, and the vault that holds one.
@@ -145,7 +146,7 @@ export function KeysButton() {
         className="label group -m-2 inline-flex cursor-pointer items-center gap-x-2 p-2 text-faint transition-colors hover:text-accent"
       >
         <Key />
-        <span className="underline decoration-dotted underline-offset-2 group-hover:decoration-solid">
+        <span className={`${DOTTED} group-hover:decoration-solid`}>
           Your keys
         </span>
       </button>
@@ -268,7 +269,7 @@ export function KeysModal(props: { open: boolean; onClose: () => void }) {
                         clearKey(id)
                         refresh()
                       }}
-                      className="label cursor-pointer text-muted underline decoration-dotted underline-offset-2 hover:text-alert"
+                      className={`label cursor-pointer text-muted ${DOTTED} hover:text-alert`}
                     >
                       Forget
                     </button>

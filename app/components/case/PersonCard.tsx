@@ -1,5 +1,6 @@
 import type { Person } from '@/lib/types'
 import { CONFIDENCE, Provenance } from './FieldRow'
+import { DOTTED } from '../ui/classes'
 
 /**
  * A person of interest. The three email states are visually distinct: verified,
@@ -43,7 +44,7 @@ export function PersonCard(props: { person: Person }) {
             </>
           ) : (
             <>
-              <span className="font-mono text-xs break-all text-muted underline decoration-dotted underline-offset-2">
+              <span className={`font-mono text-xs break-all text-muted ${DOTTED}`}>
                 {email.address}
               </span>
               <span
