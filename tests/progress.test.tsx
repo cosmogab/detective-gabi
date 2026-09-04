@@ -8,7 +8,7 @@ import {
   allDrawn,
   displayOrder,
   drawable,
-} from '@/app/components/Progress'
+} from '@/app/components/live/Progress'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 
 /**

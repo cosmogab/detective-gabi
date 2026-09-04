@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { Key } from './icons/Key'
 // From the header-only module, never '@/lib/keys': that one defaults `env` to `process.env`
 // and has no business in a browser bundle.
 import { keyHeaderName } from '@/lib/key-header'
@@ -131,30 +132,6 @@ export function requestHeaders(): Record<string, string> {
 }
 
 /** The trigger and the dialog together, so a server page can render one element and be done. */
-/**
- * Hand-drawn, like the magnifier and for the same reason: two shapes do not justify a
- * dependency (D31). Horizontal where the magnifier is diagonal, so the two are told apart at
- * fifteen pixels rather than only up close.
- */
-function Key(props: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      width="15"
-      height="15"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className={props.className}
-    >
-      <circle cx="4.5" cy="8" r="3.1" />
-      <path d="M7.6 8H14M11.2 8v2.6M13.4 8v2.1" />
-    </svg>
-  )
-}
-
 export function KeysButton() {
   const [open, setOpen] = useState(false)
   return (

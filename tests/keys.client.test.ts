@@ -207,9 +207,9 @@ describe('the key actually leaves the browser', () => {
     const { readFileSync } = await import('node:fs')
 
     for (const module of ['LiveInvestigation', 'LiveResolution']) {
-      const source = readFileSync(`app/components/${module}.tsx`, 'utf8')
+      const source = readFileSync(`app/components/live/${module}.tsx`, 'utf8')
 
-      expect(source, module).toContain("from './KeysModal'")
+      expect(source, module).toContain("from '../KeysModal'")
       expect(source, module).toContain('headers: requestHeaders(),')
       // Not a hand-written header bag beside it, which is how the keys would be dropped.
       expect(source, module).not.toContain("headers: { 'content-type'")
@@ -223,7 +223,7 @@ describe('a key never travels any way but the header', () => {
     storeKey('abstract', KEY)
 
     for (const module of ['LiveInvestigation', 'LiveResolution']) {
-      const source = readFileSync(`app/components/${module}.tsx`, 'utf8')
+      const source = readFileSync(`app/components/live/${module}.tsx`, 'utf8')
       const start = source.indexOf('body: JSON.stringify(')
       const body = source.slice(start, source.indexOf('signal:', start))
 

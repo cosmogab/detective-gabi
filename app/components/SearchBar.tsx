@@ -1,3 +1,5 @@
+import { Magnifier } from './icons/Magnifier'
+
 /**
  * The single input. State lives in the URL so a report is shareable and reloadable.
  *
@@ -14,29 +16,6 @@
  * and that guess is what D79 was about. Resolution answers the question first, and hands the
  * investigation an identity rather than a word.
  */
-
-/**
- * Hand-drawn rather than pulled from an icon set: two shapes do not justify a dependency.
- * It is an icon and not a state — it never spins, because nothing here is loading.
- */
-export function Magnifier(props: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      width="15"
-      height="15"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className={props.className}
-    >
-      <circle cx="6.6" cy="6.6" r="4.35" />
-      <path d="M9.8 9.8 14 14" />
-    </svg>
-  )
-}
 
 export function SearchBar(props: { defaultQuery?: string }) {
   return (

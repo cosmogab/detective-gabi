@@ -3,7 +3,7 @@ import type { Found, ResolveResponse } from '@/lib/resolve'
 /** Re-exported so the pieces that render a resolution and the type they render stay together. */
 export type { Found, ResolveResponse }
 import type { Candidate, Source } from '@/lib/types'
-import { Sep, SourcesChecked } from './FieldRow'
+import { Sep, SourcesChecked } from '../case/FieldRow'
 
 /**
  * What a resolution turns into on screen, and — because it is the same question — the URL a

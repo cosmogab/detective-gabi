@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { BannerLine } from './Banners'
+import { BannerLine } from '../case/Banners'
 import {
   CandidateGrid,
   type Found,
@@ -12,11 +12,11 @@ import {
   SoleRecord,
   identityOf,
   investigateHref,
-} from './CandidateGrid'
-import { ResolutionLog } from './InvestigationLog'
+} from '../resolve/CandidateGrid'
+import { ResolutionLog } from '../case/InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
-import { requestHeaders } from './KeysModal'
-import { SOURCE_NAME } from './FieldRow'
+import { requestHeaders } from '../KeysModal'
+import { SOURCE_NAME } from '../case/FieldRow'
 import { IDENTIFY_STEP_MS, WaitBar, answeredCount, displayOrder, sourcesIn, useDrawn, useSettled } from './Progress'
 import type { LogEvent } from '@/lib/types'
 

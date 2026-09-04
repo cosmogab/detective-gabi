@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { InvestigationLog, ResolutionLog } from '@/app/components/InvestigationLog'
+import { InvestigationLog, ResolutionLog } from '@/app/components/case/InvestigationLog'
 import {
   CandidateGrid,
   type Found,
@@ -12,7 +12,7 @@ import {
   isPublisherDomain,
   targetFor,
   withActions,
-} from '@/app/components/CandidateGrid'
+} from '@/app/components/resolve/CandidateGrid'
 import { decideResolution } from '@/lib/resolve'
 import type { ProviderInput } from '@/lib/providers/types'
 import type { Candidate, Source } from '@/lib/types'

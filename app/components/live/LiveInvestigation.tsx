@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
-import { StoredAnswer } from './Banners'
-import { CaseFile } from './CaseFile'
-import { InvestigationLog } from './InvestigationLog'
+import { StoredAnswer } from '../case/Banners'
+import { CaseFile } from '../case/CaseFile'
+import { InvestigationLog } from '../case/InvestigationLog'
 import { Progress, REPLAY_STEP_MS, STEP_MS, answeredCount, sourcesIn, useDrawn, useSettled } from './Progress'
-import { requestHeaders } from './KeysModal'
+import { requestHeaders } from '../KeysModal'
 import type { Frame } from '@/lib/stream'
 import type { LogEvent, Report, Source } from '@/lib/types'
 

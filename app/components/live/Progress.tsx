@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { SOURCE_NAME } from './FieldRow'
+import { SOURCE_NAME } from '../case/FieldRow'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 
 /**
