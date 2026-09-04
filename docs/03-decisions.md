@@ -1014,4 +1014,40 @@ does not need finding.
 
 ---
 
+## D81 — The examples became the evidence, and the front page lost everything else
+
+**Context.** The home page carried a summary paragraph, the four field names, four `Investigate
+one` cards, a second line offering the same four companies as recordings, and a folded
+`How it works`. Two lists of the same four companies for two different gestures, with nothing
+saying which to take — and the six lines that actually argue for this app shut in a `<details>`
+nobody opens. Then D80 put the page in the dark: whatever stands on the first screen is now
+something a reader has to sweep a lamp across before reaching the one thing there is to do.
+
+**Choice.** The first screen is a title, a subtitle and a field. Everything else moves below the
+fold, which is what lighting the room now buys. The four companies stop being a list and become
+the evidence inside `How it works` — one recording per rule, each printing what that recording
+actually shows:
+
+- **Nvidia** — the head office comes from SEC EDGAR, the year and the headcount from Wikidata,
+  which is the source ranking applied field by field rather than once per company.
+- **Stripe** — GLEIF says South San Francisco, Wikidata says San Francisco, and both are printed.
+- **Shopify** — 8,300 employees *as of 2023*, so the page prints the date the source gave.
+- **Fly.io** — no head office and no headcount, with the three registries that were checked named.
+
+Two rules keep no company beside them, because no recording can demonstrate them: every fixture's
+`email` is `null`, so nothing on record shows a verified address or a pattern-derived one. D29 said
+this section may only describe what a reader can go and check; an example invented to fill the
+gap would be the first thing on the page that is not true.
+
+**Consequence.** `tests/home.test.tsx` reads each claim back off the fixture it links to, rather
+than off the sentence. If a recording is recaptured and Nvidia's head office stops coming from
+EDGAR, the page is wrong and the suite says so — the only way prose about data survives the data
+moving. The wordmark's magnifier went with the rest: the lamp is the magnifier now, and two of
+them on one screen is one too many. `No search ran` is gone with it — the field stopped refusing
+in `c176e4d`, so a `?q=` that misses now goes to resolution instead of announcing that nothing
+happened. D28's own consequence line had said the word *Investigate* becomes truthful at T10 and
+T16; it did, and this is the rest of that sentence being paid.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

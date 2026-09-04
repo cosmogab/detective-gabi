@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+import type { ReactNode } from 'react'
 import { CaseFile } from '@/app/components/CaseFile'
 import { investigateHref, resolveHref } from '@/app/components/CandidateGrid'
 import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
@@ -79,6 +81,32 @@ function Masthead(props: { defaultQuery: string }) {
         </div>
       </div>
     </div>
+  )
+}
+
+/**
+ * A rule, and the recording that shows it happening.
+ *
+ * The company and its domain are looked up rather than typed, so a claim cannot outlive the
+ * recording it points at. Every line these carry is checkable in the case file one click away,
+ * which is the whole constraint on this section (D29) — and the reason the last two rules carry
+ * no company: no recording holds an email, so none of them can demonstrate one.
+ */
+function Proof(props: { of: FixtureName; children: ReactNode }) {
+  const entry = ON_RECORD.find((held) => held.name === props.of)
+  if (entry === undefined || entry.domain === null) return null
+  return (
+    // Inline rather than a flex row: a long proof has to wrap as one sentence under its link,
+    // not drop whole beneath it.
+    <span className="mt-1.5 block font-sans text-xs text-faint">
+      <a
+        href={`/?domain=${entry.domain}`}
+        className="datum text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+      >
+        {entry.company}
+      </a>{' '}
+      <Sep /> {props.children}
+    </span>
   )
 }
 
@@ -185,6 +213,11 @@ export default async function Home({
     )
   }
 
+  // A name that is not on record is not a dead end. `No search ran` described a field that
+  // refused; this one does not, so the denial has nothing left to deny and the name goes to the
+  // question it was always asking: which company is this?
+  if (asked !== '') redirect(resolveHref(asked))
+
   return (
     <>
       {/* The home page arrives in the dark and a circle of light finds it. Only here: the other
@@ -192,111 +225,79 @@ export default async function Home({
           Everything below is in the markup either way — the overlay hides it from the eye and
           from nothing else. */}
       <Blackout />
-      <main className="mx-auto max-w-case px-6 py-14">
-        {/* The mark sits above the title rather than beside it, so the title, the tagline and
-            every line below them share one left edge. */}
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-          <Magnifier className="size-7 text-rule-strong" />
-          <KeysButton />
-        </div>
-        <h1 className="mt-4 font-case text-5xl text-ink">Detective Gabi</h1>
-        <p className="mt-3 font-case text-xl text-muted italic">Company research, with its sources.</p>
-
-        <p className="mt-8 max-w-2xl font-sans text-sm text-ink">
-          A case file answers four questions about a company, and every answer carries the source
-          it came from, the date it was true, and how much to trust it.
-        </p>
-        <p className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          {FIELDS.map((field, i) => (
-            <span key={field} className="flex items-baseline gap-x-2">
-              {i > 0 ? <Sep /> : null}
-              <span className="label text-muted">{field}</span>
-            </span>
-          ))}
-        </p>
-
-        <div className="mt-10">
-          <SearchBar defaultQuery={query} />
-        </div>
-
+      <main>
         {/*
-          The honest state of the field, stated in the present tense. Not `No trace found`:
-          that is SPEC §7's state for an investigation that ran and came back empty, and
-          borrowing it here would claim we looked.
+          The first screen, and the whole of it: a title, a subtitle and a field. This is what
+          the lamp finds, so anything else standing here would be one more thing to sweep past
+          before reaching the only thing there is to do. It takes the viewport on purpose —
+          `How it works` sits below the fold, and reaching it is what lighting the room buys.
         */}
-        {asked !== '' ? (
-          <div className="mt-6 max-w-lg border-y border-y-rule border-l-4 border-l-rule-strong py-3 pl-4">
-            <p className="font-sans text-sm text-ink">
-              <span className="font-medium">No search ran.</span> The field opens case files that
-              are already on record, and <span className="datum">{asked}</span> is not one of them.
-            </p>
-            {/* Nothing was searched, but something can be. The offer is to identify the company
-                first: investigating a bare name asks every source to guess which one is meant,
-                and guessing is the thing this app does not do. */}
-            <p className="mt-2">
-              <a
-                href={resolveHref(asked)}
-                className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
-              >
-                Find out which company {asked} is
-              </a>
-            </p>
-          </div>
-        ) : null}
-
-        <section className="mt-10">
-          <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">Investigate one</h2>
-          <ul className="mt-4 flex flex-wrap gap-3">
-            {ON_RECORD.map((entry) => (
-              <li key={entry.name}>
-                <a
-                  href={investigateHref(entry.company, entry.domain)}
-                  className="block border border-rule bg-card px-3 py-2 transition-colors hover:border-accent"
-                >
-                  <span className="datum block text-ink">{entry.company}</span>
-                  <span className="block font-mono text-xs text-faint">{entry.domain}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          {/* The recordings are why the demo works when a source is down (D5). They are offered
-              as recordings, never as a fresh investigation. */}
-          <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-sans text-xs text-faint">
-            <span>Each is also on record from {RECORDED_ON}, if a source is down:</span>
-            {ON_RECORD.map((entry) => (
-              <a
-                key={entry.name}
-                href={`/?domain=${entry.domain ?? ''}`}
-                className="font-mono text-xs text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
-              >
-                {entry.company}
-              </a>
-            ))}
+        <section className="mx-auto flex min-h-[100svh] max-w-case flex-col justify-center px-6 py-14">
+          <h1 className="font-case text-5xl text-ink">Detective Gabi</h1>
+          <p className="mt-3 font-case text-xl text-muted italic">
+            Company research, with its sources.
           </p>
+          <div className="mt-10">
+            <SearchBar />
+          </div>
         </section>
 
-        <details className="mt-12 border-t border-t-rule-strong">
-          <summary className="cursor-pointer py-3">
-            <span className="label ml-1 text-ink">How it works</span>
-          </summary>
-          <div className="max-w-2xl space-y-3 pb-4 pl-1 font-sans text-sm text-muted">
+        <section className="mx-auto max-w-case px-6 pb-14">
+          <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">How it works</h2>
+
+          <div className="mt-5 max-w-2xl font-sans text-sm text-muted">
+            <p>
+              A case file answers four questions —{' '}
+              {FIELDS.map((field, i) => (
+                <span key={field}>
+                  {i > 0 ? <>{' '}<Sep />{' '}</> : null}
+                  <span className="label text-ink">{field}</span>
+                </span>
+              ))}
+              — and every answer carries the source it came from, the date it was true, and how
+              much to trust it.
+            </p>
+            {/* Recordings rather than examples: these four were captured from live calls and are
+                committed, so they answer the same way when a source is down (D5). Each one is
+                here because it proves the line above it. */}
+            <p className="mt-3">
+              Four are on record, captured from live Wikidata, GLEIF and SEC EDGAR calls on{' '}
+              <span className="datum">{RECORDED_ON}</span>.
+            </p>
+          </div>
+
+          <div className="mt-8 max-w-2xl space-y-5 font-sans text-sm text-muted">
             <p>
               <span className="label text-ink">Sources are ranked.</span> An official registry
               beats a structured API, which beats the company&rsquo;s own site, which beats a web
-              search, which beats a model. The highest-ranked source takes the primary slot. The
-              four case files on record were captured from live Wikidata, GLEIF and SEC EDGAR
-              calls.
+              search, which beats a model. The ranking is applied field by field, not once per
+              company.
+              <Proof of="nvidia">
+                the head office comes from SEC EDGAR, the year and the headcount from Wikidata
+              </Proof>
             </p>
             <p>
               <span className="label text-ink">Disagreements are shown, not settled.</span> When
               two sources report different values, the loser is printed under the winner with its
-              own source. Stripe&rsquo;s location is a real example: GLEIF&rsquo;s registry record
-              says South San Francisco, Wikidata says San Francisco.
+              own source.
+              <Proof of="stripe">
+                GLEIF&rsquo;s registry record says South San Francisco, Wikidata says San Francisco
+              </Proof>
+            </p>
+            <p>
+              <span className="label text-ink">Every value carries the date it was true.</span>{' '}
+              Where a source dates its data, that date is printed — never today&rsquo;s, and never
+              a guess at how old the figure is.
+              <Proof of="shopify">8,300 employees, as of 2023</Proof>
             </p>
             <p>
               <span className="label text-ink">Nothing found is a finding.</span> A field with no
               source reads <span className="font-sans text-ink">No evidence found</span> and lists
-              the sources that were checked. It is never an estimate. Fly.io is the sparse one.
+              the sources that were checked. It is never an estimate.
+              <Proof of="flyio">
+                no head office and no headcount; EDGAR, GLEIF and Wikidata were all checked, and
+                none of them holds a record
+              </Proof>
             </p>
             <p>
               <span className="label text-ink">Confidence is a weight, not a number.</span>{' '}
@@ -309,9 +310,15 @@ export default async function Home({
               <span className="font-sans text-ink">unverified pattern</span>, or it is not shown.
             </p>
           </div>
-        </details>
 
-        <Ethics />
+          {/* A technical setting, and it belongs where settings belong: after the explanation,
+              not above the title. */}
+          <div className="mt-10 border-t border-t-rule pt-4">
+            <KeysButton />
+          </div>
+
+          <Ethics />
+        </section>
       </main>
     </>
   )
