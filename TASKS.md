@@ -452,6 +452,46 @@ capture of `?demo=timeout` mid-draw shows an unbroken ink bar.
 
 ---
 
+## Found while writing the architecture
+
+Three defects the T48 pass turned up. They are here, not fixed inside it, because a
+documentation task that also changes code is two tasks.
+
+### T50 — The country reaches the run it was resolved for
+`?country=` is written into every investigate link and never sent. `identityOf` declares a
+return type without `country` while returning one, so the value is invisible to the type
+checker; `LiveInvestigation`'s `identity` prop and POST body carry `wikidataId`, `lei` and
+`cik` only. With no country, GLEIF answers "a name alone does not identify a company here"
+before making a request — so from the UI it contributes only when resolution won an LEI, which
+is not what D79 says was shipped. `identityOf`'s type gains the field, the component forwards
+it, and the request body it builds leaves the effect as a pure function so it can be tested.
+**Done when** the country survives `identityOf` → href → body → `ProviderInput`, with a test on
+each link, and the whole chain fails the typecheck if the field is dropped again.
+**Commit** `fix(ui): send the country the resolution settled`
+
+### T51 — The README says two things the app no longer does
+`540 tests` — the suite reports 537. And "each part of the progress bar inks when its source
+has actually answered — never on a timer. A source that fails inks red and says why": the bar
+is floored by a clock (`drawable` caps the drawn count at `elapsed / stepMs`), so the pacing
+lags the facts rather than leading them, and T49 removed red from the bar entirely.
+**Done when** both sentences describe what the code does, and the count matches `npm test`.
+**Commit** `docs: correct what the README says about the bar and the count`
+
+### T52 — The comments the code outgrew, again
+T38 did this once; the passes since then left their own. `lib/orchestrate.ts` announces
+"registry, API and website groups" over one flat `Promise.all`; `lib/resolve.ts` says the
+fetching lives in the route when it lives in `lib/search/`; `lib/cache.ts` calls `canRun` the
+orchestrator's predicate when it is the registry's; `CaseFile.tsx` and `lib/demo.ts` say Hunter
+"is not wired" while it sits in `PROVIDERS`; `keys-storage.ts` credits `lib/keys.ts` with a
+header name it imports from `lib/key-header.ts`; `useDrawn.ts` documents a swap condition the
+caller no longer uses; `globals.css` and `LiveInvestigation.tsx` describe a magnifier animation
+nothing renders.
+**Done when** every comment named above says what its code does, and none of them describes a
+file that no longer exists.
+**Commit** `docs: correct the comments the passes left behind`
+
+---
+
 ## Cut line
 
 **Ships no matter what:** T1–T10, T14, T16, T17, T18, T20, T21.
