@@ -4,9 +4,12 @@ import { z } from 'zod'
 // to prevent, so it is imported rather than repeated.
 import { formatFetchedAt } from '@/app/components/FieldRow'
 import { investigateCached } from '@/lib/cache'
+import { keyResolver, userKeysFrom } from '@/lib/keys'
 import { demoProviders, parseDemoMode } from '@/lib/demo'
+import { abstract } from '@/lib/providers/abstract'
 import { edgar } from '@/lib/providers/edgar'
 import { gleif } from '@/lib/providers/gleif'
+import { hunter } from '@/lib/providers/hunter'
 import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
 import { wikidata } from '@/lib/providers/wikidata'
 import { checkRateLimit, rateLimitNotice } from '@/lib/ratelimit'
@@ -21,11 +24,15 @@ import type { LogEvent, Report, Source } from '@/lib/types'
  */
 
 /**
- * The providers that exist. The keyed group and the website group are still stubs whose
- * `available` throws, and wiring them would put "Checking hunter — failed" on screen for a
- * source that was never built. A provider joins this list when it can actually answer.
+ * The providers that exist. A provider joins this list when it can actually answer, which
+ * Abstract and Hunter now can. Each declares `requiresKey`, so a deployment with no key for one
+ * gets an honest `skipped` line rather than a failure — and the website group is still a stub,
+ * which is why it is still absent.
+ *
+ * Abstract's free tier is a hundred requests for the life of the account, not per month, so the
+ * cache (D60) and the per-IP limit (D49) are what stand between it and an afternoon of clicking.
  */
-const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar]
+const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar, abstract, hunter]
 
 const requestSchema = z.object({
   name: z.string().trim().min(1).max(200),
@@ -54,15 +61,6 @@ type Frame =
   | { type: 'event'; event: LogEvent }
   | { type: 'report'; report: Report }
   | { type: 'error'; message: string }
-
-/**
- * A user's key travels in a header, never in the URL and never in the body, so it cannot end
- * up in an access log or a browser history entry. T12 replaces this with `lib/keys.ts`, which
- * adds the environment-default tier; every provider wired today is keyless.
- */
-function keysFrom(headers: Headers): (id: Source) => string | null {
-  return (id) => headers.get(`x-dg-key-${id}`)
-}
 
 /**
  * The caller's address, for the rate limiter's counter and nothing else (SPEC §9). It is not
@@ -110,7 +108,7 @@ export async function POST(request: Request): Promise<Response> {
       : { allowed: true, keyedProvidersAllowed: true }
 
   const ctx: Ctx = {
-    key: keysFrom(request.headers),
+    key: keyResolver(userKeysFrom(request.headers)),
     signal: request.signal,
     now: new Date(startedAt).toISOString(),
     // Past the limit this goes false, every keyed provider's `available` returns false, and

@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import type { Ctx, ProviderInput } from '@/lib/providers/types'
+import { keyResolver, userKeysFrom } from '@/lib/keys'
 import { decideResolution, withoutDuplicates } from '@/lib/resolve'
 import type { Candidate, LogEvent, Resolution, Source } from '@/lib/types'
 
@@ -53,9 +54,6 @@ const COMPANY_CLASSES = new Set([
   'Q783794', // company
   'Q43229', // organization
 ])
-
-/** The environment default per source. Only the sources this route can use appear here. */
-const ENV_KEYS: Partial<Record<Source, string>> = { web: 'TAVILY_API_KEY' }
 
 const requestSchema = z.object({ query: z.string().trim().min(1).max(200) })
 
@@ -120,7 +118,7 @@ export async function POST(request: Request): Promise<Response> {
   const query = body.data.query
 
   const ctx: Ctx = {
-    key: keyResolver(request),
+    key: keyResolver(userKeysFrom(request.headers)),
     signal: request.signal,
     now: new Date().toISOString(),
     // The per-IP limit lands in lib/ratelimit.ts; until then nothing is degraded here.
@@ -161,35 +159,6 @@ async function readBody(request: Request): Promise<unknown> {
   }
 }
 
-/**
- * user-supplied header, then the environment, then none — the three levels of D7. Reached
- * through a function so a context can be logged without a key surfacing (D16), and blank is
- * treated as absent, because an emptied variable is what a cleared `.env` line leaves.
- */
-function keyResolver(request: Request): (id: Source) => string | null {
-  const header = request.headers.get('x-detective-keys')
-  const supplied = z
-    .record(z.string(), z.string())
-    .safeParse(header === null ? {} : parseJson(header))
-  const keys = supplied.success ? supplied.data : {}
-
-  return (id: Source) => {
-    const variable = ENV_KEYS[id]
-    const candidates = [keys[id], variable === undefined ? undefined : process.env[variable]]
-    const found = candidates.find((value) => (value ?? '').trim() !== '')
-    // Trimmed on the way out, not only on the way in: a key with a stray newline is one fetch
-    // rejects by quoting it back, and that message would carry the key into the log.
-    return found === undefined ? null : found.trim()
-  }
-}
-
-function parseJson(text: string): unknown {
-  try {
-    return JSON.parse(text)
-  } catch {
-    return null
-  }
-}
 
 type Search = { found: Found[]; event: LogEvent }
 

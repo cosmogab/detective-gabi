@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { keyHeaderName } from '@/lib/keys'
 import { decideResolution } from '@/lib/resolve'
 import type { Candidate, Source } from '@/lib/types'
 
@@ -477,7 +478,9 @@ describe('the web search runs only when a key exists', () => {
     vi.stubEnv('TAVILY_API_KEY', 'tvly-env')
     const calls = serve([...STRIPE_ROUTES, { when: 'tavily', body: { results: [] } }])
 
-    await POST(ask('stripe', { 'x-detective-keys': JSON.stringify({ web: 'tvly-user' }) }))
+    // One header per source, the name `lib/keys.ts` spells (D62). The JSON form this route
+    // shipped with is gone: one stray quote in it cost every key at once, silently.
+    await POST(ask('stripe', { [keyHeaderName('web')]: 'tvly-user' }))
 
     const tavily = calls.find((call) => call.url.includes('tavily'))
     expect(tavily?.headers.authorization).toBe('Bearer tvly-user')
