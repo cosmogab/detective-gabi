@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { fetchJson, reason, since } from '@/lib/net'
+import { fetchJson, isSafeMessage, reason, safeReasonFrom, since } from '@/lib/net'
 import type { Ctx } from '@/lib/providers/types'
 
 /**
@@ -104,5 +104,64 @@ describe('reason', () => {
     // A thrown object could carry a key or an internal URL. Only a message ever escapes.
     expect(reason({ key: 'sk-secret' })).toBe('request failed')
     expect(reason('boom')).toBe('request failed')
+  })
+})
+
+describe('safeReasonFrom', () => {
+  const DETAIL = { 401: 'the key was rejected', 429: 'too many requests' }
+  const safeReason = safeReasonFrom([...Object.values(DETAIL), 'unreadable response'])
+
+  it('lets a source say its own words', () => {
+    expect(safeReason(new Error('the key was rejected'))).toBe('the key was rejected')
+    expect(safeReason(new Error('unreadable response'))).toBe('unreadable response')
+  })
+
+  it('lets a bare status through', () => {
+    expect(safeReason(new Error('HTTP 503'))).toBe('HTTP 503')
+  })
+
+  it('does not let a key out when fetch quotes the header back', () => {
+    // The failure this exists for. `fetch` rejects an invalid header value by quoting it
+    // inside the error it throws, and a log line is displayed on the page — so a message
+    // that was not written here never reaches one, whatever it says.
+    const thrown = new TypeError("Headers.append: 'sk-live-abc123' is an invalid header value")
+    const said = safeReason(thrown)
+    expect(said).toBe('request failed')
+    expect(said).not.toContain('sk-live-abc123')
+  })
+
+  it('does not let a source URL out either', () => {
+    // Abstract's key can only travel in the query string, so any message carrying a URL from
+    // that call would carry the key with it.
+    expect(safeReason(new Error('fetch failed: https://api.example.test/?api_key=sk-live'))).toBe(
+      'request failed',
+    )
+  })
+
+  it('says a cancellation was a cancellation, not a failure', () => {
+    const aborted = new Error('This operation was aborted')
+    aborted.name = 'AbortError'
+    expect(safeReason(aborted)).toBe('the request was cancelled')
+  })
+
+  it('says request failed for anything that is not an error at all', () => {
+    expect(safeReason({ apiKey: 'sk-live-abc123' })).toBe('request failed')
+  })
+
+  it('keeps each source its own words, so one table cannot answer for another', () => {
+    // 403 means "this key may not do that" to one source and "the key was rejected" to
+    // another. A shared list would have to be wrong for one of them.
+    const other = safeReasonFrom(['the extraction key was rejected'])
+    expect(other(new Error('the key was rejected'))).toBe('request failed')
+    expect(safeReason(new Error('the extraction key was rejected'))).toBe('request failed')
+  })
+})
+
+describe('isSafeMessage', () => {
+  it('is the same rule, read as a question', () => {
+    const allowed = new Set(['the model is unavailable'])
+    expect(isSafeMessage(allowed, 'the model is unavailable')).toBe(true)
+    expect(isSafeMessage(allowed, 'HTTP 429')).toBe(true)
+    expect(isSafeMessage(allowed, 'connect ECONNREFUSED 10.0.0.1:443')).toBe(false)
   })
 })

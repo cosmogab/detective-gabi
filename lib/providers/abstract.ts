@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { CompanyFields, Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { fetchJson, safeReasonFrom, since } from '@/lib/net'
 
 /**
  * Abstract Company Enrichment. Key required, 100 requests for the lifetime of the account.
@@ -86,13 +87,7 @@ export const abstract: Provider = {
       // an href. Nothing below ever reads `url` again.
       const url =
         `${API}?api_key=${encodeURIComponent(secret)}&domain=${encodeURIComponent(domain)}`
-      const response = await fetch(url, {
-        signal: ctx.signal,
-        headers: { Accept: 'application/json' },
-      })
-      if (!response.ok) throw new Error(STATUS_DETAIL[response.status] ?? `HTTP ${response.status}`)
-
-      const body: unknown = await response.json()
+      const body = await fetchJson(url, ctx, { detail: STATUS_DETAIL })
       // Checked before the payload, because the payload shape would accept this one.
       if (isErrorBody(body)) throw new Error('the source returned an error')
       const parsed = payloadSchema.safeParse(body)
@@ -438,21 +433,12 @@ function key(ctx: Ctx): string | null {
   return found === '' ? null : found
 }
 
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
-
 /**
- * Only our own words leave this module — the strictest version of the rule, because here the
- * request URL itself carries the key and anything that quotes a URL back would publish it.
- * The whitelist is what stops that, not the care taken at each throw site.
+ * The strictest use of the shared whitelist, because here the request URL itself carries the
+ * key: anything that quotes a URL back would publish it.
  */
-function safeReason(error: unknown): string {
-  if (error instanceof Error && error.name === 'AbortError') return 'the request was cancelled'
-  const message = error instanceof Error ? error.message : ''
-  const known =
-    Object.values(STATUS_DETAIL).includes(message) ||
-    message === 'unreadable response' ||
-    message === 'the source returned an error'
-  return known || /^HTTP \d{3}$/.test(message) ? message : 'request failed'
-}
+const safeReason = safeReasonFrom([
+  ...Object.values(STATUS_DETAIL),
+  'unreadable response',
+  'the source returned an error',
+])

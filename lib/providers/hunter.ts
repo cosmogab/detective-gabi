@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Person, PersonEmail } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { fetchJson, safeReasonFrom, since } from '@/lib/net'
 
 /**
  * Hunter Domain Search. Key required.
@@ -84,17 +85,14 @@ export const hunter: Provider = {
       const url =
         `${API}?domain=${encodeURIComponent(domain)}` +
         `&decision_maker=true&seniority=${SENIORITY}&limit=${LIMIT}`
-      const response = await fetch(url, {
-        signal: ctx.signal,
-        // The key travels in a header. Hunter documents `?api_key=`, which works and puts the
-        // secret in a URL — into logs, into referrers, into cache keys. Measured: this header
-        // is served 200 and `Authorization: Bearer` is refused 401, so this is the only
-        // transport that is both accepted and safe.
-        headers: { Accept: 'application/json', 'X-API-KEY': secret },
+      // The key travels in a header. Hunter documents `?api_key=`, which works and puts the
+      // secret in a URL — into logs, into referrers, into cache keys. Measured: this header
+      // is served 200 and `Authorization: Bearer` is refused 401, so this is the only
+      // transport that is both accepted and safe.
+      const body = await fetchJson(url, ctx, {
+        headers: { 'X-API-KEY': secret },
+        detail: STATUS_DETAIL,
       })
-      if (!response.ok) throw new Error(STATUS_DETAIL[response.status] ?? `HTTP ${response.status}`)
-
-      const body: unknown = await response.json()
       const parsed = payloadSchema.safeParse(body)
       // A payload we cannot read is not a company with nobody in it.
       if (!parsed.success) throw new Error('unreadable response')
@@ -257,18 +255,4 @@ function describe(organization: string | null, people: readonly Person[]): strin
   return organization === null ? `${counted} · ${proved}` : `${organization} · ${counted} · ${proved}`
 }
 
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
-
-/**
- * Only our own words leave this module. `fetch` quotes an invalid header value back inside the
- * error it throws, so an unusable key reaches the message — and a log line is displayed. The
- * whitelist is what stops that, not the care taken at each throw site.
- */
-function safeReason(error: unknown): string {
-  if (error instanceof Error && error.name === 'AbortError') return 'the request was cancelled'
-  const message = error instanceof Error ? error.message : ''
-  const known = Object.values(STATUS_DETAIL).includes(message) || message === 'unreadable response'
-  return known || /^HTTP \d{3}$/.test(message) ? message : 'request failed'
-}
+const safeReason = safeReasonFrom([...Object.values(STATUS_DETAIL), 'unreadable response'])

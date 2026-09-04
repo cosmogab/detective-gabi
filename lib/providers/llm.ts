@@ -1,4 +1,5 @@
 import { type ZodType, z } from 'zod'
+import { isSafeMessage } from '@/lib/net'
 
 /**
  * Structured extraction from text. Not a `Provider` — a helper `website.ts` calls.
@@ -161,5 +162,5 @@ function forGoogle(node: unknown): unknown {
 
 /** True when a message came from this module, so a caller can log it as it stands. */
 export function isSafeReason(message: string): boolean {
-  return SAFE.has(message) || /^HTTP \d{3}$/.test(message)
+  return isSafeMessage(SAFE, message)
 }

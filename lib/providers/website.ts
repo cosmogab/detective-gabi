@@ -3,6 +3,7 @@ import { z } from 'zod'
 import type { Person } from '@/lib/types'
 import { extract, isSafeReason } from './llm'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { since } from '@/lib/net'
 
 /**
  * The company's own site. No key of its own, though the extraction step needs one.
@@ -311,6 +312,3 @@ function nothingAsked(step: string, started: number, detail: string): ProviderRe
   }
 }
 
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
