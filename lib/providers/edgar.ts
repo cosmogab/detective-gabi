@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { fetchJson, reason, since } from '@/lib/net'
 
 /**
  * SEC EDGAR. No key, US public companies only.
@@ -133,15 +134,9 @@ function userAgent(ctx: Ctx): string {
   return supplied.trim() === '' ? DEFAULT_USER_AGENT : supplied
 }
 
+/** 404 is the SEC saying it has no such record. Every other refusal is a failure to ask. */
 async function getJson(url: string, ctx: Ctx): Promise<unknown> {
-  const response = await fetch(url, {
-    signal: ctx.signal,
-    headers: { Accept: 'application/json', 'User-Agent': userAgent(ctx) },
-  })
-  // 404 is the SEC saying it has no such record. Every other refusal is a failure to ask.
-  if (response.status === 404) return null
-  if (!response.ok) throw new Error(`HTTP ${response.status}`)
-  return response.json()
+  return fetchJson(url, ctx, { headers: { 'User-Agent': userAgent(ctx) }, emptyOn: 404 })
 }
 
 /**
@@ -309,12 +304,4 @@ function nothingHeld(
     people: [],
     log: [{ step, ms: since(started), status: 'empty', detail, source: 'edgar' }],
   }
-}
-
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
-
-function reason(error: unknown): string {
-  return error instanceof Error ? error.message : 'request failed'
 }

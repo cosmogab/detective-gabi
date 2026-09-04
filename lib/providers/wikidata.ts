@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { CompanyFields, Field, Location, NoEvidence, Person } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { fetchJson, reason, since } from '@/lib/net'
 
 /**
  * Wikidata. No key, no quota, worldwide. Strong on established companies, thin on startups.
@@ -139,13 +140,9 @@ export const wikidata: Provider = {
   },
 }
 
+/** Wikimedia drops callers it cannot identify, so every call here carries the contact. */
 async function getJson(url: string, ctx: Ctx): Promise<unknown> {
-  const response = await fetch(url, {
-    signal: ctx.signal,
-    headers: { Accept: 'application/json', 'User-Agent': USER_AGENT },
-  })
-  if (!response.ok) throw new Error(`HTTP ${response.status}`)
-  return response.json()
+  return fetchJson(url, ctx, { headers: { 'User-Agent': USER_AGENT } })
 }
 
 /**
@@ -406,12 +403,4 @@ function nothingHeld(step: string, started: number, fetchedAt: string): Provider
       { step, ms: since(started), status: 'empty', detail: 'no record found', source: 'wikidata' },
     ],
   }
-}
-
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
-
-function reason(error: unknown): string {
-  return error instanceof Error ? error.message : 'request failed'
 }

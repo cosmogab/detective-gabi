@@ -248,17 +248,20 @@ guardrail files are not opened, except `tests/guardrails.resolve.test.ts`, which
 in T34.
 
 ### T28 — One fetch, one clock, one filtered reason
-`lib/net.ts`: `since`, `reason`, `safeReasonFrom(allowed)`, `fetchJson(url, ctx, opts)` with
-`headers`, `detail` and `emptyOn`. Adopted by `wikidata.ts`, `gleif.ts`, `edgar.ts`, deleting
-three copies of each. `emptyOn: 404` is a parameter because GLEIF and EDGAR mean "no such
-record" where Wikidata means "error" — today that difference is an accident of four copies.
+`lib/net.ts`: `since`, `reason`, and `fetchJson(url, ctx, { headers, emptyOn })`. Adopted by
+`wikidata.ts`, `gleif.ts`, `edgar.ts`, deleting three copies of each. `emptyOn: 404` is a
+parameter because GLEIF and EDGAR mean "no such record" where Wikidata means "error" — today
+that difference is an accident of four copies.
+`safeReasonFrom` and the `detail` table belong to T29, which is where they get a caller. This
+repo has four times shipped something built, tested in isolation and never called, and
+`tests/keys.client.test.ts` exists because of it.
 **Done when** `tests/providers.registry.test.ts` is green and unchanged, and `tests/net.test.ts`
-pins `emptyOn`, `HTTP nnn` and that the whitelist lets nothing but its own set out.
+pins `emptyOn` in both directions, the header merge, the signal and `HTTP nnn`.
 **Commit** `refactor(core): give the providers one fetch, one clock and one filtered reason`
 
 ### T29 — The keyed calls go through the same seam
-`abstract.ts`, `hunter.ts`, `website.ts` and `llm.ts` adopt `lib/net.ts`, each passing its own
-`STATUS_DETAIL` table. `isSafeReason` becomes the same primitive read as a predicate, so there
+`lib/net.ts` gains `safeReasonFrom(allowed)` and `fetchJson`'s `detail` option; `abstract.ts`,
+`hunter.ts`, `website.ts` and `llm.ts` adopt them, each passing its own `STATUS_DETAIL` table. `isSafeReason` becomes the same primitive read as a predicate, so there
 is one spelling of the rule and four tables.
 **Done when** `providers.api`, `providers.website` and `guardrails.email` are green and
 unchanged, and a new case proves a `fetch` TypeError quoting a header value does not survive.

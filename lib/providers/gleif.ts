@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { fetchJson, reason, since } from '@/lib/net'
 
 /**
  * GLEIF. No key, 60 requests a minute, worldwide.
@@ -122,14 +123,9 @@ export const gleif: Provider = {
 
 type Match = { record: Record_ | null; detail: string }
 
+/** A 404 is GLEIF saying it holds no such record, which is an answer and not a failure. */
 async function getJson(url: string, ctx: Ctx): Promise<unknown> {
-  const response = await fetch(url, {
-    signal: ctx.signal,
-    headers: { Accept: 'application/vnd.api+json' },
-  })
-  if (response.status === 404) return null
-  if (!response.ok) throw new Error(`HTTP ${response.status}`)
-  return response.json()
+  return fetchJson(url, ctx, { headers: { Accept: 'application/vnd.api+json' }, emptyOn: 404 })
 }
 
 /** An LEI resolved upstream identifies the record outright; nothing has to be decided. */
@@ -273,12 +269,4 @@ function readable(text: string): string {
 
 function noEvidence(fetchedAt: string): NoEvidence {
   return { found: false, value: null, sourcesChecked: ['gleif'], fetchedAt }
-}
-
-function since(started: number): number {
-  return Math.round(performance.now() - started)
-}
-
-function reason(error: unknown): string {
-  return error instanceof Error ? error.message : 'request failed'
 }
