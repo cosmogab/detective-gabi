@@ -34,7 +34,7 @@ flowchart TB
 
     DOM -- "yes, so nothing to resolve" --> INV
     DEC -- "yes" --> INV
-    GRID --> INV["/api/investigate<br/>domain · wikidataId · LEI · CIK<br/>the settled identity travels in the URL"]
+    GRID --> INV["/api/investigate<br/>domain · wikidataId · LEI · CIK · country<br/>the settled identity travels in the URL"]
 
     INV --> SIX
 
@@ -57,8 +57,9 @@ Three things that diagram is precise about:
 - **A name is identified before it is investigated.** Asking six sources about "Basecamp" makes
   each of them guess which one you meant. Resolution answers that question first, and hands the
   investigation an identity rather than a word.
-- **The six run at the same time**, and each part of the progress bar inks when its source has
-  actually answered — never on a timer. A source that fails inks red and says why.
+- **The six run at the same time**, and no part of the bar inks before its source has answered.
+  The pacing can lag the facts; it never leads them. The bar is a count — the log underneath is
+  what says a source failed, and why.
 - **The merge keeps what it does not use.** Losing values are not discarded; they sit under the
   winner so you can compare them.
 
