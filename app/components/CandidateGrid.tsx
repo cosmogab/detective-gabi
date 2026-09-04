@@ -1,4 +1,8 @@
-import type { Candidate, LogEvent, Resolution, Source } from '@/lib/types'
+import type { Found, ResolveResponse } from '@/lib/resolve'
+
+/** Re-exported so the pieces that render a resolution and the type they render stay together. */
+export type { Found, ResolveResponse }
+import type { Candidate, Source } from '@/lib/types'
 import { Sep, SourcesChecked } from './FieldRow'
 
 /**
@@ -10,22 +14,6 @@ import { Sep, SourcesChecked } from './FieldRow'
  * way (D45). The pieces here are rendered from a client component, which is allowed, and the
  * URL grammar stays in one copy that both sides read.
  */
-
-/** A candidate beside the input an investigation of it would start from. Mirrors the route. */
-export type Found = {
-  candidate: Candidate
-  input: {
-    name: string
-    domain: string | null
-    wikidataId?: string
-    lei?: string
-    cik?: string
-    country?: string
-  }
-}
-
-/** Mirrors `ResolveResponse` in `app/api/resolve/route.ts`. */
-export type ResolveResponse = { resolution: Resolution; found: Found[]; log: LogEvent[] }
 
 /**
  * Sources that publish about a company rather than for it. Their result is a page that

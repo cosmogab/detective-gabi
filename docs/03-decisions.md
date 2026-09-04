@@ -1472,3 +1472,26 @@ check refuses `ZZ`, the code CLDR calls "Unknown Region".
 companies, which is exactly what D65 was protecting against. Two things stand in its place: both
 providers' recordings run on every commit, and `tests/countries.test.ts` now pins the behaviour
 directly rather than only through whichever provider happened to exercise it.
+
+## D100 — The searches are resolvers, not providers, so they do not live under lib/providers
+
+**Context.** `app/api/resolve/route.ts` was 487 lines and held a Wikidata client and a Tavily
+client entire: endpoint constants, six Zod schemas, an ontology, four data-access helpers, a rank
+filter and a candidate mapper. Neither implemented `Provider`, so neither got `available()`,
+`covers`, the orchestrator's try/catch or a cache scope.
+
+**Options considered.** Make them real `Provider`s and register them. Or move them out of the
+route as what they already are.
+
+**Choice.** `lib/search/wikidata.ts` and `lib/search/tavily.ts`. A `Provider` answers *what is
+true about this company* and returns `Partial<CompanyFields>`; these answer *which company is this
+name* and return `Candidate`s. The frozen seam has no shape for the second question, and
+unfreezing `lib/providers/types.ts` is a coordination event, not an edit. `lib/providers/` is also
+where the `add-provider` skill claims jurisdiction — nine rules a resolver cannot satisfy, starting
+with "exactly one `LogEvent`" and "never fabricate a field".
+
+**Consequence accepted.** Two lanes of source code that look alike and are not
+interchangeable: `lib/providers/` for the investigation, `lib/search/` for resolution, sharing
+`lib/net.ts` and `lib/providers/wikidata-api.ts` underneath. The resolver still gets none of the
+seam's guarantees — in particular `/api/resolve` remains unrate-limited while spending a Tavily
+credit per call, which T38 stops the code from denying and a later task has to fix.

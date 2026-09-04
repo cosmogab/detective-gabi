@@ -1,5 +1,6 @@
+import type { ProviderInput } from '@/lib/providers/types'
 import { looseNameKey } from '@/lib/text'
-import type { Candidate, Resolution, Source } from '@/lib/types'
+import type { Candidate, LogEvent, Resolution, Source } from '@/lib/types'
 
 /**
  * Decides whether the candidates found for a query contain one clear winner.
@@ -15,6 +16,37 @@ import type { Candidate, Resolution, Source } from '@/lib/types'
  * never decides which one the report is about.
  */
 const DECISIVE_SOURCES: readonly Source[] = ['edgar', 'gleif', 'wikidata', 'abstract', 'hunter']
+
+/** A candidate to show, beside the input an investigation of it would start from. */
+export type Found = { candidate: Candidate; input: ProviderInput }
+
+/** What one search came back with: its candidates, and the one line it writes in the log. */
+export type Search = { found: Found[]; event: LogEvent }
+
+export type ResolveResponse = {
+  resolution: Resolution
+  /**
+   * Every candidate, winner included. `Resolution` carries only the chosen one, and SPEC §3
+   * needs the alternatives behind "Not the right company?" even when one won.
+   */
+  found: Found[]
+  log: LogEvent[]
+}
+
+/**
+ * The domain a report is keyed on, not the URL a source happened to print.
+ *
+ * Beside `host` below rather than in either search: both of them call it, and the two
+ * normalisations have to agree or a candidate and the report it opens are keyed differently.
+ */
+export function hostOf(url: string | undefined): string | null {
+  if (url === undefined) return null
+  try {
+    return new URL(url).hostname.replace(/^www\./, '').toLowerCase()
+  } catch {
+    return null
+  }
+}
 
 export function decideResolution(
   query: string,
