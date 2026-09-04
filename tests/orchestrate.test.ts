@@ -374,3 +374,53 @@ describe('the recordings survive a round trip through the real merge', () => {
     expect(report.log.map((event) => event.source)).toEqual(['wikidata', 'gleif', 'edgar'])
   })
 })
+
+describe('a source that was never asked is not a source that was checked', () => {
+  it('leaves a provider that only reported skipped out of sourcesChecked', async () => {
+    // Hunter holds a key, so it is available and it runs — and then finds it has no domain to
+    // put a question to. The log says `skipped`; naming it among the sources checked would tell
+    // the reader we looked somewhere we never looked (D39). Reproduced from a real run before
+    // this guard existed: people.sourcesChecked came back as ["hunter"].
+    const neverAsked: Provider = {
+      id: 'hunter',
+      requiresKey: true,
+      covers: ['people'],
+      available: () => true,
+      run: async () => ({
+        fields: {},
+        people: [],
+        log: [
+          { step: 'Checking Hunter', ms: 0, status: 'skipped', detail: 'no domain to search', source: 'hunter' },
+        ],
+      }),
+    }
+
+    const report = await investigate({ name: 'Acme', domain: null }, [neverAsked], ctx, () => {})
+
+    expect(report.people.sourcesChecked).toEqual([])
+    // The log still carries what happened — the honesty is moved, not dropped.
+    expect(report.log[0]?.status).toBe('skipped')
+  })
+
+  it('keeps a provider that was reached and failed', async () => {
+    // A source we did reach and that broke is a source we checked; its red row explains the
+    // empty field. Removing it too would understate what the run actually cost.
+    const reachedAndBroke: Provider = {
+      id: 'hunter',
+      requiresKey: true,
+      covers: ['people'],
+      available: () => true,
+      run: async () => ({
+        fields: {},
+        people: [],
+        log: [
+          { step: 'Checking Hunter', ms: 12, status: 'failed', detail: 'the request was rejected', source: 'hunter' },
+        ],
+      }),
+    }
+
+    const report = await investigate({ name: 'Acme', domain: 'acme.com' }, [reachedAndBroke], ctx, () => {})
+
+    expect(report.people.sourcesChecked).toEqual(['hunter'])
+  })
+})

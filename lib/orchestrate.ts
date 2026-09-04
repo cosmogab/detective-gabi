@@ -163,7 +163,20 @@ function observationsOf<T>(
 function checked(outcomes: readonly Outcome[], coverage: Coverage): Source[] {
   return outcomes
     .filter((outcome) => outcome.provider.covers.includes(coverage))
+    .filter(consulted)
     .map((outcome) => outcome.provider.id)
+}
+
+/**
+ * A provider that reported nothing but `skipped` was never asked anything — no domain to search,
+ * no key to use — so it may not be named among the sources checked (D39). Being unavailable is
+ * already handled before the run; this is the same rule for a provider that starts and finds it
+ * has no question to put. A provider that `failed` was consulted and broke, which the log says
+ * in red, so it stays: the field is empty because a source we did reach gave nothing.
+ */
+function consulted(outcome: Outcome): boolean {
+  const events = outcome.result.log
+  return events.length === 0 || events.some((event) => event.status !== 'skipped')
 }
 
 /**
