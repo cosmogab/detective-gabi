@@ -98,6 +98,13 @@ export default async function Home({
   const query = first(params.q)
   const target = first(params.investigate)
   const resolving = first(params.resolve)
+  // What a resolution settled, read back off the URL so a shared link investigates the same
+  // identity the person who shared it saw, rather than a name search that lands elsewhere.
+  const identity = {
+    ...(first(params.wikidataId) === '' ? {} : { wikidataId: first(params.wikidataId) }),
+    ...(first(params.lei) === '' ? {} : { lei: first(params.lei) }),
+    ...(first(params.cik) === '' ? {} : { cik: first(params.cik) }),
+  }
   const asked = domain !== '' ? domain : query
   const found = domain !== '' ? fixtureForDomain(domain.trim().toLowerCase()) : onRecord(query)
 
@@ -129,9 +136,14 @@ export default async function Home({
           // Forwarded as typed. The route is what decides whether it names a failure state,
           // and an unrecognised value simply is not one — it is never an error (SPEC §7).
           demo={first(params.demo)}
+          identity={identity}
           // Deliberately without `demo`: from a simulated report this link is the way back to
-          // a real investigation, which is the same gesture as refreshing a stored one.
-          refreshHref={investigateHref(target, domain === '' ? null : domain, { refresh: true })}
+          // a real investigation, which is the same gesture as refreshing a stored one. The
+          // identity is kept, because refreshing asks the same question of the same company.
+          refreshHref={investigateHref(target, domain === '' ? null : domain, {
+            refresh: true,
+            ...identity,
+          })}
         />
         <div className="mx-auto max-w-case px-6 pb-14">
           <Ethics />

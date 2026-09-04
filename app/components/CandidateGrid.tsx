@@ -36,15 +36,24 @@ export function isPublisherDomain(candidate: Candidate): boolean {
  * The one URL that means "investigate this now", and `refresh` is what makes it go past
  * whatever is stored. Moved here from `app/page.tsx` so the server page and the candidate
  * cards write the same grammar rather than two copies of it.
+ *
+ * The identifiers resolution won ride in it. They are public identifiers, not secrets, and
+ * carrying them is what makes the link reproduce the report instead of a poorer one: without
+ * the LEI, GLEIF falls back to searching by name, finds every record that shares it and
+ * identifies none of them. A link that quietly answers a worse question than the one that
+ * produced it would be its own small dishonesty, so the identity travels with the URL (D56).
  */
 export function investigateHref(
   name: string,
   domain: string | null,
-  options: { refresh?: boolean } = {},
+  options: { refresh?: boolean; wikidataId?: string; lei?: string; cik?: string } = {},
 ): string {
   const params = new URLSearchParams({ investigate: name })
   if (domain !== null && domain !== '') params.set('domain', domain)
   if (options.refresh === true) params.set('refresh', '1')
+  if (options.wikidataId !== undefined) params.set('wikidataId', options.wikidataId)
+  if (options.lei !== undefined) params.set('lei', options.lei)
+  if (options.cik !== undefined) params.set('cik', options.cik)
   return `/?${params.toString()}`
 }
 
@@ -62,7 +71,32 @@ export function resolveHref(query: string): string {
  */
 export function targetFor(entry: Found): string {
   if (isPublisherDomain(entry.candidate)) return investigateHref(entry.input.name, null)
-  return investigateHref(entry.input.name, entry.input.domain)
+  const { name, domain, wikidataId, lei, cik } = entry.input
+  return investigateHref(name, domain, {
+    ...(wikidataId === undefined ? {} : { wikidataId }),
+    ...(lei === undefined ? {} : { lei }),
+    ...(cik === undefined ? {} : { cik }),
+  })
+}
+
+/**
+ * The candidates paired with the action each one offers, in the order they were returned.
+ *
+ * An action is offered only when it distinguishes this candidate from every other card on
+ * screen. Two cards that would open the same investigation are not two choices, and a button
+ * on each would promise a difference the data does not have — so both lose the button and keep
+ * only what actually separates them, which in that case is nothing.
+ *
+ * Neither card is removed. A candidate is labelled, never hidden: hiding one would be choosing
+ * on the reader's behalf, which is the whole thing an ambiguous verdict refuses to do.
+ */
+export function withActions(found: readonly Found[]): { entry: Found; href: string | null }[] {
+  const targets = found.map(targetFor)
+  return found.map((entry, index) => {
+    const target = targets[index]
+    const shared = targets.filter((other) => other === target).length > 1
+    return { entry, href: target === undefined || shared ? null : target }
+  })
 }
 
 /** The line under a candidate's name. Never invented: absent parts leave no separator behind. */
@@ -98,6 +132,75 @@ export function CandidateMeta(props: { candidate: Candidate }) {
         <span className="label text-muted">{candidate.source}</span>
       )}
     </p>
+  )
+}
+
+/**
+ * One candidate: what it is, where that came from, and — when it means something — the way to
+ * investigate it. A card without an action carries the same evidence, because the reader
+ * judging between two indistinguishable cards needs it just as much.
+ */
+export function CandidateCard(props: { entry: Found; href: string | null }) {
+  const { entry, href } = props
+  const { candidate } = entry
+
+  return (
+    <li className="border border-rule bg-card">
+      <div className="h-full border-l-4 border-l-rule-strong p-4">
+        <p className="datum text-ink">{candidate.name}</p>
+        {candidate.description !== null ? (
+          <p className="mt-1 font-sans text-sm text-muted">{candidate.description}</p>
+        ) : null}
+        <CandidateMeta candidate={candidate} />
+
+        {href !== null ? (
+          <p className="mt-3">
+            <a
+              href={href}
+              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            >
+              Investigate this one
+            </a>
+          </p>
+        ) : (
+          <p className="mt-3 font-sans text-xs text-faint">
+            Another candidate here would open exactly the same investigation, so picking
+            between them would not pick anything. Enter a domain to tell them apart.
+          </p>
+        )}
+      </div>
+    </li>
+  )
+}
+
+/**
+ * The ambiguous verdict, laid out as the choice it is — and only ever with more than one
+ * candidate. A lone card reads "confirm this one", which would turn "the evidence did not
+ * settle it" into an answer; that case is `SoleRecord` instead.
+ */
+export function CandidateGrid(props: { query: string; found: readonly Found[] }) {
+  const { query, found } = props
+
+  return (
+    <section className="mt-8">
+      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
+        More than one company answers to that name
+      </h2>
+      <p className="mt-3 max-w-2xl font-sans text-sm text-ink">
+        <span className="datum">{query}</span> matched {found.length} companies, and nothing the
+        sources returned says which one you mean. Pick one, or enter its domain in the field
+        above.
+      </p>
+      <ul className="mt-5 grid items-stretch gap-3 sm:grid-cols-2">
+        {withActions(found).map(({ entry, href }, i) => (
+          <CandidateCard
+            key={`${entry.candidate.source}-${entry.candidate.name}-${i}`}
+            entry={entry}
+            href={href}
+          />
+        ))}
+      </ul>
+    </section>
   )
 }
 

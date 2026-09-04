@@ -7,7 +7,7 @@ import { investigateCached } from '@/lib/cache'
 import { demoProviders, parseDemoMode } from '@/lib/demo'
 import { edgar } from '@/lib/providers/edgar'
 import { gleif } from '@/lib/providers/gleif'
-import type { Ctx, Provider } from '@/lib/providers/types'
+import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
 import { wikidata } from '@/lib/providers/wikidata'
 import { checkRateLimit, rateLimitNotice } from '@/lib/ratelimit'
 import type { LogEvent, Report, Source } from '@/lib/types'
@@ -34,6 +34,16 @@ const requestSchema = z.object({
   refresh: z.boolean().optional(),
   /** `?demo=` forwarded verbatim. Anything unrecognised is null, not an error (SPEC §7). */
   demo: z.string().max(40).nullable().optional(),
+  /**
+   * What resolution settled, carried through to the providers (D56). These are the whole
+   * point of resolving first: an LEI answers for GLEIF the question its own name search
+   * cannot, and a CIK reaches EDGAR for a company that files without being listed. They are
+   * public identifiers and go no further than `ProviderInput`, which already carries them —
+   * the frozen seam does not move.
+   */
+  wikidataId: z.string().trim().max(32).optional(),
+  lei: z.string().trim().max(20).optional(),
+  cik: z.string().trim().max(20).optional(),
 })
 
 /**
@@ -64,6 +74,21 @@ function clientIp(headers: Headers): string {
   const forwarded = headers.get('x-forwarded-for')
   if (forwarded !== null) return forwarded.split(',')[0]?.trim() ?? ''
   return headers.get('x-real-ip')?.trim() ?? ''
+}
+
+/**
+ * The identity an investigation starts from. An identifier is carried only when it was
+ * actually stated: an absent one must stay absent rather than arrive as an empty string, which
+ * a provider would dutifully search for.
+ */
+function providerInputFrom(body: z.infer<typeof requestSchema>): ProviderInput {
+  const identifiers = { wikidataId: body.wikidataId, lei: body.lei, cik: body.cik }
+  const stated = Object.entries(identifiers).filter(([, value]) => (value ?? '') !== '')
+  return {
+    name: body.name,
+    domain: body.domain ?? null,
+    ...Object.fromEntries(stated),
+  }
 }
 
 export async function POST(request: Request): Promise<Response> {
@@ -118,7 +143,7 @@ export async function POST(request: Request): Promise<Response> {
         // happened, and sending those lines now would pass another moment's measurements off
         // as this one's.
         const report = await investigateCached(
-          { name: parsed.data.name, domain: parsed.data.domain ?? null },
+          providerInputFrom(parsed.data),
           providers,
           ctx,
           (event) => send({ type: 'event', event }),

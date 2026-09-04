@@ -7,6 +7,7 @@ import { type ReactNode, useEffect, useState } from 'react'
 // `const` arrow or wrapping it in `memo` would turn it into a temporal-dead-zone crash.
 import { CaseFile } from './CaseFile'
 import {
+  CandidateGrid,
   CandidateMeta,
   NoCompanyFound,
   type ResolveResponse,
@@ -347,19 +348,7 @@ function Verdict(props: { query: string; response: ResolveResponse }) {
         {only !== undefined ? (
           <SoleRecord query={query} entry={only} />
         ) : (
-          <section className="mt-8">
-            <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
-              More than one company answers to that name
-            </h2>
-            <ul className="mt-4 border-b border-b-rule">
-              {found.map((entry, i) => (
-                <li key={`${entry.candidate.source}-${entry.candidate.name}-${i}`} className="border-t border-t-rule py-3 pl-4">
-                  <p className="datum text-ink">{entry.candidate.name}</p>
-                  <CandidateMeta candidate={entry.candidate} />
-                </li>
-              ))}
-            </ul>
-          </section>
+          <CandidateGrid query={query} found={found} />
         )}
         <InvestigationLog events={log} folded />
       </>
@@ -477,10 +466,17 @@ export function LiveInvestigation(props: {
   refresh?: boolean
   /** `?demo=` verbatim. The route decides what it means; an unknown value simply is not one. */
   demo?: string | null
+  /** What resolution settled, forwarded to the providers that can use it (D56). */
+  identity?: { wikidataId?: string; lei?: string; cik?: string }
   /** Built by the page: URLs are assembled in one place and cross the boundary as data. */
   refreshHref: string
 }) {
   const { name, domain, refresh = false, demo = null, refreshHref } = props
+  // Read into strings so the effect can depend on the values rather than on a fresh object
+  // identity every render, which would restart the investigation on each one.
+  const wikidataId = props.identity?.wikidataId ?? ''
+  const lei = props.identity?.lei ?? ''
+  const cik = props.identity?.cik ?? ''
   const [events, setEvents] = useState<readonly LogEvent[]>([])
   const [report, setReport] = useState<Report | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
@@ -495,7 +491,15 @@ export function LiveInvestigation(props: {
       const response = await fetch('/api/investigate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, domain, refresh, demo }),
+        body: JSON.stringify({
+          name,
+          domain,
+          refresh,
+          demo,
+          ...(wikidataId === '' ? {} : { wikidataId }),
+          ...(lei === '' ? {} : { lei }),
+          ...(cik === '' ? {} : { cik }),
+        }),
         signal: controller.signal,
       })
       if (!response.ok || response.body === null) {
@@ -519,7 +523,7 @@ export function LiveInvestigation(props: {
     })
 
     return () => controller.abort()
-  }, [name, domain, refresh, demo])
+  }, [name, domain, refresh, demo, wikidataId, lei, cik])
 
   if (report !== null) {
     // A stored answer says so, and offers the gesture that replaces it.
