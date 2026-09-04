@@ -958,6 +958,28 @@ page" returned 57 people from one site, illustrators included. Asking, on a full
 those whose title shows they lead returns five — which is the task's done-when, on a company GLEIF,
 EDGAR and Hunter cannot name.
 
+## D79 — Identity is settled once, and a provider may not settle it again
+
+**Context.** The candidate grid exists so a reader decides which company was meant. That decision
+reached the providers as a name and a domain. A registry publishes no domain, so GLEIF went back to
+identifying the company by name on its own — and got it wrong. Measured through the shipped
+provider: `Basecamp` → Stockholm, `Notion` → Helsinki, both `confirmed`, two of four ordinary names.
+Neither is a crafted URL; resolution supplies no LEI for either, so the ordinary path produced them.
+**Options measured, not guessed.** Stripping one legal form instead of looping fixed Basecamp and
+not Notion. Requiring an exact legal-name match lost three correct answers *and* made Stripe wrong,
+because the Belgian company is named exactly STRIPE. Answering only on an LEI fixed both but lost
+Figma, which has none. Requiring the country to agree fixed both and kept Figma.
+**Choice.** `ProviderInput` gains an optional `country`, carried by resolution beside the
+identifiers it already carries. GLEIF accepts a name match only when the record's country is the
+one settled upstream; with no country settled it refuses and says so, rather than guessing. An LEI
+match stays certain and untouched. **The seam was unfrozen for this** — both lanes were idle, and
+the field is optional, so nothing broke.
+**Consequence, verified end to end.** `basecamp` now resolves with `country: US`, GLEIF answers
+`no record found in US under that name`, and the report says Chicago from Wikidata — the right
+answer from the right source. `figma` is unchanged. The framing matters more than the mechanism:
+this is not a corroboration check bolted on, it is finishing the handover of a decision the reader
+already made.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

@@ -79,7 +79,9 @@ export const gleif: Provider = {
 
     try {
       const match =
-        input.lei === undefined ? await search(input.name, ctx) : await byLei(input.lei, ctx)
+        input.lei === undefined
+          ? await search(input.name, input.country, ctx)
+          : await byLei(input.lei, ctx)
       if (match.record === null) {
         return {
           fields: { location: noEvidence(ctx.now) },
@@ -149,10 +151,29 @@ async function byLei(lei: string, ctx: Ctx): Promise<Match> {
  * name. So: the legal name, stripped of its legal form, must equal the name searched for, the
  * record must be a live general entity, and if several such records disagree about where the
  * company sits, GLEIF answers nothing and says so. Guessing between them is not available.
+ *
+ * That was not enough, and the gap was not small. A name matching exactly one live record is not
+ * the same as identifying a company: the American Basecamp holds no LEI under that name, while a
+ * Swedish `Basecamp Inc. AB` does, and it was the only record left standing — so the report said
+ * Stockholm, `confirmed`. Notion resolved the same way to Helsinki. Two of four ordinary names
+ * measured, each wrong with the report's strongest badge.
+ *
+ * A registry publishes no domain, so the only thing a name search can be held against is the
+ * country the reader already settled — by picking a card, or by resolution judging one candidate
+ * unmistakable. With no country to check against, a name alone does not identify a company and
+ * GLEIF says so rather than guessing.
  */
-async function search(name: string, ctx: Ctx): Promise<Match> {
+async function search(name: string, country: string | undefined, ctx: Ctx): Promise<Match> {
   const wanted = compare(name)
   if (wanted === '') return { record: null, detail: 'no name to search' }
+
+  const wantedCountry = (country ?? '').trim().toUpperCase()
+  if (wantedCountry === '') {
+    return {
+      record: null,
+      detail: 'a name alone does not identify a company here — no country was settled',
+    }
+  }
 
   const query = `filter[entity.legalName]=${encodeURIComponent(wanted)}&page[size]=${PAGE_SIZE}`
   const url = `${RECORDS}?${query}`
@@ -173,10 +194,17 @@ async function search(name: string, ctx: Ctx): Promise<Match> {
     // A fund named after a company is not the company.
     const operating =
       entity.category === null || entity.category === undefined || entity.category === 'GENERAL'
-    return live && operating && compare(entity.legalName?.name ?? '') === wanted
+    // The country the reader settled on. An entity registered somewhere else is not the company
+    // that was chosen, whatever it is called.
+    const here = (entity.headquartersAddress?.country ?? entity.legalAddress?.country ?? '')
+      .trim()
+      .toUpperCase()
+    return live && operating && here === wantedCountry && compare(entity.legalName?.name ?? '') === wanted
   })
 
-  if (named.length === 0) return { record: null, detail: 'no record found' }
+  if (named.length === 0) {
+    return { record: null, detail: `no record found in ${wantedCountry} under that name` }
+  }
 
   const places = [...new Set(named.map((record) => place(record)))]
   if (places.length > 1) {

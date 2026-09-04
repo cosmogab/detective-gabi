@@ -14,7 +14,14 @@ import { Sep, SourcesChecked } from './FieldRow'
 /** A candidate beside the input an investigation of it would start from. Mirrors the route. */
 export type Found = {
   candidate: Candidate
-  input: { name: string; domain: string | null; wikidataId?: string; lei?: string; cik?: string }
+  input: {
+    name: string
+    domain: string | null
+    wikidataId?: string
+    lei?: string
+    cik?: string
+    country?: string
+  }
 }
 
 /** Mirrors `ResolveResponse` in `app/api/resolve/route.ts`. */
@@ -46,13 +53,20 @@ export function isPublisherDomain(candidate: Candidate): boolean {
 export function investigateHref(
   name: string,
   domain: string | null,
-  options: { refresh?: boolean; wikidataId?: string; lei?: string; cik?: string } = {},
+  options: {
+    refresh?: boolean
+    wikidataId?: string
+    lei?: string
+    cik?: string
+    country?: string
+  } = {},
 ): string {
   const params = new URLSearchParams({ investigate: name })
   if (domain !== null && domain !== '') params.set('domain', domain)
   if (options.refresh === true) params.set('refresh', '1')
   if (options.wikidataId !== undefined) params.set('wikidataId', options.wikidataId)
   if (options.lei !== undefined) params.set('lei', options.lei)
+  if (options.country !== undefined) params.set('country', options.country)
   if (options.cik !== undefined) params.set('cik', options.cik)
   return `/?${params.toString()}`
 }
@@ -79,12 +93,13 @@ export function identityOf(entry: Found): {
   // A publisher stated a page, not a company: neither its host nor any identifier beside it
   // describes the company, so only the name survives.
   if (isPublisherDomain(entry.candidate)) return { name: entry.input.name, domain: null }
-  const { name, domain, wikidataId, lei, cik } = entry.input
+  const { name, domain, wikidataId, lei, cik, country } = entry.input
   return {
     name,
     domain,
     ...(wikidataId === undefined ? {} : { wikidataId }),
     ...(lei === undefined ? {} : { lei }),
+    ...(country === undefined ? {} : { country }),
     ...(cik === undefined ? {} : { cik }),
   }
 }

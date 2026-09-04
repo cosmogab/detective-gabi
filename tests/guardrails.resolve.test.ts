@@ -294,12 +294,16 @@ describe('the route fetches, and lets lib/resolve judge', () => {
     })
     // The identifiers are the point of resolving before investigating: GLEIF cannot pick
     // Stripe out of 57 records named Stripe, and does not have to once it is handed the LEI.
+    // The country travels for the same reason and matters more often, because most companies
+    // hold no LEI at all — without it GLEIF went back to guessing, and put Basecamp in
+    // Stockholm and Notion in Helsinki, both `confirmed` (D79).
     expect(body.found[0].input).toEqual({
       name: 'Stripe',
       domain: 'stripe.com',
       wikidataId: 'Q7624104',
       lei: '549300CLHGIPTCYHQ143',
       cik: '0001691342',
+      country: 'US',
     })
   })
 

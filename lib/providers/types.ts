@@ -18,6 +18,17 @@ export type ProviderInput = {
   cik?: string
   /** GLEIF legal entity identifier. */
   lei?: string
+  /**
+   * ISO 3166-1 alpha-2, as settled upstream — the country of the candidate a reader picked, or
+   * of the one resolution judged an unmistakable winner.
+   *
+   * It is here because identity is decided once and must not be decided again. A registry
+   * publishes no domain, so a provider handed only a name goes back to guessing which of the
+   * world's identically-named companies was meant: measured, "Basecamp" resolved to a Swedish
+   * entity and "Notion" to a Finnish one, both shown as `confirmed`. The country is the part of
+   * the reader's choice that a registry can actually check itself against.
+   */
+  country?: string
 }
 
 /**

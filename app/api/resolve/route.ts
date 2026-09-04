@@ -371,24 +371,31 @@ function toFound(id: string, entity: Entity, countries: Record<string, string>):
   const lei = firstString(entity, LEGAL_ENTITY_IDENTIFIER)
   const cik = firstString(entity, CENTRAL_INDEX_KEY)
 
+  const countryCode = countryId === undefined ? null : (countries[countryId] ?? null)
   return [{
     candidate: {
       name,
       domain,
       description: entity.descriptions?.en?.value ?? entity.descriptions?.mul?.value ?? null,
-      country: countryId === undefined ? null : (countries[countryId] ?? null),
+      country: countryCode,
       source: 'wikidata',
       sourceUrl: ENTITY_PAGE + id,
     },
     // The identifiers are why resolution runs before the investigation: an LEI settles for
     // GLEIF the question its own name search cannot, and a CIK reaches EDGAR for a company
     // that files without being listed. Carried only when Wikidata actually states them.
+    //
+    // The country travels for the same reason and matters more often, because most companies
+    // hold no LEI: it is the part of the settled identity a registry can check itself against,
+    // and without it GLEIF went back to guessing between the world's identically-named
+    // companies (D79).
     input: {
       name,
       domain,
       wikidataId: id,
       ...(lei === undefined ? {} : { lei }),
       ...(cik === undefined ? {} : { cik }),
+      ...(countryCode === null ? {} : { country: countryCode }),
     },
   }]
 }

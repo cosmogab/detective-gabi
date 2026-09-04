@@ -109,6 +109,7 @@ export default async function Home({
   const identity = {
     ...(first(params.wikidataId) === '' ? {} : { wikidataId: first(params.wikidataId) }),
     ...(first(params.lei) === '' ? {} : { lei: first(params.lei) }),
+    ...(first(params.country) === '' ? {} : { country: first(params.country) }),
     ...(first(params.cik) === '' ? {} : { cik: first(params.cik) }),
   }
   const asked = domain !== '' ? domain : query

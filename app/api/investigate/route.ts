@@ -56,6 +56,8 @@ const requestSchema = z.object({
    */
   wikidataId: z.string().trim().max(32).optional(),
   lei: z.string().trim().max(20).optional(),
+  /** The country the reader settled on, so a registry checks instead of guessing (D79). */
+  country: z.string().trim().max(2).optional(),
   cik: z.string().trim().max(20).optional(),
 })
 
@@ -86,7 +88,12 @@ function clientIp(headers: Headers): string {
  * a provider would dutifully search for.
  */
 function providerInputFrom(body: z.infer<typeof requestSchema>): ProviderInput {
-  const identifiers = { wikidataId: body.wikidataId, lei: body.lei, cik: body.cik }
+  const identifiers = {
+    wikidataId: body.wikidataId,
+    lei: body.lei,
+    cik: body.cik,
+    country: body.country,
+  }
   const stated = Object.entries(identifiers).filter(([, value]) => (value ?? '') !== '')
   return {
     name: body.name,

@@ -39,7 +39,12 @@ function context(over: Partial<Ctx> = {}): Ctx {
   }
 }
 
-const company = (name: string): ProviderInput => ({ name, domain: null })
+/**
+ * The input an investigation hands a provider. `country` is what resolution settled — the card a
+ * reader picked, or the winner it judged unmistakable — and GLEIF now requires it, because a name
+ * alone cannot tell the world's identically-named companies apart (D79).
+ */
+const company = (name: string, country = 'US'): ProviderInput => ({ name, domain: null, country })
 
 type Route = { when: string; status?: number; body?: unknown; throws?: string }
 type Call = { url: string; headers: Record<string, string> }
@@ -244,7 +249,7 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
   it('takes the one record whose legal name is the company, not the first one returned', async () => {
     serve([{ when: 'lei-records', body: gleifShopify }])
 
-    const result = await gleif.run(company('Shopify'), context())
+    const result = await gleif.run(company('Shopify', 'CA'), context())
 
     // "SHOPIFY INC." is the match; SHOPIFY INTERNATIONAL LIMITED and four Shopify ETFs are not.
     expect(location(result.fields.location)).toEqual({ formatted: 'Ottawa, ON, CA', country: 'CA' })
@@ -260,18 +265,28 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
     expect(location(result.fields.location)?.formatted).toBe('Santa Clara, CA, US')
   })
 
-  it('refuses to answer when two live companies carry the name, and names both places', async () => {
+  it('sets a foreign namesake aside once the country is settled', async () => {
     serve([{ when: 'lei-records', body: gleifStripe }])
 
-    const result = await gleif.run(company('Stripe'), context())
+    const result = await gleif.run(company('Stripe', 'US'), context())
 
     // The recorded search holds 57 records. Two are named exactly Stripe: one in Belgium and
-    // Stripe, LLC in South San Francisco. Taking either would put one company's address under
-    // another's name — with a registry's badge on it.
+    // Stripe, LLC in South San Francisco. The Belgian one cannot be the company a reader picked
+    // in the United States, so it is set aside and the remaining record answers.
+    expect(location(result.fields.location)?.formatted).toContain('South San Francisco')
+  })
+
+  it('refuses a name search outright when no country was settled', async () => {
+    serve([])
+
+    const result = await gleif.run({ name: 'Stripe', domain: null }, context())
+
+    // Measured before this rule: "Basecamp" resolved to a Swedish entity and "Notion" to a
+    // Finnish one, each shown as `confirmed`, because exactly one live record happened to carry
+    // the name. One live match is not an identification. Nothing is even fetched.
     expect(result.fields.location).toMatchObject({ found: false, value: null })
     expect(result.log[0]?.status).toBe('empty')
-    expect(result.log[0]?.detail).toContain('Hoeilaart')
-    expect(result.log[0]?.detail).toContain('South San Francisco')
+    expect(result.log[0]?.detail).toContain('does not identify')
   })
 
   it('never settles for the first record the API happens to return', async () => {
@@ -283,8 +298,9 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
     // The record the API puts first is a Belgian company that happens to be called Stripe.
     expect(first?.legalName?.name).toBe('STRIPE')
     expect(first?.headquartersAddress?.city).toBe('Hoeilaart')
-    // Taking it would move Stripe to Belgium. The provider takes nothing instead.
-    expect(location(result.fields.location)).toBeNull()
+    // Taking it would move Stripe to Belgium. The settled country excludes it, and the record
+    // that answers is the one further down the page.
+    expect(location(result.fields.location)?.formatted).toContain('South San Francisco')
   })
 
   it('finds the company wherever the API happens to put it in the page', async () => {
@@ -292,7 +308,7 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
     // first. Nothing about which record is the company depends on the order they arrive in.
     serve([{ when: 'lei-records', body: { ...gleifShopify, data: [...gleifShopify.data].reverse() } }])
 
-    const result = await gleif.run(company('Shopify'), context())
+    const result = await gleif.run(company('Shopify', 'CA'), context())
 
     expect(location(result.fields.location)).toEqual({ formatted: 'Ottawa, ON, CA', country: 'CA' })
   })
@@ -312,7 +328,7 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
     }
     serve([{ when: 'lei-records', body: lapsed }])
 
-    const result = await gleif.run(company('Shopify'), context())
+    const result = await gleif.run(company('Shopify', 'CA'), context())
 
     // A lapsed renewal is a form left unfiled, not a company that stopped existing or an
     // address that was withdrawn. The record still carries its own asOf, which is what tells
@@ -325,7 +341,8 @@ describe('GLEIF decides whether a record is the company, and declines when it ca
 
     const result = await gleif.run(company('Fly.io'), context())
 
-    expect(result.log[0]).toMatchObject({ status: 'empty', detail: 'no record found' })
+    // The detail names the country, because that is now half of what was asked for.
+    expect(result.log[0]).toMatchObject({ status: 'empty', detail: 'no record found in US under that name' })
     expect(result.fields.location).toEqual({
       found: false,
       value: null,
@@ -579,7 +596,7 @@ describe('a source that fails says so, and never that it holds nothing', () => {
   it('reports a throttled GLEIF as failed', async () => {
     serve([{ when: 'lei-records', status: 503 }])
 
-    const result = await gleif.run(company('Shopify'), context())
+    const result = await gleif.run(company('Shopify', 'CA'), context())
 
     expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'HTTP 503' })
   })

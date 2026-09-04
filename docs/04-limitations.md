@@ -38,25 +38,14 @@ unconfigured deployment sits in one bucket and can be blocked together — one s
 measured being refused with 403 while another returned 200 from the same machine. Setting
 `EDGAR_USER_AGENT` moves a deployment into its own bucket.
 
-**GLEIF answers about the wrong company, confidently, for ordinary names.** This is the most
-serious thing open in the repo. GLEIF is matched by legal name with trailing legal forms stripped,
-and when the company asked about has no LEI under that exact name while a same-named foreign entity
-does, the foreign one wins — and it wins the primary slot as `confirmed`, because a registry is the
-highest tier. Measured on four well-known companies through the shipped provider:
-
-| query | GLEIF answers | truth |
-|---|---|---|
-| Basecamp | Stockholm, SE `confirmed` | Chicago |
-| Notion | Helsinki, FI `confirmed` | San Francisco |
-| Figma | San Francisco, US `confirmed` | correct |
-| Linear | no record found | honest |
-
-Two of four. The domain is available to the provider and unused, because GLEIF records do not carry
-one; nothing checks that the matched entity has any relation to the company asked about. Identity
-resolution does not rescue it — Wikidata holds no LEI for Basecamp, so the ordinary path
-(`?resolve=` then pick) produces the same wrong answer. What would close it: refuse unless the match
-is corroborated by something outside the name — a country agreeing with another source, or an LEI
-supplied by resolution — and treat a bare name match as too weak for a registry's confidence.
+**A registry answers only about a company whose country is settled.** GLEIF publishes no domain,
+so a name search cannot tell the world's identically-named companies apart. It used to try:
+measured through the shipped provider, `Basecamp` resolved to a Swedish entity and `Notion` to a
+Finnish one, each shown as `confirmed` — two of four ordinary names, wrong with the report's
+strongest badge. It now answers only when the country settled upstream matches the record's, or
+when it is handed an LEI. The cost is real and is the point: an investigation reached by a direct
+URL, with no country and no LEI, gets nothing from GLEIF rather than a guess. Companies whose
+country resolution cannot establish lose the source entirely.
 
 **GLEIF cannot identify every company by name.** "Stripe" matches 57 active records, one of them
 a Belgian company legally named exactly STRIPE. Rather than guess, GLEIF answers nothing and names
