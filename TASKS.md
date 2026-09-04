@@ -140,6 +140,49 @@ CI running `npm test` on push, Vercel deploy, live URL in the README, fixtures f
 
 ---
 
+## The home page
+
+T1–T21 built a product whose front door does not work. The field only matches the four
+recordings exactly and refuses everything else; the same four companies are listed twice for two
+different gestures; and the five paragraphs that say why any of this is worth anything are folded
+shut at the bottom. These three tasks are that screen, and only that screen.
+
+### T22 — Put the home page in the dark until the lamp finds it
+A fixed overlay covers the viewport, pierced by a soft circle that follows the pointer — the
+page is underneath the whole time, found rather than revealed. The beam appears on the first
+pointer move, or after 2s if nothing moves; on touch the finger carries it. A click, a touch
+release or any key expands the hole away in under a second. The overlay is declared in the markup
+but only displayed under `@media (scripting: enabled) and (prefers-reduced-motion: no-preference)`,
+so no JavaScript, reduced motion, or an unfamiliar browser means a lit page with no flash and
+nothing gated behind the effect.
+**Done when** the page renders lit with JavaScript disabled and under reduced motion, a unit test
+holds the beam's state machine, a test proves the overlay sits behind both media queries, and the
+scroll lock is released on every exit path.
+**Commit** `feat(ui): put the home page in the dark until the lamp finds it`
+
+### T23 — Make the home field search instead of refusing
+The field stops being an index. A query matching one of the four recordings still opens it with
+no network call — that is what makes the demo work when a source is down (D5) — and everything
+else goes to identity resolution instead of `No search ran`, which disappears. A pure
+`homeTarget(query)` carries the decision. D28 chose the word **Open** precisely because the field
+was a lookup; it is not one any more, so D28 is superseded rather than quietly contradicted.
+**Done when** a test proves `stripe` opens the recording with no provider called, `Airbnb` reaches
+resolution, case and spacing change nothing, and `No search ran` is gone from the tree.
+**Commit** `feat(ui): make the home field search instead of refusing`
+
+### T24 — Move the examples into the explanation they demonstrate
+`Investigate one` and the `also on record` line go: four companies listed twice, for two
+gestures, with nothing saying which to take. They move inside `How it works`, each beside the
+rule it proves — Stripe under *disagreements are shown*, because GLEIF and Wikidata do not agree
+on its head office; Fly.io under *nothing found is a finding*, because it is the sparse one. The
+block stops being a folded `<details>` and becomes an open section: it is the product's argument
+and it was hidden.
+**Done when** each company appears exactly once on the page, inside the claim it illustrates, and
+a render test proves it for all four.
+**Commit** `feat(ui): move the examples into the explanation they demonstrate`
+
+---
+
 ## Cut line
 
 **Ships no matter what:** T1–T10, T14, T16, T17, T18, T20, T21.
