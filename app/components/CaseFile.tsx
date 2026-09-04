@@ -131,9 +131,9 @@ export function CaseFile(props: { report: Report; realHref?: string }) {
             <div className="overflow-x-auto border-b border-b-rule">
               <table className="w-full min-w-ledger table-fixed">
                 <colgroup>
-                  <col className="w-[26%]" />
-                  <col className="w-[38%]" />
-                  <col className="w-[36%]" />
+                  <col className="w-[22%]" />
+                  <col className="w-[43%]" />
+                  <col className="w-[35%]" />
                 </colgroup>
                 <thead>
                   <tr>

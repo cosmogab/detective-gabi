@@ -37,6 +37,10 @@
   --text-meta--line-height: 1.45;
   --text-ledger: 0.875rem;
   --text-ledger--line-height: 1.55;
+  /* The answer. A case file exists to state three values and name the people who decide, and
+     until now every one of them was set at the same size as the words labelling it. */
+  --text-answer: 1.1875rem;
+  --text-answer--line-height: 1.4;
 
   --tracking-label: 0.09em;
 
@@ -76,6 +80,17 @@
   line-height: 1.45;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
+}
+
+/*
+ * A value a source reported, given the size of the thing the page is for. Same face and same
+ * figures as `datum` — it is the same kind of writing, said louder.
+ */
+@utility answer {
+  font-family: var(--font-mono);
+  font-size: var(--text-answer);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
 }
 
 @utility datum {

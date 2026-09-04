@@ -1245,4 +1245,28 @@ the floor, and the last part is the one that earns it.
 
 ---
 
+## D87 — The answer is set at the size of the thing the page is for
+
+**Context.** The case file existed to state three values and name the people who decide, and every
+one of them was set at `--text-ledger` — the same size as the words labelling it, the same size as
+the provenance beside it, the same size as everything else on the page. A reader scanning it found
+no answer, only a uniform grey field with an answer somewhere in it.
+
+**Choice.** A fourth size, `--text-answer` at 1.1875rem, and an `answer` utility that is `datum`
+in every respect but scale: same mono face, same tabular figures, because it is the same kind of
+writing — a value exactly as a source recorded it — said louder. It carries the three field values,
+the conflicts, and a person's name. Rows breathe at `py-4` instead of `py-2.5`, and the value
+column takes the width back from the field names, which never needed it.
+
+**A conflict keeps the answer's size.** The temptation was to shrink it into a footnote, and the
+reason not to is the one already written on the row: two readings of one field only compare
+character by character if they are set the same. South San Francisco and San Francisco are told
+apart by weight and by the word `also`, not by one of them being smaller.
+
+**Consequence.** `No evidence found` stays in our sans face at its old size, which is now the
+right relationship: a finding about the absence of a value is not a value, and it should not be
+the loudest thing on a sparse report. Verified on Stripe and on Fly.io, the sparse one.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

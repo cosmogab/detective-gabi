@@ -80,7 +80,7 @@ export const CONFIDENCE: Record<Confidence, { rule: string; value: string; word:
 export const NO_RULE = 'border-l-4 border-l-transparent'
 
 /** The row rhythm and the hairline that separates two fields. */
-export const CELL = 'border-t border-t-rule py-2.5 align-baseline'
+export const CELL = 'border-t border-t-rule py-4 align-baseline'
 
 export function Sep() {
   return <span aria-hidden="true" className="select-none text-faint">·</span>
@@ -190,7 +190,7 @@ export function FieldRow<T>(props: {
           <span className="label text-muted">{label}</span>
         </th>
         <td className={`${CELL} pr-4`}>
-          <span className={`datum ${tone.value}`}>{format(field.value)}</span>
+          <span className={`answer ${tone.value}`}>{format(field.value)}</span>
         </td>
         <td className={`${CELL} pr-3`}>
           <Provenance
@@ -207,13 +207,13 @@ export function FieldRow<T>(props: {
           it is one field with two readings, not two fields. */}
       {field.conflicts.map((conflict, i) => (
         <tr key={`${conflict.source}-${i}`}>
-          <th scope="row" className={`${NO_RULE} py-1 pr-4 pl-3 text-left align-baseline font-normal`}>
+          <th scope="row" className={`${NO_RULE} pt-0 pb-3 pr-4 pl-3 text-left align-baseline font-normal`}>
             <span className="label text-faint">also</span>
           </th>
-          <td className="py-1 pr-4 align-baseline">
-            <span className="datum text-muted">{format(conflict.value)}</span>
+          <td className="pt-0 pb-3 pr-4 align-baseline">
+            <span className="answer text-muted">{format(conflict.value)}</span>
           </td>
-          <td className="py-1 pr-3 align-baseline">
+          <td className="pt-0 pb-3 pr-3 align-baseline">
             <Provenance
               asOf={conflict.asOf}
               source={conflict.source}

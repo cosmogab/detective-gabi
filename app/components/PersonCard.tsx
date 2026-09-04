@@ -20,10 +20,10 @@ export function PersonCard(props: { person: Person }) {
   const tone = CONFIDENCE[person.confidence]
 
   return (
-    <li className={`${tone.rule} border-t border-t-rule py-3 pl-3`}>
-      <p className={`datum ${tone.value}`}>{person.name}</p>
+    <li className={`${tone.rule} border-t border-t-rule py-4 pl-3`}>
+      <p className={`answer ${tone.value}`}>{person.name}</p>
       {person.title !== null ? (
-        <p className="font-sans text-sm text-muted">{person.title}</p>
+        <p className="mt-0.5 font-sans text-sm text-muted">{person.title}</p>
       ) : null}
 
       {/* A null email renders nothing at all. An empty slot would itself be a claim. */}
