@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { StoredAnswer } from './Banners'
 import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
-import { FLOOR_MS, Progress, useMinimumHold } from './Progress'
+import { Progress, floorFor, useMinimumHold } from './Progress'
 import { requestHeaders } from './KeysModal'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
@@ -108,6 +109,10 @@ export function LiveInvestigation(props: {
   identity?: { wikidataId?: string; lei?: string; cik?: string }
   /** Built by the page: URLs are assembled in one place and cross the boundary as data. */
   refreshHref: string
+  /** The header, rendered by the server page and handed down. It is not shown while the bar is
+   *  running: there is nothing to search for yet, and a field beside a wait invites abandoning
+   *  it. It comes back with the report, which is when searching again means something. */
+  masthead?: ReactNode
 }) {
   const { name, domain, refresh = false, demo = null, refreshHref } = props
   // Read into strings so the effect can depend on the values rather than on a fresh object
@@ -175,14 +180,16 @@ export function LiveInvestigation(props: {
     return () => controller.abort()
   }, [name, domain, refresh, demo, wikidataId, lei, cik])
 
-  // A stored answer investigated nothing, so it has no progression to show and no floor to
-  // serve: it goes straight to the document under the line that says where it came from.
-  const holding = useMinimumHold(shownAt, report?.cached === true ? 0 : FLOOR_MS)
+  // One second per part, so no source is drawn and swept away in the same breath. A stored
+  // answer investigated nothing, so it has no progression to show and no floor to serve: it goes
+  // straight to the document under the line that says where it came from.
+  const holding = useMinimumHold(shownAt, report?.cached === true ? 0 : floorFor(sources))
 
   if (report !== null && !holding) {
     // A stored answer says so, and offers the gesture that replaces it.
     return (
       <>
+        {props.masthead}
         {report.cached ? (
           <StoredAnswer
             kind="Cached"
@@ -204,6 +211,7 @@ export function LiveInvestigation(props: {
         domain={domain}
         sources={sources}
         events={events}
+        shownAt={shownAt}
         // Not `answered === announced`: a run that died at three of six has finished, and a
         // magnifier still sweeping over it would claim work that stopped.
         running={failure === null && report === null}

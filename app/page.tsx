@@ -169,8 +169,8 @@ export default async function Home({
   if (target !== '') {
     return (
       <main>
-        <Masthead defaultQuery={asked} />
         <LiveInvestigation
+          masthead={<Masthead defaultQuery={asked} />}
           name={target}
           domain={domain === '' ? null : domain}
           refresh={first(params.refresh) !== ''}

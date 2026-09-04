@@ -1196,4 +1196,39 @@ at 390px.
 
 ---
 
+## D86 — One bar, one step written inside it, and a pacing that lags the facts
+
+**Context.** D85 drew the wait as one box per source with the count above and the names beneath.
+Rendering it showed the flaw: on Stripe, Wikidata and GLEIF come back 18ms apart, so two boxes
+appear in the same frame and the reader learns nothing about either. Three separate blocks also
+read as three objects rather than as one thing filling.
+
+**Choice.** One bar, cut into as many parts as the run announced (D84), with the step written
+**inside** it — Wikidata, then GLEIF, then SEC EDGAR — and the dots after it saying that one is
+still out there. No count above, no captions below. The word is drawn twice, in ink over the paper
+and in paper clipped to the fill, so it stays legible wherever the black has reached: one string,
+two colours, no blend mode.
+
+**The departure, stated plainly.** Parts are drawn at most one per second. Two sources answering
+together are therefore told one after the other, and a part is drawn **later** than its source
+answered. This is a real break from D8's letter, so it is bounded by a rule that keeps its spirit:
+**the display lags the facts and never leads them.** `drawable` is the smaller of what answered
+and what the clock allows, so no part is ever drawn for a source that has not reported; the order
+is arrival order, so the pacing slows the telling without reordering it; and the ledger underneath
+keeps every measurement exactly as it happened — 620ms and 638ms, not one second each. What is
+paced is the drawing, never the record.
+
+**And the one channel that is not paced.** The `role="status"` region announces the count as it
+actually stands, not as it is being drawn. A reader who cannot see the bar would otherwise be put
+a second behind the facts by a decision made entirely for the eye.
+
+**Consequence.** The floor becomes one second per part rather than a flat 2.5s, so no source is
+drawn and swept away in the same breath. A failed part is drawn in `alert`, which keeps a failure
+visible now that there are no captions to carry the word. The masthead's search field is gone
+while the bar runs — there is nothing to search for yet, and a field beside a wait invites
+abandoning it — and returns with the report, which is when searching again means something.
+Verified: 0 fields during, 1 after.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

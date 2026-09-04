@@ -2,23 +2,23 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import {
-  MAXIMS,
   Progress,
   answeredCount,
-  cellsOf,
-  fillRatio,
-  nextMaxim,
+  arrivalOrder,
+  displayOrder,
+  drawable,
+  floorFor,
   remainingHold,
 } from '@/app/components/Progress'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 
 /**
- * The wait, and the four ways its bar could lie.
+ * The wait: one bar cut into as many parts as the run has sources, drawn a part at a time.
  *
- * The bar is `answered / announced` and nothing else moves it, so what is worth proving is the
- * count — every case where the obvious implementation would put the bar somewhere that is not
- * true. A bar drifting on a timer is what D8 forbids; a bar stuck at five sixths on a finished
- * run would be the same fault told quietly.
+ * Two things are worth proving. The count, because every way it could be wrong is a bar showing
+ * a source that did not answer or hiding one that did. And the pacing, because it is the one
+ * place this screen deliberately departs from the clock: it must lag the facts and never lead
+ * them (D86).
  */
 
 const ALL: readonly Source[] = ['wikidata', 'gleif', 'edgar']
@@ -29,11 +29,9 @@ function said(source: Source, status: LogEventStatus = 'ok'): LogEvent {
 
 describe('the count is of sources, not of lines', () => {
   it('counts a source once however many lines it wrote', () => {
-    // `ProviderResult.log` is an array, so one provider may return several. Counting lines
-    // would take the bar past its own denominator the first run that used that freedom.
-    const twice = [said('wikidata'), said('wikidata', 'empty')]
-    expect(answeredCount(ALL, twice)).toBe(1)
-    expect(fillRatio(ALL, twice)).toBeCloseTo(1 / 3)
+    // `ProviderResult.log` is an array, so one provider may return several. Counting lines would
+    // take the bar past its own denominator the first run that used that freedom.
+    expect(answeredCount(ALL, [said('wikidata'), said('wikidata', 'empty')])).toBe(1)
   })
 
   it('counts a skipped source as answered', () => {
@@ -45,129 +43,111 @@ describe('the count is of sources, not of lines', () => {
 
   it('ignores a line that is not about a source', () => {
     // The rate-limit notice is a line in the log, not a provider answering.
-    const notice: LogEvent = { step: 'Rate limit', ms: 0, status: 'skipped' }
-    expect(answeredCount(ALL, [notice])).toBe(0)
+    expect(answeredCount(ALL, [{ step: 'Rate limit', ms: 0, status: 'skipped' }])).toBe(0)
   })
 
   it('ignores a source the run never announced', () => {
     // The denominator is the announcement, so a source outside it cannot move a bar that never
-    // promised it — otherwise the count runs past its own total.
+    // promised it.
     expect(answeredCount(ALL, [said('hunter')])).toBe(0)
   })
+})
 
-  it('reaches full when a run announced the same source twice', () => {
-    // Otherwise the bar sits permanently one short on a finished run, which is a bar lying
-    // about the very thing it exists to report.
-    const announced: readonly Source[] = ['wikidata', 'wikidata', 'gleif']
-    expect(fillRatio(announced, [said('wikidata'), said('gleif')])).toBe(1)
+describe('the parts are drawn in the order the sources answered', () => {
+  it('follows arrival, not the order they were announced', () => {
+    // The pacing slows the telling; it must not reorder it. A part drawn for Wikidata while only
+    // EDGAR has answered would be the bar naming the wrong source.
+    expect(arrivalOrder(ALL, [said('edgar'), said('wikidata')])).toEqual(['edgar', 'wikidata'])
   })
 
-  it('is zero before the run has said what it will ask', () => {
-    // Any other width would be a guess, and the whole screen is built on not guessing.
-    expect(fillRatio([], [])).toBe(0)
+  it('puts the sources still out there after the ones that spoke', () => {
+    expect(displayOrder(ALL, [said('edgar')])).toEqual(['edgar', 'wikidata', 'gleif'])
+  })
+
+  it('names every announced source exactly once, before anything has answered', () => {
+    // This is what the bar divides itself by on the first frame.
+    expect(displayOrder(ALL, [])).toEqual(['wikidata', 'gleif', 'edgar'])
+    expect(displayOrder(['wikidata', 'wikidata', 'gleif'], [])).toEqual(['wikidata', 'gleif'])
   })
 })
 
-describe('the boxes', () => {
-  it('stay in the order the run named them, whatever order the answers arrive in', () => {
-    const cells = cellsOf(ALL, [said('edgar'), said('wikidata')])
-    expect(cells.map((cell) => cell.source)).toEqual(['wikidata', 'gleif', 'edgar'])
-    expect(cells.map((cell) => cell.status)).toEqual(['ok', null, 'ok'])
+describe('the pacing lags the facts and never leads them', () => {
+  it('draws no more parts than sources that answered, however long it has been', () => {
+    // An hour on screen does not conjure an answer. This is the half of the rule that keeps the
+    // bar honest; the other half only keeps it readable.
+    expect(drawable(1, 60_000, 1_000)).toBe(1)
+    expect(drawable(0, 60_000, 1_000)).toBe(0)
   })
 
-  it('show the failure when a source wrote one, whatever else it wrote', () => {
-    // The band is a summary, and the summary that loses the failure is the only one it may not
-    // be. The ledger below still prints every line in the order it arrived.
-    const cells = cellsOf(ALL, [said('gleif', 'ok'), said('gleif', 'failed')])
-    expect(cells.find((cell) => cell.source === 'gleif')?.status).toBe('failed')
+  it('draws no more than one part per second, however many answered at once', () => {
+    // Wikidata and GLEIF come back 18ms apart on Stripe. Both at once is accurate and
+    // unreadable: two parts appear in one frame and the reader learns nothing about either.
+    expect(drawable(3, 0, 1_000)).toBe(0)
+    expect(drawable(3, 999, 1_000)).toBe(0)
+    expect(drawable(3, 1_000, 1_000)).toBe(1)
+    expect(drawable(3, 2_500, 1_000)).toBe(2)
+    expect(drawable(3, 9_000, 1_000)).toBe(3)
   })
 
-  it('names a source with our word for it, the one the report prints', () => {
-    expect(cellsOf(['edgar'], []).map((cell) => cell.name)).toEqual(['SEC EDGAR'])
-  })
-})
-
-describe('the maxim never repeats itself', () => {
-  it('cannot return the line already on screen, at any roll', () => {
-    // Structural rather than statistical: the current index is excluded before the roll, so
-    // there is no roll that repeats. Re-rolling would make it true only on average.
-    for (let current = 0; current < MAXIMS.length; current += 1) {
-      for (const roll of [0, 0.25, 0.5, 0.75, 0.999, 1]) {
-        expect(nextMaxim(current, roll)).not.toBe(current)
-      }
-    }
+  it('gives the whole wait one second per part, so none is drawn and swept away at once', () => {
+    expect(floorFor(ALL)).toBe(3_000)
+    expect(floorFor(['wikidata', 'wikidata'])).toBe(1_000)
+    expect(floorFor([])).toBe(0)
   })
 
-  it('stays inside the list at the ends of the roll', () => {
-    expect(nextMaxim(0, 0)).toBeGreaterThanOrEqual(0)
-    expect(nextMaxim(0, 1)).toBeLessThan(MAXIMS.length)
-  })
-
-  it('claims no action, in any of the ten', () => {
-    // The temptation under a progress bar is narration, and every word of it would be the app
-    // inventing work. Nothing cross-references, analyses, scans or contacts anything.
-    for (const maxim of MAXIMS) {
-      expect(maxim).not.toMatch(/ing\b.*(archive|record|registr|source|filing)/i)
-      expect(maxim.toLowerCase()).not.toContain('please wait')
-    }
-    expect(MAXIMS).toHaveLength(10)
-    expect(new Set(MAXIMS).size).toBe(10)
-  })
-})
-
-describe('the floor', () => {
-  it('is measured from when the wait appeared, not from when the run finished', () => {
-    // Holding a further 2.5s after a nine-second run would tax the reader for nothing.
-    expect(remainingHold(1_000, 1_000, 2_500)).toBe(2_500)
-    expect(remainingHold(1_000, 2_000, 2_500)).toBe(1_500)
-    expect(remainingHold(1_000, 9_000, 2_500)).toBe(0)
-  })
-
-  it('is nothing at all when the caller passes none', () => {
+  it('measures the floor from when the wait appeared, not from when the run finished', () => {
+    expect(remainingHold(1_000, 1_000, 3_000)).toBe(3_000)
+    expect(remainingHold(1_000, 2_500, 3_000)).toBe(1_500)
+    expect(remainingHold(1_000, 9_000, 3_000)).toBe(0)
     // What a cached report passes: nothing was investigated, so there is no progression to hold.
     expect(remainingHold(1_000, 1_000, 0)).toBe(0)
   })
 })
 
 describe('what is on the screen', () => {
-  const render = (sources: readonly Source[], events: readonly LogEvent[]) =>
+  const render = (sources: readonly Source[], events: readonly LogEvent[], shownAt = Date.now()) =>
     renderToStaticMarkup(
       createElement(Progress, {
         name: 'Stripe',
         domain: 'stripe.com',
         sources,
         events,
+        shownAt,
         running: true,
       }),
     )
 
-  it('announces the count and hides the maxim, so a reader hears the fact and not the mood', () => {
-    const html = render(ALL, [said('wikidata')])
+  it('writes the step inside the bar and nothing above it', () => {
+    const html = render(ALL, [])
+    expect(html).toContain('Wikidata')
+    // No counter: the ask was the step, not the tally.
+    expect(html).not.toMatch(/\d+\s*\/\s*\d+/)
+  })
+
+  it('cuts the bar into one part per announced source', () => {
+    // Six announced sources, six parts, from the first frame — the divisions are the
+    // announcement (D84), not something that grows as answers arrive.
+    const six: readonly Source[] = ['wikidata', 'gleif', 'edgar', 'abstract', 'hunter', 'website']
+    expect(render(six, []).split('origin-left').length - 1).toBe(6)
+    expect(render(ALL, []).split('origin-left').length - 1).toBe(3)
+  })
+
+  it('tells a screen reader the count as it stands, not the paced telling', () => {
+    // The pacing is for the eye. Announcing a source a second after it answered would put the
+    // one channel that cannot see the bar behind the facts.
+    const html = render(ALL, [said('wikidata'), said('gleif')])
     expect(html).toContain('role="status"')
-    expect(html).toContain('1 of 3 sources answered.')
-    // The maxim is decoration. It is on the screen for the eye and nowhere else.
-    expect(html).toMatch(/aria-hidden="true"[^>]*>\s*A name is not an identity/)
+    expect(html).toContain('2 of 3 sources answered.')
   })
 
   it('says plainly that it does not yet know what will be asked', () => {
-    // Before the announcement lands there is no denominator, and inventing one is the fault.
-    expect(render([], [])).toContain('not yet announced')
+    expect(render([], [])).toContain('not yet said which sources')
   })
 
   it('never paints a source red for answering that it holds nothing', () => {
-    // `empty` is a working source saying "nothing here", and three of the four recordings
-    // depend on that being said correctly. Only a genuine failure reaches alert.
-    const html = render(ALL, [said('gleif', 'empty'), said('edgar', 'skipped')])
-    expect(html).not.toContain('alert')
-
-    const failed = render(ALL, [said('gleif', 'failed')])
-    expect(failed).toContain('border-l-alert')
-    // And a failure is a rule and a word, the way every other failure in this app is drawn —
-    // not a solid field of red, which would be the loudest mark in the interface.
-    expect(failed).not.toContain('bg-alert')
-  })
-
-  it('marks a source that has not spoken as awaiting, which is our word and is true', () => {
-    expect(render(ALL, [])).toContain('awaiting')
+    // `empty` is a working source saying "nothing here" and `skipped` is one saying it did not
+    // run. Three of the four recordings depend on that being said correctly.
+    expect(render(ALL, [said('gleif', 'empty'), said('edgar', 'skipped')])).not.toContain('alert')
+    expect(render(ALL, [said('gleif', 'failed')])).toContain('bg-alert')
   })
 })

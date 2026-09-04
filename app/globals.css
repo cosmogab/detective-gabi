@@ -183,13 +183,13 @@
 /*
  * The wait, filling in.
  *
- * Both transitions interpolate between two facts — a box a source has answered and one it has
- * not, a tally that has moved from three sixths to four. Neither advances because time passed,
- * which is the thing D8 forbids: take the transition away and the screen still tells the truth,
- * one step later. A reader who asked for less motion gets exactly that.
+ * It interpolates between two facts — a part of the bar a source has answered and one it has
+ * not — and the same for the clip that carries the step's word across the fill. It never
+ * advances on its own, which is the thing D8 forbids: take the transition away and the screen
+ * still tells the truth, one step later. A reader who asked for less motion gets exactly that.
  */
 @utility ledger-advance {
-  transition-property: transform, width;
+  transition-property: transform, width, clip-path;
   transition-duration: 400ms;
   transition-timing-function: ease-out;
 
@@ -199,21 +199,25 @@
 }
 
 /*
- * The maxim arrives rather than switching. Opacity only: a line that also slid would be movement
- * for its own sake. Under reduced motion the words still change — that is content, not motion —
- * and only the fade is dropped.
+ * The dots after the step. They widen and narrow rather than a character being swapped in, so
+ * nothing reflows and the word beside them never shifts. Under reduced motion they hold at three
+ * — the step is still named, it simply stops breathing.
  */
-@keyframes phrase-in {
+@keyframes step-dots {
   from {
-    opacity: 0;
+    width: 0;
   }
   to {
-    opacity: 1;
+    width: 1.6ch;
   }
 }
 
-@utility phrase-in {
-  animation: phrase-in 320ms ease-out;
+@utility step-dots {
+  display: inline-block;
+  width: 1.6ch;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: step-dots 1.2s steps(4, end) infinite alternate;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
