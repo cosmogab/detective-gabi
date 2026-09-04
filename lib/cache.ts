@@ -1,4 +1,5 @@
 import { investigate } from '@/lib/orchestrate'
+import { canRun } from '@/lib/providers/registry'
 import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
@@ -90,22 +91,14 @@ function identityOf(input: ProviderInput): string {
  * had none, `no key available` still in its log.
  *
  * Asking `available` rather than `ctx.key` also means the cache never handles key material at
- * all — it learns that a source could run, never what let it.
+ * all — it learns that a source could run, never what let it. `canRun` is the orchestrator's
+ * own predicate, imported rather than copied, so the two cannot fall out of agreement.
  */
 function reachOf(providers: readonly Provider[], ctx: Ctx): readonly Source[] {
   return providers
     .filter((provider) => canRun(provider, ctx))
     .map((provider) => provider.id)
     .sort()
-}
-
-/** `available` is not supposed to throw. One that does cannot run, exactly as the orchestrator reads it. */
-function canRun(provider: Provider, ctx: Ctx): boolean {
-  try {
-    return provider.available(ctx)
-  } catch {
-    return false
-  }
 }
 
 /** Everything about this run that changes the answer without changing the company. */

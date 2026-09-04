@@ -7,6 +7,7 @@ import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
 import { Progress, REPLAY_STEP_MS, STEP_MS, answeredCount, sourcesIn, useDrawn, useSettled } from './Progress'
 import { requestHeaders } from './KeysModal'
+import type { Frame } from '@/lib/stream'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
 /**
@@ -17,13 +18,6 @@ import type { LogEvent, Report, Source } from '@/lib/types'
  * modules, so the cycle is gone rather than moved, and the hoisting rule D40 relied on is no
  * longer load-bearing here.
  */
-
-/** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
-type Frame =
-  | { type: 'start'; sources: readonly Source[] }
-  | { type: 'event'; event: LogEvent }
-  | { type: 'report'; report: Report }
-  | { type: 'error'; message: string }
 
 /** Where a consumed stream puts what it finds. `LiveInvestigation` passes its setters. */
 export type FrameSink = {

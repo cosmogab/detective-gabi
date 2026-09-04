@@ -1,5 +1,6 @@
 import { fold } from '@/lib/text'
 import { isSameLocation, mergeField, type Observation } from '@/lib/merge'
+import { canRun } from '@/lib/providers/registry'
 import type { Coverage, Ctx, Provider, ProviderInput, ProviderResult } from '@/lib/providers/types'
 import type { CompanyFields, Field, LogEvent, Person, Report, Source } from '@/lib/types'
 
@@ -31,7 +32,7 @@ export async function investigate(
   // `sourcesChecked` below.
   const runnable: Provider[] = []
   for (const provider of providers) {
-    if (isAvailable(provider, ctx)) {
+    if (canRun(provider, ctx)) {
       runnable.push(provider)
       continue
     }
@@ -60,18 +61,6 @@ export async function investigate(
     fetchedAt: ctx.now,
     cached: false,
     simulated: false,
-  }
-}
-
-/**
- * `available` is part of the frozen seam and is not supposed to throw, but a provider that
- * breaks while deciding whether it can run must not take the investigation with it.
- */
-function isAvailable(provider: Provider, ctx: Ctx): boolean {
-  try {
-    return provider.available(ctx)
-  } catch {
-    return false
   }
 }
 
