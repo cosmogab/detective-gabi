@@ -1,0 +1,7 @@
+{
+ "error": {
+  "message": "You have exceeded the requests per second allowed by your current plan. Visit the Abstract dashboard to upgrade for a higher limit.",
+  "code": "too_many_requests",
+  "details": null
+ }
+}
