@@ -190,6 +190,50 @@ the field and that one control and nothing else, and the explanation sits inside
 
 ---
 
+## The wait
+
+The loading screen is the one SPEC §6.2 puts forward — *the loading state **is** the trace* — and
+the one that never had a pass. Today nothing appears until a provider finishes, nothing says how
+many are being asked, and the swap to the case file is abrupt. It also cannot be worked on: the
+fake providers answer instantly, so watching a real wait means spending real quota.
+
+### T25 — Replay a recording at the speed it was recorded
+`?demo=replay`, a fourth mode and the first that is not a failure. The recorded providers each
+wait the duration that step actually took — read from the recording's `log[].ms`, not invented —
+before returning their contribution, and the wait respects `ctx.signal` so a superseded run stops
+sleeping. Stripe spends 7,258 ms on SEC EDGAR, which is the bench. `writeCache` is also guarded by
+`!simulated`, which the comment two lines above it already promises and the code does not do.
+**Done when** a test proves the replayed report is the recording's, that each step waits its own
+recorded duration rather than a constant, that an abort cuts the wait short, and that no simulated
+report reaches the cache.
+**Commit** `feat(demo): replay a recording at the speed it was recorded`
+
+### T26 — The run announces what it is about to ask
+A fourth NDJSON frame, sent before anything else: `{ type: 'start', sources }` — the sources
+actually wired, after the demo mode and the rate limit have had their say. Not scripted progress:
+a fact known at the start, and the only way a client can say *three of six* rather than counting
+into the dark. `readFrames` and `FrameSink` gain the case; `asFrame` already ignored unknown
+types, so nothing older breaks.
+**Done when** a test proves the frame precedes the first event, that `readFrames` hands the list
+to the sink, and that the list matches the providers wired — including shortened when the rate
+limit withheld the keyed ones.
+**Commit** `feat(core): announce the sources a run is about to consult`
+
+### T27 — The loading screen becomes a progression
+The wait takes the screen: the company, a bar, the count, one line beneath it. The bar advances in
+real steps, answered over consulted, sliding between two true values rather than drifting on a
+timer — a `skipped` source counts as answered, because it said it was not running, and a source
+that logs twice counts once. Ten lines in the detective register rotate every 2.5s, never the same
+twice running, none of them claiming an action that is not happening. The screen holds ~2.5s after
+the bar fills, so the finished state can be read; a cached report skips that floor entirely,
+because nothing was investigated and there is no progression to show. The log drops below it —
+still the trace, no longer the lead.
+**Done when** tests hold `progressOf`, the rotation and the floor, and the screen renders under
+`prefers-reduced-motion`.
+**Commit** `feat(ui): make the wait a progression through the sources`
+
+---
+
 ## Cut line
 
 **Ships no matter what:** T1–T10, T14, T16, T17, T18, T20, T21.
