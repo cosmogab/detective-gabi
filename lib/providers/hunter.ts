@@ -2,6 +2,7 @@ import { z } from 'zod'
 import type { Person, PersonEmail } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
 import { fetchJson, safeReasonFrom, since } from '@/lib/net'
+import { counted } from '@/lib/text'
 
 /**
  * Hunter Domain Search. Key required.
@@ -99,7 +100,7 @@ export const hunter: Provider = {
 
       const emails = parsed.data.data.emails ?? []
       // One credit per email returned, so the count is the bill.
-      const cost = `${emails.length} credit${emails.length === 1 ? '' : 's'} used`
+      const cost = `${counted(emails.length, 'credit')} used`
       const answered = (parsed.data.data.domain ?? '').trim().toLowerCase()
 
       // `test-api-key` answers for piedpiper.com whatever domain it is given, so a deployment
@@ -250,9 +251,9 @@ function nothingAsked(step: string, started: number, detail: string): ProviderRe
 function describe(organization: string | null, people: readonly Person[]): string {
   if (people.length === 0) return organization === null ? 'no record found' : `${organization} · nobody listed`
   const verified = people.filter((person) => person.email?.status === 'verified').length
-  const counted = `${people.length} decision maker${people.length === 1 ? '' : 's'}`
-  const proved = `${verified} verified address${verified === 1 ? '' : 'es'}`
-  return organization === null ? `${counted} · ${proved}` : `${organization} · ${counted} · ${proved}`
+  const makers = counted(people.length, 'decision maker')
+  const proved = counted(verified, 'verified address', 'verified addresses')
+  return organization === null ? `${makers} · ${proved}` : `${organization} · ${makers} · ${proved}`
 }
 
 const safeReason = safeReasonFrom([...Object.values(STATUS_DETAIL), 'unreadable response'])

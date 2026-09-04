@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { nameKey, titleCase } from '@/lib/text'
 import { fetchJson, reason, since } from '@/lib/net'
 
 /**
@@ -145,13 +146,13 @@ async function getJson(url: string, ctx: Ctx): Promise<unknown> {
  * the one such company, because two filers sharing a name is not something to resolve by luck.
  */
 async function findCik(name: string, ctx: Ctx): Promise<string | null> {
-  const wanted = compare(name)
+  const wanted = nameKey(name)
   if (wanted === '') return null
 
   const parsed = tickersSchema.safeParse(await getJson(TICKERS, ctx))
   if (!parsed.success) throw new Error('unreadable response')
 
-  const matches = Object.values(parsed.data).filter((row) => compare(row.title) === wanted)
+  const matches = Object.values(parsed.data).filter((row) => nameKey(row.title) === wanted)
   const unique = [...new Set(matches.map((row) => row.cik_str))]
   if (unique.length !== 1) return null
   return String(unique[0]).padStart(10, '0')
@@ -169,7 +170,7 @@ function readLocation(
   const country = countryOf(address)
   // The line starts with the city because that is what merge compares two sources on. Where the
   // ISO code is unknown the country is still printed as EDGAR stated it, so the reader sees it.
-  const line = [readable(city), regionOf(address, country), country ?? countryNameOf(address)]
+  const line = [titleCase(city), regionOf(address, country), country ?? countryNameOf(address)]
   return {
     found: true,
     value: { formatted: line.filter((part) => part !== null && part !== '').join(', '), country },
@@ -234,7 +235,7 @@ function countryNameOf(address: Address): string | null {
  */
 function regionOf(address: Address, country: string | null): string {
   const territory = address.foreignStateTerritory
-  if (territory) return readable(territory)
+  if (territory) return titleCase(territory)
   if (country === 'US' && isUsState(address)) return (address.stateOrCountry ?? '').toUpperCase()
   return ''
 }
@@ -263,30 +264,6 @@ function isoRegions(): Map<string, string> {
   }
   regions = built
   return built
-}
-
-/** Filings shout. A city in capitals is a formatting choice, not how the place is written. */
-function readable(text: string): string {
-  if (text !== text.toUpperCase()) return text
-  return text
-    .toLowerCase()
-    .replace(/(^|[\s'-])([a-z])/g, (_, edge: string, letter: string) => edge + letter.toUpperCase())
-}
-
-const LEGAL_FORMS = [
-  'incorporated', 'inc', 'corporation', 'corp', 'company', 'co', 'limited', 'ltd', 'llc', 'lp',
-  'llp', 'plc', 'nv', 'bv', 'ag', 'gmbh', 'sa', 'sas', 'sarl', 'srl', 'spa', 'ab', 'as', 'oy',
-  'pty', 'pte', 'kk',
-]
-
-function compare(name: string): string {
-  const words = name
-    .toLowerCase()
-    .replace(/[.,]/g, ' ')
-    .split(/\s+/)
-    .filter((word) => word !== '')
-  while (words.length > 1 && LEGAL_FORMS.includes(words[words.length - 1] as string)) words.pop()
-  return words.join(' ')
 }
 
 function noEvidence(fetchedAt: string): NoEvidence {

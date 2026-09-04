@@ -4,6 +4,7 @@ import type { Person } from '@/lib/types'
 import { extract, isSafeReason } from './llm'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
 import { since } from '@/lib/net'
+import { counted } from '@/lib/text'
 
 /**
  * The company's own site. No key of its own, though the extraction step needs one.
@@ -106,7 +107,7 @@ export const website: Provider = {
     const readings = await Promise.all(pages.map((page) => readPeople(page, key, ctx)))
     const failures = readings.flatMap((reading) => (reading.error === null ? [] : [reading.error]))
     const people = dropRepeats(readings.flatMap((reading) => reading.people))
-    const cost = `${pages.length} model call${pages.length === 1 ? '' : 's'}`
+    const cost = counted(pages.length, 'model call')
 
     // Every page failed, so nobody read anything. Reporting `empty` here would say the site
     // names no one on the strength of a model that never answered — a 503 is not a page
@@ -228,11 +229,11 @@ function describe(
   people: readonly Person[],
   failures: readonly string[],
 ): string {
-  const read = `${pages.length} page${pages.length === 1 ? '' : 's'} read`
+  const read = `${counted(pages.length, 'page')} read`
   const found =
     people.length === 0
       ? 'nobody named'
-      : `${people.length} decision maker${people.length === 1 ? '' : 's'}`
+      : counted(people.length, 'decision maker')
   const parts = [read, found]
   // A page we only half read, said out loud rather than left for the reader to wonder about.
   if (pages.some((page) => page.truncated)) parts.push('one page was too long and was truncated')

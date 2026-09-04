@@ -1,3 +1,4 @@
+import { fold } from '@/lib/text'
 import { isSameLocation, mergeField, type Observation } from '@/lib/merge'
 import type { Coverage, Ctx, Provider, ProviderInput, ProviderResult } from '@/lib/providers/types'
 import type { CompanyFields, Field, LogEvent, Person, Report, Source } from '@/lib/types'
@@ -207,7 +208,7 @@ function unionPeople(outcomes: readonly Outcome[], fetchedAt: string): Person[] 
   const byName = new Map<string, Observation<Person>[]>()
   for (const outcome of outcomes) {
     for (const person of outcome.result.people ?? []) {
-      const key = normaliseName(person.name)
+      const key = fold(person.name)
       const held = byName.get(key)
       const observation: Observation<Person> = { value: person, source: person.source }
       if (held === undefined) byName.set(key, [observation])
@@ -245,14 +246,6 @@ function recordsWithAnAddress(records: readonly Observation<Person>[]): Observat
 }
 
 function isSamePerson(a: Person, b: Person): boolean {
-  return normaliseName(a.name) === normaliseName(b.name)
+  return fold(a.name) === fold(b.name)
 }
 
-function normaliseName(name: string): string {
-  return name
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-}

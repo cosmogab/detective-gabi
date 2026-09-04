@@ -1,3 +1,4 @@
+import { looseNameKey } from '@/lib/text'
 import type { Candidate, Resolution, Source } from '@/lib/types'
 
 /**
@@ -14,13 +15,6 @@ import type { Candidate, Resolution, Source } from '@/lib/types'
  * never decides which one the report is about.
  */
 const DECISIVE_SOURCES: readonly Source[] = ['edgar', 'gleif', 'wikidata', 'abstract', 'hunter']
-
-/** Dropped from the end of a name before two names are compared, never from the middle. */
-const LEGAL_FORMS = [
-  'incorporated', 'inc', 'corporation', 'corp', 'company', 'co', 'limited', 'ltd', 'llc',
-  'lp', 'llp', 'plc', 'nv', 'bv', 'ag', 'gmbh', 'sa', 'sas', 'sarl', 'srl', 'spa', 'ab',
-  'as', 'oy', 'pty', 'pte', 'kk',
-]
 
 export function decideResolution(
   query: string,
@@ -54,7 +48,7 @@ export function decideResolution(
  * Anything else is handed back.
  */
 function clearWinner(query: string, candidates: readonly Candidate[]): Candidate | null {
-  const wanted = comparable(query)
+  const wanted = looseNameKey(query)
   if (wanted === '') return null
 
   // Only records that answer for themselves are weighed. A web result can be offered and can
@@ -62,14 +56,14 @@ function clearWinner(query: string, candidates: readonly Candidate[]): Candidate
   // and a key would then make the app resolve less than it does without one.
   const records = candidates.filter(decides)
 
-  const named = records.filter((candidate) => comparable(candidate.name) === wanted)
+  const named = records.filter((candidate) => looseNameKey(candidate.name) === wanted)
   if (named.length > 1) return null
   const exact = named[0]
   if (exact !== undefined) return exact
 
   const only = records.length === 1 ? records[0] : undefined
   if (only === undefined) return null
-  return related(wanted, comparable(only.name)) ? only : null
+  return related(wanted, looseNameKey(only.name)) ? only : null
 }
 
 function decides(candidate: Candidate): boolean {
@@ -129,12 +123,3 @@ function host(domain: string | null): string | null {
 }
 
 /** Case, punctuation and a trailing legal form are how the same name gets written twice. */
-function comparable(name: string): string {
-  const words = name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .split(' ')
-    .filter((word) => word !== '')
-  while (words.length > 1 && LEGAL_FORMS.includes(words[words.length - 1] as string)) words.pop()
-  return words.join(' ')
-}

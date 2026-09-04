@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { nameKey, titleCase } from '@/lib/text'
 import { fetchJson, reason, since } from '@/lib/net'
 
 /**
@@ -20,16 +21,6 @@ const CONFIDENCE = 'confirmed' as const
  * needs more than this many records is a name too common to identify a company by.
  */
 const PAGE_SIZE = 200
-
-/**
- * Legal forms, stripped before two names are compared. "SHOPIFY INC." and "Shopify" are the
- * same company written twice; "SHOPIFY INTERNATIONAL LIMITED" is a different one.
- */
-const LEGAL_FORMS = [
-  'incorporated', 'inc', 'corporation', 'corp', 'company', 'co', 'limited', 'ltd', 'llc', 'lp',
-  'llp', 'plc', 'nv', 'bv', 'ag', 'gmbh', 'sa', 'sas', 'sarl', 'srl', 'spa', 'ab', 'as', 'oy',
-  'pty', 'pte', 'kk',
-]
 
 const addressSchema = z.object({
   city: z.string().nullable().optional(),
@@ -160,7 +151,7 @@ async function byLei(lei: string, ctx: Ctx): Promise<Match> {
  * GLEIF says so rather than guessing.
  */
 async function search(name: string, country: string | undefined, ctx: Ctx): Promise<Match> {
-  const wanted = compare(name)
+  const wanted = nameKey(name)
   if (wanted === '') return { record: null, detail: 'no name to search' }
 
   const wantedCountry = (country ?? '').trim().toUpperCase()
@@ -195,7 +186,7 @@ async function search(name: string, country: string | undefined, ctx: Ctx): Prom
     const here = (entity.headquartersAddress?.country ?? entity.legalAddress?.country ?? '')
       .trim()
       .toUpperCase()
-    return live && operating && here === wantedCountry && compare(entity.legalName?.name ?? '') === wanted
+    return live && operating && here === wantedCountry && nameKey(entity.legalName?.name ?? '') === wanted
   })
 
   if (named.length === 0) {
@@ -226,7 +217,7 @@ function toLocation(record: Record_, fetchedAt: string): Field<Location> {
   // GLEIF writes the region as an ISO 3166-2 code, "US-CA": the country half is already the
   // last segment of the line, so only the subdivision half is worth printing.
   const region = (address.region ?? '').split('-').slice(1).join('-')
-  const line = [readable(city), region, country].filter((part) => part !== '' && part !== null)
+  const line = [titleCase(city), region, country].filter((part) => part !== '' && part !== null)
   const updated = record.attributes.registration?.lastUpdateDate ?? null
   const asOf = updated === null ? null : (/^\d{4}-\d{2}-\d{2}/.exec(updated)?.[0] ?? null)
 
@@ -245,26 +236,7 @@ function toLocation(record: Record_, fetchedAt: string): Field<Location> {
 function place(record: Record_): string {
   const entity = record.attributes.entity
   const address = entity.headquartersAddress ?? entity.legalAddress
-  return `${readable(address?.city ?? '?')} (${address?.country ?? '?'})`
-}
-
-/** Names are compared with their punctuation, case and legal form removed. */
-function compare(name: string): string {
-  const words = name
-    .toLowerCase()
-    .replace(/[.,]/g, ' ')
-    .split(/\s+/)
-    .filter((word) => word !== '')
-  while (words.length > 1 && LEGAL_FORMS.includes(words[words.length - 1] as string)) words.pop()
-  return words.join(' ')
-}
-
-/** Registries shout. A city in capitals is a formatting choice, not how the place is written. */
-function readable(text: string): string {
-  if (text !== text.toUpperCase()) return text
-  return text
-    .toLowerCase()
-    .replace(/(^|[\s'-])([a-z])/g, (_, edge: string, letter: string) => edge + letter.toUpperCase())
+  return `${titleCase(address?.city ?? '?')} (${address?.country ?? '?'})`
 }
 
 function noEvidence(fetchedAt: string): NoEvidence {

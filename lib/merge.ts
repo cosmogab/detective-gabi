@@ -1,3 +1,4 @@
+import { fold } from '@/lib/text'
 import type { Confidence, Conflict, Field, Location, Source } from '@/lib/types'
 
 /** One source's answer for one field, before priority is applied. */
@@ -167,7 +168,7 @@ function asConflict<T>(observation: Observation<T>): Conflict<T> {
  * to honour — a line starting with a street address compares as a different city.
  */
 function cityOf(location: Location): string {
-  return normalise(location.formatted.split(',')[0])
+  return fold(location.formatted.split(',')[0])
 }
 
 /**
@@ -180,14 +181,6 @@ function cityOf(location: Location): string {
  */
 function sameCountry(a: string | null, b: string | null): boolean {
   if (a === null || b === null) return false
-  return normalise(a) === normalise(b)
+  return fold(a) === fold(b)
 }
 
-function normalise(text: string): string {
-  return text
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-}

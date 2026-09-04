@@ -1,3 +1,4 @@
+import { nameKey } from '@/lib/text'
 import {
   FIXTURE_NAMES,
   type FakeFailure,
@@ -32,35 +33,6 @@ export function parseDemoMode(value: string | null | undefined): DemoMode | null
 const SHAPE: readonly Provider[] = fakeProvidersFor('stripe')
 
 /**
- * Legal forms, dropped before two names are compared. "Shopify Inc." and "Shopify" are one
- * company written twice. The same list `lib/providers/gleif.ts` keeps, copied rather than
- * imported: that module belongs to the provider lane, and a demo must not be able to break it.
- */
-const LEGAL_FORMS = [
-  'incorporated', 'inc', 'corporation', 'corp', 'company', 'co', 'limited', 'ltd', 'llc', 'lp',
-  'llp', 'plc', 'nv', 'bv', 'ag', 'gmbh', 'sa', 'sas', 'sarl', 'srl', 'spa', 'ab', 'as', 'oy',
-  'pty', 'pte', 'kk',
-]
-
-/**
- * Names compared with their case, punctuation and legal form removed, so "Fly.io" and "fly.io"
- * are the same company and "Acme Corp" is nobody's alias.
- */
-function compare(name: string): string {
-  const words = name
-    .toLowerCase()
-    .replace(/[.,]/g, ' ')
-    .split(/\s+/)
-    .filter((word) => word !== '')
-  while (words.length > 1) {
-    const last = words[words.length - 1]
-    if (!LEGAL_FORMS.includes(last)) break
-    words.pop()
-  }
-  return words.join(' ')
-}
-
-/**
  * Every name a recording answers to — the company as recorded, the query it was recorded
  * under, its fixture key and its domain. The same set `app/page.tsx` opens a recording by.
  * Built once: re-reading four recordings on every provider run would be work for nothing.
@@ -72,7 +44,7 @@ for (const key of FIXTURE_NAMES) {
     key,
     [key, report.company.name, report.query, report.company.domain ?? '']
       .filter((value) => value !== '')
-      .map(compare),
+      .map(nameKey),
   )
 }
 
@@ -95,7 +67,7 @@ function recordingFor(input: ProviderInput): FixtureName | null {
   const found = fixtureForDomain(domain)
   if (found === null) return null
 
-  const asked = compare(input.name)
+  const asked = nameKey(input.name)
   return ANSWERS_TO.get(found)?.includes(asked) === true ? found : null
 }
 

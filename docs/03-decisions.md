@@ -1388,3 +1388,57 @@ commits that say so, rather than discovered later as drift.
 separately: the two name keys of D94, because they genuinely disagree about `AT&T`, and possibly
 EDGAR's country table, which T31 will only merge if the recordings agree. A duplication kept
 after this pass needs a reason that is not "another lane owns that file", because no lane does.
+
+## D92 — One fetch, and the 404 becomes an argument instead of an accident
+
+**Context.** Four modules had written their own `getJson`, and they had drifted: Wikidata and the
+resolve route throw on a 404, GLEIF and EDGAR return null. Nothing in any of the four said which
+behaviour was intended.
+
+**Options considered.** One reader that always throws, and let the two registries catch. One that
+always returns null, and let the others check. Or keep the difference and name it.
+
+**Choice.** `fetchJson(url, ctx, { headers, emptyOn, detail })`. GLEIF and the SEC answer 404 to
+say they hold no record about a company, which is an answer and belongs in an `empty` log line;
+Wikidata's API answers 404 to a broken request, which belongs in a red one. `emptyOn: 404` is that
+distinction stated per caller.
+
+**Consequence accepted.** A provider that forgets `emptyOn` gets a red line where it wanted an
+empty one — visible in its own log and in its own test, which is where a wrong answer about a
+source should surface.
+
+## D93 — The whitelist is a factory, so the words stay local and the rule does not
+
+**Context.** Three modules each had a `safeReason` with the same shape and a different list, plus a
+fourth spelling in `llm.ts` as a predicate. Three of the fetch sites used the *unfiltered* reason.
+
+**Options considered.** One shared list of allowed messages. Or one shared rule, applied to a list
+each module keeps.
+
+**Choice.** `safeReasonFrom(allowed)` returns the filter; each source passes its own
+`STATUS_DETAIL`. A shared list would have to be wrong for somebody: `403` means "this key may not
+do that" to Hunter and "the extraction key was rejected" to the model.
+
+**Consequence accepted.** The lists are still four, and can still drift — but drifting words are a
+wording problem, where a drifting *rule* is how a key reaches a displayed log line. `lib/net.ts`
+now holds the only spelling of "only our own words leave", and `tests/net.test.ts` holds a case
+that feeds it the exact `TypeError` `fetch` throws when it quotes an invalid header value back.
+
+## D94 — Two name keys, because AT&T is one company and two words
+
+**Context.** Four implementations of "compare two company names", across three algorithms.
+`edgar.ts` and `gleif.ts` were byte-identical, `demo.ts` was the same algorithm written longhand,
+and `resolve.ts` differed: it strips every non-alphanumeric rather than only dots and commas.
+
+**Options considered.** Collapse all four into one. Or keep the difference and give it a name.
+
+**Choice.** `nameKey` strips only `.` and `,`; `looseNameKey` strips everything. They are compared
+against different things. A registry publishes "AT&T Inc." and means the ampersand, so a stated
+name keeps it; a person typing into the field means the company however they punctuate it, so a
+typed name does not. Collapsing them would decide that in silence, in whichever direction the
+surviving copy happened to take.
+
+**Consequence accepted.** Two functions where a reader might expect one, and a test that exists to
+say why: `nameKey('AT&T Inc.')` is `at&t` and `looseNameKey('AT&T Inc.')` is `at t`, asserted side
+by side. A caller now has to know which comparison it is making — which it always did, without
+being told.

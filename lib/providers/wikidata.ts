@@ -2,6 +2,7 @@ import { z } from 'zod'
 import type { CompanyFields, Field, Location, NoEvidence, Person } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
 import { fetchJson, reason, since } from '@/lib/net'
+import { counted } from '@/lib/text'
 
 /**
  * Wikidata. No key, no quota, worldwide. Strong on established companies, thin on startups.
@@ -382,7 +383,7 @@ function describe(
     const when = employees.asOf === undefined ? '' : ` as of ${employees.asOf}`
     parts.push(`${employees.value} employees${when}`)
   }
-  if (peopleCount > 0) parts.push(`${peopleCount} decision maker${peopleCount === 1 ? '' : 's'}`)
+  if (peopleCount > 0) parts.push(counted(peopleCount, 'decision maker'))
   return parts.join(' · ')
 }
 

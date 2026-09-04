@@ -26,132 +26,121 @@ something is loading.
 The brief offered four projects. This one has the only genuinely hard requirement in the set: the
 contact details of the people who decide.
 
-The point, in one line from my own notes before any code:
+From my notes, before any code:
 
 > *"the hardest requirement in the whole brief has no honest free answer, and how a tool behaves
 > when the data isn't there says more than how it behaves when it is."*
 
-Everything about this product falls out of that. Provenance on every value, explicit empty
-states, and a refusal to show a guessed email as a verified one.
+Everything falls out of that — provenance on every value, explicit empty states, and never
+showing a guessed email as a verified one.
 
 ---
 
 ## 2 · How I brainstormed — 0:25
 
 I compared the four before writing anything, and wrote the comparison down. Two were finishable
-and forgettable. The AI data-cleanup one was a close second.
+and forgettable.
 
 The tie-breaker was checking what already exists: the best open-source company researcher
-aggregates this data well and **deliberately stops at founder profiles**. The part the brief
-actually asks for is the part the free tools avoid. That is where the interesting work was.
+aggregates this data well and **deliberately stops at founder profiles**. The part the brief asks
+for is the part the free tools avoid.
 
 ---
 
 ## 3 · The journey I wanted — 0:30
 
-One field in, a sourced case file out. Four questions: where it is, how old it is, how big it is,
-who decides.
+One field in, a sourced case file out: where it is, how old it is, how big it is, who decides.
 
-The design rule is the opposite of the obvious one:
-
-> *"Company data is scattered, uneven and partly behind a paywall. Any tool that hides that ends
-> up inventing. So the product decision is the opposite one: surface the uncertainty."*
+The rule is the opposite of the obvious one — *"any tool that hides the uncertainty ends up
+inventing, so surface it."*
 
 And one step most tools skip: **a name is identified before it is investigated.** Asking six
-sources about "Basecamp" makes each of them guess which Basecamp you meant.
+sources about "Basecamp" makes each of them guess which one you meant.
 
-*(Point at the four proof links in `How it works` — each one is a claim with a report behind it.)*
+*(Point at the four proof links — each is a claim with a report behind it.)*
 
 ---
 
 ## 4 · The stack, and why these APIs — 0:40
 
-Next.js, TypeScript, Tailwind, Vitest. Every external call happens server-side; no key ever
-reaches the browser.
+Next.js, TypeScript, Tailwind, Vitest. Every external call is server-side; no key reaches the
+browser.
 
-The sources were researched before the stack was chosen, and every free tier was checked rather
-than assumed. Three need no key at all — **Wikidata, GLEIF and SEC EDGAR** — and they are the
-backbone: the app produces a real report with zero configuration.
+I checked every free tier rather than assuming. Three need no key at all — **Wikidata, GLEIF and
+SEC EDGAR** — and they are the backbone: a real report with zero configuration.
 
-Worth naming what I checked and rejected, because it shows the landscape is measured: Clearbit's
-free tier is gone, Proxycurl shut down, Google's Custom Search is closed to new customers. There
-is no free LinkedIn API left.
+What I checked and rejected matters too: Clearbit's free tier is gone, Proxycurl shut down,
+Google's Custom Search is closed to new customers. There is no free LinkedIn API left.
 
-And one detail that shaped the code: **Hunter bills one credit per email returned, not per
-request.** A naive search on a large company costs ten credits. Capping it to three executives is
-in the request itself, not a preference.
+And one detail that shaped the code: **Hunter bills per email returned, not per request.** Capping
+it to three executives is in the request itself.
 
 ---
 
 ## 5 · How I built it — 0:40 *(spoken over the running bar)*
 
-The plan was written before the code and is in the repo: a spec, an architecture, and the build
-broken into commits, all committed before the first line.
+The spec, the architecture and the build broken into commits were all written and committed
+before the first line of code.
 
-The seam that made it work is the provider interface. Every source is the same shape — it can
-answer, or say it has nothing, and it never throws at its caller. That one interface is why the
-whole pipeline can be exercised with recordings and no network.
+The seam that made it work is the provider interface: every source has the same shape, can say it
+has nothing, and never throws at its caller. That is why the whole pipeline runs on recordings
+with no network.
 
 Then two AI agents worked in parallel, each in its own git worktree, against a written table of
-which files each one owned. No two ever wrote the same file. I wrote the briefs, did every merge
-myself, and verified every claim against the running app before merging it.
+who owned which file. I wrote the briefs, did every merge, and verified every claim against the
+running app before merging it.
 
 ---
 
 ## 6 · The tests — 0:30 *(still running)*
 
-About 470 tests, and not one of them touches the network — the fixtures are recordings of real
-calls, not illustrations written by hand.
+About 470 tests, none of them touching the network — the fixtures are recordings of real calls,
+not illustrations written by hand.
 
-The three that matter are the honesty guardrails, and they were written **before** the code they
-guard: all sources empty must produce null and never a plausible value; a pattern-derived email is
-never marked verified; an ambiguous name returns candidates instead of picking one.
+The three that matter are the honesty guardrails, written **before** the code they guard: empty
+sources produce null, a pattern-derived email is never verified, an ambiguous name returns
+candidates instead of picking one.
 
-Each carries a positive control, which is the part people forget: a guard that only ever refuses
-would pass the first two tests while making the badge it protects meaningless.
+Each has a positive control — a guard that only ever refuses would pass while making the badge it
+protects meaningless.
 
 ---
 
 ## 7 · The result — 0:45
 
-*(The case file is up. Point at a value, then at the conflict.)*
+*(Case file up. Point at a value, then the conflict.)*
 
 Every value carries where it came from, when it was true, and how much to trust it. Confidence is
-a visual weight, never a number — a percentage invented from a source ranking looks precise and
-is not.
+a visual weight, never a number.
 
-**Then the conflict, and this is the story worth telling.** GLEIF and Wikidata disagree about
-Stripe's head office, and both are shown, aligned so you can compare them character by character.
+**Then the conflict.** GLEIF and Wikidata disagree about Stripe's head office. Both are shown,
+aligned so you can compare them character by character.
 
-And the reason I trust that display: searching a registry by name used to put **Basecamp in
-Stockholm and Notion in Helsinki** — both marked *confirmed*, the strongest badge in the report.
-Two of four ordinary company names, wrong. I found it by testing a company that was not in my own
-examples. The fix was not to add a check: it was to stop letting a source re-decide an identity
-the user had already settled.
-
-That is the failure this app exists to prevent, caught in its own code.
+And why I trust that display: searching a registry by name used to put **Basecamp in Stockholm and
+Notion in Helsinki** — both marked *confirmed*, the strongest badge in the report. Two of four
+ordinary names, wrong. I found it testing a company that was not in my own examples. The fix was
+not a check: it was to stop letting a source re-decide an identity the user had already settled.
 
 ---
 
 ## 8 · What works — 0:25
 
-*(`No evidence found`, then the `No trace found` screen.)*
+*(`No evidence found`, then `No trace found`.)*
 
-The four fields with provenance, merged across six sources with conflicts kept. Identity
-resolution with a grid when a name is ambiguous. A live log where every line is a real server
-event. And the empty states — a field with no source lists the sources that were checked, and a
-company nothing holds says so rather than showing a blank.
+Four fields with provenance, merged across six sources with conflicts kept. A grid when a name is
+ambiguous. A log where every line is a real server event.
 
-An error never blanks the page. Each section fails alone.
+And the empty states: a field with no source lists what was checked. An error never blanks the
+page — each section fails alone.
 
 ---
 
 ## 9 · How to use it — 0:20
 
-Clone it, `npm install`, `npm run dev`. Every key is optional and it works with none of them.
+Clone it, `npm install`, `npm run dev`. Every key is optional and it works with none.
 
-If you have your own keys you paste them in — they stay in the tab, travel as a header, and are
-never stored on the server. Every URL is shareable and reloadable, so a report is a link.
+Your own keys stay in the tab, travel as a header, and are never stored on the server. Every URL
+is shareable, so a report is a link.
 
 ---
 
