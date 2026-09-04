@@ -653,6 +653,45 @@ refused again. T10's whole payoff died one hop before it was used.
 **Consequence accepted.** This is not written in `TASKS.md`; it was added deliberately, because
 without it a picked candidate is worth no more than a typed name.
 
+## D57 — Hunter proves an address or does not show one
+
+**Context.** Hunter returns addresses with a verification status, plus the domain's address
+`pattern`. Guardrail 2 forbids a pattern-derived address from ever being marked verified.
+**Choice.** Only `valid` earns `verified`. `accept_all` means the server takes any address at
+all, `webmail` and `disposable` describe the domain rather than the mailbox, `unknown` is Hunter
+saying it could not tell — none is a check that passed, and `confidence: 99` is a score, not a
+check. `invalid` drops the address and keeps the person: Hunter reached the mailbox and was
+refused, so publishing it under any label would publish an address the source says is wrong.
+**And the pattern is never applied.** `{first}` over a name listed without an address manufactures
+a working mailbox for a named, real person; the mail then goes somewhere, to them or to a stranger
+who holds the address, and a caveat printed underneath does not undo the send (SPEC §9).
+**Consequence accepted.** `unverified-pattern` never means "guessed" in this repo. It means an
+address Hunter saw and did not prove. Fewer addresses are shown than the API would allow.
+
+## D58 — A payload about another domain is not evidence about this one
+
+**Context.** `test-api-key` answers for piedpiper.com whatever domain it is asked about — measured:
+`meta.params.domain` says "stripe.com" while `data.domain` says "piedpiper.com". A deployment
+configured with it would publish Richard Hendricks as the CEO of every company in the world.
+**Choice.** The domain of the response is compared to the domain asked for before a single person
+is read out of it. A mismatch is `empty`, and the log names which domain actually answered.
+**Consequence.** The same fault as D48 arriving through a different door, and the second time a
+source's data was one step from appearing under another company's name. Verified live: piedpiper.com
+returns Richard Hendricks verified; stripe.com returns nobody and says why.
+
+## D59 — A source that was never asked is not a source that was checked
+
+**Context.** `checked()` named every provider that ran, whatever its log said. Hunter holding a key
+but given no domain is *available*, so it runs, finds it has no question to put, and reports
+`skipped` — and the page then rendered "No evidence found — checked Hunter" for a source nobody
+asked anything. Reproduced before the fix: `people.sourcesChecked` came back `["hunter"]`.
+**Choice.** A provider reporting nothing but `skipped` is left out of `sourcesChecked` (D39). A
+provider that `failed` stays: it was reached and it broke, which the log says in red, and the
+field is empty because a source we did reach gave nothing.
+**Consequence.** Same family as the EDGAR defect of T9 — the third time `sourcesChecked` has been
+the thing that overstated. It was found by the lane that could not fix it, in a file it did not
+own, and reported rather than worked around.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
