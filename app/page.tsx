@@ -1,7 +1,10 @@
 import { CaseFile } from '@/app/components/CaseFile'
 import { investigateHref, resolveHref } from '@/app/components/CandidateGrid'
 import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
-import { LiveInvestigation, LiveResolution, StoredAnswer } from '@/app/components/InvestigationLog'
+import { StoredAnswer } from '@/app/components/Banners'
+import { KeysButton } from '@/app/components/KeysModal'
+import { LiveInvestigation } from '@/app/components/LiveInvestigation'
+import { LiveResolution } from '@/app/components/LiveResolution'
 import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 
@@ -60,13 +63,16 @@ function Masthead(props: { defaultQuery: string }) {
   return (
     <div className="mx-auto max-w-case px-6 pt-8">
       <div className="border-b border-b-rule pb-8">
-        <a
-          href="/"
-          className="inline-flex items-center gap-x-2 font-case text-lg text-ink transition-colors hover:text-accent"
-        >
-          <Magnifier className="text-rule-strong" />
-          Detective Gabi
-        </a>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+          <a
+            href="/"
+            className="inline-flex items-center gap-x-2 font-case text-lg text-ink transition-colors hover:text-accent"
+          >
+            <Magnifier className="text-rule-strong" />
+            Detective Gabi
+          </a>
+          <KeysButton />
+        </div>
         <div className="mt-5">
           <SearchBar defaultQuery={props.defaultQuery} />
         </div>
@@ -181,7 +187,10 @@ export default async function Home({
     <main className="mx-auto max-w-case px-6 py-14">
       {/* The mark sits above the title rather than beside it, so the title, the tagline and
           every line below them share one left edge. */}
-      <Magnifier className="size-7 text-rule-strong" />
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+        <Magnifier className="size-7 text-rule-strong" />
+        <KeysButton />
+      </div>
       <h1 className="mt-4 font-case text-5xl text-ink">Detective Gabi</h1>
       <p className="mt-3 font-case text-xl text-muted italic">Company research, with its sources.</p>
 

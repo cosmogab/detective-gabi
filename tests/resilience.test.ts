@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { readFrames } from '@/app/components/InvestigationLog'
+import { readFrames } from '@/app/components/LiveInvestigation'
 import { clearCache, investigateCached, readCache, writeCache } from '@/lib/cache'
 import { demoProviders, parseDemoMode } from '@/lib/demo'
 import { fakeProvidersFor, fixtureReport } from '@/lib/providers/fake'
