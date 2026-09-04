@@ -2,18 +2,86 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { Key } from './icons/Key'
-// From the header-only module, never '@/lib/keys': that one defaults `env` to `process.env`
-// and has no business in a browser bundle.
-import { keyHeaderName } from '@/lib/key-header'
+import { KEYED_SOURCES, clearKey, readStoredKeys, storeKey } from './keys-storage'
 import type { Source } from '@/lib/types'
 import { DOTTED } from './ui/classes'
 
 /**
- * Bring-your-own-key, and the vault that holds one.
+ * One source's row: what is held for it, the field to replace it, and the way to forget it.
  *
- * SPEC §5: values live in `sessionStorage` only, travel as a header on each request, and are
- * never persisted server-side, never logged, never put in a URL. They are written here, read
- * here, and leave only through `keyHeaders()`.
+ * Split out because it was fifty-seven lines nested six deep inside a hundred-and-forty-line
+ * component, and because a row is the unit a reader actually reads — the dialog is a list of
+ * these, which is now what it looks like.
+ */
+function KeyRow(props: {
+  id: Source
+  label: string
+  note: string
+  held: boolean
+  /** True when the last save for *this* source was refused, so the reason sits under it. */
+  rejected: boolean
+  onSave: (id: Source, form: HTMLFormElement) => void
+  onForget: (id: Source) => void
+}) {
+  const { id, label, note, held } = props
+  return (
+    <li className="border-t border-t-rule py-4">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="label text-ink">{label}</span>
+          {/* What is knowable: a key is stored. Whether it works is something only the
+              source can say, and it says it in the investigation log. */}
+          <span className={`label ${held ? 'text-ink' : 'text-faint'}`}>
+            {held ? 'key stored' : 'no key'}
+          </span>
+        </div>
+        <p className="mt-1 font-sans text-sm text-muted">{note}</p>
+
+        <form
+          className="mt-2 flex flex-wrap items-center gap-2"
+          onSubmit={(event) => {
+            event.preventDefault()
+            props.onSave(id, event.currentTarget)
+          }}
+        >
+          <input
+            // A password field, and one that always starts empty: a stored key is
+            // never rendered back into the page.
+            type="password"
+            name={id}
+            autoComplete="off"
+            spellCheck={false}
+            placeholder={held ? 'replace the stored key' : 'paste a key'}
+            aria-label={`${label} key`}
+            className="datum min-w-0 grow border border-rule-strong bg-paper px-2.5 py-2 text-ink placeholder:text-faint focus:border-accent focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="label cursor-pointer border border-rule-strong px-3 py-2 text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            Save
+          </button>
+          {held ? (
+            <button
+              type="button"
+              onClick={() => props.onForget(id)}
+              className={`label cursor-pointer text-muted ${DOTTED} hover:text-alert`}
+            >
+              Forget
+            </button>
+          ) : null}
+        </form>
+        {props.rejected ? (
+          <p className="mt-2 font-sans text-sm text-alert">
+            That could not be stored. A key is a single line of ordinary characters —
+            check for a stray line break, or for a tab with site data blocked.
+          </p>
+        ) : null}
+      </li>
+  )
+}
+
+/**
+ * The dialog a reader fills the vault from. The vault itself is `./keys-storage`.
  *
  * A stored value is never rendered back into the page. The field a reader types into starts
  * empty every time and the status line says whether something is stored — so a key cannot end
@@ -21,116 +89,6 @@ import { DOTTED } from './ui/classes'
  * the tab's own storage.
  */
 
-/**
- * The sources a reader can supply a key for: the ones something actually consults today.
- *
- * Gemini has an entry in `lib/keys.ts` and no consumer, so it is not offered — a field that
- * stores a value nothing sends is the "built but not wired" failure this repo has already
- * shipped three times. EDGAR is configured the same way but what it takes is a contact
- * address the SEC asks for, not a credential, so it does not belong in a key vault either.
- */
-export const KEYED_SOURCES: readonly { id: Source; label: string; note: string }[] = [
-  { id: 'abstract', label: 'Abstract', note: 'company size, founding year and location' },
-  { id: 'hunter', label: 'Hunter', note: 'work email addresses for the people found' },
-  { id: 'web', label: 'Tavily', note: 'web search, used when working out which company a name is' },
-]
-
-const STORAGE_PREFIX = 'dg.key.'
-
-/**
- * A header value may hold printable ASCII and nothing else, and `fetch` refuses anything
- * else by quoting the offending value back inside the error it throws — which is how a key
- * reaches a log line. Refused on the way in and filtered again on the way out, because the
- * cost of getting this wrong is the one thing AGENTS.md forbids absolutely.
- */
-const SENDABLE = /^[\x20-\x7e]+$/
-
-/**
- * Reaching for `sessionStorage` can itself throw — a private window, or a browser told to
- * block site data. That is the reader who opened a shared link in a private tab, not a
- * hypothetical, so every access goes through here and the app works with no storage at all.
- */
-function session(): Storage | null {
-  try {
-    return window.sessionStorage
-  } catch {
-    return null
-  }
-}
-
-/** What is stored, per source. An unreadable entry costs that entry and not the others. */
-export function readStoredKeys(): Partial<Record<Source, string>> {
-  const store = session()
-  if (store === null) return {}
-
-  const stored: Partial<Record<Source, string>> = {}
-  for (const { id } of KEYED_SOURCES) {
-    try {
-      const value = store.getItem(STORAGE_PREFIX + id)?.trim() ?? ''
-      if (value !== '') stored[id] = value
-    } catch {
-      // One entry we cannot read is one source without a key, not a broken page.
-    }
-  }
-  return stored
-}
-
-/** True when a value could be sent as a header at all. Not a claim that it is a valid key. */
-export function isSendable(value: string): boolean {
-  return SENDABLE.test(value.trim())
-}
-
-export function storeKey(id: Source, value: string): boolean {
-  const trimmed = value.trim()
-  if (trimmed === '' || !isSendable(trimmed)) return false
-  const store = session()
-  if (store === null) return false
-  try {
-    store.setItem(STORAGE_PREFIX + id, trimmed)
-    return true
-  } catch {
-    return false
-  }
-}
-
-export function clearKey(id: Source): void {
-  const store = session()
-  if (store === null) return
-  try {
-    store.removeItem(STORAGE_PREFIX + id)
-  } catch {
-    // Nothing to do: the value was never readable either.
-  }
-}
-
-/**
- * The headers a request carries. The one way a key leaves this module.
- *
- * The name is spelled by `lib/keys.ts`, which is also what the routes read with — two lanes
- * writing that string by hand is exactly how two conventions shipped in parallel (D62), so
- * there is one spelling in one file and both ends import it.
- */
-export function keyHeaders(): Record<string, string> {
-  const stored = readStoredKeys()
-  const headers: Record<string, string> = {}
-  for (const { id } of KEYED_SOURCES) {
-    const value = stored[id]
-    if (value !== undefined && isSendable(value)) headers[keyHeaderName(id)] = value
-  }
-  return headers
-}
-
-/**
- * The headers every request to our own routes carries.
- *
- * One helper rather than a spread at each call site, so "does a key actually leave the
- * browser" is a question with one answer that a test can hold. This repo has shipped four
- * things that were built and never wired; the modal is only finished when a key changes what
- * the server receives, and that is what this function is for.
- */
-export function requestHeaders(): Record<string, string> {
-  return { 'content-type': 'application/json', ...keyHeaders() }
-}
 
 /** The trigger and the dialog together, so a server page can render one element and be done. */
 export function KeysButton() {
@@ -224,66 +182,21 @@ export function KeysModal(props: { open: boolean; onClose: () => void }) {
         </p>
 
         <ul className="mt-5">
-          {KEYED_SOURCES.map(({ id, label, note }) => {
-            const held = stored[id] !== undefined
-            return (
-              <li key={id} className="border-t border-t-rule py-4">
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="label text-ink">{label}</span>
-                  {/* What is knowable: a key is stored. Whether it works is something only the
-                      source can say, and it says it in the investigation log. */}
-                  <span className={`label ${held ? 'text-ink' : 'text-faint'}`}>
-                    {held ? 'key stored' : 'no key'}
-                  </span>
-                </div>
-                <p className="mt-1 font-sans text-sm text-muted">{note}</p>
-
-                <form
-                  className="mt-2 flex flex-wrap items-center gap-2"
-                  onSubmit={(event) => {
-                    event.preventDefault()
-                    save(id, event.currentTarget)
-                  }}
-                >
-                  <input
-                    // A password field, and one that always starts empty: a stored key is
-                    // never rendered back into the page.
-                    type="password"
-                    name={id}
-                    autoComplete="off"
-                    spellCheck={false}
-                    placeholder={held ? 'replace the stored key' : 'paste a key'}
-                    aria-label={`${label} key`}
-                    className="datum min-w-0 grow border border-rule-strong bg-paper px-2.5 py-2 text-ink placeholder:text-faint focus:border-accent focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="label cursor-pointer border border-rule-strong px-3 py-2 text-ink transition-colors hover:bg-ink hover:text-paper"
-                  >
-                    Save
-                  </button>
-                  {held ? (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        clearKey(id)
-                        refresh()
-                      }}
-                      className={`label cursor-pointer text-muted ${DOTTED} hover:text-alert`}
-                    >
-                      Forget
-                    </button>
-                  ) : null}
-                </form>
-                {rejected === id ? (
-                  <p className="mt-2 font-sans text-sm text-alert">
-                    That could not be stored. A key is a single line of ordinary characters —
-                    check for a stray line break, or for a tab with site data blocked.
-                  </p>
-                ) : null}
-              </li>
-            )
-          })}
+          {KEYED_SOURCES.map((source) => (
+            <KeyRow
+              key={source.id}
+              id={source.id}
+              label={source.label}
+              note={source.note}
+              held={stored[source.id] !== undefined}
+              rejected={rejected === source.id}
+              onSave={save}
+              onForget={(id) => {
+                clearKey(id)
+                refresh()
+              }}
+            />
+          ))}
         </ul>
 
         <p className="mt-5 border-t border-t-rule pt-4 max-w-2xl font-sans text-xs text-faint">

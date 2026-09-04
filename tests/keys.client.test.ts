@@ -1,16 +1,16 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { KeysModal } from '@/app/components/KeysModal'
 import {
   KEYED_SOURCES,
-  KeysModal,
   clearKey,
   isSendable,
   keyHeaders,
   readStoredKeys,
   requestHeaders,
   storeKey,
-} from '@/app/components/KeysModal'
+} from '@/app/components/keys-storage'
 import { keyHeaderName, resolveKey, userKeysFrom } from '@/lib/keys'
 import type { Source } from '@/lib/types'
 
@@ -209,7 +209,7 @@ describe('the key actually leaves the browser', () => {
     for (const module of ['LiveInvestigation', 'LiveResolution']) {
       const source = readFileSync(`app/components/live/${module}.tsx`, 'utf8')
 
-      expect(source, module).toContain("from '../KeysModal'")
+      expect(source, module).toContain("from '../keys-storage'")
       expect(source, module).toContain('headers: requestHeaders(),')
       // Not a hand-written header bag beside it, which is how the keys would be dropped.
       expect(source, module).not.toContain("headers: { 'content-type'")

@@ -8,7 +8,7 @@ import { InvestigationLog } from '../case/InvestigationLog'
 import { Progress } from './Progress'
 import { REPLAY_STEP_MS, STEP_MS, answeredCount, sourcesIn } from './pacing'
 import { useDrawn, useSettled } from './useDrawn'
-import { requestHeaders } from '../KeysModal'
+import { requestHeaders } from '../keys-storage'
 import type { Frame } from '@/lib/stream'
 import type { LogEvent, Report, Source } from '@/lib/types'
 

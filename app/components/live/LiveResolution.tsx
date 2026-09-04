@@ -8,7 +8,7 @@ import { NoCompanyFound, ResolutionFailed, SoleRecord } from '../resolve/Verdict
 import { identityOf, investigateHref } from '@/app/urls'
 import { ResolutionLog } from '../case/InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
-import { requestHeaders } from '../KeysModal'
+import { requestHeaders } from '../keys-storage'
 import { SOURCE_NAME } from '../case/FieldRow'
 import { WaitBar } from './WaitBar'
 import { IDENTIFY_STEP_MS, answeredCount, barParts, displayOrder, fillOf, sourcesIn, stepAt } from './pacing'
