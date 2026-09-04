@@ -1,6 +1,7 @@
 import { CaseFile } from '@/app/components/CaseFile'
+import { investigateHref, resolveHref } from '@/app/components/CandidateGrid'
 import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
-import { LiveInvestigation, StoredAnswer } from '@/app/components/InvestigationLog'
+import { LiveInvestigation, LiveResolution, StoredAnswer } from '@/app/components/InvestigationLog'
 import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 
@@ -8,9 +9,10 @@ import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from
  * Home and case file are one page, switched by the URL, so a report is shareable and
  * reloadable (SPEC §6).
  *
- * `?investigate=` runs a real investigation and streams it. `?q=` and `?domain=` still open a
- * recording, which is what the field's own label promises — `api/resolve` is a stub and T10 has
- * not been done, so nothing here resolves a name to a company.
+ * Three parameters, three meanings (D54). `?resolve=` works out which company a name is and
+ * asks when it cannot tell. `?investigate=` runs a real investigation on an identity already
+ * settled. `?q=` and `?domain=` open a committed recording, which is what the field's own
+ * label promises.
  *
  * `?demo=` rides along with `?investigate=` and forces a failure state (SPEC §7). It is passed
  * through untouched: the route knows the failure names, and a report built that way comes back
@@ -52,23 +54,6 @@ function first(value: string | string[] | undefined): string {
 }
 
 const FIELDS = ['Location (HQ)', 'Age (year founded)', 'Employees', 'Decision makers']
-
-/**
- * The one URL that means "run this now", and `refresh` is what makes it go past whatever is
- * stored. It is built here, on the server, and handed to the client as a string: a function
- * exported from a `'use client'` module cannot be called from a server component, only
- * rendered.
- */
-function investigateHref(
-  name: string,
-  domain: string | null,
-  options: { refresh?: boolean } = {},
-): string {
-  const params = new URLSearchParams({ investigate: name })
-  if (domain !== null && domain !== '') params.set('domain', domain)
-  if (options.refresh === true) params.set('refresh', '1')
-  return `/?${params.toString()}`
-}
 
 /** The wordmark and the field, ruled off so a document starts where the furniture stops. */
 function Masthead(props: { defaultQuery: string }) {
@@ -112,8 +97,24 @@ export default async function Home({
   const domain = first(params.domain)
   const query = first(params.q)
   const target = first(params.investigate)
+  const resolving = first(params.resolve)
   const asked = domain !== '' ? domain : query
   const found = domain !== '' ? fixtureForDomain(domain.trim().toLowerCase()) : onRecord(query)
+
+  // Its own parameter, because it is its own question: which company is this name? Nothing is
+  // investigated here and no provider is called — the answer is an identity, or a request for
+  // one (D54).
+  if (resolving !== '') {
+    return (
+      <main>
+        <Masthead defaultQuery={resolving} />
+        <LiveResolution query={resolving} />
+        <div className="mx-auto max-w-case px-6 pb-14">
+          <Ethics />
+        </div>
+      </main>
+    )
+  }
 
   // An explicit action, so no URL ever means both "investigate this now" and "reopen the
   // recording of it".
@@ -200,14 +201,15 @@ export default async function Home({
             <span className="font-medium">No search ran.</span> The field opens case files that
             are already on record, and <span className="datum">{asked}</span> is not one of them.
           </p>
-          {/* Nothing was searched, but something can be: this is the action that actually
-              runs, named as an action rather than implied by the field. */}
+          {/* Nothing was searched, but something can be. The offer is to identify the company
+              first: investigating a bare name asks every source to guess which one is meant,
+              and guessing is the thing this app does not do. */}
           <p className="mt-2">
             <a
-              href={investigateHref(asked, null)}
+              href={resolveHref(asked)}
               className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
             >
-              Investigate {asked} now
+              Find out which company {asked} is
             </a>
           </p>
         </div>

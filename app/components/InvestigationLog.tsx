@@ -6,6 +6,14 @@ import { type ReactNode, useEffect, useState } from 'react'
 // hoisted `function` declarations referenced from inside render — converting either to a
 // `const` arrow or wrapping it in `memo` would turn it into a temporal-dead-zone crash.
 import { CaseFile } from './CaseFile'
+import {
+  CandidateMeta,
+  NoCompanyFound,
+  type ResolveResponse,
+  ResolutionFailed,
+  SoleRecord,
+  targetFor,
+} from './CandidateGrid'
 import { Sep, formatFetchedAt } from './FieldRow'
 import { Magnifier } from './SearchBar'
 import type { LogEvent, LogEventStatus, Report } from '@/lib/types'
@@ -192,6 +200,198 @@ export function SimulatedRun(props: { href?: string }) {
       a failure forced with <span className="font-mono text-xs">?demo=</span> over recorded data.
       No source was called.
     </BannerLine>
+  )
+}
+
+/**
+ * Runs one resolution and shows what came back.
+ *
+ * The request is a POST from the browser, not a server render, for two reasons that both
+ * matter: `/api/resolve` exports only POST, so a server component cannot reach it by
+ * navigating; and the user's keys live in `sessionStorage`, so resolving on the server would
+ * pin every reader to the keyless tier and Tavily would never run for anyone (R6). No key is
+ * held here — T12 adds the header, and until it exists the route falls back to the
+ * environment.
+ *
+ * There are four outcomes and each is a different thing to say. A resolution that failed is
+ * not a resolution that found nothing, and neither is a company identified.
+ */
+type ResolutionState =
+  | { kind: 'searching' }
+  | { kind: 'answered'; response: ResolveResponse }
+  | { kind: 'failed'; message: string; log: readonly LogEvent[] }
+
+const RESOLUTION_KINDS = ['resolved', 'ambiguous', 'not-found']
+
+/** The route's own shape, checked rather than trusted: it crossed a network to get here. */
+function asResolveResponse(body: unknown): ResolveResponse | null {
+  if (typeof body !== 'object' || body === null) return null
+  const held = body as Partial<ResolveResponse>
+  if (!Array.isArray(held.found) || !Array.isArray(held.log)) return null
+  const resolution = held.resolution
+  if (typeof resolution !== 'object' || resolution === null) return null
+  if (!RESOLUTION_KINDS.includes(resolution.kind)) return null
+  return { resolution, found: held.found, log: held.log }
+}
+
+/** A 502 carries `{error, log}`. The log is the whole of what can be said, so it is kept. */
+function asFailure(body: unknown): { message: string; log: readonly LogEvent[] } {
+  const held = typeof body === 'object' && body !== null ? (body as Record<string, unknown>) : {}
+  return {
+    message: typeof held.error === 'string' ? held.error : 'the search stopped before it finished',
+    log: Array.isArray(held.log) ? (held.log as LogEvent[]) : [],
+  }
+}
+
+export function LiveResolution(props: { query: string }) {
+  const { query } = props
+  const [attempt, setAttempt] = useState(0)
+  const [state, setState] = useState<ResolutionState>({ kind: 'searching' })
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setState({ kind: 'searching' })
+
+    async function run() {
+      const response = await fetch('/api/resolve', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ query }),
+        signal: controller.signal,
+      })
+      const body: unknown = await response.json().catch(() => null)
+      // Checked before every write, not only around the request: a superseded search must not
+      // land in the state of the one that replaced it (SPEC §7).
+      if (controller.signal.aborted) return
+
+      if (!response.ok) {
+        const failure = asFailure(body)
+        setState({ kind: 'failed', message: failure.message, log: failure.log })
+        return
+      }
+      const parsed = asResolveResponse(body)
+      if (parsed === null) throw new Error('the search returned something unreadable')
+      setState({ kind: 'answered', response: parsed })
+    }
+
+    run().catch((error: unknown) => {
+      if (controller.signal.aborted) return
+      setState({
+        kind: 'failed',
+        message: error instanceof Error ? error.message : 'the search stopped',
+        log: [],
+      })
+    })
+
+    return () => controller.abort()
+  }, [query, attempt])
+
+  const searching = state.kind === 'searching'
+  return (
+    <section className="mx-auto max-w-case px-6 pt-12 pb-10">
+      <p className="label text-faint">Identifying</p>
+      <h1 className="mt-1 flex items-center gap-x-3 font-case text-3xl text-ink">
+        <Magnifier className={searching ? 'magnifier-sweep text-rule-strong' : 'text-rule-strong'} />
+        {query}
+      </h1>
+
+      {state.kind === 'searching' ? (
+        <p className="mt-4 font-sans text-sm text-muted">
+          Searching the sources that name companies. Nothing is investigated until one of them
+          is identified.
+        </p>
+      ) : null}
+
+      {state.kind === 'failed' ? (
+        <>
+          <ResolutionFailed
+            query={query}
+            message={state.message}
+            onRetry={() => setAttempt((held) => held + 1)}
+          />
+          {/* Red steps and all: this is the only account of what was attempted. */}
+          <InvestigationLog events={state.log} />
+        </>
+      ) : null}
+
+      {state.kind === 'answered' ? (
+        <Verdict query={query} response={state.response} />
+      ) : null}
+    </section>
+  )
+}
+
+/**
+ * The verdict, said plainly. The candidate grid and the discreet "Not the right company?" are
+ * the next two steps; what this has to get right first is that the four outcomes are four
+ * different statements and never borrow each other's words.
+ */
+function Verdict(props: { query: string; response: ResolveResponse }) {
+  const { query, response } = props
+  const { resolution, found, log } = response
+
+  if (resolution.kind === 'not-found') {
+    return (
+      <>
+        <NoCompanyFound query={query} sourcesChecked={resolution.sourcesChecked} />
+        <InvestigationLog events={log} folded />
+      </>
+    )
+  }
+
+  if (resolution.kind === 'ambiguous') {
+    // One candidate is not a choice of one, and must never be laid out as one (R2).
+    const only = found.length === 1 ? found[0] : undefined
+    return (
+      <>
+        {only !== undefined ? (
+          <SoleRecord query={query} entry={only} />
+        ) : (
+          <section className="mt-8">
+            <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
+              More than one company answers to that name
+            </h2>
+            <ul className="mt-4 border-b border-b-rule">
+              {found.map((entry, i) => (
+                <li key={`${entry.candidate.source}-${entry.candidate.name}-${i}`} className="border-t border-t-rule py-3 pl-4">
+                  <p className="datum text-ink">{entry.candidate.name}</p>
+                  <CandidateMeta candidate={entry.candidate} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        <InvestigationLog events={log} folded />
+      </>
+    )
+  }
+
+  const winner = found[0]
+  return (
+    <section className="mt-8">
+      <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">Identified</h2>
+      <div className="border-b border-b-rule py-3 pl-4">
+        <p className="datum text-ink">{resolution.candidate.name}</p>
+        <CandidateMeta candidate={resolution.candidate} />
+        {/* Said out loud, because nobody chose it: a reader who assumed they had picked this
+            company would be trusting their own judgement instead of ours (R7). */}
+        <p className="mt-3 max-w-2xl font-sans text-sm text-muted">
+          One clear match for <span className="datum">{query}</span>, chosen by the search and
+          not by you.
+        </p>
+        {winner !== undefined ? (
+          <p className="mt-3">
+            <a
+              href={targetFor(winner)}
+              className="label text-accent underline decoration-dotted underline-offset-2 hover:decoration-solid"
+            >
+              Investigate {resolution.candidate.name}
+            </a>
+          </p>
+        ) : null}
+      </div>
+      <InvestigationLog events={log} folded />
+    </section>
   )
 }
 
