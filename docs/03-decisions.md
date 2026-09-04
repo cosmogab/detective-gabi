@@ -692,6 +692,39 @@ field is empty because a source we did reach gave nothing.
 the thing that overstated. It was found by the lane that could not fix it, in a file it did not
 own, and reported rather than worked around.
 
+## D60 — The identity a run was given is part of the cache key
+
+**Context.** Entries were keyed on `${reach} ${domain}`. Two runs of the same domain are not the
+same run when one carries an LEI and a CIK and the other does not: the identified one reaches
+GLEIF and EDGAR, the bare one gets nothing from either. Measured live before the fix — a cold
+`{name, domain}` investigation of stripe.com stored `gleif empty, edgar empty`, and the very next
+request carrying the identifiers came back `cached: true`, still empty, silently undoing D56. The
+recording banner's "Investigate now" builds exactly that identifier-free URL, so one visit to a
+recording poisoned every resolved investigation of that domain for a day.
+**Choice.** The identity joins the key. Unlike `Reach`, there is **no** asymmetry: a request that
+named no identity is not served an entry built by an identified run either. Reach has two ordered
+levels and `keyless` is strictly poorer than `full`; identifiers are not ordered like that, and an
+entry stored under a wrong identifier would become everyone's answer. A miss costs an
+investigation; the other direction costs the truth.
+**Consequence.** Verified live after the fix: bare → registries empty, identified → a real run
+with GLEIF and EDGAR answering, identified again → served from cache. Found by the lane that could
+not fix it, in a file my own T11 ownership list had left out — my scoping error, not theirs.
+
+## D61 — The resolved identifiers ride in the URL
+
+**Context.** D54 said a card writes `?investigate=<name>&domain=<domain>`. A card click is a real
+navigation, so identifiers held only in client memory are lost; and a shared link should reproduce
+the report the sharer saw rather than a poorer one.
+**Choice.** `wikidataId`, `lei` and `cik` travel in the URL too. They are public identifiers, not
+secrets.
+**Consequence accepted, and it is not small.** A hand-written URL can name an identifier that
+belongs to another company. Measured: `{name: "Stripe", domain: "stripe.com", lei: <the Belgian
+STRIPE's LEI>}` renders "Hoeilaart, VBR, BE" as the **confirmed** headquarters of stripe.com, with
+San Francisco demoted to a conflict. Nothing the app itself builds produces such a link — its own
+identifiers always come from a resolution that judged the candidate a clear winner — but a crafted
+one is shareable. D60 contains the blast radius to that URL's own cache entry; it does not stop the
+page from asserting it. Written up in the limitations rather than left in a comment.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

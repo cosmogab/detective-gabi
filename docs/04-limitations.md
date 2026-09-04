@@ -54,6 +54,15 @@ five, and precisely the one that deduplicates cleanly. It is the opposite of D21
 weakest test in the repo. Tavily documents a keyless access mode, so a real recording is obtainable
 without a key — the replacement is owed.
 
+**An identifier in the URL is trusted.** `?investigate=…&lei=…` is taken as a fact about which
+company is being investigated, and nothing checks that the identifier belongs to the domain beside
+it. Supplying the Belgian STRIPE's LEI for stripe.com renders "Hoeilaart, VBR, BE" as that
+company's *confirmed* headquarters, with San Francisco shown as the conflict. No link the app
+builds does this — its identifiers always come from a resolution that judged one candidate a clear
+winner — but a hand-written link is shareable. Closing it means either verifying an identifier
+against the domain before trusting it, or showing on the page which identity the run was keyed on
+so a wrong one is visible rather than silent. The second is cheap and is what I would do first.
+
 **The committed recordings predate the real providers.** They were captured by hand before the
 providers existed, and the pipeline has since become stricter — Stripe's registry source is one it
 would no longer produce. They are due to be re-recorded once identity resolution can supply a LEI.
