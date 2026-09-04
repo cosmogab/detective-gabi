@@ -11,6 +11,7 @@ import { edgar } from '@/lib/providers/edgar'
 import { gleif } from '@/lib/providers/gleif'
 import { hunter } from '@/lib/providers/hunter'
 import type { Ctx, Provider, ProviderInput } from '@/lib/providers/types'
+import { website } from '@/lib/providers/website'
 import { wikidata } from '@/lib/providers/wikidata'
 import { checkRateLimit, rateLimitNotice } from '@/lib/ratelimit'
 import type { LogEvent, Report, Source } from '@/lib/types'
@@ -31,8 +32,13 @@ import type { LogEvent, Report, Source } from '@/lib/types'
  *
  * Abstract's free tier is a hundred requests for the life of the account, not per month, so the
  * cache (D60) and the per-IP limit (D49) are what stand between it and an afternoon of clicking.
+ *
+ * `website` is last because it is the slowest by far — three page fetches and a model call, around
+ * twenty seconds measured — and because it is the only one that spends a third party's bandwidth.
+ * With no extraction key it fetches nothing and says so (D77), so an unconfigured deployment pays
+ * none of that.
  */
-const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar, abstract, hunter]
+const PROVIDERS: readonly Provider[] = [wikidata, gleif, edgar, abstract, hunter, website]
 
 const requestSchema = z.object({
   name: z.string().trim().min(1).max(200),
