@@ -39,6 +39,16 @@ export const STEP_MS = 1000
 export const REPLAY_STEP_MS = 200
 
 /**
+ * And for the identification, which is neither.
+ *
+ * Its sources are asked in one call and answer together, so there is no arrival to pace — the
+ * bar is drawn after the fact, from the log the answer brought back. Half a second a part: long
+ * enough to see the two of them told apart, short enough that it does not become a second wait
+ * in front of the one that matters.
+ */
+export const IDENTIFY_STEP_MS = 500
+
+/**
  * The order the sources answered in, first line each. This is what the bar draws, so a part is
  * always the source that actually reported at that position — the pacing slows the telling, it
  * does not reorder it.

@@ -1321,6 +1321,17 @@ travelling its full width; the same investigation with `refresh` takes 7.4s, whi
 EDGAR actually costs. Two paces, and the difference between them is the difference between
 reading a record and waiting for one.
 
+**The identification needed the same, and a third pace, and one correction.** Its frame appeared
+and was gone before it could be read. Its answer brings back a log naming the sources that were
+asked, so the bar draws them — but pacing it from when the wait appeared did not work, and the
+reason is worth writing down: the investigation's sources arrive one by one, so the clock is what
+keeps two of them 18ms apart legible, while resolution asks in a single call and everything lands
+at once. By then every part is already due and the bar snaps to full without being seen. It is
+paced from **when the answer landed**, which is when there is something to draw, at
+`IDENTIFY_STEP_MS` — half a second a part, long enough to tell two sources apart, short enough
+not to become a second wait in front of the one that matters. Measured: a 3.0s Wikidata call,
+then `WIKIDATA` and `WEB SEARCH` drawn over 1.7s.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

@@ -16,7 +16,8 @@ import {
 import { ResolutionLog } from './InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from './KeysModal'
-import { WaitBar } from './Progress'
+import { SOURCE_NAME } from './FieldRow'
+import { IDENTIFY_STEP_MS, WaitBar, answeredCount, displayOrder, sourcesIn, useDrawn, useSettled } from './Progress'
 import type { LogEvent } from '@/lib/types'
 
 /**
@@ -62,6 +63,14 @@ export function LiveResolution(props: { query: string }) {
   const { query } = props
   const [attempt, setAttempt] = useState(0)
   const [state, setState] = useState<ResolutionState>({ kind: 'searching' })
+  // When the answer landed — not when the wait appeared.
+  //
+  // The investigation paces from the start because its sources arrive one by one and the clock
+  // is what keeps two of them 18ms apart legible. Here they are asked in one call and answer
+  // together, so pacing from the start means that by the time the answer is in, every part is
+  // already due and the bar jumps to full without ever being seen to travel. The drawing starts
+  // when there is something to draw.
+  const [answeredAt, setAnsweredAt] = useState(() => Date.now())
 
   useEffect(() => {
     const controller = new AbortController()
@@ -89,6 +98,7 @@ export function LiveResolution(props: { query: string }) {
       }
       const parsed = asResolveResponse(body)
       if (parsed === null) throw new Error('the search returned something unreadable')
+      setAnsweredAt(Date.now())
       setState({ kind: 'answered', response: parsed })
     }
 
@@ -104,10 +114,22 @@ export function LiveResolution(props: { query: string }) {
     return () => controller.abort()
   }, [query, attempt])
 
+  // Resolution answers in a few hundred milliseconds, so the frame used to appear and be gone
+  // before it could be read. Once the answer lands its log names the sources that were asked,
+  // and the bar draws them at the investigation's own pace before the screen moves on — the
+  // same replay of a real record a cache hit gets (D89). Nothing is invented: these sources did
+  // answer, a moment ago, and this is what they said.
+  const log = state.kind === 'answered' ? state.response.log : []
+  const parts = sourcesIn(log)
+  const total = parts.length
+  const drawn = useDrawn(answeredAt, answeredCount(parts, log), IDENTIFY_STEP_MS)
+  const settled = useSettled(drawn, total)
+  const drawing = state.kind === 'answered' && total > 0 && !settled
+
   // A clear winner does not stop to be announced: it is the investigation, under a line that
   // says who chose the company. Returned before the identifying frame so the case file keeps
   // its own full-width layout rather than nesting inside it.
-  if (state.kind === 'answered' && state.response.resolution.kind === 'resolved') {
+  if (!drawing && state.kind === 'answered' && state.response.resolution.kind === 'resolved') {
     const { candidate } = state.response.resolution
     // The route puts the winner first. If it ever did not, the resolution still names the
     // company, so the page states an identity rather than falling through to nothing.
@@ -133,17 +155,25 @@ export function LiveResolution(props: { query: string }) {
       <h1 className="mt-1 font-case text-3xl text-ink">{query}</h1>
 
       {/* The same bar the investigation wears, so crossing from one wait to the other does not
-          feel like changing application. One part and it stays empty: resolution is a single
-          request, not a stream, so there is no moment between asking and being answered that
-          this screen could honestly report. The word says what is happening; the empty frame
-          says nothing has come back, which is true until it does. */}
-      {searching ? (
+          feel like changing application. While the request is out there is one part and it stays
+          empty — resolution is a single call, not a stream, so there is no midpoint this screen
+          could honestly report. When the answer lands the bar becomes the sources it actually
+          asked, drawn one at a time. */}
+      {searching || drawing ? (
         <>
           <WaitBar
-            parts={[{ key: 'identifying', fill: 'bg-ink' }]}
-            drawn={0}
-            word="Identifying"
-            running
+            parts={
+              total === 0
+                ? [{ key: 'identifying', fill: 'bg-ink' }]
+                : parts.map((source) => ({ key: source, fill: 'bg-ink' }))
+            }
+            drawn={drawn}
+            word={
+              total === 0
+                ? 'Identifying'
+                : SOURCE_NAME[displayOrder(parts, log)[Math.min(drawn, total - 1)] ?? parts[0]]
+            }
+            running={searching}
           />
           <p className="mt-4 max-w-2xl font-sans text-sm text-muted">
             Asking the sources that name companies. Nothing is investigated until one of them is
@@ -152,7 +182,7 @@ export function LiveResolution(props: { query: string }) {
         </>
       ) : null}
 
-      {state.kind === 'failed' ? (
+      {!drawing && state.kind === 'failed' ? (
         <>
           <ResolutionFailed
             query={query}
@@ -164,7 +194,7 @@ export function LiveResolution(props: { query: string }) {
         </>
       ) : null}
 
-      {state.kind === 'answered' ? (
+      {!drawing && state.kind === 'answered' ? (
         <Verdict query={query} response={state.response} />
       ) : null}
     </section>
