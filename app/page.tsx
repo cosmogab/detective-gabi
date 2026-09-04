@@ -110,15 +110,20 @@ function Proof(props: { of: FixtureName; children: ReactNode }) {
   )
 }
 
-/** SPEC §9 asks for a visible line, and it belongs most where people are actually named. */
+/**
+ * SPEC §9 asks for a visible line, and it belongs most where people are actually named.
+ *
+ * It is the line and not the landmark: on the home page it now shares a footer with the
+ * explanation, and a `<footer>` inside a `<footer>` would be one landmark announcing another.
+ */
 function Ethics() {
   return (
-    <footer className="mt-12 border-t border-t-rule pt-4">
+    <div className="mt-12 border-t border-t-rule pt-4">
       <p className="max-w-2xl font-sans text-xs text-faint">
         Public sources only. Contact details are shown as the company published them. Personal
         data is displayed, not stored beyond an ephemeral cache.
       </p>
-    </footer>
+    </div>
   )
 }
 
@@ -152,9 +157,9 @@ export default async function Home({
       <main>
         <Masthead defaultQuery={resolving} />
         <LiveResolution query={resolving} />
-        <div className="mx-auto max-w-case px-6 pb-14">
+        <footer className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
-        </div>
+        </footer>
       </main>
     )
   }
@@ -181,9 +186,9 @@ export default async function Home({
             ...identity,
           })}
         />
-        <div className="mx-auto max-w-case px-6 pb-14">
+        <footer className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
-        </div>
+        </footer>
       </main>
     )
   }
@@ -206,9 +211,9 @@ export default async function Home({
           href={investigateHref(recording.company.name, recording.company.domain)}
         />
         <CaseFile report={recording} />
-        <div className="mx-auto max-w-case px-6 pb-14">
+        <footer className="mx-auto max-w-case px-6 pb-14">
           <Ethics />
-        </div>
+        </footer>
       </main>
     )
   }
@@ -232,7 +237,12 @@ export default async function Home({
           before reaching the only thing there is to do. It takes the viewport on purpose —
           `How it works` sits below the fold, and reaching it is what lighting the room buys.
         */}
-        <section className="mx-auto flex min-h-[100svh] max-w-case flex-col justify-center px-6 py-14">
+        <section className="relative mx-auto flex min-h-[100svh] max-w-case flex-col justify-center px-6 py-14">
+          {/* The one control on this screen that is not the field. It is a setting, so it sits
+              in the corner a setting sits in rather than in the reading order of the page. */}
+          <div className="absolute top-8 right-6">
+            <KeysButton />
+          </div>
           <h1 className="font-case text-5xl text-ink">Detective Gabi</h1>
           <p className="mt-3 font-case text-xl text-muted italic">
             Company research, with its sources.
@@ -242,7 +252,9 @@ export default async function Home({
           </div>
         </section>
 
-        <section className="mx-auto max-w-case px-6 pb-14">
+        {/* The explanation is the foot of the page: the argument you reach by scrolling past the
+            one thing there is to do, not a section competing with it. */}
+        <footer className="mx-auto max-w-case px-6 pb-14">
           <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">How it works</h2>
 
           <div className="mt-5 max-w-2xl font-sans text-sm text-muted">
@@ -311,14 +323,8 @@ export default async function Home({
             </p>
           </div>
 
-          {/* A technical setting, and it belongs where settings belong: after the explanation,
-              not above the title. */}
-          <div className="mt-10 border-t border-t-rule pt-4">
-            <KeysButton />
-          </div>
-
           <Ethics />
-        </section>
+        </footer>
       </main>
     </>
   )

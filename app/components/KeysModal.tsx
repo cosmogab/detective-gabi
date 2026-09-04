@@ -131,6 +131,32 @@ export function requestHeaders(): Record<string, string> {
 }
 
 /** The trigger and the dialog together, so a server page can render one element and be done. */
+/**
+ * Hand-drawn, like the magnifier and for the same reason: two shapes do not justify a
+ * dependency (D31). Horizontal where the magnifier is diagonal, so the two are told apart at
+ * fifteen pixels rather than only up close.
+ */
+function Key(props: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      // A shade larger than the magnifier: it stands alone in a corner rather than beside a
+      // word, and at fifteen pixels a key with two teeth reads as a smudge.
+      width="17"
+      height="17"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      aria-hidden="true"
+      className={props.className}
+    >
+      <circle cx="4.5" cy="8" r="3.1" />
+      <path d="M7.6 8H14M11.2 8v2.6M13.4 8v2.1" />
+    </svg>
+  )
+}
+
 export function KeysButton() {
   const [open, setOpen] = useState(false)
   return (
@@ -138,9 +164,13 @@ export function KeysButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="label cursor-pointer text-faint underline decoration-dotted underline-offset-2 transition-colors hover:text-accent hover:decoration-solid"
+        // An icon alone is a picture. The name is what a screen reader reads and what a
+        // pointer's tooltip says, so the control is not one only sighted readers can guess at.
+        aria-label="Your keys"
+        title="Your keys"
+        className="-m-2 cursor-pointer p-2 text-faint transition-colors hover:text-accent"
       >
-        Your keys
+        <Key />
       </button>
       <KeysModal open={open} onClose={() => setOpen(false)} />
     </>

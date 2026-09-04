@@ -19,10 +19,19 @@ async function home(params: Record<string, string> = {}): Promise<string> {
   return renderToStaticMarkup(await Home({ searchParams: Promise.resolve(params) }))
 }
 
-/** The first `<section>`: everything the lamp can find before the light goes on. */
+/**
+ * The first `<section>`: everything the lamp can find before the light goes on.
+ *
+ * Bounded by its own closing tag rather than by whatever element comes next — the thing that
+ * follows it has changed once already, and a probe that silently swallows the rest of the
+ * document would let this whole describe block pass by accident.
+ */
 function firstScreen(html: string): string {
   const open = html.indexOf('<section')
-  return html.slice(open, html.indexOf('<section', open + 1))
+  const close = html.indexOf('</section>', open)
+  expect(open).toBeGreaterThan(-1)
+  expect(close).toBeGreaterThan(open)
+  return html.slice(open, close)
 }
 
 describe('the first screen', () => {
@@ -33,14 +42,22 @@ describe('the first screen', () => {
     expect(screen.match(/<form/g)).toHaveLength(1)
   })
 
-  it('holds nothing else', async () => {
+  it('holds one control besides the field, and nothing else', async () => {
     const screen = firstScreen(await home())
-    // No link, so nothing to click but the field: no example cards, no keys, no explanation.
+    // Two buttons and no third: the field's own, and the keys in the corner. No link at all,
+    // so there are no example cards and no way off this screen but the field.
+    expect(screen.match(/<button/g)).toHaveLength(2)
     expect(screen).not.toContain('<a ')
     expect(screen).not.toContain('<h2')
-    for (const word of ['How it works', 'on record', 'Your keys']) {
+    for (const word of ['How it works', 'on record', 'No evidence found']) {
       expect(screen).not.toContain(word)
     }
+  })
+
+  it('gives the keys button a name and not only a picture', async () => {
+    // It is an icon now. An icon with no accessible name is a control only sighted readers can
+    // find, and the modal behind it is the one place a reader hands over a secret.
+    expect(firstScreen(await home())).toContain('aria-label="Your keys"')
   })
 
   it('does not deny a search that it is about to run', async () => {
