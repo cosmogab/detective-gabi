@@ -1115,4 +1115,35 @@ quota, and the screen that comes next can be built against seven real seconds.
 
 ---
 
+## D84 — A run says what it is about to ask, and that is not scripted progress
+
+**Context.** The stream only ever spoke about the past: `event` frames are written as providers
+*finish*. A client could therefore say "three steps" and never "three of six" — it counts into the
+dark, and for the first second of a run it has nothing at all to show. Any progress bar built on
+that would have to invent its own denominator.
+
+**Choice.** A fourth frame, `{ type: 'start', sources }`, written before anything else including
+the rate-limit notice. It names the providers this run will put a question to, after the demo mode
+has had its say.
+
+**Why this is not what D8 refuses.** D8 forbids a *scripted* progress bar — a bar that moves
+because time passed rather than because something happened. This is the opposite: a fact known at
+the outset, stated once and never revised. `lib/orchestrate.ts` emits at least one line for every
+wired provider, an unavailable one saying `skipped` immediately with its own reason, so the list
+is what will actually arrive rather than a forecast that might not.
+
+**The list is not shortened by the rate limit, and that was a correction to this task's own
+spec.** I had written that a run whose keyed sources were withheld should announce fewer. It
+should not: a withheld provider still reports, so dropping it would make the count disagree with
+the log directly beneath it — six lines arriving under a bar that promised four. A source that
+says it is not running has answered.
+
+**Consequence.** `readFrames` gains the case and drops a `start` frame carrying no list rather
+than passing on an empty run; `FrameSink` gains a required method, which is how the compiler found
+the three sinks in `tests/resilience.test.ts` that needed updating. Verified live: the first line
+of a replayed run is `{"type":"start","sources":["wikidata","gleif","edgar"]}`. Nothing renders it
+yet — that is the next task, and this is the fact it will count.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

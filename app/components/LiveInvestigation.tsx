@@ -6,7 +6,7 @@ import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
 import { requestHeaders } from './KeysModal'
 import { Magnifier } from './SearchBar'
-import type { LogEvent, Report } from '@/lib/types'
+import type { LogEvent, Report, Source } from '@/lib/types'
 
 /**
  * One investigation, streamed and shown as it happens.
@@ -19,12 +19,15 @@ import type { LogEvent, Report } from '@/lib/types'
 
 /** One line of the stream. Mirrors the frames `app/api/investigate/route.ts` writes. */
 type Frame =
+  | { type: 'start'; sources: readonly Source[] }
   | { type: 'event'; event: LogEvent }
   | { type: 'report'; report: Report }
   | { type: 'error'; message: string }
 
 /** Where a consumed stream puts what it finds. `LiveInvestigation` passes its setters. */
 export type FrameSink = {
+  /** The sources this run will question, known before any of them has answered. */
+  start(sources: readonly Source[]): void
   event(event: LogEvent): void
   report(report: Report): void
   failure(message: string): void
@@ -62,7 +65,8 @@ export async function readFrames(
         if (signal.aborted) return
         const frame = asFrame(line)
         if (frame === null) continue
-        if (frame.type === 'event') sink.event(frame.event)
+        if (frame.type === 'start') sink.start(frame.sources)
+        else if (frame.type === 'event') sink.event(frame.event)
         else if (frame.type === 'report') sink.report(frame.report)
         else sink.failure(frame.message)
       }
@@ -78,6 +82,7 @@ function asFrame(line: string): Frame | null {
     const parsed: unknown = JSON.parse(line)
     if (typeof parsed !== 'object' || parsed === null || !('type' in parsed)) return null
     const frame = parsed as Frame
+    if (frame.type === 'start' && Array.isArray(frame.sources)) return frame
     if (frame.type === 'event' || frame.type === 'report' || frame.type === 'error') return frame
     return null
   } catch {
@@ -110,12 +115,16 @@ export function LiveInvestigation(props: {
   const wikidataId = props.identity?.wikidataId ?? ''
   const lei = props.identity?.lei ?? ''
   const cik = props.identity?.cik ?? ''
+  // What the run said it would ask. Empty until the first frame lands, which is the honest
+  // state: before the server has spoken we do not know how many sources this run has.
+  const [sources, setSources] = useState<readonly Source[]>([])
   const [events, setEvents] = useState<readonly LogEvent[]>([])
   const [report, setReport] = useState<Report | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
+    setSources([])
     setEvents([])
     setReport(null)
     setFailure(null)
@@ -144,6 +153,7 @@ export function LiveInvestigation(props: {
       await readFrames(
         response.body,
         {
+          start: (announced) => setSources(announced),
           event: (event) => setEvents((held) => [...held, event]),
           report: (arrived) => setReport(arrived),
           failure: (message) => setFailure(message),

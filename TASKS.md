@@ -215,8 +215,9 @@ a fact known at the start, and the only way a client can say *three of six* rath
 into the dark. `readFrames` and `FrameSink` gain the case; `asFrame` already ignored unknown
 types, so nothing older breaks.
 **Done when** a test proves the frame precedes the first event, that `readFrames` hands the list
-to the sink, and that the list matches the providers wired — including shortened when the rate
-limit withheld the keyed ones.
+to the sink and drops a malformed one, and that the list names every provider wired — *not*
+shortened when the rate limit withheld the keyed ones, because a withheld source still reports
+`skipped` and so still belongs in the count.
 **Commit** `feat(core): announce the sources a run is about to consult`
 
 ### T27 — The loading screen becomes a progression

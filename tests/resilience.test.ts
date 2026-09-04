@@ -383,6 +383,7 @@ describe('a stale response never overwrites a newer one', () => {
 
     await readFrames(
       streamOf(
+        { type: 'start', sources: ['wikidata', 'gleif'] },
         { type: 'event', event: step('one') },
         { type: 'event', event: step('two') },
         { type: 'report', report: fixtureReport('stripe') },
@@ -395,13 +396,14 @@ describe('a stale response never overwrites a newer one', () => {
           seen.push(`event:${event.step}`)
           controller.abort()
         },
+        start: (sources) => seen.push(`start:${sources.join(',')}`),
         report: () => seen.push('report'),
         failure: (message) => seen.push(`failure:${message}`),
       },
       controller.signal,
     )
 
-    expect(seen).toEqual(['event:one'])
+    expect(seen).toEqual(['start:wikidata,gleif', 'event:one'])
   })
 
   it('delivers the whole batch when nothing replaced it', async () => {
@@ -415,6 +417,7 @@ describe('a stale response never overwrites a newer one', () => {
         { type: 'report', report: fixtureReport('stripe') },
       ),
       {
+        start: (sources) => seen.push(`start:${sources.join(',')}`),
         event: (event) => seen.push(`event:${event.step}`),
         report: (report) => seen.push(`report:${report.company.name}`),
         failure: (message) => seen.push(`failure:${message}`),
@@ -426,13 +429,56 @@ describe('a stale response never overwrites a newer one', () => {
     expect(seen).toEqual(['event:one', 'event:two', 'report:Stripe'])
   })
 
+  it('hands the announced sources to the sink before any of them has answered', async () => {
+    // The frame a progress count is built on. Without it a client counts into the dark and
+    // cannot say "three of six" — only "three".
+    const controller = new AbortController()
+    const seen: string[] = []
+
+    await readFrames(
+      streamOf(
+        { type: 'start', sources: ['wikidata', 'gleif', 'edgar'] },
+        { type: 'event', event: step('one') },
+      ),
+      {
+        start: (sources) => seen.push(`start:${sources.join(',')}`),
+        event: (event) => seen.push(`event:${event.step}`),
+        report: () => seen.push('report'),
+        failure: (message) => seen.push(`failure:${message}`),
+      },
+      controller.signal,
+    )
+
+    expect(seen).toEqual(['start:wikidata,gleif,edgar', 'event:one'])
+  })
+
+  it('ignores a start frame that carries no list, rather than trusting it', async () => {
+    const controller = new AbortController()
+    const seen: string[] = []
+
+    await readFrames(
+      // Not a shape this server writes — but the reader is the boundary, and a malformed frame
+      // must be dropped rather than handed on as an empty run with nothing to consult.
+      streamOf({ type: 'start' }, { type: 'event', event: step('one') }),
+      {
+        start: (sources) => seen.push(`start:${sources.join(',')}`),
+        event: (event) => seen.push(`event:${event.step}`),
+        report: () => seen.push('report'),
+        failure: (message) => seen.push(`failure:${message}`),
+      },
+      controller.signal,
+    )
+
+    expect(seen).toEqual(['event:one'])
+  })
+
   it('releases the body when it stops early, so nothing is left locked', async () => {
     const controller = new AbortController()
     const body = streamOf({ type: 'event', event: step('one') }, { type: 'report', report: fixtureReport('stripe') })
 
     await readFrames(
       body,
-      { event: () => controller.abort(), report: () => {}, failure: () => {} },
+      { start: () => {}, event: () => controller.abort(), report: () => {}, failure: () => {} },
       controller.signal,
     )
 

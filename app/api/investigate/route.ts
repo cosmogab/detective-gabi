@@ -62,10 +62,17 @@ const requestSchema = z.object({
 })
 
 /**
- * One frame per line of NDJSON. `event` frames arrive as providers finish and `report` closes
- * the run, so the client renders the investigation as it happens rather than after it.
+ * One frame per line of NDJSON. `start` names the sources this run will put a question to,
+ * `event` frames arrive as providers finish, and `report` closes the run — so the client renders
+ * the investigation as it happens rather than after it.
+ *
+ * `start` exists because a client counting into the dark cannot say "three of six". The list is
+ * not a forecast: every wired provider reports at least one line, an unavailable one saying
+ * `skipped` immediately, so the count it gives is what will actually arrive. Announcing a fact
+ * known at the outset is not the scripted progress D8 refuses — a bar drifting on a timer is.
  */
 type Frame =
+  | { type: 'start'; sources: readonly Source[] }
   | { type: 'event'; event: LogEvent }
   | { type: 'report'; report: Report }
   | { type: 'error'; message: string }
@@ -149,6 +156,9 @@ export async function POST(request: Request): Promise<Response> {
         }
       }
       try {
+        // Before anything else, including the rate-limit notice: what is about to be asked is
+        // known now, and the screen has nothing to show until it is told.
+        send({ type: 'start', sources: providers.map((provider) => provider.id) })
         if (notice !== null) send({ type: 'event', event: notice })
         // A cache hit emits nothing: the stored report carries the log of the run that
         // happened, and sending those lines now would pass another moment's measurements off
