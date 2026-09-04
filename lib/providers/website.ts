@@ -1,4 +1,7 @@
 import * as cheerio from 'cheerio'
+import { z } from 'zod'
+import type { Person } from '@/lib/types'
+import { extract, isSafeReason } from './llm'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
 
 /**
@@ -28,6 +31,17 @@ const PAGE_TIMEOUT_MS = 8000
  * kept sending" is not a reason to find out where it stops.
  */
 const HTML_LIMIT = 2_000_000
+
+/** One reading of prose by a model, which is what `circumstantial` means (D20). */
+const CONFIDENCE = 'circumstantial' as const
+
+/**
+ * What the model is asked to give back. Names and stated titles, nothing else: a schema that
+ * asked for a seniority or a department would invite the model to decide one.
+ */
+const PEOPLE_SCHEMA = z.object({
+  people: z.array(z.object({ name: z.string(), title: z.string().nullable() })),
+})
 
 /** Automated callers that name themselves get served; the SEC and Wikimedia both taught us so. */
 const USER_AGENT = 'DetectiveGabi/0.1 (+https://github.com/evoltGABI/detective-gabi)'
@@ -65,10 +79,164 @@ export const website: Provider = {
     // Prose is what these pages hold, and reading prose is the model's job. Without the key
     // there is no reader, so nothing is fetched: asking the site for pages we cannot read
     // would spend its bandwidth to learn nothing.
-    if (ctx.key('llm') === null) return nothingAsked(step, started, 'no extraction key configured')
+    const key = ctx.key('llm')
+    if (key === null) return nothingAsked(step, started, 'no extraction key configured')
 
-    return nothingAsked(step, started, 'extraction not wired yet')
+    const pages = await readPages(domain, ctx)
+    // We reached the site and it publishes none of the three pages. That is an answer about
+    // the company, unlike everything above it, so it is `empty` and the source counts as
+    // checked.
+    if (pages.length === 0) {
+      return {
+        fields: {},
+        people: [],
+        log: [
+          {
+            step,
+            ms: since(started),
+            status: 'empty',
+            detail: 'no about, team or leadership page',
+            source: 'website',
+          },
+        ],
+      }
+    }
+
+    const readings = await Promise.all(pages.map((page) => readPeople(page, key, ctx)))
+    const failures = readings.flatMap((reading) => (reading.error === null ? [] : [reading.error]))
+    const people = dropRepeats(readings.flatMap((reading) => reading.people))
+    const cost = `${pages.length} model call${pages.length === 1 ? '' : 's'}`
+
+    // Every page failed, so nobody read anything. Reporting `empty` here would say the site
+    // names no one on the strength of a model that never answered — a 503 is not a page
+    // without people.
+    if (failures.length === pages.length) {
+      return {
+        fields: {},
+        people: [],
+        log: [
+          { step, ms: since(started), status: 'failed', detail: failures[0], source: 'website', cost },
+        ],
+      }
+    }
+
+    return {
+      fields: {},
+      people,
+      log: [
+        {
+          step,
+          ms: since(started),
+          status: people.length > 0 ? 'ok' : 'empty',
+          detail: describe(pages, people, failures),
+          source: 'website',
+          cost,
+        },
+      ],
+    }
   },
+}
+
+type Reading = { people: Person[]; error: string | null }
+
+/**
+ * One page, read once.
+ *
+ * The source of an extracted person is `llm`, not `website`, and that is the whole decision.
+ * The page is the evidence and the model is only the reader — but a reader that can be wrong,
+ * and `Person` carries exactly one source. Attributing to `website` would put the model's
+ * mistakes in the company's mouth, and would rank them above a web search on merge. So the
+ * name says who produced it, and `sourceUrl` says where to check it.
+ *
+ * A name that does not appear on the page is dropped whatever the model says it is. All 58
+ * people the model found across the three recordings appear verbatim in the text it was given,
+ * so this costs nothing real and makes an invented name unpublishable.
+ */
+async function readPeople(page: PageText, apiKey: string, ctx: Ctx): Promise<Reading> {
+  try {
+    const answer = await extract({
+      prompt: promptFor(page),
+      schema: PEOPLE_SCHEMA,
+      apiKey,
+      signal: ctx.signal,
+    })
+
+    const people = answer.people.flatMap((person) => {
+      const name = person.name.trim()
+      if (name === '' || !page.text.includes(name)) return []
+      const title = (person.title ?? '').trim()
+      return [
+        {
+          name,
+          title: title === '' ? null : title,
+          email: null,
+          source: 'llm' as const,
+          sourceUrl: page.url,
+          fetchedAt: ctx.now,
+          confidence: CONFIDENCE,
+        },
+      ]
+    })
+    return { people, error: null }
+  } catch (error) {
+    // `llm.ts` throws only its own words; anything else is reduced to ours.
+    const message = error instanceof Error ? error.message : ''
+    return { people: [], error: isSafeReason(message) ? message : 'the extraction failed' }
+  }
+}
+
+/**
+ * Leadership, not the staff list. fly.io's page names 57 people, of whom five run the company;
+ * the rest are the roster, and a "persons of interest" section that lists 21 developers has
+ * answered a question nobody asked (SPEC §2, and the same reason Hunter asks for executives).
+ *
+ * The instructions against inventing are not decoration. Measured on a page that says
+ * "we're proud to be a team of 228 misfits" and names nobody: the model returns an empty list.
+ */
+function promptFor(page: PageText): string {
+  return [
+    "From this page of a company's website, list the people it presents as running the company:",
+    'founders, executives, and the heads of teams or functions.',
+    '',
+    'Rules:',
+    '- Only people the text actually names. If it names nobody, return an empty list.',
+    '- Never infer a person from a role mentioned without a name.',
+    '- If the page is a full staff directory, include only those whose stated title shows they',
+    '  lead the company or a function: founder, chief, president, VP, head, director, lead.',
+    '- Copy each name exactly as the page writes it.',
+    '- Use the job title the page states for that person, or null if it states none.',
+    '',
+    `PAGE (${page.url}):`,
+    page.text,
+  ].join('\n')
+}
+
+/** Two pages naming the same person are one person, and the first page keeps the citation. */
+function dropRepeats(people: readonly Person[]): Person[] {
+  const seen = new Set<string>()
+  return people.flatMap((person) => {
+    const key = person.name.toLowerCase()
+    if (seen.has(key)) return []
+    seen.add(key)
+    return [person]
+  })
+}
+
+function describe(
+  pages: readonly PageText[],
+  people: readonly Person[],
+  failures: readonly string[],
+): string {
+  const read = `${pages.length} page${pages.length === 1 ? '' : 's'} read`
+  const found =
+    people.length === 0
+      ? 'nobody named'
+      : `${people.length} decision maker${people.length === 1 ? '' : 's'}`
+  const parts = [read, found]
+  // A page we only half read, said out loud rather than left for the reader to wonder about.
+  if (pages.some((page) => page.truncated)) parts.push('one page was too long and was truncated')
+  if (failures.length > 0) parts.push(`${failures.length} page could not be read: ${failures[0]}`)
+  return parts.join(' · ')
 }
 
 /**

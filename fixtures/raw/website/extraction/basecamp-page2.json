@@ -1,0 +1,32 @@
+{
+ "candidates": [
+  {
+   "content": {
+    "parts": [
+     {
+      "text": "{\"people\":[{\"name\":\"Jason Fried\",\"title\":\"Co-founder & CEO\"}]}",
+      "thoughtSignature": "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"
+     }
+    ],
+    "role": "model"
+   },
+   "finishReason": "STOP",
+   "index": 0
+  }
+ ],
+ "usageMetadata": {
+  "promptTokenCount": 903,
+  "candidatesTokenCount": 17,
+  "totalTokenCount": 1323,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 903
+   }
+  ],
+  "thoughtsTokenCount": 403,
+  "serviceTier": "standard"
+ },
+ "modelVersion": "gemini-3.6-flash",
+ "responseId": "okSaaoj4A6yJqtsPq_KF6AU"
+}

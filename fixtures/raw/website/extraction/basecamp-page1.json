@@ -1,0 +1,32 @@
+{
+ "candidates": [
+  {
+   "content": {
+    "parts": [
+     {
+      "text": "{\"people\":[{\"name\":\"Jason Fried\",\"title\":\"Co-founder & CEO\"}]}",
+      "thoughtSignature": "EvYJCvMJARFNMg/l+2VkKQYZpwQ8WlxGtNZrqeGREOWjkd+KePXdvFfa4vMEDmDEqocl5cTkPPxmWf1QTHRPfLUFjTEsMTymHN4FYaEdtV4aPu/YZ/4EsN386n95TCAOM/DVhW2AS9NwVAkHU53JbvQnYIJgfm/4dS1+RHO6TiAO59Pir2dPNqmvpliWRuHVwyFs8wEjR/xPutz9IKMtH88DnDq2YcOWhn63EVG84yFkXRM8fAlqntwQ6Tkg+LyDwAdSGx2KWXbKu66FkszzgASg/urqM5SvlGgQ7R924rWDaSIaEp+VdWBVXCxjELt5G4f8b/PK7FL57Cu8TDNPekzny4W/tvaL2CaD0XJhvTh2ceyBF/Vx/5A7mxD0fcJ0kaRzxuS/AItCEuWSl1wUhlmKcKM6phDMjkaiyZsOHyQewr2WqsTGcw8xAdAO6+vkNNH55MQwxV1YP/kclcldxMh1eVqTm62JRJNwkI3aj3peSxBeyJJ4uf6NQ+MHlWHaN/aKH99SAvCbmv1qHjGCT37uxGf+0oECEOxYyUFWeZ/uprMDUrCvFzqs4spLNhKbnkAO9DzkLb70fDP+8qTHrZouPuk1JUbaTbQsV2jNAnmUfOX3l8pniXCkSGjsDgp15X2/QMwk1zzhRoVjfKc2gxn8L/JQk1//if26+55LG9bGMTaDygZplHNQffNJKVBXTWcznzU453nyZ7wrOEuganWTCvymgA3vB9TG76tNy+kgg0b25wWjeZqMs+Ob2ITHd74xp+1eDBexgXg+a9qLFQL1MADeYgQbMAyHeZADJUYsdc067zWERul2meY+wVOyKDyxi93fd7kwxny3IpZMx0YK8JuL72ZjqYh3UYdhchOI7YoWZGEEcSDy22ihb1hC4FxxAYBsHk4TN7tA1tFxtP4C12IyP6vO4iQeKjI3LBbv21Sb7YINye6chQgKqyWRf+3LWCJ0ZX4xDWH6zzIsmRI4AKZ8qKHoy+0fVN7aKx4R5cTfK5wQTZcM7oXd7Qzu+ca6nVt12BXPo1osJL2o8m3mznX1EqTKIWANiYQ9SkuhLnkj+VP5Bhxemib/2wzon7W4OYlOFPGL0dHhgnjQ+yBcMNJ2u5CPYjZ+ZMJo23c56xWHWFUQCyl1c2veCKXpSWrXV6+uqZN41GECOuuqyfXay8+wqKxZucseskzAQmGEbmaDcfeBujQP2fJEMAxsts07DetpNgJbogxQEMJAgwP9yovuggWfxcjnPDjcpNchy9tNE++twcFPkqHQJzU1x4opW7mRm8S5WKehyncvebeJeb7miyRGiEh4KPZl4/V/AVl+n/rWUzCFipCpaGbaqQP5V1C3bnI4OpqPLscdPvJ8rdhiCg9Wckj8ZRwOuVJ6cHZjd1e+ryMFO0sBx82kvpHwu/oi41mit0V5y2bziL3Y8zhmR58qYuEU04sdwen8ze66jcVEYAZLlz4NUjOEc2RPNKYftoNImrmhT8w1g0cRbdezEpPBzDamMfZcKDX+OlaUFvZ92158f5eGd6ToHqPcT+o2fHouT4w7uE124iANigC/Qpg4k9WZeNqD2stFpG1s6k42L1VV+0xyX/z15IPXJmNvHxS52qnSft0o6pJai8kbnPacc5J0FZU1dmqsYbI/Q9wg4wW8x93X+wwC3dWn8qz312zs8Ko3HnbzavCZe341rN6d0Q=="
+     }
+    ],
+    "role": "model"
+   },
+   "finishReason": "STOP",
+   "index": 0
+  }
+ ],
+ "usageMetadata": {
+  "promptTokenCount": 903,
+  "candidatesTokenCount": 17,
+  "totalTokenCount": 1250,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 903
+   }
+  ],
+  "thoughtsTokenCount": 330,
+  "serviceTier": "standard"
+ },
+ "modelVersion": "gemini-3.6-flash",
+ "responseId": "oUSaao3pOLfEqtsP8u70gAY"
+}

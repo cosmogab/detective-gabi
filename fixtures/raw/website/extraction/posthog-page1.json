@@ -1,0 +1,32 @@
+{
+ "candidates": [
+  {
+   "content": {
+    "parts": [
+     {
+      "text": "{\"people\":[]}",
+      "thoughtSignature": "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"
+     }
+    ],
+    "role": "model"
+   },
+   "finishReason": "STOP",
+   "index": 0
+  }
+ ],
+ "usageMetadata": {
+  "promptTokenCount": 304,
+  "candidatesTokenCount": 4,
+  "totalTokenCount": 697,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 304
+   }
+  ],
+  "thoughtsTokenCount": 389,
+  "serviceTier": "standard"
+ },
+ "modelVersion": "gemini-3.6-flash",
+ "responseId": "0kWaavKaHcbAqtsPx9r5kAY"
+}

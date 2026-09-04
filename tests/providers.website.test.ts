@@ -283,3 +283,384 @@ describe('a page that talks about a team without naming anyone', () => {
     expect(text).not.toMatch(/Chief Executive|CEO|Co-founder/i)
   })
 })
+
+// ---------------------------------------------------------------------------------------
+// Extraction (commit 2): lib/providers/llm.ts, reached through the website provider
+// ---------------------------------------------------------------------------------------
+
+const extraction = (file: string): unknown =>
+  JSON.parse(readFileSync(new URL(`../fixtures/raw/website/extraction/${file}`, import.meta.url), 'utf8'))
+
+const MODEL_CALL = 'generativelanguage'
+
+/** A model reply in the recorded envelope, carrying whatever text a test needs to try. */
+function reply(text: string): unknown {
+  return { candidates: [{ content: { parts: [{ text, thoughtSignature: 'x' }] }, finishReason: 'STOP' }] }
+}
+
+/** Serves the site and the model separately, and counts what the model was asked. */
+function serveSite(page: string | null, model: readonly Route[]): Call[] {
+  const routes: Route[] = [
+    ...model.map((route) => ({ ...route, when: MODEL_CALL })),
+    { when: '/about', ...(page === null ? { status: 404 } : { body: page }) },
+    { when: '/team', status: 404 },
+    { when: '/leadership', status: 404 },
+  ]
+  const calls: Call[] = []
+  let modelCalls = 0
+  vi.stubGlobal('fetch', async (input: unknown, init?: { headers?: HeadersInit }) => {
+    const url = String(input)
+    calls.push({ url, headers: Object.fromEntries(new Headers(init?.headers).entries()) })
+    const isModel = url.includes(MODEL_CALL)
+    const route = isModel
+      ? (model[Math.min(modelCalls++, model.length - 1)] ?? { when: MODEL_CALL })
+      : routes.find((candidate) => !candidate.when.includes(MODEL_CALL) && url.includes(candidate.when))
+    if (route === undefined) throw new Error(`a test reached the network: ${url}`)
+    if (route.throws !== undefined) throw route.throws
+    const status = route.status ?? 200
+    return {
+      ok: status >= 200 && status < 300,
+      status,
+      headers: new Headers({ 'content-type': isModel ? 'application/json' : 'text/html' }),
+      text: async () => route.body ?? '',
+      json: async () => JSON.parse(route.body ?? 'null'),
+      clone: () => ({ text: async () => route.body ?? '' }),
+    }
+  })
+  return calls
+}
+
+const json = (value: unknown): string => JSON.stringify(value)
+
+describe('a company Hunter cannot answer for still yields names and titles', () => {
+  it('reads the leadership off the recorded fly.io page', async () => {
+    // fly.io has no LEI and no CIK; GLEIF and EDGAR hold nothing. Both payloads are real: the
+    // page as fetched, and the model's answer to the prompt this provider builds.
+    serveSite(FLYIO, [{ when: MODEL_CALL, body: json(extraction('flyio-page1.json')) }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.people?.map((person) => [person.name, person.title])).toEqual([
+      ['Michael Stahnke', 'VP of Engineering'],
+      ['Ben Johnson', 'VP of Product'],
+      ['Kurt Mackey', 'CEO'],
+      ['Jerome Gravel-Niquet', 'Developer + CTO'],
+      ['Matt Cunningham', 'VP of Finance'],
+    ])
+    expect(result.log[0]).toMatchObject({ status: 'ok', cost: '1 model call' })
+  })
+
+  it('leaves the staff roster out of the people who decide', async () => {
+    // The same page names fifty-seven people. An earlier prompt returned all of them, and a
+    // "persons of interest" section listing twenty-one developers has answered a question
+    // nobody asked.
+    serveSite(FLYIO, [{ when: MODEL_CALL, body: json(extraction('flyio-page1.json')) }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.people).toHaveLength(5)
+    expect(json(result.people)).not.toContain('Illustrator')
+  })
+
+  it('says the model read it, not the site', async () => {
+    // The page is the evidence and the model is only the reader — but a reader that can be
+    // wrong, and `Person` carries one source. Attributing to `website` would put the model's
+    // mistakes in the company's mouth and rank them above a web search on merge.
+    serveSite(FLYIO, [{ when: MODEL_CALL, body: json(extraction('flyio-page1.json')) }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.people?.[0]).toMatchObject({
+      source: 'llm',
+      sourceUrl: 'https://fly.io/about',
+      confidence: 'circumstantial',
+      email: null,
+      fetchedAt: NOW,
+    })
+  })
+
+  it('finds a founder named in the middle of a sentence', async () => {
+    serveSite(BASECAMP, [{ when: MODEL_CALL, body: json(extraction('basecamp-page1.json')) }])
+
+    const result = await website.run(company('basecamp.com'), withReader())
+
+    expect(result.people?.map((person) => person.name)).toEqual(['Jason Fried'])
+  })
+})
+
+describe('a page that names nobody yields nobody', () => {
+  it('returns zero people for the recorded PostHog answer', async () => {
+    // Both real: the page says "we're proud to be a team of 228 misfits" and names no one, and
+    // the model answered `{"people":[]}` rather than a plausible name.
+    serveSite(POSTHOG, [{ when: MODEL_CALL, body: json(extraction('posthog-page1.json')) }])
+
+    const result = await website.run(company('posthog.com'), withReader())
+
+    expect(result.people).toEqual([])
+    expect(result.log[0]).toMatchObject({ status: 'empty', detail: '1 page read · nobody named' })
+  })
+
+  it('drops a name that is not on the page, whatever the model says', async () => {
+    // The guard against the one failure this design cannot otherwise catch. All fifty-eight
+    // people found across the recordings appear verbatim in the text they were read from, so
+    // this costs nothing real.
+    serveSite(POSTHOG, [
+      { when: MODEL_CALL, body: json(reply(json({ people: [{ name: 'Hilda Fictitious', title: 'CEO' }] }))) },
+    ])
+
+    const result = await website.run(company('posthog.com'), withReader())
+
+    expect(result.people).toEqual([])
+  })
+})
+
+describe('the model being unavailable is not a company without leaders', () => {
+  it('reports a recorded 503 as a failure', async () => {
+    // Measured five times over this task. An outage reported as `empty` would say "nobody
+    // named on the site" on the strength of a model that never read it.
+    serveSite(FLYIO, [{ when: MODEL_CALL, status: 503, body: json(extraction('flyio-error503.json')) }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'the model is unavailable' })
+    expect(result.people).toEqual([])
+    expect(result.fields).toEqual({})
+  })
+
+  it('reports a recorded 429 as a failure, and names the quota', async () => {
+    serveSite(POSTHOG, [{ when: MODEL_CALL, status: 429, body: json(extraction('posthog-error429.json')) }])
+
+    const result = await website.run(company('posthog.com'), withReader())
+
+    expect(result.log[0]).toMatchObject({
+      status: 'failed',
+      detail: 'the extraction quota or rate limit was reached',
+    })
+  })
+
+  it('names a model that is gone as a configuration problem', async () => {
+    // `models.list` advertises gemini-2.5-flash, which answers 404. A model going away must
+    // not read as a company with nobody in it.
+    serveSite(FLYIO, [{ when: MODEL_CALL, status: 404, body: '{}' }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.log[0]?.status).toBe('failed')
+    expect(result.log[0]?.detail).toContain('not available to this key')
+  })
+
+  it('finds the answer even when a thought comes before it', async () => {
+    // Every recorded part carries `text` alongside a `thoughtSignature`, and in all of them
+    // the text is first. A part holding only a thought is what taking `parts[0]` would break
+    // on, so it is constructed here rather than waited for.
+    const withThought = {
+      candidates: [
+        {
+          content: { parts: [{ thoughtSignature: 'abc' }, { text: json({ people: [{ name: 'Jason Fried', title: 'CEO' }] }), thoughtSignature: 'def' }] },
+          finishReason: 'STOP',
+        },
+      ],
+    }
+    serveSite(BASECAMP, [{ when: MODEL_CALL, body: json(withThought) }])
+
+    const result = await website.run(company('basecamp.com'), withReader())
+
+    expect(result.people?.map((person) => person.name)).toEqual(['Jason Fried'])
+  })
+
+  it('refuses an answer the model did not finish', async () => {
+    const truncated = { candidates: [{ content: { parts: [{ text: '{"people":[' }] }, finishReason: 'MAX_TOKENS' }] }
+    serveSite(FLYIO, [{ when: MODEL_CALL, body: json(truncated) }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.log[0]).toMatchObject({
+      status: 'failed',
+      detail: 'the model did not finish its answer',
+    })
+  })
+
+  it('keeps the people from the page that answered when another page fails', async () => {
+    // Exactly what one real run did: fly.io's /about was read and its /team was refused with
+    // a 503. The people survive and the log carries the failure beside them.
+    let modelCalls = 0
+    vi.stubGlobal('fetch', async (input: unknown) => {
+      const url = String(input)
+      if (url.includes(MODEL_CALL)) {
+        modelCalls += 1
+        const first = modelCalls === 1
+        return {
+          ok: first,
+          status: first ? 200 : 503,
+          headers: new Headers({ 'content-type': 'application/json' }),
+          json: async () => extraction(first ? 'flyio-page1.json' : 'flyio-error503.json'),
+        }
+      }
+      const exists = url.endsWith('/about') || url.endsWith('/team')
+      return {
+        ok: exists,
+        status: exists ? 200 : 404,
+        headers: new Headers({ 'content-type': 'text/html' }),
+        text: async () => FLYIO,
+      }
+    })
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.people).toHaveLength(5)
+    expect(result.log[0]).toMatchObject({ status: 'ok', cost: '2 model calls' })
+    expect(result.log[0]?.detail).toContain('1 page could not be read: the model is unavailable')
+  })
+})
+
+describe('two pages naming one person', () => {
+  it('publishes them once, citing the first page that named them', async () => {
+    const answer = json(reply(json({ people: [{ name: 'Jason Fried', title: 'Co-founder & CEO' }] })))
+    let modelCalls = 0
+    vi.stubGlobal('fetch', async (input: unknown) => {
+      const url = String(input)
+      if (url.includes(MODEL_CALL)) {
+        modelCalls += 1
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ 'content-type': 'application/json' }),
+          json: async () => JSON.parse(answer),
+        }
+      }
+      const exists = url.endsWith('/about') || url.endsWith('/team')
+      return {
+        ok: exists,
+        status: exists ? 200 : 404,
+        headers: new Headers({ 'content-type': 'text/html' }),
+        text: async () => BASECAMP,
+      }
+    })
+
+    const result = await website.run(company('basecamp.com'), withReader())
+
+    expect(modelCalls).toBe(2)
+    expect(result.people).toHaveLength(1)
+    expect(result.people?.[0]?.sourceUrl).toBe('https://basecamp.com/about')
+  })
+})
+
+describe('malformed output is retried exactly once', () => {
+  it('gives up after the second attempt, and fails only this step', async () => {
+    const rubbish = json(reply('not json at all'))
+    const calls = serveSite(FLYIO, [
+      { when: MODEL_CALL, body: rubbish },
+      { when: MODEL_CALL, body: rubbish },
+      { when: MODEL_CALL, body: rubbish },
+    ])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(calls.filter((call) => call.url.includes(MODEL_CALL))).toHaveLength(2)
+    expect(result.log[0]).toMatchObject({
+      status: 'failed',
+      detail: 'the model returned output the schema refused',
+    })
+    // The step failed; the investigation did not.
+    expect(result.fields).toEqual({})
+  })
+
+  it('takes the answer when the retry is the one that parses', async () => {
+    // The positive control: without it, never retrying would pass the test above.
+    const calls = serveSite(FLYIO, [
+      { when: MODEL_CALL, body: json(reply('{"people":[')) },
+      { when: MODEL_CALL, body: json(extraction('flyio-page1.json')) },
+    ])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(calls.filter((call) => call.url.includes(MODEL_CALL))).toHaveLength(2)
+    expect(result.people).toHaveLength(5)
+  })
+
+  it('refuses output that parses but is not the shape asked for', async () => {
+    const wrongShape = json(reply(json({ people: [{ name: 'Ada Lovelace', title: 42 }] })))
+    serveSite(FLYIO, [{ when: MODEL_CALL, body: wrongShape }, { when: MODEL_CALL, body: wrongShape }])
+
+    const result = await website.run(company('fly.io'), withReader())
+
+    expect(result.log[0]?.detail).toBe('the model returned output the schema refused')
+  })
+
+  it('does not retry a source that just said it is overloaded', async () => {
+    // One retry is for malformed output. A 503 retried immediately is a second 503.
+    const calls = serveSite(FLYIO, [{ when: MODEL_CALL, status: 503, body: '{}' }])
+
+    await website.run(company('fly.io'), withReader())
+
+    expect(calls.filter((call) => call.url.includes(MODEL_CALL))).toHaveLength(1)
+  })
+})
+
+describe('the extraction key is never anywhere but the header', () => {
+  it('sends the key as a header and keeps it out of everything else', async () => {
+    const secret = 'AIza-not-a-real-key-9f3a'
+    const calls = serveSite(FLYIO, [{ when: MODEL_CALL, body: json(extraction('flyio-page1.json')) }])
+
+    const result = await website.run(company('fly.io'), context({ key: () => secret }))
+
+    const modelCall = calls.find((call) => call.url.includes(MODEL_CALL))
+    expect(modelCall?.headers['x-goog-api-key']).toBe(secret)
+    expect(modelCall?.url).not.toContain(secret)
+    expect(modelCall?.url).not.toContain('key=')
+    expect(json(result)).not.toContain(secret)
+  })
+
+  it('keeps the key out of the log whatever fetch throws', async () => {
+    const secret = 'AIza-not-a-real-key-9f3a'
+    serveSite(FLYIO, [
+      { when: MODEL_CALL, throws: new Error(`Headers.append: "${secret}" is an invalid header value`) },
+    ])
+
+    const result = await website.run(company('fly.io'), context({ key: () => secret }))
+
+    expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'the extraction request failed' })
+    expect(json(result)).not.toContain(secret)
+  })
+})
+
+describe('what the model is actually asked', () => {
+  it('sends the page text and the instruction not to invent', async () => {
+    const calls: string[] = []
+    vi.stubGlobal('fetch', async (input: unknown, init?: { body?: string }) => {
+      const url = String(input)
+      if (url.includes(MODEL_CALL)) {
+        calls.push(init?.body ?? '')
+        return {
+          ok: true,
+          status: 200,
+          headers: new Headers({ 'content-type': 'application/json' }),
+          json: async () => extraction('posthog-page1.json'),
+        }
+      }
+      return {
+        ok: url.includes('/about'),
+        status: url.includes('/about') ? 200 : 404,
+        headers: new Headers({ 'content-type': 'text/html' }),
+        text: async () => POSTHOG,
+      }
+    })
+
+    await website.run(company('posthog.com'), withReader())
+
+    const sent = JSON.parse(calls[0] ?? '{}')
+    const prompt: string = sent.contents[0].parts[0].text
+    expect(prompt).toContain('team of 228')
+    expect(prompt).toContain('If it names nobody, return an empty list.')
+    expect(prompt).toContain('Never infer a person from a role mentioned without a name.')
+    // The rule that turned fifty-seven fly.io people into the five who run the company. What
+    // the model does with it is the model's; that we ask is ours, and this is where it is held.
+    expect(prompt).toContain('full staff directory')
+    // Asked for JSON under the schema, and asked to be repeatable.
+    expect(sent.generationConfig.responseMimeType).toBe('application/json')
+    expect(sent.generationConfig.temperature).toBe(0)
+    expect(json(sent.generationConfig.responseSchema)).not.toContain('additionalProperties')
+    // Bounded: a page cannot set the bill.
+    expect(prompt.length).toBeLessThan(14000)
+  })
+})
