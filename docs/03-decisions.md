@@ -725,6 +725,59 @@ identifiers always come from a resolution that judged the candidate a clear winn
 one is shareable. D60 contains the blast radius to that URL's own cache entry; it does not stop the
 page from asserting it. Written up in the limitations rather than left in a comment.
 
+## D62 — One header per key, named `x-dg-key-<id>`
+
+**Context.** Two conventions had shipped in parallel without either lane knowing: one header per
+source in `app/api/investigate/route.ts`, and a single `x-detective-keys` header holding a JSON
+object in `app/api/resolve/route.ts`. The resolve route also carried its own third copy of the
+resolution ladder.
+**Choice.** One header per source. A key stays an opaque string end to end: the JSON form makes the
+client escape a value it did not choose, and one stray quote costs *every* key at once, silently —
+a source the user did configure then reports as skipped for want of a key, which is the
+false-absence family of D59. And the name space is closed by `Source`: the resolver asks for the
+ids it knows rather than reading a record whose keys the caller names.
+**Consequence.** Both routes now resolve through `lib/keys.ts`, the third copy is gone, and the one
+test that sent the old header was updated rather than left to rot. The environment tier reaches a
+provider for the first time: before this, a key in `.env.local` could not be used by the running
+app at all, because both routes read only headers.
+
+## D63 — Abstract's country is resolved to ISO, or the report invents a disagreement
+
+**Context.** Abstract returns `country: "United States"` and leaves `country_iso_code` null — on
+all four recordings. `Location.country` is ISO alpha-2, and `merge`'s `sameCountry` returns false
+when *either* side is null. So a null country does not read as "unknown", it reads as "not the same
+place".
+**Choice.** Resolve the country name to its ISO code. Measured both ways on a real merge: with
+`"US"`, Wikidata takes the primary slot `confirmed` with no conflict; with `null`, the same data
+comes back `corroborated` with a conflict reading "San Francisco vs San Francisco".
+**Consequence.** Verified in the running app: a five-source investigation of Stripe shows exactly
+one location conflict — GLEIF's South San Francisco, which is a real disagreement — and none
+between Abstract and EDGAR. `yearFounded` rose to `confirmed` because Abstract corroborates 2010.
+The expected disagreement is pinned, not corrected: 8000 employees (Wikidata, 2022) wins and
+Abstract's 3037 is shown as the conflict.
+
+## D64 — The keyed providers join the run, and the budget is the guard
+
+**Context.** `abstract` and `hunter` existed but no route called them, so both were dead code. The
+route's own comment said a provider joins the list when it can actually answer.
+**Choice.** Both join. Abstract's free tier is **one hundred requests for the life of the account**,
+not per month, so the cache (D60) and the per-IP limit (D49) are the only things between it and an
+afternoon of clicking. Each declares `requiresKey`, so a deployment without a key gets an honest
+`skipped` line — verified: Hunter reports "no key available" and stays out of `sourcesChecked`.
+**Consequence accepted.** Ordinary use consumes a budget that never refills. Pulling the key out of
+`.env.local` is the way to preserve it; the app degrades to the keyless sources by design.
+
+## D65 — A second knowing duplication, and a recording that now shows less than the app
+
+**Context.** Two things worth naming before they are discovered, in the style of D53.
+`isoRegions()` is copied from `lib/providers/edgar.ts` rather than imported — that module belongs
+to another lane's ownership, and two providers sharing one name-matching table means a tweak made
+for EDGAR's shape would silently move Abstract's companies. And `fixtures/flyio.json` shows
+"No evidence found" for location and employees, while Abstract answers Chicago and 8.
+**Consequence accepted.** The recording is still true — it is a keyless run and it says so — but it
+is now a demonstration that shows less than the app does. Re-recording it is owed, and belongs with
+the re-recording already due after identity resolution landed.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
