@@ -5,10 +5,9 @@ import {
   Progress,
   answeredCount,
   arrivalOrder,
+  allDrawn,
   displayOrder,
   drawable,
-  floorFor,
-  remainingHold,
 } from '@/app/components/Progress'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 
@@ -89,30 +88,25 @@ describe('the pacing lags the facts and never leads them', () => {
     expect(drawable(3, 9_000, 1_000)).toBe(3)
   })
 
-  it('gives the whole wait one second per part, so none is drawn and swept away at once', () => {
-    expect(floorFor(ALL)).toBe(3_000)
-    expect(floorFor(['wikidata', 'wikidata'])).toBe(1_000)
-    expect(floorFor([])).toBe(0)
-  })
-
-  it('measures the floor from when the wait appeared, not from when the run finished', () => {
-    expect(remainingHold(1_000, 1_000, 3_000)).toBe(3_000)
-    expect(remainingHold(1_000, 2_500, 3_000)).toBe(1_500)
-    expect(remainingHold(1_000, 9_000, 3_000)).toBe(0)
-    // What a cached report passes: nothing was investigated, so there is no progression to hold.
-    expect(remainingHold(1_000, 1_000, 0)).toBe(0)
+  it('is not complete until every announced part is drawn', () => {
+    // The screen may not leave in the frame the last part is inked — that part is the one the
+    // reader waited seven seconds for, and swapping then means never seeing it arrive.
+    expect(allDrawn(2, 3)).toBe(false)
+    expect(allDrawn(3, 3)).toBe(true)
+    // Nothing announced is not "everything drawn": the run has not said what it will ask yet.
+    expect(allDrawn(0, 0)).toBe(false)
   })
 })
 
 describe('what is on the screen', () => {
-  const render = (sources: readonly Source[], events: readonly LogEvent[], shownAt = Date.now()) =>
+  const render = (sources: readonly Source[], events: readonly LogEvent[], drawn = 0) =>
     renderToStaticMarkup(
       createElement(Progress, {
         name: 'Stripe',
         domain: 'stripe.com',
         sources,
         events,
-        shownAt,
+        drawn,
         running: true,
       }),
     )
@@ -142,6 +136,13 @@ describe('what is on the screen', () => {
 
   it('says plainly that it does not yet know what will be asked', () => {
     expect(render([], [])).toContain('not yet said which sources')
+  })
+
+  it('divides the bar with one hairline per boundary, and none at the ends', () => {
+    // Painted beneath the parts, so an inked stretch covers its own seams and reads as one bar
+    // rather than as three objects sitting next to each other.
+    expect(render(ALL, []).split('w-px').length - 1).toBe(2)
+    expect(render(['wikidata'], []).split('w-px').length - 1).toBe(0)
   })
 
   it('never paints a source red for answering that it holds nothing', () => {

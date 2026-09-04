@@ -5,7 +5,7 @@ import type { ReactNode } from 'react'
 import { StoredAnswer } from './Banners'
 import { CaseFile } from './CaseFile'
 import { InvestigationLog } from './InvestigationLog'
-import { Progress, floorFor, useMinimumHold } from './Progress'
+import { Progress, answeredCount, useDrawn, useSettled } from './Progress'
 import { requestHeaders } from './KeysModal'
 import type { LogEvent, Report, Source } from '@/lib/types'
 
@@ -180,12 +180,16 @@ export function LiveInvestigation(props: {
     return () => controller.abort()
   }, [name, domain, refresh, demo, wikidataId, lei, cik])
 
-  // One second per part, so no source is drawn and swept away in the same breath. A stored
-  // answer investigated nothing, so it has no progression to show and no floor to serve: it goes
-  // straight to the document under the line that says where it came from.
-  const holding = useMinimumHold(shownAt, report?.cached === true ? 0 : floorFor(sources))
+  // The pacing lives here rather than in the bar, because the same number decides two things:
+  // how much of the bar is drawn, and when the last part has finished arriving. Swapping the
+  // screen in the frame the final part is inked means never seeing it land.
+  const total = new Set(sources).size
+  const drawn = useDrawn(shownAt, answeredCount(sources, events))
+  const settled = useSettled(drawn, total)
 
-  if (report !== null && !holding) {
+  // A stored answer investigated nothing, so it has no progression to draw and nothing to wait
+  // for: it goes straight to the document under the line that says where it came from.
+  if (report !== null && (report.cached || settled)) {
     // A stored answer says so, and offers the gesture that replaces it.
     return (
       <>
@@ -211,7 +215,7 @@ export function LiveInvestigation(props: {
         domain={domain}
         sources={sources}
         events={events}
-        shownAt={shownAt}
+        drawn={drawn}
         // Not `answered === announced`: a run that died at three of six has finished, and a
         // magnifier still sweeping over it would claim work that stopped.
         running={failure === null && report === null}

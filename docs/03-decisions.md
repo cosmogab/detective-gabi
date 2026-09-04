@@ -1229,6 +1229,16 @@ while the bar runs — there is nothing to search for yet, and a field beside a 
 abandoning it — and returns with the report, which is when searching again means something.
 Verified: 0 fields during, 1 after.
 
+**Two things the first rendering got wrong.** The divisions were borders on each part, so the fill
+sat inside them and a light seam stayed visible across the ink — three objects side by side rather
+than one bar. They are now hairlines painted *beneath* the parts, so an inked stretch covers its
+own seams and only the part still to come is divided from the rest. And the swap was governed by a
+flat floor, which on Stripe had long since passed by the time SEC EDGAR answered at 7,258ms: the
+last part was inked and the case file took the screen in the same frame, so the part the reader
+waited seven seconds for was never seen arriving. The floor is gone. The screen now leaves when
+every announced part has been drawn *and* its fill has had 700ms to finish — the pacing itself is
+the floor, and the last part is the one that earns it.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->

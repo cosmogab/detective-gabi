@@ -105,39 +105,41 @@ export function drawable(
   return Math.max(0, Math.min(answered, Math.floor(elapsed / stepMs)))
 }
 
-/** How long the whole wait needs at minimum: one second per part, so no part is skipped past. */
-export function floorFor(announced: readonly Source[], stepMs: number = STEP_MS): number {
-  return new Set(announced).size * stepMs
-}
-
 /**
- * What is left of the floor, in ms. Pure, so the rule is provable without a clock: the screen
- * may leave when this reaches 0. Measured from when the wait appeared rather than from when the
- * last source answered — holding a further second after a long run taxes the reader for nothing.
- */
-export function remainingHold(shownAt: number, now: number, floorMs: number): number {
-  return Math.max(0, floorMs - (now - shownAt))
-}
-
-/**
- * True while the wait must stay up. The parent owns the swap, because the parent is what holds
- * the report:
+ * How long a drawn part is left alone before the screen may leave.
  *
- *   const holding = useMinimumHold(shownAt, report?.cached === true ? 0 : floorFor(sources))
- *   if (report !== null && !holding) return <CaseFile report={report} />
+ * The last part is the one the reader waited seven seconds for, and swapping the screen in the
+ * frame it is drawn means never seeing it arrive. Long enough for the 400ms fill to finish and
+ * be looked at.
  */
-export function useMinimumHold(shownAt: number, floorMs: number): boolean {
-  const [holding, setHolding] = useState(() => remainingHold(shownAt, Date.now(), floorMs) > 0)
+export const TAIL_MS = 700
+
+/** Every announced part drawn. Zero announced is not complete: nothing has been said yet. */
+export function allDrawn(drawn: number, total: number): boolean {
+  return total > 0 && drawn >= total
+}
+
+/**
+ * True once every part has been drawn and its fill has had time to finish. The parent owns the
+ * swap, because the parent is what holds the report:
+ *
+ *   const settled = useSettled(drawn, total)
+ *   if (report !== null && (report.cached || settled)) return <CaseFile report={report} />
+ */
+export function useSettled(drawn: number, total: number, tailMs: number = TAIL_MS): boolean {
+  const complete = allDrawn(drawn, total)
+  const [settled, setSettled] = useState(false)
 
   useEffect(() => {
-    const left = remainingHold(shownAt, Date.now(), floorMs)
-    setHolding(left > 0)
-    if (left === 0) return
-    const timer = setTimeout(() => setHolding(false), left)
+    if (!complete) {
+      setSettled(false)
+      return
+    }
+    const timer = setTimeout(() => setSettled(true), tailMs)
     return () => clearTimeout(timer)
-  }, [shownAt, floorMs])
+  }, [complete, tailMs])
 
-  return holding
+  return settled
 }
 
 /**
@@ -185,20 +187,20 @@ export function Progress(props: {
   domain: string | null
   sources: readonly Source[]
   events: readonly LogEvent[]
-  /** When this wait appeared. The pacing is measured from here. */
-  shownAt: number
+  /** How many parts have been drawn. Owned by the parent, which needs the same number to know
+   *  when the last one has finished arriving and the report may take the screen. */
+  drawn: number
   /** Whether the stream is still open. Not derived from the count: a run that died at three of
    *  six has finished, and dots still cycling over it would claim work that stopped. */
   running: boolean
 }) {
-  const { name, domain, sources, events, shownAt, running } = props
+  const { name, domain, sources, events, drawn, running } = props
   const total = new Set(sources).size
   const answered = answeredCount(sources, events)
   const order = displayOrder(sources, events)
   const status = statusBySource(sources, events)
-  const drawn = useDrawn(shownAt, answered)
 
-  const done = total > 0 && drawn >= total
+  const done = allDrawn(drawn, total)
   // The part being drawn is the step we are on. When every part is drawn there is no step left,
   // and the last one stays written until the report replaces the screen.
   const step = order[Math.min(drawn, Math.max(0, total - 1))]
@@ -220,16 +222,25 @@ export function Progress(props: {
       </p>
 
       <div className="relative mt-10 flex h-20 overflow-hidden border border-rule-strong bg-card sm:h-24">
+        {/* One hairline per division, painted before the parts and therefore beneath them: a
+            part that has been inked covers its own seam, so the drawn stretch reads as one bar
+            and only the part still to come is divided from it. */}
+        {Array.from({ length: Math.max(0, total - 1) }, (_, i) => (
+          <span
+            key={i}
+            aria-hidden="true"
+            className="absolute inset-y-0 w-px bg-rule"
+            style={{ left: `${((i + 1) / total) * 100}%` }}
+          />
+        ))}
+
         {total === 0 ? (
           /* Ruled and sized and claiming nothing, so the page does not jump when the
              announcement lands. */
           <span className="grow" />
         ) : (
           order.map((source, i) => (
-            <span
-              key={source}
-              className="relative grow border-l border-l-rule-strong first:border-l-0"
-            >
+            <span key={source} className="relative grow">
               <span
                 aria-hidden="true"
                 className={`ledger-advance absolute inset-0 origin-left ${fillOf(status.get(source))}`}
