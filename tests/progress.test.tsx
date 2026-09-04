@@ -1,14 +1,16 @@
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
+import { Progress } from '@/app/components/live/Progress'
 import {
-  Progress,
+  allDrawn,
   answeredCount,
   arrivalOrder,
-  allDrawn,
   displayOrder,
   drawable,
-} from '@/app/components/live/Progress'
+  fillOf,
+  stepAt,
+} from '@/app/components/live/pacing'
 import type { LogEvent, LogEventStatus, Source } from '@/lib/types'
 
 /**
@@ -151,5 +153,49 @@ describe('what is on the screen', () => {
     // run. Three of the four recordings depend on that being said correctly.
     expect(render(ALL, [said('gleif', 'empty'), said('edgar', 'skipped')])).not.toContain('alert')
     expect(render(ALL, [said('gleif', 'failed')])).toContain('bg-alert')
+  })
+})
+
+// ---------------------------------------------------------------------------------------
+// T44. Both of these were written inline inside a component, and one of them twice — the
+// identify bar worked out its own step and hard-coded its own colour. They are the wait's
+// arithmetic, so they live in `pacing.ts` and are tested as arithmetic.
+// ---------------------------------------------------------------------------------------
+
+describe('fillOf', () => {
+  it('inks a part red only when the source genuinely failed', () => {
+    expect(fillOf('failed')).toBe('bg-alert')
+  })
+
+  it('inks every other answer the same as any other part', () => {
+    // `empty` is a working source saying "nothing here" and `skipped` is one saying it did not
+    // run. Both answered. Three of the four recordings depend on that being said correctly.
+    for (const status of ['ok', 'empty', 'skipped'] as const) {
+      expect(fillOf(status), status).toBe('bg-ink')
+    }
+  })
+
+  it('inks a part that has not answered yet as ink, not as a failure', () => {
+    expect(fillOf(undefined)).toBe('bg-ink')
+  })
+})
+
+describe('stepAt', () => {
+  const order: Source[] = ['wikidata', 'gleif', 'edgar']
+
+  it('names the part being drawn', () => {
+    expect(stepAt(order, 0)).toBe('wikidata')
+    expect(stepAt(order, 1)).toBe('gleif')
+  })
+
+  it('keeps the last one written once every part is drawn', () => {
+    // There is no step left to name, and blanking the word would flicker the bar empty in the
+    // moment before the report takes the screen.
+    expect(stepAt(order, 3)).toBe('edgar')
+    expect(stepAt(order, 99)).toBe('edgar')
+  })
+
+  it('names nothing when the run has not said what it will ask', () => {
+    expect(stepAt([], 0)).toBeUndefined()
   })
 })

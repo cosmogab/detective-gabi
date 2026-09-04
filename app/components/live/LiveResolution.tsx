@@ -10,7 +10,9 @@ import { ResolutionLog } from '../case/InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from '../KeysModal'
 import { SOURCE_NAME } from '../case/FieldRow'
-import { IDENTIFY_STEP_MS, WaitBar, answeredCount, displayOrder, sourcesIn, useDrawn, useSettled } from './Progress'
+import { WaitBar } from './WaitBar'
+import { IDENTIFY_STEP_MS, answeredCount, displayOrder, sourcesIn } from './pacing'
+import { useDrawn, useSettled } from './useDrawn'
 import type { LogEvent } from '@/lib/types'
 
 /**
