@@ -1,7 +1,9 @@
 import { CaseFile } from '@/app/components/CaseFile'
 import { investigateHref, resolveHref } from '@/app/components/CandidateGrid'
 import { Sep, formatFetchedAt } from '@/app/components/FieldRow'
-import { LiveInvestigation, LiveResolution, StoredAnswer } from '@/app/components/InvestigationLog'
+import { StoredAnswer } from '@/app/components/Banners'
+import { LiveInvestigation } from '@/app/components/LiveInvestigation'
+import { LiveResolution } from '@/app/components/LiveResolution'
 import { Magnifier, SearchBar } from '@/app/components/SearchBar'
 import { FIXTURE_NAMES, fixtureForDomain, fixtureReport, type FixtureName } from '@/lib/providers/fake'
 

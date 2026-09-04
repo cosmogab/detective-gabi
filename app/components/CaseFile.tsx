@@ -1,6 +1,7 @@
 import type { Field, Location, Report, Source } from '@/lib/types'
 import { FieldRow, NoEvidence, Sep, SourcesChecked, formatFetchedAt } from './FieldRow'
-import { InvestigationLog, SimulatedRun } from './InvestigationLog'
+import { SimulatedRun } from './Banners'
+import { InvestigationLog } from './InvestigationLog'
 import { PersonCard } from './PersonCard'
 
 /**
