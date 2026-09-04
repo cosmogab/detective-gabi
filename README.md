@@ -114,6 +114,8 @@ The fixtures are recordings of real calls, not illustrations written by hand.
 - [`SPEC.md`](SPEC.md) — what it does, the data contract, the error states
 - [`PLAN.md`](PLAN.md) — the architecture and the provider seam
 - [`TASKS.md`](TASKS.md) — the build broken into commits
+- [`docs/02-architecture.md`](docs/02-architecture.md) — where the boundaries are, in the code
+  as committed
 - [`docs/03-decisions.md`](docs/03-decisions.md) — every decision, with the option rejected
 - [`docs/04-limitations.md`](docs/04-limitations.md) — what is still wrong, with the measurement
   that found it
