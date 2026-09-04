@@ -16,7 +16,7 @@ import {
 import { ResolutionLog } from './InvestigationLog'
 import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from './KeysModal'
-import { Magnifier } from './SearchBar'
+import { WaitBar } from './Progress'
 import type { LogEvent } from '@/lib/types'
 
 /**
@@ -130,16 +130,26 @@ export function LiveResolution(props: { query: string }) {
   return (
     <section className="mx-auto max-w-case px-6 pt-12 pb-10">
       <p className="label text-faint">Identifying</p>
-      <h1 className="mt-1 flex items-center gap-x-3 font-case text-3xl text-ink">
-        <Magnifier className={searching ? 'magnifier-sweep text-rule-strong' : 'text-rule-strong'} />
-        {query}
-      </h1>
+      <h1 className="mt-1 font-case text-3xl text-ink">{query}</h1>
 
-      {state.kind === 'searching' ? (
-        <p className="mt-4 font-sans text-sm text-muted">
-          Searching the sources that name companies. Nothing is investigated until one of them
-          is identified.
-        </p>
+      {/* The same bar the investigation wears, so crossing from one wait to the other does not
+          feel like changing application. One part and it stays empty: resolution is a single
+          request, not a stream, so there is no moment between asking and being answered that
+          this screen could honestly report. The word says what is happening; the empty frame
+          says nothing has come back, which is true until it does. */}
+      {searching ? (
+        <>
+          <WaitBar
+            parts={[{ key: 'identifying', fill: 'bg-ink' }]}
+            drawn={0}
+            word="Identifying"
+            running
+          />
+          <p className="mt-4 max-w-2xl font-sans text-sm text-muted">
+            Asking the sources that name companies. Nothing is investigated until one of them is
+            identified.
+          </p>
+        </>
       ) : null}
 
       {state.kind === 'failed' ? (

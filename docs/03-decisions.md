@@ -1269,4 +1269,30 @@ the loudest thing on a sparse report. Verified on Stripe and on Fly.io, the spar
 
 ---
 
+## D88 — Leaving a stored answer must not hand back another stored answer
+
+**Context.** Pressing `Investigate now` on a recording ran no investigation. The link carried no
+`refresh`, so a fresh-enough entry in the 24h cache was served instead — instantly, with a
+`Cached` banner and no progression at all. The reader pressed a button whose whole point is to
+stop being given a stored answer, and was given a different stored answer.
+
+**Choice.** That link carries `refresh: true`. The cache keeps doing what it is for — a shared
+link, a reload, ordinary navigation — and the one gesture that explicitly asks for a live run gets
+one. The bar then has something to draw, which is why the screen looked broken: nothing was
+investigated, so by D86 there was correctly nothing to show.
+
+**And the other wait wears the same bar.** Identifying a name still looked like the old screen: an
+eyebrow, a title, a sweeping magnifier and a sentence. `WaitBar` is now shared by both, because
+they are one object at two moments and a reader crossing between them should not feel they have
+changed application. Resolution gets **one part and it stays empty** — it is a single request, not
+a stream, so there is no moment between asking and being answered that the screen could honestly
+report. The word says what is happening; the empty frame says nothing has come back, which is true
+until it does.
+
+**Consequence, verified.** Two consecutive clicks on `Investigate now` both reach GLEIF and draw
+the bar. The magnifier leaves the resolution title, which had it for the same reason the
+investigation title did — that reason is now the bar.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

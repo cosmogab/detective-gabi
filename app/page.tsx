@@ -208,7 +208,12 @@ export default async function Home({
         <StoredAnswer
           kind="Recording"
           obtainedAt={recording.cachedAt ?? recording.fetchedAt}
-          href={investigateHref(recording.company.name, recording.company.domain)}
+          // `refresh`, because the gesture is leaving a stored answer for a live one. Without it
+          // a fresh-enough entry in the TTL cache is served instead — a different stored answer
+          // to the one question the reader pressed a button to stop being given.
+          href={investigateHref(recording.company.name, recording.company.domain, {
+            refresh: true,
+          })}
         />
         <CaseFile report={recording} />
         <footer className="mx-auto max-w-case px-6 pb-14">
