@@ -7,6 +7,7 @@ import {
   answeredCount,
   arrivalOrder,
   displayOrder,
+  barParts,
   drawable,
   fillOf,
   stepAt,
@@ -197,5 +198,51 @@ describe('stepAt', () => {
 
   it('names nothing when the run has not said what it will ask', () => {
     expect(stepAt([], 0)).toBeUndefined()
+  })
+})
+
+// ---------------------------------------------------------------------------------------
+// T45. Both waits draw one bar and there is one rule for what red means. The identify bar
+// used to write `fill: 'bg-ink'` for every part, so a source that failed while resolving was
+// drawn like one that answered — the same fact, drawn two ways on two screens.
+// ---------------------------------------------------------------------------------------
+
+describe('barParts', () => {
+  function event(source: Source, status: LogEventStatus): LogEvent {
+    return { step: `Checking ${source}`, ms: 1, status, source }
+  }
+
+  it('draws a failed source red and an answering one in ink', () => {
+    const log = [event('wikidata', 'ok'), event('web', 'failed')]
+
+    expect(barParts(['wikidata', 'web'], log)).toEqual([
+      { key: 'wikidata', fill: 'bg-ink' },
+      { key: 'web', fill: 'bg-alert' },
+    ])
+  })
+
+  it('draws an empty or skipped source in ink, because both answered', () => {
+    const log = [event('wikidata', 'empty'), event('web', 'skipped')]
+
+    expect(barParts(['wikidata', 'web'], log).map((part) => part.fill)).toEqual([
+      'bg-ink',
+      'bg-ink',
+    ])
+  })
+
+  it('draws the parts in the order they answered, not the order they were named', () => {
+    // The word written inside the bar is read from the same order, which is why the name is
+    // right even though the sources answer out of turn.
+    const log = [event('edgar', 'ok'), event('wikidata', 'ok')]
+
+    expect(barParts(['wikidata', 'gleif', 'edgar'], log).map((part) => part.key)).toEqual([
+      'edgar',
+      'wikidata',
+      'gleif',
+    ])
+  })
+
+  it('draws a source that has not answered yet in ink, not as a failure', () => {
+    expect(barParts(['wikidata'], [])).toEqual([{ key: 'wikidata', fill: 'bg-ink' }])
   })
 })

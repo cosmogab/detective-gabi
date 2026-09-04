@@ -11,9 +11,9 @@ import { LiveInvestigation } from './LiveInvestigation'
 import { requestHeaders } from '../KeysModal'
 import { SOURCE_NAME } from '../case/FieldRow'
 import { WaitBar } from './WaitBar'
-import { IDENTIFY_STEP_MS, answeredCount, displayOrder, sourcesIn } from './pacing'
+import { IDENTIFY_STEP_MS, answeredCount, barParts, displayOrder, fillOf, sourcesIn, stepAt } from './pacing'
 import { useDrawn, useSettled } from './useDrawn'
-import type { LogEvent } from '@/lib/types'
+import type { LogEvent, Source } from '@/lib/types'
 
 /**
  * Runs one resolution and shows what came back.
@@ -158,16 +158,14 @@ export function LiveResolution(props: { query: string }) {
         <>
           <WaitBar
             parts={
+              // Nothing has answered yet, so nothing can have failed: one placeholder part,
+              // inked by the same rule rather than by a class written here.
               total === 0
-                ? [{ key: 'identifying', fill: 'bg-ink' }]
-                : parts.map((source) => ({ key: source, fill: 'bg-ink' }))
+                ? [{ key: 'identifying', fill: fillOf(undefined) }]
+                : barParts(parts, log)
             }
             drawn={drawn}
-            word={
-              total === 0
-                ? 'Identifying'
-                : SOURCE_NAME[displayOrder(parts, log)[Math.min(drawn, total - 1)] ?? parts[0]]
-            }
+            word={total === 0 ? 'Identifying' : wordFor(stepAt(displayOrder(parts, log), drawn))}
             running={searching}
           />
           <p className="mt-4 max-w-2xl font-sans text-sm text-muted">
@@ -281,4 +279,9 @@ function Verdict(props: { query: string; response: ResolveResponse }) {
 
   // `resolved` never reaches here: `LiveResolution` returns `Identified` before this runs.
   return <ResolutionLog events={log} folded />
+}
+
+/** The step's name as the bar writes it, or nothing when there is no step to name. */
+function wordFor(source: Source | undefined): string | undefined {
+  return source === undefined ? undefined : SOURCE_NAME[source]
 }

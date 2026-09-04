@@ -1593,3 +1593,21 @@ together.
 **Consequence accepted.** A visible change on one screen — a sole web record now shows its name,
 host and source with no line under it, where it used to show a page excerpt. That is the correct
 absence, and it is D90's own reasoning applied where D90 did not reach.
+
+## D99 — One bar, one rule for what red means
+
+**Context.** The two waits share `WaitBar`, and each computed its own parts. The investigation
+read each source's status and inked a failure red; the identify bar wrote `fill: 'bg-ink'` for
+every part and worked out its own step inline. The same fact — a source failed — was drawn two
+ways on two screens, and the resolution screen is the one where the only keyed source is Tavily,
+which is exactly the source that fails on a bad key or a spent quota.
+
+**Choice.** `barParts(announced, events)` in `lib/`-style pure code (`app/components/live/pacing.ts`),
+used by both. `fillOf` is the only place a fill class is written; grep proves no other file names
+one.
+
+**Consequence accepted.** A visible change on the resolution screen: a run where the web search
+failed now draws that part red instead of ink. It also fixed something nobody had asked about —
+the identify bar built its parts from `sourcesIn(log)` while reading its step from
+`displayOrder(...)`, two derivations of one order that agreed only because the resolution log
+arrives complete. One function now settles both.

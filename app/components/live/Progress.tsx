@@ -1,7 +1,7 @@
 import { SOURCE_NAME } from '../case/FieldRow'
 import type { LogEvent, Source } from '@/lib/types'
 import { WaitBar } from './WaitBar'
-import { allDrawn, answeredCount, displayOrder, fillOf, statusBySource, stepAt } from './pacing'
+import { allDrawn, answeredCount, barParts, displayOrder, stepAt } from './pacing'
 
 /**
  * The investigation's wait: the company, a bar cut into as many parts as the run has sources,
@@ -24,7 +24,6 @@ export function Progress(props: {
   const total = new Set(sources).size
   const answered = answeredCount(sources, events)
   const order = displayOrder(sources, events)
-  const status = statusBySource(sources, events)
 
   const done = allDrawn(drawn, total)
   const step = stepAt(order, drawn)
@@ -45,7 +44,7 @@ export function Progress(props: {
       </p>
 
       <WaitBar
-        parts={order.map((source) => ({ key: source, fill: fillOf(status.get(source)) }))}
+        parts={barParts(sources, events)}
         drawn={drawn}
         word={step === undefined ? undefined : SOURCE_NAME[step]}
         running={running && !done}

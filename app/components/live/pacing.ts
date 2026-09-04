@@ -164,3 +164,22 @@ export function fillOf(status: LogEventStatus | undefined): string {
 export function stepAt(order: readonly Source[], drawn: number): Source | undefined {
   return order[Math.min(drawn, Math.max(0, order.length - 1))]
 }
+
+/**
+ * Every part of the bar, in the order they are drawn, each with the class that inks it.
+ *
+ * One function because there is one rule for what red means, and the two bars were about to
+ * hold two: the identify bar wrote `fill: 'bg-ink'` for every part, so a source that failed
+ * during resolution was drawn like one that answered, while the investigation bar drew the
+ * same fact in red.
+ */
+export function barParts(
+  announced: readonly Source[],
+  events: readonly LogEvent[],
+): { key: string; fill: string }[] {
+  const status = statusBySource(announced, events)
+  return displayOrder(announced, events).map((source) => ({
+    key: source,
+    fill: fillOf(status.get(source)),
+  }))
+}
