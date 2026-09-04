@@ -260,7 +260,44 @@ describe('the grid shows the whole list it was given', () => {
     // Four cards, two of them without an action — not two cards and a quiet omission.
     expect(html.split('<li').length - 1).toBe(4)
     expect(html.split('Investigate this one').length - 1).toBe(2)
-    expect(html).toContain('would open exactly the same investigation')
+    expect(html).toContain('Opens the same investigation as another card')
+  })
+
+  it('never prints a page excerpt where a description goes', () => {
+    // Wikidata writes one line about the company. A web result carries whatever the page said —
+    // `### Crunchbase N/A ### LinkedIn N/A` off a LinkedIn overview, a Play Store footer — and
+    // setting that where a description goes presents a scrape as a summary.
+    const scraped = '## Overview ### Crunchbase N/A ### LinkedIn N/A ### Industry'
+    const web = entry({ name: 'Stripe', domain: 'linkedin.com' })
+    const found = [
+      { ...web, candidate: { ...web.candidate, source: 'web' as const, description: scraped } },
+      entry({ name: 'Stripe Press', domain: 'press.stripe.com' }),
+    ]
+    const html = render(createElement(CandidateGrid, { query: 'stripe', found }))
+
+    expect(html).not.toContain('Crunchbase')
+    expect(html).not.toContain('N/A')
+    // The card is still there, and still says which record it is and where it came from.
+    expect(html).toContain('linkedin.com')
+    expect(html).toContain('publisher')
+  })
+
+  it('keeps a description a source actually wrote', () => {
+    const wiki = entry({ name: 'Meta Platforms', domain: 'meta.com' })
+    const found = [
+      {
+        ...wiki,
+        candidate: {
+          ...wiki.candidate,
+          source: 'wikidata' as const,
+          description: 'American technology conglomerate',
+        },
+      },
+      entry({ name: 'Metal Blade Records', domain: 'metalblade.com' }),
+    ]
+    expect(render(createElement(CandidateGrid, { query: 'meta', found }))).toContain(
+      'American technology conglomerate',
+    )
   })
 })
 

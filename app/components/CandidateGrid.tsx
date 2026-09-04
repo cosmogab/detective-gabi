@@ -40,6 +40,22 @@ export function isPublisherDomain(candidate: Candidate): boolean {
 }
 
 /**
+ * Whether the line a candidate carries was written to describe a company.
+ *
+ * Wikidata writes one, deliberately, in a sentence. A web result carries an excerpt of whatever
+ * page happened to mention the name — `### Crunchbase N/A ### LinkedIn N/A` from a LinkedIn
+ * overview, a follower count from X, `Gift cards · Redeem · Refund policy` from the Play Store.
+ * Setting the second where the first goes presents a scrape as a summary, which is the same
+ * fault as presenting a guess as a value.
+ *
+ * The same list as `PUBLISHER_SOURCES`, for the same reason: a publisher stated a page, not a
+ * company, so neither its host nor its blurb is about the company.
+ */
+export function describesTheCompany(candidate: Candidate): boolean {
+  return !PUBLISHER_SOURCES.includes(candidate.source)
+}
+
+/**
  * The one URL that means "investigate this now", and `refresh` is what makes it go past
  * whatever is stored. Moved here from `app/page.tsx` so the server page and the candidate
  * cards write the same grammar rather than two copies of it.
@@ -179,7 +195,7 @@ export function CandidateCard(props: { entry: Found; href: string | null }) {
     <li className="border border-rule bg-card">
       <div className="h-full border-l-4 border-l-rule-strong p-4">
         <p className="datum text-ink">{candidate.name}</p>
-        {candidate.description !== null ? (
+        {candidate.description !== null && describesTheCompany(candidate) ? (
           <p className="mt-1 font-sans text-sm text-muted">{candidate.description}</p>
         ) : null}
         <CandidateMeta candidate={candidate} />
@@ -195,8 +211,7 @@ export function CandidateCard(props: { entry: Found; href: string | null }) {
           </p>
         ) : (
           <p className="mt-3 font-sans text-xs text-faint">
-            Another candidate here would open exactly the same investigation, so picking
-            between them would not pick anything. Enter a domain to tell them apart.
+            Opens the same investigation as another card. Enter a domain to tell them apart.
           </p>
         )}
       </div>
@@ -215,12 +230,15 @@ export function CandidateGrid(props: { query: string; found: readonly Found[] })
   return (
     <section className="mt-8">
       <h2 className="label border-b border-b-rule-strong pb-1.5 text-ink">
-        More than one company answers to that name
+        More than one record answers to that name
       </h2>
+      {/* Records, not companies. Five results can be five pages about one company, and calling
+          them companies would settle in a sentence the thing this screen exists because nobody
+          settled. */}
       <p className="mt-3 max-w-2xl font-sans text-sm text-ink">
-        <span className="datum">{query}</span> matched {found.length} companies, and nothing the
-        sources returned says which one you mean. Pick one, or enter its domain in the field
-        above.
+        <span className="datum">{query}</span> brought back {found.length} records, and they may
+        not describe the same company. Pick the one that looks right, or enter its domain in the
+        field above.
       </p>
       <ul className="mt-5 grid items-stretch gap-3 sm:grid-cols-2">
         {withActions(found).map(({ entry, href }, i) => (

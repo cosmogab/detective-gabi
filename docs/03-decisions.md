@@ -1334,4 +1334,33 @@ then `WIKIDATA` and `WEB SEARCH` drawn over 1.7s.
 
 ---
 
+## D90 — A page excerpt is not a description, and five results are not five companies
+
+**Context.** `stripe.com` brings back five candidates, all from the web search. Each card printed
+its `description` as prose — except a web result's description is not one. LinkedIn's contributed
+`### Crunchbase N/A ### LinkedIn N/A ### Industry`, X's a follower count and a list of pinned
+posts, the Play Store's `Gift cards · Redeem · Refund policy`. The heading above them said *More
+than one company answers to that name* and the sentence said *matched 5 companies*.
+
+**Two claims, both wrong.** Wikidata writes a description: one line, about the company, on
+purpose. Tavily returns an excerpt of whatever page mentioned the name. Setting the second where
+the first goes presents a scrape as a summary, which is the same fault as presenting a guess as a
+value. And five results are not five companies — they were five pages about one company, and
+calling them companies settles in a sentence the exact thing this screen exists because nobody
+settled.
+
+**Choice.** `describesTheCompany` gates the line, over the same list as `PUBLISHER_SOURCES` and
+for the same reason: a publisher stated a page, not a company, so neither its host nor its blurb
+is about the company. The wording becomes *records*: `stripe.com brought back 5 records, and they
+may not describe the same company. Pick the one that looks right.` The card keeps the name, the
+host, the `publisher` marker and the source — which is all a reader needs to choose between them,
+and is why dropping the rest also answered the complaint that the cards carried too much text.
+
+**Consequence.** A test now renders a web candidate carrying that exact scrape and asserts neither
+`Crunchbase` nor `N/A` reaches the page, while the card still names its host and marks it a
+publisher; another asserts a Wikidata description is kept, so the gate cannot quietly become "drop
+every description".
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->
