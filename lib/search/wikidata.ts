@@ -4,10 +4,10 @@ import {
   API,
   ENTITY_PAGE,
   type Entity,
-  type Statement,
-  entityIdValue,
+  claimIds,
   getJson,
   loadEntities,
+  pickBest,
   snakSchema,
   searchSchema,
 } from '@/lib/providers/wikidata-api'
@@ -130,7 +130,7 @@ async function loadCountryCodes(
       const url = `${API}?action=wbgetclaims&entity=${id}&property=${ISO_ALPHA_2}&format=json`
       const parsed = claimsSchema.safeParse(await getJson(url, ctx))
       if (!parsed.success) continue
-      for (const claim of best(parsed.data.claims[ISO_ALPHA_2] ?? [])) {
+      for (const claim of pickBest(parsed.data.claims[ISO_ALPHA_2] ?? [])) {
         const code = claim.mainsnak.datavalue?.value
         if (typeof code === 'string' && /^[A-Z]{2}$/.test(code)) codes[id] = code
       }
@@ -213,26 +213,8 @@ function toFound(id: string, entity: Entity, countries: Record<string, string>):
   }]
 }
 
-/**
- * Wikidata ranks a property's statements. `deprecated` is the community saying a value is
- * wrong — a superseded website or a withdrawn identifier — and `preferred` is the one they
- * consider current. Reading in array order would hand a known-wrong LEI to GLEIF.
- */
-function best(claims: readonly Statement[]): Statement[] {
-  const live = claims.filter((claim) => claim.rank !== 'deprecated')
-  const preferred = live.filter((claim) => claim.rank === 'preferred')
-  return preferred.length > 0 ? preferred : live
-}
-
-function claimIds(entity: Entity, property: string): string[] {
-  return best(entity.claims?.[property] ?? []).flatMap((claim) => {
-    const parsed = entityIdValue.safeParse(claim.mainsnak.datavalue?.value)
-    return parsed.success ? [parsed.data.id] : []
-  })
-}
-
 function firstString(entity: Entity, property: string): string | undefined {
-  for (const claim of best(entity.claims?.[property] ?? [])) {
+  for (const claim of pickBest(entity.claims?.[property] ?? [])) {
     const value = claim.mainsnak.datavalue?.value
     if (typeof value === 'string' && value !== '') return value
   }

@@ -1495,3 +1495,30 @@ interchangeable: `lib/providers/` for the investigation, `lib/search/` for resol
 `lib/net.ts` and `lib/providers/wikidata-api.ts` underneath. The resolver still gets none of the
 seam's guarantees — in particular `/api/resolve` remains unrate-limited while spending a Tavily
 credit per call, which T38 stops the code from denying and a later task has to fix.
+
+## D96 — A claim Wikidata marks "no value" may not outrank one that has a value
+
+**Context.** Wikidata ranks the statements of a property: `deprecated` means the community
+considers a value wrong, `preferred` the one they consider current. Two copies of that filter
+existed. The provider's also required `mainsnak.snaktype === 'value'`; the copy inside
+`/api/resolve` read the rank alone. Nobody had noticed, because every recording in the repo
+happens to hold only value-carrying statements.
+
+**The defect.** Wikidata states "has no official website" as a statement carrying *no value*, and
+that statement can be ranked `preferred` — it is how the community says "we checked, there is
+none". Reading the rank alone, the preferred set comes back non-empty, holds nothing readable,
+and the normal-ranked real URL behind it is never reached. Measured against the Stripe recording
+with one such statement placed in front: `domain` comes back `null`.
+
+**Why it is not cosmetic.** The domain is the key the report is cached under and the identifier
+the investigation is started from. A company that lost it resolves to a candidate no
+investigation can run on, silently — the log says the search succeeded, because it did.
+
+**Choice.** One filter, in `lib/providers/wikidata-api.ts`, with the `snaktype` check, used by
+both callers. The test that catches it is written from the recording plus one statement built
+beside the assertion, which is what D21 asks for when no capture holds the shape.
+
+**Consequence accepted.** A statement that says "there is no value" is now read as absence rather
+than as an answer, which is what it means — but the app does not yet distinguish "Wikidata says
+there is none" from "Wikidata does not say". Both come back as no evidence, listing Wikidata among
+the sources checked, which is true of each.

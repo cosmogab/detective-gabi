@@ -570,3 +570,52 @@ describe('a search that fails is not a search that found nothing', () => {
     })
   })
 })
+
+// ---------------------------------------------------------------------------------------
+// T34. Wikidata states "has no official website" as a statement carrying *no value*, and such
+// a statement can be ranked `preferred`. The rank filter this route carried read the rank and
+// not the snaktype, so the preferred set came back non-empty, held nothing readable, and the
+// real normal-ranked URL behind it was never reached.
+//
+// The recording is the recording. The one statement below is constructed here, beside the
+// assertion, because no capture holds this shape — which is exactly why it went unnoticed.
+// ---------------------------------------------------------------------------------------
+
+/** Wikidata's own way of saying a company has no website, at the rank it is usually given. */
+const NO_WEBSITE = {
+  mainsnak: { snaktype: 'novalue', property: 'P856', hash: 'x', datatype: 'url' },
+  type: 'statement',
+  rank: 'preferred',
+}
+
+/** The Stripe recording, with that statement standing in front of the real one. */
+function entitiesWithNoWebsiteClaim(): unknown {
+  const held = structuredClone(entitiesStripe) as {
+    entities: Record<string, { claims?: Record<string, unknown[]> }>
+  }
+  const stripe = held.entities.Q7624104
+  const websites = stripe?.claims?.P856
+  if (stripe?.claims === undefined || websites === undefined) throw new Error('recording changed')
+  stripe.claims.P856 = [NO_WEBSITE, ...websites]
+  return held
+}
+
+describe('a claim marked "no value" may not outrank one that has one', () => {
+  it('still reads the website Wikidata does state', async () => {
+    serve([
+      { when: 'wbsearchentities', body: searchStripe },
+      { when: 'ids=Q7624104|', body: entitiesWithNoWebsiteClaim() },
+      { when: 'ids=Q12738586|', body: classesStripe },
+      { when: 'entity=Q30', body: claimsUs },
+    ])
+
+    const body = await (await POST(ask('stripe'))).json()
+
+    // Losing the domain is not a cosmetic loss: it is the key the report is cached under and
+    // the identifier GLEIF and EDGAR are reached with, so the company would resolve to a
+    // candidate no investigation can start from.
+    expect(body.resolution.kind).toBe('resolved')
+    expect(body.resolution.candidate.domain).toBe('stripe.com')
+    expect(body.found[0].input.domain).toBe('stripe.com')
+  })
+})
