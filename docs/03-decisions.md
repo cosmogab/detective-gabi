@@ -1442,3 +1442,33 @@ surviving copy happened to take.
 say why: `nameKey('AT&T Inc.')` is `at&t` and `looseNameKey('AT&T Inc.')` is `at t`, asserted side
 by side. A caller now has to know which comparison it is making — which it always did, without
 being told.
+
+## D95 — The ISO table has one home, and EDGAR took the wider of the two
+
+**Context.** EDGAR and Abstract had each built a name-to-ISO-3166 table out of the runtime's own
+region data. D65 recorded the copy as deliberate and named the reason: two providers sharing one
+name table means a change made for EDGAR's descriptions silently moves Abstract's companies. That
+reason was lane ownership, which expired with D91.
+
+**Options considered.** Keep both. Share EDGAR's, which is nine lines. Or share Abstract's, which
+is a hundred and forty and does more.
+
+**Choice.** `lib/countries.ts`, built from Abstract's. EDGAR's recordings decide whether that is
+safe, and they are why the merge was attempted at all: `tests/providers.registry.test.ts` drives
+EDGAR over four recorded submissions, two of them foreign filers, and it is green unchanged.
+
+**What EDGAR gained.** Three display styles rather than one, so "Hong Kong" and "Hong Kong SAR
+China" both resolve. Parenthesised names opened out, so "Myanmar (Burma)" is also "Burma".
+Accents, punctuation and case folded, `&` read as "and", `St.` as "Saint" and a leading "the"
+dropped. And thirty-three aliases for the spellings registries use that no display data carries —
+"Korea, Republic of" is EDGAR's own wording and its old table could not read it.
+
+**What EDGAR lost, which is the point.** Its table admitted anything the runtime named and that
+canonicalised to itself, so "European Union" resolved to `EU` and a filing could have placed a
+company there. The shared table refuses `EU`, `EZ`, `UN` and `QO` outright, and the `maximize()`
+check refuses `ZZ`, the code CLDR calls "Unknown Region".
+
+**Consequence accepted.** A change made for one provider's shape can now move the other's
+companies, which is exactly what D65 was protecting against. Two things stand in its place: both
+providers' recordings run on every commit, and `tests/countries.test.ts` now pins the behaviour
+directly rather than only through whichever provider happened to exercise it.

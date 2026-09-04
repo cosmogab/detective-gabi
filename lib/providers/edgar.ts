@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { Field, Location, NoEvidence } from '@/lib/types'
 import type { Ctx, Provider, ProviderInput, ProviderResult } from './types'
+import { countryCode } from '@/lib/countries'
 import { nameKey, titleCase } from '@/lib/text'
 import { fetchJson, reason, since } from '@/lib/net'
 
@@ -194,8 +195,8 @@ function readLocation(
  */
 function countryOf(address: Address): string | null {
   const stated = countryNameOf(address)
-  const iso = stated === null ? undefined : isoRegions().get(stated.toLowerCase())
-  if (iso !== undefined) return iso
+  const iso = stated === null ? null : countryCode(stated)
+  if (iso !== null) return iso
   // Abroad, in a country ISO 3166 does not name the way EDGAR does. Unknown beats wrong.
   if (isForeign(address) || stated !== null) return null
   return isUsState(address) ? 'US' : null
@@ -240,31 +241,6 @@ function regionOf(address: Address, country: string | null): string {
   return ''
 }
 
-/**
- * Country name to ISO 3166-1 alpha-2, read out of the runtime's own region data rather than a
- * table written from memory. A name it does not know yields nothing, never a guess.
- *
- * Withdrawn codes are skipped: the runtime still names "UK" and "SU", and letting either win
- * would put a company in a country that no longer exists. A code that canonicalises to itself
- * is one ISO still assigns.
- */
-let regions: Map<string, string> | null = null
-function isoRegions(): Map<string, string> {
-  if (regions !== null) return regions
-  const display = new Intl.DisplayNames(['en'], { type: 'region' })
-  const built = new Map<string, string>()
-  for (let first = 65; first <= 90; first++) {
-    for (let second = 65; second <= 90; second++) {
-      const code = String.fromCharCode(first, second)
-      const name = display.of(code)
-      if (name === undefined || name === code) continue
-      if (new Intl.Locale(`und-${code}`).region !== code) continue
-      built.set(name.toLowerCase(), code)
-    }
-  }
-  regions = built
-  return built
-}
 
 function noEvidence(fetchedAt: string): NoEvidence {
   return { found: false, value: null, sourcesChecked: ['edgar'], fetchedAt }
