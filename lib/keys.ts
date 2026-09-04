@@ -1,4 +1,7 @@
+import { keyHeaderName } from '@/lib/key-header'
 import type { Source } from '@/lib/types'
+
+export { keyHeaderName }
 
 /** Keys supplied by the user for this request. Never persisted server-side, never logged. */
 export type UserKeys = Partial<Record<Source, string>>
@@ -37,20 +40,6 @@ const ENV_VARIABLE: Partial<Record<Source, string>> = {
  */
 const CONFIGURABLE = Object.keys(ENV_VARIABLE) as Source[]
 
-/**
- * One header per source, carrying the value and nothing else.
- *
- * Two conventions shipped in parallel — this one in `app/api/investigate/route.ts` and a
- * single `x-detective-keys` header holding a JSON object in `app/api/resolve/route.ts`. This
- * one wins for two reasons. A key stays an opaque string end to end: the JSON form makes the
- * client escape a value it did not choose, and one stray quote costs *every* key at once,
- * silently, so a source the user did configure is reported as skipped for want of a key —
- * the false-absence family of D59. And the name space here is closed by `Source`: the
- * resolver asks for the ids it knows instead of reading a record whose keys the caller names.
- */
-export function keyHeaderName(id: Source): string {
-  return `x-dg-key-${id}`
-}
 
 /** The user tier, read off a request. The one place that header name is spelled. */
 export function userKeysFrom(headers: Headers): UserKeys {
