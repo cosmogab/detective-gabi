@@ -1,0 +1,63 @@
+[
+ {
+  "file": "flyio-page1.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 200,
+  "pageSentIn": "https://fly.io/about",
+  "recordedAt": "2026-09-04T04:09:40.094381Z",
+  "note": "the roster page, reduced; five of the fifty-seven people it names are the ones it presents as running the company"
+ },
+ {
+  "file": "flyio-error503.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 503,
+  "pageSentIn": "https://fly.io/team",
+  "recordedAt": "2026-09-04T04:10:08.568391Z",
+  "note": "the second page of the same run, refused while the first succeeded"
+ },
+ {
+  "file": "basecamp-page1.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 200,
+  "pageSentIn": "https://basecamp.com/about",
+  "recordedAt": "2026-09-04T04:10:14.087870Z",
+  "note": "a founder named mid-sentence rather than in a roster"
+ },
+ {
+  "file": "basecamp-page2.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 200,
+  "pageSentIn": "https://basecamp.com/team",
+  "recordedAt": "2026-09-04T04:10:36.518973Z"
+ },
+ {
+  "file": "posthog-page1.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 200,
+  "pageSentIn": "https://posthog.com/team",
+  "recordedAt": "2026-09-04T04:15:55.817496Z",
+  "note": "the page that says \"a team of 228 misfits\" and names nobody: the model returns an empty list"
+ },
+ {
+  "file": "posthog-error429.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 429,
+  "pageSentIn": "https://posthog.com/team",
+  "recordedAt": "2026-09-04T04:14:50.160774Z",
+  "note": "the free tier is limited per minute and per day, and this is what running out looks like"
+ },
+ {
+  "file": "posthog-error503.json",
+  "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+  "method": "POST",
+  "status": 503,
+  "pageSentIn": "https://posthog.com/about",
+  "recordedAt": "2026-09-04T04:13:48.076174Z"
+ }
+]

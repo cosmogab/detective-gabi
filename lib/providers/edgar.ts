@@ -120,12 +120,17 @@ export const edgar: Provider = {
  * User-supplied first, then the environment, then the default — the same three levels the app
  * applies to every key (D7). This is not a secret: it is the caller's own name, and the SEC
  * asks for it so that a misbehaving client can be identified rather than blocked wholesale.
+ *
+ * Both configured levels arrive through `ctx.key`, which has been `lib/keys.ts` since T12, so
+ * the environment is not read again here. That second read was dead code, and it was the only
+ * path that could have put an unchecked value into a header: it skipped the resolver, which is
+ * what trims a pasted value and refuses one no header can carry.
  */
 function userAgent(ctx: Ctx): string {
-  const candidates = [ctx.key('edgar'), process.env.EDGAR_USER_AGENT, DEFAULT_USER_AGENT]
   // Blank, not absent, is what an emptied `.env` line leaves behind — and the SEC answers 403
   // to an empty header, which would lose the source exactly as having no default would.
-  return candidates.find((value) => (value ?? '').trim() !== '') ?? DEFAULT_USER_AGENT
+  const supplied = ctx.key('edgar') ?? ''
+  return supplied.trim() === '' ? DEFAULT_USER_AGENT : supplied
 }
 
 async function getJson(url: string, ctx: Ctx): Promise<unknown> {

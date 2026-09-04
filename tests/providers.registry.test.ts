@@ -478,6 +478,45 @@ describe('SEC EDGAR reads the filed address without inventing a country', () => 
     for (const call of calls) expect(call.headers['user-agent']?.trim()).toBeTruthy()
   })
 
+  it('is not lost to a contact string pasted with stray whitespace', async () => {
+    // What a paste into a hosting dashboard leaves behind. This is a characterisation, not a
+    // guard in this file: `lib/keys.ts` trims before the value ever arrives, and the Fetch
+    // spec normalises the ends of a header value anyway. Both were measured before this test
+    // was written — an earlier reading had EDGAR dying on every request of the run, and it
+    // does not. It is pinned because EDGAR is a whole source to lose, as T9 lost it once.
+    const calls = serve(NVIDIA_ROUTES)
+
+    const result = await edgar.run(
+      company('Nvidia'),
+      context({ key: (id) => (id === 'edgar' ? '  Someone someone@example.com\n' : null) }),
+    )
+
+    for (const call of calls) {
+      expect(call.headers['user-agent']).toBe('Someone someone@example.com')
+    }
+    // Still answering, which is the point: the source is not lost to a whitespace character.
+    expect(location(result.fields.location)).toEqual({
+      formatted: 'Santa Clara, CA, US',
+      country: 'US',
+    })
+  })
+
+  it('reaches the environment only through the resolver it was given', async () => {
+    // `ctx.key` has been lib/keys.ts since T12, and that is where the environment tier lives —
+    // along with the check that refuses a value which cannot be a header value at all. Reading
+    // `process.env` here as well read the environment twice and skipped the injected one,
+    // which is the whole reason that resolver takes an environment.
+    vi.stubEnv('EDGAR_USER_AGENT', 'Behind The Resolver behind@example.com')
+    const calls = serve(NVIDIA_ROUTES)
+
+    await edgar.run(company('Nvidia'), context({ key: () => null }))
+
+    for (const call of calls) {
+      expect(call.headers['user-agent']).not.toContain('Behind The Resolver')
+      expect(call.headers['user-agent']).toBeTruthy()
+    }
+  })
+
   it('finds no CIK for a company that does not file, and says so', async () => {
     serve([{ when: 'company_tickers', body: tickers }])
 

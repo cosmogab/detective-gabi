@@ -546,6 +546,110 @@ describe('a country is a code or it is nothing', () => {
   })
 })
 
+describe('a country code is one ISO assigns, not one that looks like it', () => {
+  it('refuses a stated code ISO does not assign, and lets the name decide', async () => {
+    // Measured on the real provider: Abstract answers `country_iso_code: "UK"` beside
+    // `country: "United Kingdom"`. "UK" is not an ISO 3166-1 code — GB is — and a shape test
+    // returned it while skipping the name that would have been right. GLEIF and Wikidata say
+    // GB, so this was a conflict manufactured between two sources that agreed.
+    serve([{ when: 'companyenrichment', body: enrichment({ city: 'London', country: 'United Kingdom', country_iso_code: 'UK' }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)).toEqual({ formatted: 'London, GB', country: 'GB' })
+  })
+
+  it('refuses the code CLDR uses for nowhere', async () => {
+    // "ZZ" is named "Unknown Region", so a shape test accepted it and placed a company there.
+    serve([{ when: 'companyenrichment', body: enrichment({ country_iso_code: 'ZZ' }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)?.country).toBe('US')
+  })
+
+  it('refuses a grouping that is not a country', async () => {
+    serve([{ when: 'companyenrichment', body: enrichment({ country: 'European Union', country_iso_code: 'EU' }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)).toEqual({
+      formatted: 'San Francisco, European Union',
+      country: null,
+    })
+  })
+
+  it('uses a stated code when ISO does assign it', async () => {
+    serve([{ when: 'companyenrichment', body: enrichment({ country: 'Canada', country_iso_code: 'ca', city: 'Ottawa' }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)?.country).toBe('CA')
+  })
+})
+
+describe('a country name a data source would actually write', () => {
+  // The runtime spells countries the way CLDR presents them, which is not how an API writes
+  // them. Measured before this list was written: "Czechia" resolved and "Czech Republic" did
+  // not, and `sameCountry` reads the resulting null as "not the same place" — so the false
+  // conflict the ISO resolution exists to prevent came back for every non-US company.
+  const NAMES: ReadonlyArray<[string, string]> = [
+    ['Czech Republic', 'CZ'],
+    ['Czechia', 'CZ'],
+    ['Turkey', 'TR'],
+    ['Türkiye', 'TR'],
+    ['Hong Kong', 'HK'],
+    ['Bosnia and Herzegovina', 'BA'],
+    ['Trinidad and Tobago', 'TT'],
+    ['Myanmar', 'MM'],
+    ['Burma', 'MM'],
+    ['Ivory Coast', 'CI'],
+    ["Côte d'Ivoire", 'CI'],
+    ['Swaziland', 'SZ'],
+    ['Eswatini', 'SZ'],
+    ['Macedonia', 'MK'],
+    ['East Timor', 'TL'],
+    ['Cabo Verde', 'CV'],
+    ['United States of America', 'US'],
+    ['The Netherlands', 'NL'],
+    ['Saint Lucia', 'LC'],
+    ['Viet Nam', 'VN'],
+    ['Russian Federation', 'RU'],
+    ['Republic of Korea', 'KR'],
+    ['Democratic Republic of the Congo', 'CD'],
+  ]
+
+  it.each(NAMES)('resolves %s to %s', async (name, code) => {
+    serve([{ when: 'companyenrichment', body: enrichment({ country: name }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)?.country).toBe(code)
+  })
+
+  it('says so in the log when it cannot place a country, instead of going quiet', async () => {
+    // The requirement that keeps this honest. A null country does not read as "unknown" to
+    // merge — it reads as "not the same place" — so an unresolved name must be visible.
+    serve([{ when: 'companyenrichment', body: enrichment({ city: 'Strelsau', country: 'Freedonia' }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(value(result.fields.location)).toEqual({
+      formatted: 'Strelsau, Freedonia',
+      country: null,
+    })
+    expect(result.log[0]?.detail).toContain('country "Freedonia" not matched to ISO 3166')
+  })
+
+  it('keeps quiet when there was no country to place', async () => {
+    serve([{ when: 'companyenrichment', body: enrichment({ country: null }) }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(result.log[0]?.detail).not.toContain('not matched')
+  })
+})
+
 describe('what the country decision actually does on a real merge', () => {
   const wikidata: Observation<Location> = {
     value: { formatted: 'San Francisco, US', country: 'US' },
@@ -778,6 +882,49 @@ describe('Abstract fails loudly rather than emptily', () => {
 
     expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'too many requests' })
     expect(result.fields).toEqual({})
+  })
+
+  it.each([
+    ['a string', { error: 'rate limited' }],
+    ['an array', { error: ['rate limited'] }],
+    ['plural, as Hunter writes it', { errors: [{ id: 'authentication_failed' }] }],
+  ])('refuses an error body carrying %s', async (_shape, body) => {
+    // Verified rather than taken on report: a schema matching `{ error: { code } }` let all
+    // three of these through and answered "no record found" — a false absence, which is the
+    // 429 defect again one layer down. The key is tested for now, not its shape.
+    serve([{ when: 'companyenrichment', status: 200, body }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'the source returned an error' })
+    expect(result.fields).toEqual({})
+  })
+
+  it.each([
+    ['nothing at all', {}],
+    ['a payload wrapped in something else', { data: { domain: 'example.com', city: 'Ottawa' } }],
+    ['a field renamed', { company_domain: 'example.com', city: 'Ottawa' }],
+  ])('refuses a body that is not a record when it holds %s', async (_shape, body) => {
+    // Reproduced: every field but one was optional, so each of these parsed cleanly and came
+    // back `empty`. The page then printed "No evidence found — checked Abstract" for an
+    // absence the source never stated — the 429 defect through a different door. The echoed
+    // domain is what makes a body a record, and all four recordings carry it.
+    serve([{ when: 'companyenrichment', status: 200, body }])
+
+    const result = await abstract.run(company('example.com'), withKey())
+
+    expect(result.log[0]).toMatchObject({ status: 'failed', detail: 'unreadable response' })
+    expect(result.fields).toEqual({})
+  })
+
+  it('still reports a real record holding nothing as empty', async () => {
+    // The other side of that rule, so it cannot swallow the honest empty state: the recorded
+    // answer for a domain no company sits behind echoes the domain and nulls the rest.
+    serve([{ when: 'companyenrichment', body: recordedAbstractNothing }])
+
+    const result = await abstract.run(company('zzqx-no-such-company-zzqx.com'), withKey())
+
+    expect(result.log[0]).toMatchObject({ status: 'empty', detail: 'no record found' })
   })
 
   it('refuses an error body even when the status says the request was fine', async () => {
