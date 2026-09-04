@@ -160,26 +160,21 @@ holds the beam's state machine, a test proves the overlay sits behind both media
 scroll lock is released on every exit path.
 **Commit** `feat(ui): put the home page in the dark until the lamp finds it`
 
-### T23 — Make the home field search instead of refusing
-The field stops being an index. A query matching one of the four recordings still opens it with
-no network call — that is what makes the demo work when a source is down (D5) — and everything
-else goes to identity resolution instead of `No search ran`, which disappears. A pure
-`homeTarget(query)` carries the decision. D28 chose the word **Open** precisely because the field
-was a lookup; it is not one any more, so D28 is superseded rather than quietly contradicted.
-**Done when** a test proves `stripe` opens the recording with no provider called, `Airbnb` reaches
-resolution, case and spacing change nothing, and `No search ran` is gone from the tree.
-**Commit** `feat(ui): make the home field search instead of refusing`
-
-### T24 — Move the examples into the explanation they demonstrate
-`Investigate one` and the `also on record` line go: four companies listed twice, for two
-gestures, with nothing saying which to take. They move inside `How it works`, each beside the
-rule it proves — Stripe under *disagreements are shown*, because GLEIF and Wikidata do not agree
-on its head office; Fly.io under *nothing found is a finding*, because it is the sparse one. The
-block stops being a folded `<details>` and becomes an open section: it is the product's argument
-and it was hidden.
-**Done when** each company appears exactly once on the page, inside the claim it illustrates, and
-a render test proves it for all four.
-**Commit** `feat(ui): move the examples into the explanation they demonstrate`
+### T23 — Reduce the home page to a title, a subtitle and a field
+The first screen holds those three and nothing else: the summary paragraph, the four field names,
+the `Investigate one` cards and the `also on record` line all leave it, and the wordmark's
+magnifier goes with them — the lamp is the magnifier now. The four companies move into
+`How it works`, each beside the rule it actually proves: Nvidia because its head office comes from
+EDGAR while its year and headcount come from Wikidata; Stripe because GLEIF and Wikidata disagree
+on that head office; Shopify because its 8,300 is dated 2023 and the page says so; Fly.io because
+three registries were checked and none holds a record. That block stops being a folded `<details>`
+and becomes the open section below the fold, which is what lighting the room now buys. `No search
+ran` goes too: a `?q=` that misses no longer dead-ends, it goes to resolution — the last piece of
+a field that refuses nothing (the rest landed in `c176e4d`).
+**Done when** the first screen holds a title, a subtitle and a field and nothing else, each company
+appears exactly once on the page inside the claim it illustrates, every claim is checkable against
+the recording it links to (D29), and a render test proves all three.
+**Commit** `feat(ui): reduce the home page to a title, a subtitle and a field`
 
 ---
 
