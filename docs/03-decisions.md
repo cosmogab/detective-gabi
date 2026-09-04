@@ -819,6 +819,36 @@ site exists is the only way to hold the property.
 and it is flagged here rather than left to be discovered. It guards the failure mode this repo
 demonstrably keeps repeating, which is worth a brittle test.
 
+## D69 — A record that carries an address outranks one that does not
+
+**Context.** People are unioned across sources and the highest-priority record won. Hunter is the
+only source of addresses, and Wikidata names exactly the executives Hunter returns — so Wikidata
+won every contested record and Hunter's address was computed and thrown away. Measured: Patrick
+Collison came back with Wikidata's title and `email: null`, with `patrick@stripe.com · verified`
+discarded. T14's entire output would have vanished for any person Wikidata also names.
+**Options.** Merge attributes across records — which a `Person` cannot express, since it carries a
+single `source`, so taking the title from one source and the address from another would credit a
+source with an address it never published (D48, D58). Or narrow the candidates.
+**Choice.** Among records for one person, only those carrying an address are considered when any
+does; priority then decides among them exactly as before. The winner is served whole and from one
+source, so every field of a `Person` comes from the source it names.
+**Consequence accepted.** The winning record's other fields come with it: Hunter's terse "CEO"
+replaces Wikidata's "Chief Executive Officer" when Hunter holds the address. A shorter title is a
+smaller loss than the only verified address in the report.
+
+## D70 — A skipped source names the reason that is actually true
+
+**Context.** The reason was guessed from `requiresKey` alone, so a caller past the per-IP limit
+(D49) was told "no key available" — even with a working key pasted into the modal. Telling someone
+who configured a key that they have none is the false-absence family of D59, aimed at the reader's
+own configuration.
+**Choice.** The key is asked about first, because it is the condition the reader controls and the
+one that settles it: with no key the source stands down whatever the limit says. The limit is named
+only when a key was actually there to be spent —
+`rate limited, keyless sources only`.
+**Consequence.** Both reasons are now reachable and each is pinned by its own test; removing either
+branch turns exactly one red.
+
 ---
 
 <!-- Append new decisions below as they are made, with the same shape. -->
