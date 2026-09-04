@@ -255,6 +255,10 @@ export async function investigateCached(
 
   const investigated = await investigate(input, providers, ctx, onEvent)
   const report = simulated ? { ...investigated, simulated: true } : investigated
-  writeCache(domain, report, options.now, scope, keyed)
+  // The other half of the sentence above, which the code did not keep: a simulated report was
+  // written to the cache. Reach happened to hide it — a demonstration reaches three sources and
+  // a real run wants six, so `covers` refused — but a caller whose keyed sources the rate limit
+  // had withheld wants exactly those three, and would have been handed a simulated answer.
+  if (!simulated) writeCache(domain, report, options.now, scope, keyed)
   return report
 }

@@ -1079,4 +1079,40 @@ that swallows the rest of the document passes by accident.
 
 ---
 
+## D83 — The demonstration replays a measurement, and the cache guard the comment promised
+
+**Context.** SPEC §6.2 makes the loading screen the thing this app shows off — *the loading state
+is the trace* — and it is the one screen that never had a pass. It also could not have one: the
+fake providers answer instantly, so the only way to watch a wait was to spend real quota, on every
+reload, all afternoon. `?demo=` existed but held three failures and nothing else.
+
+**Options.** Sleep a plausible constant in the fakes · replay the recording at the pace it was
+captured · build the screen against a real run and pay for it.
+
+**Choice.** `?demo=replay` — a fourth mode, the first that is not a failure. Each recorded source
+waits the duration **that source actually took**, read from the recording's own `log[].ms`:
+Stripe spent 620 ms on Wikidata, 638 on GLEIF and 7,258 on SEC EDGAR, and the replay spends the
+same. A constant would have been a staged wait; this is a measurement played back, which is the
+same distinction the whole app runs on. The clock runs across the wait *and* the work, so `ms`
+stays what `fake.ts` insists it is — measured, never asserted. Sleeping outside the measurement
+would have printed `0 ms` beside a seven-second wait, which is inventing the number told backwards.
+The wait listens to `ctx.signal`: a run nobody is reading must not hold a timer open for seven
+seconds (SPEC §7).
+
+**And the guard its neighbour already promised.** `lib/cache.ts` says in its own comment that a
+simulated run *"must not read one — and it must not write one"*. Only the read was guarded;
+`writeCache` ran unconditionally. Reach hid it — a demonstration consults three sources and a real
+run wants six, so `covers` refused — but a caller whose keyed sources the rate limit had withheld
+wants exactly those three, and would have been handed a report marked `simulated`. One line, and
+the comment is true. Found while planning this mode, fixed before it started writing simulated
+reports on every reload.
+
+**Consequence, verified live.** `?demo=replay` on Stripe streams 623 / 639 / 7,271 ms against
+620 / 638 / 7,258 recorded — over, never under, because the work is inside the clock. The
+GLEIF-versus-Wikidata disagreement survives the replay, which is what Stripe is on record for. A
+second replay is not served from the cache. The three failure modes are untouched. No network, no
+quota, and the screen that comes next can be built against seven real seconds.
+
+---
+
 <!-- Append new decisions below as they are made, with the same shape. -->

@@ -14,9 +14,9 @@ import type { Source } from '@/lib/types'
  * The failure states that can be forced for demonstration, per SPEC §7. Defined once, in
  * `fake.ts`: the demo and the tests must not be able to drift into different failure sets.
  */
-export type DemoMode = FakeFailure
+export type DemoMode = FakeFailure | 'replay'
 
-const MODES: readonly DemoMode[] = ['quota-exhausted', 'timeout', 'not-found']
+const MODES: readonly DemoMode[] = ['quota-exhausted', 'timeout', 'not-found', 'replay']
 
 /** Reads `?demo=`. Anything unrecognised is null rather than an error. */
 export function parseDemoMode(value: string | null | undefined): DemoMode | null {
@@ -133,11 +133,64 @@ function notOnRecord(id: Source): ProviderResult {
 }
 
 /**
+ * How long that step took when the recording was captured.
+ *
+ * Read off the recording, never chosen. The whole value of replaying at this pace is that the
+ * wait is a measurement — Stripe really did spend 7,258 ms on SEC EDGAR — so a screen built
+ * against it is built against something that happened rather than against a number that looked
+ * about right.
+ */
+function recordedMs(name: FixtureName, source: Source): number {
+  return fixtureReport(name).log.find((event) => event.source === source)?.ms ?? 0
+}
+
+/** Waits, and stops waiting the moment the run is superseded. */
+function waited(ms: number, signal: AbortSignal): Promise<void> {
+  if (ms <= 0 || signal.aborted) return Promise.resolve()
+  return new Promise((resolve) => {
+    const done = () => {
+      clearTimeout(timer)
+      signal.removeEventListener('abort', done)
+      resolve()
+    }
+    const timer = setTimeout(done, ms)
+    signal.addEventListener('abort', done, { once: true })
+  })
+}
+
+/**
+ * A recorded source that also takes the time it took.
+ *
+ * The clock runs across the wait *and* the work, so `ms` stays what `fake.ts` insists it is — a
+ * measurement, never an assertion. Sleeping outside the measurement would have printed `0 ms`
+ * beside a seven-second wait, which is the same fault as inventing the number, told backwards.
+ */
+function paced(template: Provider): Provider {
+  const source = recorded(template)
+  return {
+    ...template,
+    async run(input: ProviderInput, ctx: Ctx): Promise<ProviderResult> {
+      const found = recordingFor(input)
+      const started = Date.now()
+      await waited(found === null ? 0 : recordedMs(found, template.id), ctx.signal)
+      const result = await source.run(input, ctx)
+      const ms = Date.now() - started
+      return { ...result, log: result.log.map((event) => ({ ...event, ms })) }
+    },
+  }
+}
+
+/**
  * The fake providers from `lib/providers/fake.ts`, wired to fail in the requested way.
  * The same fakes the unit tests use, so a demonstrated failure is a real one — and any
  * report built from these must carry `simulated: true`.
  */
 export function demoProviders(mode: DemoMode): readonly Provider[] {
+  // The one mode that is not a failure: the recording, played back at the speed it was taken.
+  // It exists so the wait can be worked on at all — the fakes answer instantly, so watching a
+  // real one meant spending a real quota on every reload.
+  if (mode === 'replay') return SHAPE.map(paced)
+
   // The Hunter state (SPEC §7): the keyless sources answer, so names and titles are there,
   // and the address lookup is down. Hunter is not wired — this fake is the only thing behind
   // that line, and the report it appears in says `simulated`.
